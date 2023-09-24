@@ -3,6 +3,7 @@ on: [push, workflow_dispatch]
 
 jobs:
   build:
+    name: Userspace build
     runs-on: ubuntu-latest
     container: ghcr.io/qmk/qmk_cli
     strategy:

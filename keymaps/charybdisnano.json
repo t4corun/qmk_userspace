@@ -4,7 +4,7 @@
   "documentation": "Wrapper based keymap",
   "keyboard": "bastardkb/charybdis/3x5/v2/splinky_3",
   "keymap": "t4corun",
-  "layout": "LAYOUT_wrapper",
+  "layout": "LAYOUT",
   "layers": [
     [ "C_35(BASETEST)" ]
   ]
