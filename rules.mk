@@ -1,1 +1,1 @@
-SRC += t4corun.c 
+SRC += main.c 
