@@ -297,7 +297,6 @@ I prefer to use KC_NO over KC_TRNS so I don't have accidental presses.
 *
 */
 #define QWE \
-  //_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 	___x___, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    ___x___, \
 	___x___, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,	  KC_H,    KC_J,    KC_K,    KC_L,    TR_REP,  ___x___, \
 	___x___, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    TR_COMM, TR_DOT,  KC_MINS, ___x___, \
@@ -320,7 +319,6 @@ I prefer to use KC_NO over KC_TRNS so I don't have accidental presses.
 */
 
 #define CMK \
-  //_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 	___x___, KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_O,    ___x___, \
 	___x___, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,	  KC_M,    KC_N,    KC_E,    KC_I,    TR_REP,  ___x___, \
 	___x___, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    TR_COMM, TR_DOT,  KC_MINS, ___x___, \
@@ -339,7 +337,6 @@ I prefer to use KC_NO over KC_TRNS so I don't have accidental presses.
 */
 
 #define NAVI \
-  //_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 	___x___, KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, KC_INS,  ___x___, ___x___, CONFIG,  ___x___, \
 	___x___, ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC, _____________SCAG_MODS____________, ___x___, \
 	___x___, _________________UCCPR_L___________________, KC_DEL,  KC_APP,  KC_VOLD, KC_VOLU, KC_MUTE, ___x___, \
@@ -362,7 +359,6 @@ I prefer to use KC_NO over KC_TRNS so I don't have accidental presses.
 */
 
 #define SYMB \
-  //_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 	___x___, KC_ESC,  KC_AMPR, KC_AT,   KC_DLR,  TR_PERC, KC_EQL,  KC_HASH, TR_LABK, KC_RABK, KC_GRV,  ___x___, \
 	___x___, KC_ENT,  KC_ASTR, KC_EXLM, KC_BSLS, KC_SCLN, KC_BSPC, KC_SLSH, TR_LBRC, KC_RBRC, TR_REP,  ___x___, \
 	___x___, _________________UCCPR_L___________________, KC_DEL,  KC_QUOT, TR_LPRN, TR_DOT,  KC_MINS, ___x___, \
@@ -383,7 +379,6 @@ I prefer to use KC_NO over KC_TRNS so I don't have accidental presses.
 */
 
 #define NUM \
-  //_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 	___x___, KC_9,    KC_5,    KC_1,    KC_3,    KC_7,    KC_6,    KC_2,    KC_0,    KC_4,    KC_8,    ___x___, \
 	___x___, _____________GACS_MODS____________, KC_F11,  KC_BSPC, KC_SPC,  ___x___, KC_F12,  TR_REP,  ___x___, \
 	___x___, KC_F9,   KC_F5,   KC_F1,   KC_F3,   KC_F7,   KC_F6,   KC_F2,   KC_F10,  KC_F4,   KC_F8,   ___x___, \
@@ -405,7 +400,6 @@ I prefer to use KC_NO over KC_TRNS so I don't have accidental presses.
 */
 
 #define CFG \
-  //_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 	___x___, ___x___, ___x___, TR_DMR1, TR_DMP1, KC_PSCR, ___x___, ___x___, QK_BOOT, ___x___, _______, ___x___, \
 	___x___, TR_RTOG, TR_RMOD, TR_DMR2, TR_DMP2, KC_SCRL, KC_CAPS, _____________SCAG_MODS____________, ___x___, \
 	___x___, TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, KC_PAUS, __________________NONE_5___________________, ___x___, \
@@ -424,7 +418,6 @@ I prefer to use KC_NO over KC_TRNS so I don't have accidental presses.
 */
 
 #define MOU \
-  //_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 	___x___, ___x___, ___x___, TR_MOUU, ___x___, TR_MWHU, TR_SDPI, TR_PDPI, ___x___, ___x___, ___x___, ___x___, \
 	___x___, ___x___, TR_MOUL, TR_MOUD, TR_MOUR, TR_MWHD, ___x___, _____________SCAG_MODS____________, ___x___, \
 	___x___, TR_SNIP, TR_BTN3, TR_BTN2, TR_BTN1, TR_DRGS, ___x___, TR_BTN1, TR_BTN2, TR_BTN3, ___x___, ___x___, \
@@ -443,7 +436,6 @@ I prefer to use KC_NO over KC_TRNS so I don't have accidental presses.
 */
 
 #define GME \
-  //_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 	___x___, KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    __________________NONE_5___________________, ___x___, \
 	___x___, GAMENUM, KC_A,    KC_S,    KC_D,    KC_F,    __________________NONE_5___________________, ___x___, \
 	___x___, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    __________________NONE_5___________________, ___x___, \
@@ -464,7 +456,6 @@ I prefer to use KC_NO over KC_TRNS so I don't have accidental presses.
 */
 
 #define GNO \
-  //_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 	___x___, ___x___, KC_ESC,  KC_TILD, KC_G,    KC_T,    __________________NONE_5___________________, ___x___, \
 	___x___, _______, KC_1,    KC_2,    KC_3,    KC_4,    __________________NONE_5___________________, ___x___, \
 	___x___, ___x___, KC_5,    KC_6,    KC_7,    KC_8,    __________________NONE_5___________________, ___x___, \
