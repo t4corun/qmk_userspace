@@ -1,7 +1,6 @@
-SRC += T4CORUN.c
-SRC += $(USER_PATH)/features/tapping.c
+SRC += T4CORUN.c \
+	$(USER_PATH)/features/tapping.c
 
-INTROSPECTION_KEYMAP_C = T4CORUN.c
 
 SPACE_CADET_ENABLE ?= no
 GRAVE_ESC_ENABLE ?= no
