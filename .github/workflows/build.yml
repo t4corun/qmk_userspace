@@ -29,7 +29,7 @@ jobs:
         path: users/${{ github.actor }}
 
     - name: Build firmware
-      run: qmk compile "users/${{ github.actor }}/${{ matrix.keyboard }}.json"
+      run: qmk compile "users/${{ github.actor }}/keymaps/${{ matrix.keyboard }}.json"
 
     - name: Upload firmware
       uses: actions/upload-artifact@v3
