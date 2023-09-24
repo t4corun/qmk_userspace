@@ -1,1 +1,2 @@
-SRC += source.c
+SRC += T4CORUN.c \
+		features/tapping.c

@@ -11,6 +11,7 @@ jobs:
         keyboard:
           - test
           - test2
+          - charybdisnano
 
     steps:
 
