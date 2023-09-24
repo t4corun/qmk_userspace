@@ -3,7 +3,7 @@
   "notes": "",
   "keyboard": "bastardkb/charybdis/3x5/v2/splinky_3",
   "keymap": "t4corun",
-  "layout": "LAYOUT_wrapper",
+  "layout": "LAYOUT_cnano_wrapper",
   "layers": [
     [ "C_35(QWE)" ],
     [ "C_35(CMK)" ],
