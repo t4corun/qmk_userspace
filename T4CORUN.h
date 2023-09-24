@@ -282,6 +282,7 @@ I prefer to use KC_NO over KC_TRNS so I don't have accidental presses.
 #   define         _________TRANS_R4________                  ___x___, _______, ___x___
 #endif //KEYBOARD_bastardkb_charybdis_3x5
 
+#define LAYOUT_wrapper(...) LAYOUT_charybdis_3x5(__VA_ARGS__)
 
 
 /*
