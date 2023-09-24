@@ -38,8 +38,6 @@ enum keycodes {
 #	define         __________NONE_3_________				  ___x___, ___x___, ___x___
 #   define __________________NONE_5___________________        ___x___, ___x___, ___x___, ___x___, ___x___
 
-#define LAYOUT_cnano_wrapper(...) LAYOUT_charybdis_3x5(__VA_ARGS__)
-
 #define BASETEST \
 	___x___, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    ___x___, \
 	___x___, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,	  KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT, ___x___, \
@@ -59,3 +57,5 @@ enum keycodes {
 		 k11, k12, k13, k14, k15, k16, k17, k18, k19, k1a,      \
          k21, k22, k23, k24, k25, k26, k27, k28, k29, k2a,      \
          		   k33, k34, k35, k36, k37
+
+#define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
