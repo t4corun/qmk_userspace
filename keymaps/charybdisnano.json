@@ -1,6 +1,7 @@
 {
   "version": 1,
   "notes": "",
+  "documentation": "Wrapper based keymap",
   "keyboard": "bastardkb/charybdis/3x5/v2/splinky_3",
   "keymap": "t4corun",
   "layout": "LAYOUT_cnano_wrapper",
@@ -14,6 +15,5 @@
 	[ "C_35(MOU)" ],
 	[ "C_35(GME)" ],
 	[ "C_35(GNO)" ]
-  ],
-  "author": "Victor"
+  ]
 }
