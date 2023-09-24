@@ -1,1 +1,1 @@
-SRC += $(USER_PATH)/t4corun.c 
+SRC += t4corun.c 
