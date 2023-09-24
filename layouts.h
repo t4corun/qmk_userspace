@@ -1,17 +1,5 @@
 #pragma once
-#include QMK_KEYBOARD_H
 
-/*
-#if defined(TAPHOLD_ENABLE)
-#   include "features/taphold.h"
-#endif
-*/
-
-//#include "wrappers.h"
-
-//bool process_tap_or_long_press_key(keyrecord_t* record, uint16_t long_press_keycode);
-
-/*
 enum layers {
   _QWERTY = 0,
   FIRST_DEFAULT_LAYER = 0,  
@@ -47,28 +35,17 @@ enum keycodes {
 
 #define ___x___ KC_NO
 
-//momentary layer
-//#define NAVGTIN    MO(_NAVIGATION)
 #define NAV        MO(_NAVIGATION)
 #define SYM        MO(_SYMBOL)
 #define CONFIG     MO(_CONFIG)
 #define MOUSE      MO(_MOUSE)
 #define GAMENUM    MO(_GAMENUMBER)
 
-
-//Windows Shortcuts
 #define SC_COPY    LCTL(KC_C)
 #define SC_CUT     LCTL(KC_X)
 #define SC_UNDO    LCTL(KC_Z)
 #define SC_PAST    LCTL(KC_V)
 #define SC_REDO    LCTL(KC_Y)
-
-We will move all as many preprocessor directives here so the wrapper is easier to follow
-- Any keycodes with prefix TR has behavior dependent on if the feature is enabled.
-- If the feature is disabled then the key is just the normal key
-- Some keycodes are used in certain features, some features will override others
-- We will only define things that are used across different layers. Entire layers are turned off in the keymap
-
 
 #if defined(ONESHOT_ENABLE)
 #   define TR_LSFT OSM(MOD_LSFT)
@@ -81,7 +58,6 @@ We will move all as many preprocessor directives here so the wrapper is easier t
 #   define TR_LALT KC_LALT
 #   define TR_LGUI KC_LGUI
 #endif //ONESHOT_ENABLE
-
 
 #if defined(MOUSELAYER_ENABLE)
 #   define MOUSE   MO(_MOUSE)
@@ -99,7 +75,6 @@ We will move all as many preprocessor directives here so the wrapper is easier t
 #   define TR_BTN5 ___x___
 #endif //MOUSELAYER_ENABLE
 
-
 #if defined(MOUSEKEY_ENABLE)
 #   define TR_MOUU KC_MS_U
 #   define TR_MOUD KC_MS_D
@@ -107,7 +82,6 @@ We will move all as many preprocessor directives here so the wrapper is easier t
 #   define TR_MOUR KC_MS_R
 #   define TR_MWHU KC_WH_U
 #   define TR_MWHD KC_WH_D
-
 #else
 #   define TR_MOUU ___x___
 #   define TR_MOUD ___x___
@@ -117,8 +91,6 @@ We will move all as many preprocessor directives here so the wrapper is easier t
 #   define TR_MWHD ___x___
 #endif //MOUSEKEY_ENABLE
 
-
-//these keycodes come from the cnano
 #if defined(POINTING_DEVICE_ENABLE)
 #   define TR_SNIP SNIPING
 #   define TR_SNIT SNP_TOG
@@ -135,15 +107,12 @@ We will move all as many preprocessor directives here so the wrapper is easier t
 #   define TR_PDPI ___x___
 #endif //POINTING_DEVICE_ENABLE
 
-
 #if defined(GAMELAYER_ENABLE) 
 #   define TR_GAME GAMING
 #else
 #   define TR_GAME ___x___
 #endif //GAMELAYER_ENABLE
 
-
-//For tap hold keys we will override the hold to issue alternate keystrokes rather than enable the layer
 #if defined(TAPHOLD_ENABLE)
 //Brackets
 #   define TR_LBRC  LT(_DEFAULT_LAYER_1, TH_LBRC)
@@ -210,26 +179,8 @@ We will move all as many preprocessor directives here so the wrapper is easier t
 #   define TR_ASTG ___x___
 #endif //REPEAT_KEY_ENABLE
 
-*/
-/*
-Blocks for each of the four major keyboard layouts
-Organized so we can quickly adapt and modify all of them
-at once, rather than for each keyboard, one at a time.
-And this allows for much cleaner blocks in the keymaps.
-For instance Tap/Hold for Control on all of the layouts
 
 
-Modeled code after Drashna's Wrappers.
-Definitions inspired by Miryoku (https://github.com/manna-harbour/miryoku). 
-
-I added comment maps to better visualize the map. I intended to only 
-show the definition once so its less comments to change when I change
-a mapping
-
-I prefer to use KC_NO over KC_TRNS so I don't have accidental presses.
-*/
-
-/*
 #	define         __________NONE_3_________				  ___x___, ___x___, ___x___
 #   define __________________NONE_5___________________        ___x___, ___x___, ___x___, ___x___, ___x___
 #   define _________________UCCPR_L___________________        SC_UNDO, SC_CUT,  SC_COPY, SC_PAST, SC_REDO
@@ -250,8 +201,6 @@ I prefer to use KC_NO over KC_TRNS so I don't have accidental presses.
 #endif //KEYBOARD_bastardkb_charybdis_3x5
 
 #define LAYOUT_cnano_wrapper(...) LAYOUT_charybdis_3x5(__VA_ARGS__)
-
-
 
 #define QWE \
 	___x___, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    ___x___, \
@@ -327,5 +276,3 @@ I prefer to use KC_NO over KC_TRNS so I don't have accidental presses.
 		 k11, k12, k13, k14, k15, k16, k17, k18, k19, k1a,      \
          k21, k22, k23, k24, k25, k26, k27, k28, k29, k2a,      \
          		   k33, k34, k35, k36, k37
-
-*/

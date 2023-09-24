@@ -5,6 +5,7 @@ https://docs.qmk.fm/#/squeezing_avr?id=configh-settings
 https://docs.qmk.fm/#/config_options?id=hardware-options
 */
 
+#include "layouts.h"
 #include "config\tapping_config.h"
 
 #if defined(RGB_MATRIX_ENABLE)
