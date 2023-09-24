@@ -5,7 +5,6 @@ https://docs.qmk.fm/#/squeezing_avr?id=configh-settings
 https://docs.qmk.fm/#/config_options?id=hardware-options
 */
 
-#include "layouts.h"
 #include "config\tapping_config.h"
 
 //Turn off settings we won't use to save memory
@@ -30,3 +29,5 @@ https://docs.qmk.fm/#/config_options?id=hardware-options
 #   define SPLIT_MODS_ENABLE
 //#   define SPLIT_USB_DETECT
 #endif //SPLIT_KEYBOARD
+
+#include "layouts.h"
