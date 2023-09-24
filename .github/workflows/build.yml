@@ -10,7 +10,6 @@ jobs:
       matrix:
         keyboard:
           - test
-          - test2
           - charybdisnano
 
     steps:
