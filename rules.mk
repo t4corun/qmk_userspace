@@ -1,5 +1,6 @@
-SRC += T4CORUN.c \
-	$(USER_PATH)/features/tapping.c
+INTROSPECTION_KEYMAP_C = t4corun.c
+
+SRC += $(USER_PATH)/features/tapping.c
 
 
 SPACE_CADET_ENABLE ?= no
