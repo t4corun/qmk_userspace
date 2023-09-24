@@ -6,14 +6,6 @@
   "keymap": "t4corun",
   "layout": "LAYOUT_cnano_wrapper",
   "layers": [
-    [ "C_35(QWE)" ],
-    [ "C_35(CMK)" ],
-	[ "C_35(NAVI)" ],
-	[ "C_35(SYMB)" ],
-	[ "C_35(NUM)" ],
-	[ "C_35(CFG)" ],
-	[ "C_35(MOU)" ],
-	[ "C_35(GME)" ],
-	[ "C_35(GNO)" ]
+    [ "C_35(BASETEST)" ]
   ]
 }
