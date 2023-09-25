@@ -105,7 +105,7 @@ Notes:
 ## GitHub Action Notes
 
 - Containers `ghcr.io/qmk/qmk_cli` and `qmkfm/qmk_cli` are the same. The former is hosted by GitHub and later by dockerhub
-- I have a suspicion that the value for the following needs to be exact case. Haven't done enough testing
+- I believe for best results, the values for the following item needs to be the same and matching case. If not, there may be issues building firmware
 	- github username
 	- `username.c` and `username.h`
 	- this line in `rules.mk`: `SRC += $(USER_PATH)/username.c`
