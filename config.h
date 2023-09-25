@@ -3,9 +3,9 @@
 #include "layouts.h"
 #include "config/tapping_config.h"
 
-#if defined(RGB_MATRIX_ENABLE)
-#   include "config/rgbmatrix_config.h"
-#endif //RGB_MATRIX_ENABLE
+//#if defined(RGB_MATRIX_ENABLE)
+//#   include "config/rgbmatrix_config.h"
+//#endif //RGB_MATRIX_ENABLE
 
 #if defined(COMBO_ENABLE)
 #   include "config/combo_config.h"
