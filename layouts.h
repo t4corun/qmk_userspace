@@ -17,17 +17,7 @@ enum layers {
 enum keycodes {
   QWERTY = SAFE_RANGE,
   CLMAKDH,
-  GAMING,
-
-  //These are only here to make the case statements unique in taphold.c
-  TH_LBRC,
-  TH_LABK,
-  TH_SQUO,
-  TH_DQUO,
-  TH_LPRN,
-  TH_PERC,
-  TH_COMM,
-  TH_DOT
+  GAMING
 };
 
 
@@ -128,13 +118,13 @@ enum keycodes {
 //For tap hold keys we will override the hold to issue alternate keystrokes rather than enable the layer
 #if defined(TAPHOLD_ENABLE)
 //Brackets
-#   define TR_LBRC  LT(_DEFAULT_LAYER_1, TH_LBRC)
-#   define TR_LABK  LT(_DEFAULT_LAYER_1, TH_LABK)
+#   define TR_LBRC  LT(_DEFAULT_LAYER_1, KC_LBRC)
+#   define TR_LABK  LT(_DEFAULT_LAYER_1, KC_LABK)
 //Custom
-#   define TR_LPRN  LT(_DEFAULT_LAYER_1, TH_LPRN)
-#   define TR_PERC  LT(_DEFAULT_LAYER_1, TH_PERC)
-#   define TR_COMM  LT(_DEFAULT_LAYER_1, TH_COMM)
-#   define TR_DOT   LT(_DEFAULT_LAYER_1, TH_DOT)
+#   define TR_LPRN  LT(_DEFAULT_LAYER_1, KC_LPRN)
+#   define TR_PERC  LT(_DEFAULT_LAYER_1, KC_PERC)
+#   define TR_COMM  LT(_DEFAULT_LAYER_1, KC_COMM)
+#   define TR_DOT   LT(_DEFAULT_LAYER_1, KC_DOT)
 #else
 //Brackets
 #   define TR_LBRC  KC_LBRC

@@ -123,7 +123,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
         case _DEFAULT_LAYER_2:
           break;
         
-        case _DEFAULT_LAYER_3:.
+        case _DEFAULT_LAYER_3:
           rgb_matrix_set_color(LED_GAME, RGB_PURPLE);
 
           /*
