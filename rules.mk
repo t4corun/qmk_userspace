@@ -100,9 +100,9 @@ ifeq ($(strip $(MOUSEKEY_ENABLE)), yes)
 	OPT_DEFS += -DMOUSELAYER_ENABLE
 endif
 
-#ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
-#	SRC += features/rgbmatrix.c
-#endif
+ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
+	SRC += features/rgbmatrix.c
+endif
 
 ifeq ($(strip $(GAMELAYER_ENABLE)), yes)
 	OPT_DEFS += -DGAMELAYER_ENABLE
