@@ -69,12 +69,12 @@ ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
 endif
 
 ifeq ($(strip $(OLED_ENABLE)), yes)
-	SRC += $(USER_PATH)/features/oled.c
+	SRC += features/oled.c
 endif
 
 #might need to be INTROSPECTION_KEYMAP_C = $(USER_PATH)/features/combo.c
 ifeq ($(strip $(COMBO_ENABLE)), yes)
-	SRC = $(USER_PATH)/features/combo.c
+	SRC = features/combo.c
 endif
 
 ifeq ($(strip $(ONESHOT_ENABLE)), yes)
@@ -83,13 +83,13 @@ endif
 
 #TAPHOLD_ENABLE is custom
 ifeq ($(strip $(TAPHOLD_ENABLE)), yes)
-	SRC += $(USER_PATH)/features/taphold.c
+	SRC += features/taphold.c
 	OPT_DEFS += -DTAPHOLD_ENABLE
 endif
 
 #AUTOMOUSE_ENABLE is custom
 ifeq ($(strip $(POINTING_DEVICE_ENABLE)), yes)
-	SRC += $(USER_PATH)/features/mouse.c
+	SRC += features/mouse.c
 	OPT_DEFS += -DMOUSELAYER_ENABLE
 	ifeq ($(strip $(AUTOMOUSE_ENABLED)), yes)
 	  OPT_DEFS += -DAUTOMOUSE_ENABLE
@@ -101,7 +101,7 @@ ifeq ($(strip $(MOUSEKEY_ENABLE)), yes)
 endif
 
 ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
-	SRC += $(USER_PATH)/features/rgbmatrix.c
+	SRC += features/rgbmatrix.c
 endif
 
 ifeq ($(strip $(GAMELAYER_ENABLE)), yes)
