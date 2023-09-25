@@ -74,7 +74,7 @@ endif
 
 #might need to be INTROSPECTION_KEYMAP_C = $(USER_PATH)/features/combo.c
 ifeq ($(strip $(COMBO_ENABLE)), yes)
-	SRC = features/combo.c
+	INTROSPECTION_KEYMAP_C = features/combo.c
 endif
 
 ifeq ($(strip $(ONESHOT_ENABLE)), yes)
