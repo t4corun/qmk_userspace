@@ -5,7 +5,7 @@ jobs:
   build:
     name: Userspace build
     runs-on: ubuntu-latest
-    container: ghcr.io/qmk/qmk_cli
+    container: qmkfm/qmk_cli
     strategy:
       fail-fast: false
       matrix:
