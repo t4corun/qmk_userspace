@@ -27,7 +27,7 @@
 #if defined(MOUSEKEY_ENABLE) || defined(POINTING_DEVICE_ENABLE)
 #   include "config/mouse_config.h"
 #endif //MOUSEKEY_ENABLE
-*/
+
 
 #if defined(RGB_MATRIX_ENABLE)
 #   include "features/rgbmatrix.h"
@@ -52,7 +52,7 @@
 #if defined(MOUSEKEY_ENABLE) || defined(POINTING_DEVICE_ENABLE)
 #   include "features/mouse.h"
 #endif //MOUSEKEY_ENABLE
-
+*/
 
 //Turn off settings we won't use to save memory
 #undef LOCKING_SUPPORT_ENABLE
