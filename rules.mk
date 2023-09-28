@@ -30,6 +30,7 @@ ONESHOT_ENABLE ?= yes
 #keyboard specific settings to override my defaults or keyboard specific rules.mk
 ifeq ($(KEYBOARD), bastardkb/charybdis/3x5/v2/splinky_3)
 	GAMELAYER_ENABLE = yes
+	RGB_MATRIX_ENABLE = no
 
 # qmk_firmware\keyboards\bastardkb\charybdis\3x5\v2\splinky_3\rules.mk
 endif
