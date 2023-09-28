@@ -41,7 +41,6 @@ enum keycodes {
 #define NAV        MO(_NAVIGATION)
 #define SYM        MO(_SYMBOL)
 #define CONFIG     MO(_CONFIG)
-#define MOUSE      MO(_MOUSE)
 #define GAMENUM    MO(_GAMENUMBER)
 
 //Windows Shortcuts
