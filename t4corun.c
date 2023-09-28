@@ -13,11 +13,11 @@ layer_state_t  layer_state_set_user(layer_state_t  state) {
 }
 */
 
+/*
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   switch (keycode) {
 
-/*
     case QWERTY:
       if (record->event.pressed) {  
           default_layer_set(1UL<<_QWERTY);
@@ -47,8 +47,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case TR_COMM:
     case TR_DOT:
       return process_tap_hold_key(record, keycode);
-*/
+
 
   }
   return true;
 }
+*/
