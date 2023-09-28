@@ -1,5 +1,7 @@
 #pragma once
 
+#include "t4corun.h"
+
 #define C_35(k) L_4x12_TO_3x5_nano(k)
 #define L_4x12_TO_3x5_nano( \
 	k00, k01, k02, k03, k04, k05, k06, k07, k08, k09, k0a, k0b, \
