@@ -93,7 +93,7 @@ Explore These
 #define RGB_MATRIX_DEFAULT_VAL 59
 #define RGB_MATRIX_DEFAULT_SPD 32
 
-
+#   define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 
 //Set per keyboard configuration
 #if defined(KEYBOARD_bastardkb_charybdis_3x5) || defined(KEYBOARD_dztech_dz60rgb_v2_1)
