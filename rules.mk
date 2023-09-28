@@ -64,6 +64,10 @@ ifeq ($(strip $(AUTO_SHIFT_ENABLE)), yes)
 	SRC += features/autoshift.c
 endif
 
+ifeq ($(strip $(REPEAT_KEY_ENABLE)), yes)
+	SRC += features/repeatkey.c
+endif
+
 ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
 	SRC += features/capsword.c
 endif
@@ -74,7 +78,7 @@ endif
 
 #might need to be INTROSPECTION_KEYMAP_C = $(USER_PATH)/features/combo.c
 ifeq ($(strip $(COMBO_ENABLE)), yes)
-	INTROSPECTION_KEYMAP_C = features/combo.c
+	SRC += features/combo.c
 endif
 
 ifeq ($(strip $(ONESHOT_ENABLE)), yes)
