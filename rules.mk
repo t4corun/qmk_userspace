@@ -1,6 +1,6 @@
 SRC += \
 	t4corun.c \
-	features/tapping.c
+	features/tapping1.c
 
 # default settings across all keyboards
 # ?= means set the value if its not defined elsewhere
