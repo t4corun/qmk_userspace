@@ -1,9 +1,9 @@
 #pragma once
-
+/*
 #include "layouts.h"
 #include "config/tapping_config.h"
 
-/*
+
 #if defined(RGB_MATRIX_ENABLE)
 #   include "config/rgbmatrix_config.h"
 #endif //RGB_MATRIX_ENABLE
@@ -52,7 +52,7 @@
 #if defined(MOUSEKEY_ENABLE) || defined(POINTING_DEVICE_ENABLE)
 #   include "features/mouse.h"
 #endif //MOUSEKEY_ENABLE
-*/
+
 
 //Turn off settings we won't use to save memory
 #undef LOCKING_SUPPORT_ENABLE
@@ -76,3 +76,4 @@
 #   define SPLIT_MODS_ENABLE
 //#   define SPLIT_USB_DETECT
 #endif //SPLIT_KEYBOARD
+*/
