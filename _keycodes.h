@@ -16,8 +16,4 @@ enum keycodes {
   TH_DOT  
 };
 
-#define _DEFAULT_LAYER_1 FIRST_DEFAULT_LAYER
-#define _DEFAULT_LAYER_2 (FIRST_DEFAULT_LAYER + 1)
-#define _DEFAULT_LAYER_3 (FIRST_DEFAULT_LAYER + 2)
-
 #define ___x___ KC_NO
