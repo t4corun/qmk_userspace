@@ -2,6 +2,10 @@
 
 #include "_layouts.h"
 
+#if defined(RGB_MATRIX_ENABLE)
+#   include "config/rgbmatrix_config.h"
+#endif //RGB_MATRIX_ENABLE
+
 /*
 #include "config/tapping_config.h"
 
