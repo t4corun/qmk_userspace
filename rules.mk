@@ -17,19 +17,6 @@ GRAVE_ESC_ENABLE ?= no
 AUTO_SHIFT_ENABLE ?= yes
 CAPS_WORD_ENABLE ?= yes
 
-
-DYNAMIC_MACRO_ENABLE ?= yes
-REPEAT_KEY_ENABLE ?= yes
-ONESHOT_ENABLE ?= yes
-OLED_ENABLE ?= no
-COMBO_ENABLE ?= yes
-TAPHOLD_ENABLE ?= yes	
-POINTING_DEVICE_ENABLE ?= no 
-AUTOMOUSE_ENABLE ?= no
-MOUSEKEY_ENABLE ?= no
-RGB_MATRIX_ENABLE ?= no
-GAMELAYER_ENABLE ?= no
-
 #keyboard specific settings to override my defaults or keyboard specific rules.mk
 ifeq ($(KEYBOARD), bastardkb/charybdis/3x5/v2/splinky_3)
 	GAMELAYER_ENABLE = yes
