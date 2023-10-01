@@ -3,7 +3,6 @@
 /*
 https://docs.qmk.fm/#/tap_hold
 https://docs.qmk.fm/#/one_shot_keys
-
 */
 
 
