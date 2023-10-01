@@ -8,6 +8,15 @@
 #include "_layouts.h"
 #include "config/tapping_config.h"
 
+#if defined(CAPS_WORD_ENABLE)
+#   include "config/capsword_config.h"
+#endif
+
+#if defined(AUTO_SHIFT_ENABLE)
+#   include "config/autoshift_config.h"
+#endif
+
+
 /*
 #if defined(RGB_MATRIX_ENABLE)
 #   include "config/rgbmatrix_config.h"
@@ -17,17 +26,13 @@
 #   include "config/combo_config.h"
 #endif //COMBO_ENABLE
 
-#if defined(CAPS_WORD_ENABLE)
-#   include "config/capsword_config.h"
-#endif //CAPS_WORD_ENABLE
+
 
 #if defined(REPEAT_KEY_ENABLE)
 #   include "config/repeatkey_config.h"
 #endif //REPEAT_KEY_ENABLE
 
-#if defined(AUTO_SHIFT_ENABLE )
-#   include "config/autoshift_config.h"
-#endif //REPEAT_KEY_ENABLE
+
 
 #if defined(MOUSEKEY_ENABLE) || defined(POINTING_DEVICE_ENABLE)
 #   include "config/mouse_config.h"
