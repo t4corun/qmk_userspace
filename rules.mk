@@ -1,2 +1,3 @@
 SRC += \
-	t4corun.c
+	t4corun.c \
+	tapping.c

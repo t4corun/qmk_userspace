@@ -1,14 +1,10 @@
 #pragma once
 #include "t4corun.h"
 
-#pragma once
-
 /*
 https://docs.qmk.fm/#/tap_hold
 https://docs.qmk.fm/#/one_shot_keys
-
 */
-
 
 //Clear variables we plan to use that might be set elsewhere
 #undef HOLD_ON_OTHER_KEY_PRESS_PER_KEY
