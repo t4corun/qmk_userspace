@@ -6,7 +6,7 @@
 #endif
 
 #include "_layouts.h"
-#include "config/tapping_config.h"
+#include "features/tapping.h"
 
 /*
 #if defined(RGB_MATRIX_ENABLE)
