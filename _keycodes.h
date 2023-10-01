@@ -1,5 +1,7 @@
 #pragma once
 
+#include "quantum/quantum_keycodes.h"
+
 enum keycodes {
   QWERTY = SAFE_RANGE,
   CLMAKDH,

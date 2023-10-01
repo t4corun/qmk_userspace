@@ -1,10 +1,11 @@
 #pragma once
 
+#if !defined(__ASSEMBLER__)
+#   include "_layers.h"
+#   include "_keycodes.h"
+#endif
+
 #include "_layouts.h"
-
-
-#   include "config/rgbmatrix_config.h"
-
 
 /*
 #include "config/tapping_config.h"
