@@ -6,6 +6,6 @@
   "keymap": "t4corun",
   "layout": "LAYOUT_cnano_wrapper",
   "layers": [
-    [ "L3x6_to_CharybdisNano(BASETEST)" ]
+    [ "C_35(BASETEST)" ]
   ]
 }
