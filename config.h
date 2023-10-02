@@ -31,7 +31,7 @@
 #   include "config/rgbmatrix_config.h"
 #endif
 
-#if defined(MOUSEKEY_ENABLE) || defined(POINTING_DEVICE_ENABLE)
+#if defined(MOUSELAYER_ENABLE)
 #   include "config/mouse_config.h"
 #endif
 
