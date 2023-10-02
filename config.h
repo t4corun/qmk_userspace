@@ -8,8 +8,6 @@
 #undef USB_POLLING_INTERVAL_MS
 
 //Set common configuration for all keyboards
-#define NO_DEBUG
-#define NO_PRINT
 #define USB_POLLING_INTERVAL_MS 1
 
 #if !defined(__ASSEMBLER__)
