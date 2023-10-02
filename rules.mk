@@ -34,7 +34,6 @@ ifeq ($(KEYBOARD), bastardkb/charybdis/3x5/v2/splinky_3)
 #	qmk_firmware\keyboards\bastardkb\charybdis\3x5\v2\splinky_3\rules.mk
 
 	GAMELAYER_ENABLE = yes
-	RGB_MATRIX_ENABLE = no
 endif
 
 
