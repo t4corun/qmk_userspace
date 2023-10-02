@@ -66,10 +66,6 @@ ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
 	SRC += features/capsword.c
 endif
 
-ifeq ($(strip $(REPEAT_KEY_ENABLE)), yes)
-	SRC += features/repeatkey.c
-endif
-
 ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
 	SRC += features/rgbmatrix.c
 endif
