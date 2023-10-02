@@ -3,15 +3,15 @@ on: [push, workflow_dispatch]
 
 jobs:
   build:
+    name: Userspace build
     runs-on: ubuntu-latest
     container: ghcr.io/qmk/qmk_cli
     strategy:
       fail-fast: false
       matrix:
-# List of keymap json files to build
-        file:
-        - t4corun.json
-# End of json file list
+        keyboard:
+          - charybdisnano
+          - test
 
     steps:
 
@@ -30,14 +30,16 @@ jobs:
         path: users/${{ github.actor }}
 
     - name: Build firmware
-      run: qmk compile "users/${{ github.actor }}/${{ matrix.file }}"
+      run: qmk compile "users/${{ github.actor }}/keymaps/${{ matrix.keyboard }}.json"
 
-    - name: Archive firmware
+    - name: Upload firmware
       uses: actions/upload-artifact@v3
       continue-on-error: true
       with:
-        name: ${{ matrix.file }}_${{ github.actor }}
+        name: ${{ matrix.keyboard }}_${{ github.actor }}
+        retention-days: 60
         path: |
           *.hex
           *.bin
           *.uf2
+        
