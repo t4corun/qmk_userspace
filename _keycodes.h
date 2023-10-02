@@ -24,7 +24,6 @@ enum keycodes {
 #define NAV        MO(_NAVIGATION)
 #define SYM        MO(_SYMBOL)
 #define CONFIG     MO(_CONFIG)
-#define GAMENUM    MO(_GAMENUMBER)
 
 //Windows Shortcuts
 #define SC_COPY    LCTL(KC_C)
@@ -103,8 +102,10 @@ enum keycodes {
 
 #if defined(GAMELAYER_ENABLE) 
 #   define TR_GAME GAMING
+#   define GAMENUM MO(_GAMENUMBER)
 #else
 #   define TR_GAME ___x___
+#   define GAMENUM ___x___
 #endif //GAMELAYER_ENABLE
 
 // the behavior is handled in process_tap_hold_key. 

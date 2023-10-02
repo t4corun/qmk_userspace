@@ -12,8 +12,8 @@
 	[ "C_35(LAYER_NAVIGATION)" ],
 	[ "C_35(LAYER_SYMBOL)" ],
 	[ "C_35(LAYER_NUMBER)" ],
-	[ "C_35(LAYER_CONFIG)" ],
 	[ "C_35(LAYER_MOUSE)" ],
-	[ "C_35(LAYER_GAMENUMBER)" ]
+	[ "C_35(LAYER_GAMENUMBER)" ],
+	[ "C_35(LAYER_CONFIG)" ]
   ]
 }
