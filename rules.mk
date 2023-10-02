@@ -13,12 +13,21 @@ UNICODE_ENABLE ?= no
 SPACE_CADET_ENABLE ?= no
 GRAVE_ESC_ENABLE ?= no
 
-
 AUTO_SHIFT_ENABLE ?= yes
 CAPS_WORD_ENABLE ?= yes
+COMBO_ENABLE ?= yes
+REPEAT_KEY_ENABLE ?= yes
+DYNAMIC_MACRO_ENABLE ?= yes
 RGB_MATRIX_ENABLE ?= no
 RGBLIGHT_ENABLE ?= no
+MOUSEKEY_ENABLE ?= no
+POINTING_DEVICE_ENABLE ?= no
+OLED_ENABLE ?= no
+
+ONESHOT_ENABLE ?= yes
 TAPHOLD_ENABLE ?= yes
+AUTOMOUSE_ENABLE ?= no
+GAMELAYER_ENABLE ?= no
 
 #keyboard specific settings to override my defaults or keyboard specific rules.mk
 ifeq ($(KEYBOARD), bastardkb/charybdis/3x5/v2/splinky_3)
@@ -26,8 +35,6 @@ ifeq ($(KEYBOARD), bastardkb/charybdis/3x5/v2/splinky_3)
 
 	GAMELAYER_ENABLE = yes
 	RGB_MATRIX_ENABLE = no
-
-
 endif
 
 
@@ -59,13 +66,47 @@ ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
 	SRC += features/capsword.c
 endif
 
+ifeq ($(strip $(REPEAT_KEY_ENABLE)), yes)
+	SRC += features/repeatkey.c
+endif
+
 ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
 	SRC += features/rgbmatrix.c
 endif
 
+ifeq ($(strip $(MOUSEKEY_ENABLE)), yes)
+	OPT_DEFS += -DMOUSELAYER_ENABLE
+endif
 
-#TAPHOLD_ENABLE is custom
+ifeq ($(strip $(OLED_ENABLE)), yes)
+	SRC += features/oled.c
+endif
+
+ifeq ($(strip $(COMBO_ENABLE)), yes)
+	INTROSPECTION_KEYMAP_C += features/combo.c
+endif
+
+# ONESHOT_ENABLE is custom
+ifeq ($(strip $(ONESHOT_ENABLE)), yes)
+	OPT_DEFS += -DONESHOT_ENABLE
+endif
+
+# TAPHOLD_ENABLE is custom
 ifeq ($(strip $(TAPHOLD_ENABLE)), yes)
 	SRC += features/taphold.c
 	OPT_DEFS += -DTAPHOLD_ENABLE
+endif
+
+# AUTOMOUSE_ENABLE is custom
+ifeq ($(strip $(POINTING_DEVICE_ENABLE)), yes)
+	SRC += features/mouse.c
+	OPT_DEFS += -DMOUSELAYER_ENABLE
+	ifeq ($(strip $(AUTOMOUSE_ENABLED)), yes)
+	  OPT_DEFS += -DAUTOMOUSE_ENABLE
+	endif
+endif
+
+# GAMELAYER_ENABLE is custom
+ifeq ($(strip $(GAMELAYER_ENABLE)), yes)
+	OPT_DEFS += -DGAMELAYER_ENABLE
 endif

@@ -17,56 +17,21 @@
 #endif
 
 #if defined(RGB_MATRIX_ENABLE)
-#   include "features/rgbmatrix.h"
+#   include "config/rgbmatrix_config.h"
 #endif
 
+#if defined(REPEAT_KEY_ENABLE)
+#   include "config/repeatkey_config.h"
+#endif
 
-/*
-#if defined(RGB_MATRIX_ENABLE)
-#   include "config/rgbmatrix_config.h"
-#endif //RGB_MATRIX_ENABLE
+#if defined(MOUSEKEY_ENABLE) || defined(POINTING_DEVICE_ENABLE)
+#   include "config/mouse_config.h"
+#endif
 
 #if defined(COMBO_ENABLE)
 #   include "config/combo_config.h"
 #endif //COMBO_ENABLE
 
-
-
-#if defined(REPEAT_KEY_ENABLE)
-#   include "config/repeatkey_config.h"
-#endif //REPEAT_KEY_ENABLE
-
-
-
-#if defined(MOUSEKEY_ENABLE) || defined(POINTING_DEVICE_ENABLE)
-#   include "config/mouse_config.h"
-#endif //MOUSEKEY_ENABLE
-
-
-#if defined(RGB_MATRIX_ENABLE)
-#   include "features/rgbmatrix.h"
-#endif //RGB_MATRIX_ENABLE
-
-#if defined(COMBO_ENABLE)
-#   include "features/combo.h"
-#endif //COMBO_ENABLE
-
-#if defined(CAPS_WORD_ENABLE)
-#   include "features/capsword.h"
-#endif //CAPS_WORD_ENABLE
-
-#if defined(REPEAT_KEY_ENABLE)
-#   include "features/repeatkey.h"
-#endif //REPEAT_KEY_ENABLE
-
-#if defined(AUTO_SHIFT_ENABLE )
-#   include "features/autoshift.h"
-#endif //REPEAT_KEY_ENABLE
-
-#if defined(MOUSEKEY_ENABLE) || defined(POINTING_DEVICE_ENABLE)
-#   include "features/mouse.h"
-#endif //MOUSEKEY_ENABLE
-*/
 
 //Turn off settings we won't use to save memory
 #undef LOCKING_SUPPORT_ENABLE
