@@ -16,6 +16,10 @@
 #   include "config/autoshift_config.h"
 #endif
 
+#if defined(RGB_MATRIX_ENABLE)
+#   include "features/rgbmatrix.h"
+#endif
+
 
 /*
 #if defined(RGB_MATRIX_ENABLE)
