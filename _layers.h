@@ -26,7 +26,6 @@ enum layers {
 #define _BASE_L4_________________                   TR_BTN1, SYM,     MOUSE
 #define _BASE_R4_________________                   KC_SPC,  NAV,     ___x___
 #define _LAYER_TRANS_____________                   ___x___, _______, ___x___
-#define _TRANS_R4________________                   ___x___, _______, ___x___
 
 
   //___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___,
