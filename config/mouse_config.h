@@ -55,3 +55,10 @@ Explore These:
 #   define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 #   define AUTO_MOUSE_TIME 300
 #endif //AUTOMOUSE_ENABLED
+
+
+#if defined(POINTING_DEVICE_ENABLE)
+#	if defined(KEYBOARD_bastardkb_charybdis_3x5)
+#   	define CHARYBDIS_DRAGSCROLL_REVERSE_Y
+#	endif
+#endif

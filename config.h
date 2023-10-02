@@ -42,3 +42,7 @@
 #if defined(SPLIT_KEYBOARD)
 #	include "config/split_config.h"
 #endif
+
+#if defined(KEYBOARD_bastardkb_charybdis_3x5)
+#   define CHARYBDIS_CONFIG_SYNC
+#endif
