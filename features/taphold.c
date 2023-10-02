@@ -1,5 +1,4 @@
 #include "taphold.h"
-#include "_keycodes.h"
 
 void insert_brackets(uint16_t left, uint16_t right) {
   tap_code16(left);
