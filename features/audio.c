@@ -35,10 +35,13 @@ bool music_mask_user(uint16_t keycode) {
   switch (keycode) {
     //add all the keys that would be on your base layer that are not defaults. If we don't do this then the sounds do not play
     //Layer Taps do add delays to sounds. Probably the mod Taps too
-    case MOU_C:
-    case FUN_Z:
-    case AD_SLSH:
-    case MOU_TOG:
+    case NAV:
+    case SYM:
+    case MOUSE:
+    case TR_REP:
+    case TR_COMM:
+    case TR_DOT:
+    case TR_BTN1:
       return false;
     default:
       return true;
