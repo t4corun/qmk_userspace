@@ -25,6 +25,6 @@
 	TR_ATOG, KC_NO, KC_NO, k32, k33, k34,   k35,   k36, k37, KC_NO, KC_NO, KC_ESC
 
 
-#define LAYOUT_Planck_wrapper(...) LAYOUT_ortho_4x12(__VA_ARGS__)
-#define LAYOUT_CNano_wrapper(...) LAYOUT_charybdis_3x5(__VA_ARGS__)
+#define LAYOUT_planck_wrapper(...) LAYOUT_ortho_4x12(__VA_ARGS__)
+#define LAYOUT_cnano_wrapper(...) LAYOUT_charybdis_3x5(__VA_ARGS__)
 

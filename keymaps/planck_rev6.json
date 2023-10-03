@@ -4,7 +4,7 @@
   "documentation": "Wrapper based keymap",
   "keyboard": "planck/rev6",
   "keymap": "t4corun",
-  "layout": "LAYOUT_Planck_wrapper",
+  "layout": "LAYOUT_planck_wrapper",
   "layers": [
     [ "PLANCK(LAYER_QWERTY)" ],
 	[ "PLANCK(LAYER_COLEMAK_DH)" ],

@@ -4,7 +4,7 @@
   "documentation": "Wrapper based keymap",
   "keyboard": "bastardkb/charybdis/3x5/v2/splinky_3",
   "keymap": "t4corun",
-  "layout": "LAYOUT_CNano_wrapper",
+  "layout": "LAYOUT_cnano_wrapper",
   "layers": [
     [ "CNANO(LAYER_QWERTY)" ],
 	[ "CNANO(LAYER_COLEMAK_DH)" ],
