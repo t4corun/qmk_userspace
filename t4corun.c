@@ -1,34 +1,32 @@
 #include "t4corun.h"
 
 layer_state_t  layer_state_set_user(layer_state_t  state) {
-    state = update_tri_layer_state(state, _SYMBOL, _NAVIGATION, _NUMBER);
-    //state = update_tri_layer_state(state, _MOUSE, _NAVIGATION, _CONFIG);
-    return state;
+ 
+#if defined(AUDIO_ENABLE)
+  state = layer_state_set_audio( update_tri_layer_state(state, _SYMBOL, _NAVIGATION, _NUMBER) );
+#else
+  state = update_tri_layer_state(state, _SYMBOL, _NAVIGATION, _NUMBER);
+#endif
+  return state;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   switch (keycode) {
 
-    case QWERTY:
-      if (record->event.pressed) {  
-          default_layer_set(1UL<<_QWERTY);
-      }
-      return false;
+  case QWERTY:
+    if (record->event.pressed) { default_layer_set(1UL<<_QWERTY); }
+    return false;
 
-    case CLMAKDH:
-      if (record->event.pressed) {
-          default_layer_set(1UL<<_COLEMAK_DH);
-      }
-      return false;
+  case CLMAKDH:
+    if (record->event.pressed) { default_layer_set(1UL<<_COLEMAK_DH); }
+    return false;
 
-    case GAMING:
-      if (record->event.pressed) {  
-          default_layer_set(1UL<<_GAMING);
-      }
-      return false;
+  case GAMING:
+    if (record->event.pressed) { default_layer_set(1UL<<_GAMING); }
+    return false;
 
-
+#if defined(TAPHOLD_ENABLE)
     //https://docs.qmk.fm/#/mod_tap?id=changing-both-tasp-and-hold
     //https://getreuer.info/posts/keyboards/triggers/index.html#tap-vs.-long-press
     //https://www.jonashietala.se/series/t-34/ he focuses on a keymap for programming/VIM
@@ -39,8 +37,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case TR_COMM:
     case TR_DOT:
       return process_tap_hold_key(record, keycode);
-
+#endif //TAPHOLD_ENABLE
 
   }
   return true;
+}
+
+void matrix_scan_user(void) {
+
+#if defined(AUDIO_ENABLE)
+  matrix_scan_muse();
+#endif
+
 }

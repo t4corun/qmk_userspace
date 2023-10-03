@@ -1,31 +1,25 @@
 #pragma once
 #include "t4corun.h"
 
-/*
-#if defined(CAPS_WORD_ENABLE)
-#   include "capsword.h"
-#endif //CAPS_WORD_ENABLE
-*/
-
 //qmk_firmware\keyboards\crkbd\rev1\rev1.c
 #if defined(KEYBOARD_crkbd_rev1)
 //layers
-#   define LED_NUMBER 13
+#   define LED_SYMBOL 13
 #   define LED_NAVIGATION 40
-#   define LED_CONFIG_L 6
-#   define LED_CONFIG_R 33
-#   define LED_MOUSE_L 20
-#   define LED_MOUSE_R 15
+#   define LED_MOUSE 33
+#   define LED_NUMBER_L 13
+#   define LED_NUMBER_R 40
+#   define LED_CONFIG 50
 #   define LED_GAMENUMBER 22
 
 //base layers
-#   define LED_QWERTY 36
-#   define LED_COLEMAKDH 37
-#   define LED_GAME 44
+#   define LED_QWERTY 6
+#   define LED_COLEMAKDH 13
+#   define LED_GAME 14
 
 //indicators
 #   define LED_CAPSLOCK 35
-#   define LED_SCRLOCK 23
+#   define LED_SCRLOCK 8
 
 //dpad
 #   define LED_DPAD_L 19
@@ -33,11 +27,16 @@
 #   define LED_DPAD_U 17
 #   define LED_DPAD_D 16
 
-//mouse buttons
-#   define LED_MOUSE_LB1 14
-#   define LED_MOUSE_LB2 13
-#   define LED_MOUSE_LB3 6
+//dynamic macros
+#   define LED_DMACRO_R1 17
+#   define LED_DMACRO_P1 10
+#   define LED_DMACRO_R2 16
+#   define LED_DMACRO_P2 11
 
+//mouse buttons
+#   define LED_MOUSE_LB1 12
+#   define LED_MOUSE_LB2 15
+#   define LED_MOUSE_LB3 20
 #   define LED_MOUSE_RB1 39
 #   define LED_MOUSE_RB2 42
 #   define LED_MOUSE_RB3 47
@@ -45,19 +44,23 @@
 #   define LED_MOUSE_RB5 33
 
 //shift keys
+#   define LED_SHIFT_L 11
 #   define LED_SHIFT_R 38
 
 //control keys
+#   define LED_CTRL_L 16
 #   define LED_CTRL_R 43
 
 //alt keys
+#   define LED_ALT_L 19
 #   define LED_ALT_R 46
 
 //GUI keys
+#   define LED_GUI_L 22
 #   define LED_GUI_R 49
 
 //Reset LED
-#   define LED_RESET 48
+#   define LED_RESET 44
 
 //qmk_firmware\keyboards\bastardkb\charybdis\3x5\3x5.c
 #elif defined(KEYBOARD_bastardkb_charybdis_3x5)

@@ -23,6 +23,7 @@ RGBLIGHT_ENABLE ?= no
 MOUSEKEY_ENABLE ?= no
 POINTING_DEVICE_ENABLE ?= no
 OLED_ENABLE ?= no
+AUDIO_ENABLE ?= no
 
 ONESHOT_ENABLE ?= yes
 TAPHOLD_ENABLE ?= yes
@@ -50,10 +51,13 @@ endif
 
 ifeq ($(KEYBOARD), planck\rev6)
 #	qmk_firmware\keyboards\planck\rev6\rules.mk
+	SRC += muse.c
 
+	GAMELAYER_ENABLE = yes
+	RGBLIGHT_ENABLE = no
+	RGB_MATRIX_ENABLE = yes
 	ENCODER_ENABLE = no
 	DIP_SWITCH_ENABLE = no
-	AUDIO_ENABLE = no
 endif
 
 
@@ -75,6 +79,10 @@ endif
 
 ifeq ($(strip $(OLED_ENABLE)), yes)
 	SRC += features/oled.c
+endif
+
+ifeq ($(strip $(AUDIO_ENABLE)), yes)
+	SRC += features/audio.c
 endif
 
 ifeq ($(strip $(COMBO_ENABLE)), yes)

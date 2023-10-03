@@ -4,16 +4,16 @@
   "documentation": "Wrapper based keymap",
   "keyboard": "bastardkb/charybdis/3x5/v2/splinky_3",
   "keymap": "t4corun",
-  "layout": "LAYOUT_cnano_wrapper",
+  "layout": "LAYOUT_CNano_wrapper",
   "layers": [
-    [ "C_35(LAYER_QWERTY)" ],
-	[ "C_35(LAYER_COLEMAK_DH)" ],
-	[ "C_35(LAYER_GAMING)" ],
-	[ "C_35(LAYER_NAVIGATION)" ],
-	[ "C_35(LAYER_SYMBOL)" ],
-	[ "C_35(LAYER_NUMBER)" ],
-	[ "C_35(LAYER_MOUSE)" ],
-	[ "C_35(LAYER_GAMENUMBER)" ],
-	[ "C_35(LAYER_CONFIG)" ]
+    [ "CNANO(LAYER_QWERTY)" ],
+	[ "CNANO(LAYER_COLEMAK_DH)" ],
+	[ "CNANO(LAYER_GAMING)" ],
+	[ "CNANO(LAYER_NAVIGATION)" ],
+	[ "CNANO(LAYER_SYMBOL)" ],
+	[ "CNANO(LAYER_NUMBER)" ],
+	[ "CNANO(LAYER_MOUSE)" ],
+	[ "CNANO(LAYER_GAMENUMBER)" ],
+	[ "CNANO(LAYER_CONFIG)" ]
   ]
 }

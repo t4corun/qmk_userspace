@@ -32,7 +32,7 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
     //Custom
     case TR_LPRN: //this and the below both tap for comma, but this holds for closed parenthesis on the symbol layer
     case TR_COMM: //this hold for a single ( on the base layer. for reducing excel errors
-	  key = KC_COMM; 
+      key = KC_COMM; 
       altkey = KC_LPRN;
       break;
     case TR_PERC: //combining seldom used % and ^ to make room for momentary mouse on symbol layer
@@ -64,7 +64,7 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
       //custom
       case TR_LPRN:
         insert_brackets(KC_LPRN, KC_RPRN);
-		break;
+        break;
       case TR_PERC:  
       case TR_COMM:
       case TR_DOT:
