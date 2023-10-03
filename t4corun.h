@@ -4,3 +4,7 @@
 #if defined(TAPHOLD_ENABLE)
 #   include "features/taphold.h"
 #endif
+
+#if defined(AUDIO_ENABLE)
+#   include "features/audio.h"
+#endif
