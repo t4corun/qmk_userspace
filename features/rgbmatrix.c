@@ -41,6 +41,43 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
 
 #if defined(KEYBOARD_planck_rev6)
 
+  RGB current_color = (RGB){ RGB_OFF };
+
+  switch(current_layer) {
+    case _SYMBOL:
+      current_color = (RGB){ RGB_AZURE };
+      break;
+    case _NAVIGATION:
+      current_color = (RGB){ RGB_CORAL };
+      break;
+    case _MOUSE:
+      current_color = (RGB){ RGB_GOLDENROD };
+      break;
+    case _NUMBER:
+      current_color = (RGB){ RGB_PURPLE };
+      break;
+    case _CONFIG:
+      current_color = (RGB){ RGB_PINK };
+      break;
+    default:
+      switch (current_default_layer) {
+        case _DEFAULT_LAYER_1:
+        case _DEFAULT_LAYER_2:
+          break;
+        case _DEFAULT_LAYER_3:
+          current_color = (RGB){ RGB_RED };
+          break;
+      }
+      break;
+  }
+
+  for (uint8_t i = led_min; i < led_max; i++) {  
+    if ( current_color.r != 0 && current_color.g != 0 && current_color.b != 0 ) {
+      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, current_color );
+    }
+  }
+
+/*
   if ( current_layer > _DEFAULT_LAYER_3 ) {
 
     RGB current_color = (RGB){ RGB_OFF };
@@ -82,7 +119,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
       RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( 2, RGB_RED );
     }
   }
- 
+*/
 
 #else
 
