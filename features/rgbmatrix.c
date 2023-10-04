@@ -41,49 +41,39 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
 
 #if defined(KEYBOARD_planck_rev6)
 
-  RGB current_color = { RGB_OFF };
-
-    switch(current_layer) {
-
-      case _SYMBOL:
-        current_color = { RGB_AZURE };
-        break;
-
-      case _NAVIGATION:
-        current_color = { RGB_CORAL };
-        break;
-
-      case _MOUSE:
-        current_color = { RGB_GOLDENROD };
-        break;
-
-      case _NUMBER:
-        current_color = { RGB_PURPLE };
-        break;
-
-      case _CONFIG:
-        current_color = { RGB_PINK };
-        break;
-
-      default:
-        switch (current_default_layer) {
-          case _DEFAULT_LAYER_1:
-          case _DEFAULT_LAYER_2:
-            break;
-
-          case _DEFAULT_LAYER_3:
-            current_color = { RGB_RED };
-            break;
-        }
-        break;
-    }
-
-  if ( current_color != { RGB_OFF } ) {
+  if ( current_layer > _DEFAULT_LAYER_3 ) {
 
     for (uint8_t i = led_min; i < led_max; i++) {
-        RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, current_color );
-    }
+      switch(current_layer) {
 
+        case _SYMBOL:
+          // there is probably a better way to write this if I can set a variable with the colors right
+          RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, RGB_AZURE );
+          break;
+        case _NAVIGATION:
+          RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, RGB_CORAL );
+          break;
+        case _MOUSE:
+          RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, RGB_GOLDENROD );
+          break;
+        case _NUMBER:
+          RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, RGB_PURPLE );
+          break;
+        case _CONFIG:
+          RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, RGB_PINK );
+          break;
+        default:
+          switch (current_default_layer) {
+            case _DEFAULT_LAYER_1:
+            case _DEFAULT_LAYER_2:
+              break;
+            case _DEFAULT_LAYER_3:
+              RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, RGB_RED );
+              break;
+          }
+          break;
+      } 
+    }
   }
  
 
