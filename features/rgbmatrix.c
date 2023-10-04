@@ -41,28 +41,28 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
 
 #if defined(KEYBOARD_planck_rev6)
 
-  RGB current_color = RGB_OFF;
+  RGB current_color = {RGB_OFF};
 
     switch(current_layer) {
 
       case _SYMBOL:
-        current_color = RGB_AZURE;
+        current_color = { RGB_AZURE };
         break;
 
       case _NAVIGATION:
-        current_color = RGB_CORAL;
+        current_color = { RGB_CORAL };
         break;
 
       case _MOUSE:
-        current_color = RGB_GOLDENROD;
+        current_color = { RGB_GOLDENROD };
         break;
 
       case _NUMBER:
-        current_color = RGB_PURPLE;
+        current_color = { RGB_PURPLE };
         break;
 
       case _CONFIG:
-        current_color = RGB_PINK;
+        current_color = { RGB_PINK };
         break;
 
       default:
@@ -72,7 +72,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
             break;
 
           case _DEFAULT_LAYER_3:
-            current_color = RGB_RED;
+            current_color = { RGB_RED };
             break;
         }
         break;
