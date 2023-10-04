@@ -47,7 +47,8 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
       switch(current_layer) {
 
         case _SYMBOL:
-          // there is probably a better way to write this if I can set a variable with the colors right
+          //TODO there is probably a better way to write this if I can set a variable with the colors right
+          //TODO this way we can set the color then run the loop. rather than run the loop and have to determine the color each time
           RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, RGB_AZURE );
           break;
         case _NAVIGATION:
