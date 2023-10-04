@@ -1,5 +1,4 @@
 #include "audio.h"
-#include "muse.h"
 
 layer_state_t layer_state_set_audio(layer_state_t state) {
   switch (get_highest_layer(state)) {
