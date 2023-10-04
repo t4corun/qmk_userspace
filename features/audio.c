@@ -1,5 +1,10 @@
 #include "audio.h"
 
+float lower_song[][2]  		  = SONG(CAPS_LOCK_ON_SOUND);
+float default_sound[][2]  	= SONG(AG_NORM_SOUND);
+float fn_song[][2]  		    = SONG(SCROLL_LOCK_ON_SOUND);
+float adjust_song[][2]  	  = SONG(UNICODE_WINDOWS);
+
 layer_state_t layer_state_set_audio(layer_state_t state) {
   switch (get_highest_layer(state)) {
     case _NUMBER:
@@ -30,7 +35,7 @@ layer_state_t layer_state_set_audio(layer_state_t state) {
   return state;
 }
 
-bool music_mask_user(uint16_t keycode) {
+bool music_mask_u.ser(uint16_t keycode) {
   switch (keycode) {
     //add all the keys that would be on your base layer that are not defaults. If we don't do this then the sounds do not play
     //Layer Taps do add delays to sounds. Probably the mod Taps too
