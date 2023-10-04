@@ -51,7 +51,6 @@ endif
 
 ifeq ($(KEYBOARD), planck\rev6)
 #	qmk_firmware\keyboards\planck\rev6\rules.mk
-	SRC += muse.c
 
 	GAMELAYER_ENABLE = yes
 	RGBLIGHT_ENABLE = no
@@ -83,6 +82,7 @@ endif
 
 ifeq ($(strip $(AUDIO_ENABLE)), yes)
 	SRC += features/audio.c
+	SRC += muse.c
 endif
 
 ifeq ($(strip $(COMBO_ENABLE)), yes)
