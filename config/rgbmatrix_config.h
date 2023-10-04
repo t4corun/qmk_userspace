@@ -129,12 +129,18 @@ Explore These
 
 #   define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_TYPING_HEATMAP
 
+#elif defined(KEYBOARD_planck_rev6)
+#   define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150
+#   define ENABLE_RGB_MATRIX_BREATHING
+#   define ENABLE_RGB_MATRIX_CYCLE_OUT_IN
+#   define ENABLE_RGB_MATRIX_CYCLE_PINWHEEL
+#   define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_BREATHING
+
 //enable minimal effects to save memory
 #else
 #   define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150
 #   define ENABLE_RGB_MATRIX_BREATHING
 #   define ENABLE_RGB_MATRIX_CYCLE_OUT_IN
-#   define ENABLE_RGB_MATRIX_CYCLE_PINWHEEL
 #   define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_BREATHING
 #endif //defined(KEYBOARD_bastardkb_charybdis_3x5) || defined(KEYBOARD_dztech_dz60rgb_v2_1)
 
