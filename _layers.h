@@ -73,7 +73,7 @@ enum layers {
 
 
 #define LAYER_CONFIG \
-  ___x___, ___x___, TR_DMR1, TR_DMP1, KC_PSCR, ___x___, ___x___, QK_BOOT, ___x___, _______, \
+  ___x___, ___x___, TR_DMR1, TR_DMP1, KC_PSCR, EE_CLR,  QK_RBT,  QK_BOOT, ___x___, _______, \
   TR_RTOG, TR_RMOD, TR_DMR2, TR_DMP2, KC_SCRL, KC_CAPS, _SCAG_MODS________________________, \
   TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, KC_PAUS, _NONE_5____________________________________, \
                     TR_GAME, CLMAKDH, QWERTY,  _LAYER_TRANS_____________
