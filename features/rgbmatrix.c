@@ -41,7 +41,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
 
 #if defined(KEYBOARD_planck_rev6)
 
-  RGB current_color = {RGB_OFF};
+  RGB current_color = { RGB_OFF };
 
     switch(current_layer) {
 
@@ -78,7 +78,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
         break;
     }
 
-  if ( current_color != RGB_OFF ) {
+  if ( current_color != { RGB_OFF } ) {
 
     for (uint8_t i = led_min; i < led_max; i++) {
         RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, current_color );
