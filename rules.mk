@@ -49,7 +49,7 @@ ifeq ($(KEYBOARD), crkbd/rev1)
 endif
 
 
-ifeq ($(KEYBOARD), planck\rev6)
+ifeq ($(KEYBOARD), planck/rev6)
 #	qmk_firmware\keyboards\planck\rev6\rules.mk
 
 	GAMELAYER_ENABLE = yes
