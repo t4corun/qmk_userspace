@@ -1,6 +1,8 @@
 #pragma once
 #include "t4corun.h"
 
+#define RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(...) RGB_MATRIX_INDICATOR_SET_COLOR(__VA_ARGS__)
+
 //qmk_firmware\keyboards\crkbd\rev1\rev1.c
 #if defined(KEYBOARD_crkbd_rev1)
 //layers
