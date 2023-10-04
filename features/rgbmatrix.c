@@ -73,7 +73,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
 
   for (uint8_t i = led_min; i < led_max; i++) {  
     if ( current_color.r != 0 && current_color.g != 0 && current_color.b != 0 ) {
-      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, current_color );
+      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, (RGB){ current_color } );
     }
   }
 
