@@ -79,7 +79,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
     }
 
     if ( current_color != (RGB){ RGB_BLUE } ) {
-      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, RGB_RED );
+      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( 2, RGB_RED );
     }
   }
  
