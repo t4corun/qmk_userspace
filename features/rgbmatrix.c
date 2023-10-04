@@ -43,12 +43,14 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
 
   if ( current_layer > _DEFAULT_LAYER_3 ) {
 
+    RGB current_color = (RGB){ RGB_OFF };
+        
     for (uint8_t i = led_min; i < led_max; i++) {
       switch(current_layer) {
 
         case _SYMBOL:
           //TODO there is probably a better way to write this if I can set a variable with the colors right
-          //TODO this way we can set the color then run the loop. rather than run the loop and have to determine the color each time
+          //TODO this way we can set the color then run the loop. rather than run the loop and have to determine the color each
           RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, RGB_AZURE );
           break;
         case _NAVIGATION:
