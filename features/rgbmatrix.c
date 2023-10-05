@@ -154,22 +154,22 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
   uint8_t current_mod = get_mods();
   uint8_t current_osm = get_oneshot_mods();
 
-  if ( (this_mod | this_osm) & MOD_MASK_SHIFT ) {
+  if ( (current_mod | current_osm) & MOD_MASK_SHIFT ) {
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_SHIFT_L, RGB_GOLDENROD);
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_SHIFT_R, RGB_GOLDENROD);
   }
 
-  if ( (this_mod | this_osm) & MOD_MASK_CTRL ) {
+  if ( (current_mod | current_osm) & MOD_MASK_CTRL ) {
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_CTRL_L, RGB_CORAL);
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_CTRL_R, RGB_CORAL);
   }
 
-  if ( (this_mod | this_osm) & MOD_MASK_ALT ) {
+  if ( (current_mod | current_osm) & MOD_MASK_ALT ) {
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_ALT_L, RGB_PINK);
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_ALT_R, RGB_PINK);
   }
 
-  if ( (this_mod | this_osm) & MOD_MASK_GUI ) {
+  if ( (current_mod | current_osm) & MOD_MASK_GUI ) {
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_GUI_L, RGB_WHITE);
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_GUI_R, RGB_WHITE);
   }
