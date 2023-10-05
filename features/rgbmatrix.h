@@ -23,27 +23,11 @@
 #   define LED_CAPSLOCK 35
 #   define LED_SCRLOCK 8
 
-//dpad
-#   define LED_DPAD_L 19
-#   define LED_DPAD_R 11
-#   define LED_DPAD_U 17
-#   define LED_DPAD_D 16
-
 //dynamic macros
 #   define LED_DMACRO_R1 17
 #   define LED_DMACRO_P1 10
 #   define LED_DMACRO_R2 16
 #   define LED_DMACRO_P2 11
-
-//mouse buttons
-#   define LED_MOUSE_LB1 12
-#   define LED_MOUSE_LB2 15
-#   define LED_MOUSE_LB3 20
-#   define LED_MOUSE_RB1 39
-#   define LED_MOUSE_RB2 42
-#   define LED_MOUSE_RB3 47
-#   define LED_MOUSE_RB4 40
-#   define LED_MOUSE_RB5 33
 
 //shift keys
 #   define LED_SHIFT_L 11
@@ -63,6 +47,9 @@
 
 //Reset LED
 #   define LED_RESET 44
+
+#   define BACKLED_MIN 0
+#   define BACKLED_MAX RGB_MATRIX_LED_COUNT
 
 //qmk_firmware\keyboards\bastardkb\charybdis\3x5\3x5.c
 #elif defined(KEYBOARD_bastardkb_charybdis_3x5)
@@ -84,28 +71,11 @@
 #   define LED_CAPSLOCK 31
 #   define LED_SCRLOCK 13
 
-//dpad
-#   define LED_DPAD_L 4
-#   define LED_DPAD_R 10
-#   define LED_DPAD_U 8
-#   define LED_DPAD_D 7
-
 //dynamic macros
 #   define LED_DMACRO_R1 8
 #   define LED_DMACRO_P1 9
 #   define LED_DMACRO_R2 7
 #   define LED_DMACRO_P2 10
-
-
-//mouse buttons
-#   define LED_MOUSE_LB1 11
-#   define LED_MOUSE_LB2 6
-#   define LED_MOUSE_LB3 5
-#   define LED_MOUSE_RB1 29
-#   define LED_MOUSE_RB2 24
-#   define LED_MOUSE_RB3 23
-#   define LED_MOUSE_RB4 34
-#   define LED_MOUSE_RB5 33
 
 //shift keys
 #   define LED_SHIFT_L 10
@@ -125,4 +95,10 @@
 
 //Reset LED
 #   define LED_RESET 26
+
+#elif defined(KEYBOARD_planck_rev6)
+
+#   define BACKLED_MIN 0
+#   define BACKLED_MAX RGB_MATRIX_LED_COUNT
+
 #endif

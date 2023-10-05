@@ -25,16 +25,20 @@ POINTING_DEVICE_ENABLE ?= no
 OLED_ENABLE ?= no
 AUDIO_ENABLE ?= no
 
+# custom definitions
 ONESHOT_ENABLE ?= yes
 TAPHOLD_ENABLE ?= yes
 AUTOMOUSE_ENABLE ?= no
 GAMELAYER_ENABLE ?= no
+PERKEYRGB_ENABLE ?= no
+BACKLED_ENABLE ?= no
 
 #keyboard specific settings to override my defaults or keyboard specific rules.mk
 ifeq ($(KEYBOARD), bastardkb/charybdis/3x5/v2/splinky_3)
 #	qmk_firmware\keyboards\bastardkb\charybdis\3x5\v2\splinky_3\rules.mk
 
 	GAMELAYER_ENABLE = yes
+	PERKEYRGB_ENABLE = yes
 endif
 
 
@@ -55,6 +59,7 @@ ifeq ($(KEYBOARD), planck/rev6)
 	GAMELAYER_ENABLE = yes
 	RGBLIGHT_ENABLE = no
 	RGB_MATRIX_ENABLE = yes
+	BACKLED_ENABLE = yes
 	ENCODER_ENABLE = no
 	DIP_SWITCH_ENABLE = no
 endif
@@ -112,4 +117,14 @@ endif
 # GAMELAYER_ENABLE is custom
 ifeq ($(strip $(GAMELAYER_ENABLE)), yes)
 	OPT_DEFS += -DGAMELAYER_ENABLE
+endif
+
+# PERKEYRGB_ENABLE is custom
+ifeq ($(strip $(PERKEYRGB_ENABLE)), yes)
+	OPT_DEFS += -DPERKEYRGB_ENABLE
+endif
+
+# BACKLED_ENABLE is custom
+ifeq ($(strip $(BACKLED_ENABLE)), yes)
+	OPT_DEFS += -DBACKLED_ENABLE
 endif

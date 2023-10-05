@@ -39,7 +39,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
   uint8_t current_layer = get_highest_layer(layer_state);
   uint8_t current_default_layer = get_highest_layer(default_layer_state);
 
-#if defined(KEYBOARD_planck_rev6)
+#if defined(BACKLED_ENABLE)
 
   RGB current_color = (RGB){ RGB_OFF };
 
@@ -59,6 +59,9 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
     case _CONFIG:
       current_color = (RGB){ RGB_PINK };
       break;
+    case _GAMENUMBER:
+      current_color = (RGB){ RGB_AZURE };
+      break;
     default:
       switch (current_default_layer) {
         case _DEFAULT_LAYER_1:
@@ -71,8 +74,8 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
       break;
   }
 
-  for (uint8_t i = led_min; i < led_max; i++) {  
-    if ( current_color.r != 0 && current_color.g != 0 && current_color.b != 0 ) {
+  if ( current_color.r != 0 && current_color.g != 0 && current_color.b != 0 ) {
+    for (uint8_t i = BACKLED_MIN; i < BACKLED_MAX; i++) {
       RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( 
         i, 
         current_color.r,
@@ -82,51 +85,9 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
     }
   }
 
-/*
-  if ( current_layer > _DEFAULT_LAYER_3 ) {
+#endif 
 
-    RGB current_color = (RGB){ RGB_OFF };
-
-    for (uint8_t i = led_min; i < led_max; i++) {
-      switch(current_layer) {
-
-        case _SYMBOL:
-          //TODO there is probably a better way to write this if I can set a variable with the colors right
-          //TODO this way we can set the color then run the loop. rather than run the loop and have to determine the color each
-          RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, RGB_AZURE );
-          break;
-        case _NAVIGATION:
-          RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, RGB_CORAL );
-          break;
-        case _MOUSE:
-          RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, RGB_GOLDENROD );
-          break;
-        case _NUMBER:
-          RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, RGB_PURPLE );
-          break;
-        case _CONFIG:
-          RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, RGB_PINK );
-          break;
-        default:
-          switch (current_default_layer) {
-            case _DEFAULT_LAYER_1:
-            case _DEFAULT_LAYER_2:
-              break;
-            case _DEFAULT_LAYER_3:
-              RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( i, RGB_RED );
-              break;
-          }
-          break;
-      } 
-    }
-
-    if ( current_color.r != 0 && current_color.g != 0 && current_color.b != 0 ) {
-      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( 2, RGB_RED );
-    }
-  }
-*/
-
-#else
+#if defined(PERKEYRGB_ENABLE)
 
   switch(current_layer) {
 
@@ -191,37 +152,24 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
   }
 
   uint8_t current_mod = get_mods();
-
-#if defined(ONESHOT_ENABLE)
   uint8_t current_osm = get_oneshot_mods();
 
-  bool isShift = ((current_mod & MOD_BIT(KC_LSFT)) || (current_osm & MOD_BIT(KC_LSFT)));
-  bool isCtrl  = ((current_mod & MOD_BIT(KC_LCTL)) || (current_osm & MOD_BIT(KC_LCTL)));
-  bool isAlt   = ((current_mod & MOD_BIT(KC_LALT)) || (current_osm & MOD_BIT(KC_LALT)));
-  bool isGUI   = ((current_mod & MOD_BIT(KC_LGUI)) || (current_osm & MOD_BIT(KC_LGUI)));
-#else
-  bool isShift = (current_osm & MOD_BIT(KC_LSFT));
-  bool isCtrl  = (current_osm & MOD_BIT(KC_LCTL));
-  bool isAlt   = (current_osm & MOD_BIT(KC_LALT));
-  bool isGUI   = (current_osm & MOD_BIT(KC_LGUI));
-#endif //ONESHOT_ENABLE
-
-  if(isShift){
+  if ( (this_mod | this_osm) & MOD_MASK_SHIFT ) {
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_SHIFT_L, RGB_GOLDENROD);
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_SHIFT_R, RGB_GOLDENROD);
   }
 
-  if(isCtrl){
+  if ( (this_mod | this_osm) & MOD_MASK_CTRL ) {
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_CTRL_L, RGB_CORAL);
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_CTRL_R, RGB_CORAL);
   }
 
-  if(isAlt){
+  if ( (this_mod | this_osm) & MOD_MASK_ALT ) {
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_ALT_L, RGB_PINK);
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_ALT_R, RGB_PINK);
   }
 
-  if(isGUI){
+  if ( (this_mod | this_osm) & MOD_MASK_GUI ) {
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_GUI_L, RGB_WHITE);
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_GUI_R, RGB_WHITE);
   }
@@ -244,7 +192,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
 
 
 
-#endif //KEYBOARD_planck_rev6
+#endif
 
   return false;
 }
