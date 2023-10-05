@@ -70,9 +70,6 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
         case _DEFAULT_LAYER_3:
           current_color = (RGB){ RGB_RED };
           break;
-        default:
-          current_color = (RGB){ RGB_GREEN };
-          break; 
       }
       break;
   }
