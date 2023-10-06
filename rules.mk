@@ -46,10 +46,13 @@ ifeq ($(KEYBOARD), crkbd/rev1)
 # 	qmk_firmware\keyboards\crkbd\rev1\rules.mk
 # 	qmk_firmware\keyboards\crkbd\rules.mk
 # 	qmk_firmware\keyboards\crkbd\info.json
+	OLED_DRIVER = SSD1306
 
 	DYNAMIC_MACRO_ENABLE = no
 	RGB_MATRIX_ENABLE = no
 	RGBLIGHT_ENABLE = no
+	PERKEYRGB_ENABLE = yes
+	BACKLED_ENABLE = yes
 endif
 
 

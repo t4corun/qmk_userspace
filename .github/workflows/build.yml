@@ -11,7 +11,8 @@ jobs:
       matrix:
         keyboard:
           - charybdisnano
-          - planck_rev6
+          - planck
+          - crkbd
           - test
 
     steps:
