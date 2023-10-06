@@ -36,140 +36,153 @@ Color preview
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
 
-//bool rgb_matrix_indicators_user() {
-
   uint8_t current_layer = get_highest_layer(layer_state);
   uint8_t current_default_layer = get_highest_layer(default_layer_state);
-  uint8_t current_mod = get_mods();
 
-#if defined(ONESHOT_ENABLE)
-  uint8_t current_osm = get_oneshot_mods();
+#if defined(BACKLED_ENABLE)
 
-  bool isShift = ((current_mod & MOD_BIT(KC_LSFT)) || (current_osm & MOD_BIT(KC_LSFT)));
-  bool isCtrl  = ((current_mod & MOD_BIT(KC_LCTL)) || (current_osm & MOD_BIT(KC_LCTL)));
-  bool isAlt   = ((current_mod & MOD_BIT(KC_LALT)) || (current_osm & MOD_BIT(KC_LALT)));
-  bool isGUI   = ((current_mod & MOD_BIT(KC_LGUI)) || (current_osm & MOD_BIT(KC_LGUI)));
-#else
-  bool isShift = (current_osm & MOD_BIT(KC_LSFT));
-  bool isCtrl  = (current_osm & MOD_BIT(KC_LCTL));
-  bool isAlt   = (current_osm & MOD_BIT(KC_LALT));
-  bool isGUI   = (current_osm & MOD_BIT(KC_LGUI));
-#endif //ONESHOT_ENABLE
+  RGB current_color = (RGB){ RGB_OFF };
 
+  switch(current_layer) {
+    case _SYMBOL:
+      current_color = (RGB){ LAYER_SYMBOL_COLOR };
+      break;
+    case _NAVIGATION:
+      current_color = (RGB){ LAYER_NAVIGATION_COLOR };
+      break;
+    case _MOUSE:
+      current_color = (RGB){ LAYER_GAMING_COLOR };
+      break;
+    case _NUMBER:
+      current_color = (RGB){ LAYER_NUMBER_COLOR };
+      break;
+    case _CONFIG:
+      current_color = (RGB){ LAYER_CONFIG_COLOR };
+      break;
+    default:
+      switch (current_default_layer) {
+        case _DEFAULT_LAYER_3:
+          current_color = (RGB){ LAYER_GAMING_COLOR };
+          break;
+      }
+      break;
+  }
+
+  if ( current_color.r != 0 || current_color.g != 0 || current_color.b != 0 ) {
+    for (uint8_t i = BACKLED_MIN; i < BACKLED_MAX; i++) {
+      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper( 
+        i, 
+        current_color.r,
+        current_color.g,
+        current_color.b
+      );
+    }
+  }
+
+#endif 
+
+#if defined(PERKEYRGB_ENABLE)
 
   switch(current_layer) {
 
     case _SYMBOL:
-      rgb_matrix_set_color(LED_SYMBOL, RGB_AZURE);
+      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_SYMBOL, KEY_LAYER_COLOR);
       break;
 
     case _NAVIGATION:
-      rgb_matrix_set_color(LED_NAVIGATION, RGB_AZURE);
+      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_NAVIGATION, KEY_LAYER_COLOR);
       break;
 
     case _MOUSE:
-      rgb_matrix_set_color(LED_MOUSE, RGB_AZURE);
-      
-      /*
-      rgb_matrix_set_color(LED_MOUSE_LB1, RGB_CORAL);
-      rgb_matrix_set_color(LED_MOUSE_LB2, RGB_CORAL);
-      rgb_matrix_set_color(LED_MOUSE_LB3, RGB_CORAL);
-      rgb_matrix_set_color(LED_MOUSE_RB1, RGB_CORAL);
-      rgb_matrix_set_color(LED_MOUSE_RB2, RGB_CORAL);
-      rgb_matrix_set_color(LED_MOUSE_RB3, RGB_CORAL);
-      rgb_matrix_set_color(LED_MOUSE_RB4, RGB_CORAL);
-      rgb_matrix_set_color(LED_MOUSE_RB5, RGB_CORAL);
-      */
+      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_MOUSE, KEY_LAYER_COLOR);
       break;
 
     case _NUMBER:
-      rgb_matrix_set_color(LED_NUMBER_L, RGB_PURPLE);
-      rgb_matrix_set_color(LED_NUMBER_R, RGB_PURPLE);
+      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_NUMBER_L, KEY_TRILAYER_COLOR);
+      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_NUMBER_R, KEY_TRILAYER_COLOR);
       break;
 
-    case _CONFIG:
-      rgb_matrix_set_color(LED_CONFIG, RGB_AZURE);
+    case _CONFIG: 
+      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_CONFIG, KEY_LAYER_COLOR);
 
-      rgb_matrix_set_color(LED_RESET, RGB_BLUE);
+      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_RESET, KEY_RESET_COLOR);
 
-      rgb_matrix_set_color(LED_DMACRO_R1, RGB_RED);
-      rgb_matrix_set_color(LED_DMACRO_P1, RGB_GREEN);
-      rgb_matrix_set_color(LED_DMACRO_R2, RGB_RED);
-      rgb_matrix_set_color(LED_DMACRO_P2, RGB_GREEN);
+      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_DMACRO_R1, KEY_MACROREC_COLOR);
+      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_DMACRO_P1, KEY_MACROPLY_COLOR);
+      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_DMACRO_R2, KEY_MACROREC_COLOR);
+      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_DMACRO_P2, KEY_MACROPLY_COLOR);
 
       switch (current_default_layer) {
         
         case _DEFAULT_LAYER_1:
-          rgb_matrix_set_color(LED_QWERTY, RGB_PURPLE);
+          RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_QWERTY, KEY_DEFAULTLAYER_COLOR);
           break;
         
         case _DEFAULT_LAYER_2:
-          rgb_matrix_set_color(LED_COLEMAKDH, RGB_PURPLE);
+          RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_COLEMAKDH, KEY_DEFAULTLAYER_COLOR);
           break;
         
         case _DEFAULT_LAYER_3:
-          rgb_matrix_set_color(LED_GAME, RGB_PURPLE);
+          RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_GAME, KEY_DEFAULTLAYER_COLOR);
           break;
       }
       break;
 
     case _GAMENUMBER:
-      rgb_matrix_set_color(LED_GAMENUMBER, RGB_AZURE);
+      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_GAMENUMBER, KEY_LAYER_COLOR);
       break;
 
     default:
       switch (current_default_layer) {
-        case _DEFAULT_LAYER_1:
-        case _DEFAULT_LAYER_2:
-          break;
-        
         case _DEFAULT_LAYER_3:
-          rgb_matrix_set_color(LED_GAME, RGB_PURPLE);
-
-          /*
-          rgb_matrix_set_color(LED_DPAD_L, RGB_CORAL);
-          rgb_matrix_set_color(LED_DPAD_R, RGB_CORAL);
-          rgb_matrix_set_color(LED_DPAD_U, RGB_CORAL);
-          rgb_matrix_set_color(LED_DPAD_D, RGB_CORAL);
-          */
+          RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_GAME, KEY_DEFAULTLAYER_COLOR);
           break;
       }
       break;
   }
 
-  if(isShift){
-    rgb_matrix_set_color(LED_SHIFT_L, RGB_GOLDENROD);
-    rgb_matrix_set_color(LED_SHIFT_R, RGB_GOLDENROD);
+  uint8_t current_mod = get_mods();
+  uint8_t current_osm = get_oneshot_mods();
+
+  if ( (current_mod | current_osm) & MOD_MASK_SHIFT ) {
+    RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_SHIFT_L, MOD_SHIFT_COLOR);
+    RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_SHIFT_R, MOD_SHIFT_COLOR);
   }
 
-  if(isCtrl){
-    rgb_matrix_set_color(LED_CTRL_L, RGB_CORAL);
-    rgb_matrix_set_color(LED_CTRL_R, RGB_CORAL);
+  if ( (current_mod | current_osm) & MOD_MASK_CTRL ) {
+    RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_CTRL_L, MOD_CTRL_COLOR);
+    RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_CTRL_R, MOD_CTRL_COLOR);
   }
 
-  if(isAlt){
-    rgb_matrix_set_color(LED_ALT_L, RGB_PINK);
-    rgb_matrix_set_color(LED_ALT_R, RGB_PINK);
+  if ( (current_mod | current_osm) & MOD_MASK_ALT ) {
+    RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_ALT_L, MOD_ALT_COLOR);
+    RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_ALT_R, MOD_ALT_COLOR);
   }
 
-  if(isGUI){
-    rgb_matrix_set_color(LED_GUI_L, RGB_WHITE);
-    rgb_matrix_set_color(LED_GUI_R, RGB_WHITE);
+  if ( (current_mod | current_osm) & MOD_MASK_GUI ) {
+    RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_GUI_L, MOD_GUI_COLOR);
+    RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_GUI_R, MOD_GUI_COLOR);
   }
 
   if (host_keyboard_led_state().caps_lock) {
-    rgb_matrix_set_color(LED_CAPSLOCK, RGB_GOLDENROD);
+    RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_CAPSLOCK, CAPSLOCK_COLOR);
   }
 
   if (host_keyboard_led_state().scroll_lock) {
-    rgb_matrix_set_color(LED_SCRLOCK, RGB_GOLDENROD);
+    RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_SCRLOCK, SCROLLOCK_COLOR);
   }
 
 #if defined(CAPS_WORD_ENABLE)  
   if (is_caps_word_on()) {
-    rgb_matrix_set_color(LED_CAPSLOCK, RGB_ORANGE);
+    RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_CAPSLOCK, CAPSLOCK_COLOR);
   }
 #endif //CAPS_WORD_ENABLE
+
+
+
+
+
+#endif
 
   return false;
 }

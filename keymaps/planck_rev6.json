@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "notes": "",
+  "documentation": "Wrapper based keymap",
+  "keyboard": "planck/rev6",
+  "keymap": "t4corun",
+  "layout": "LAYOUT_planck_wrapper",
+  "layers": [
+    [ "PLANCK(LAYER_QWERTY)" ],
+	[ "PLANCK(LAYER_COLEMAK_DH)" ],
+	[ "PLANCK(LAYER_GAMING)" ],
+	[ "PLANCK(LAYER_NAVIGATION)" ],
+	[ "PLANCK(LAYER_SYMBOL)" ],
+	[ "PLANCK(LAYER_NUMBER)" ],
+	[ "PLANCK(LAYER_MOUSE)" ],
+	[ "PLANCK(LAYER_GAMENUMBER)" ],
+	[ "PLANCK(LAYER_CONFIG)" ]
+  ]
+}

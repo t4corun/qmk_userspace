@@ -39,6 +39,10 @@
 #   include "config/combo_config.h"
 #endif
 
+#if defined(AUDIO_ENABLE)
+#   include "config/audio_config.h"
+#endif
+
 #if defined(SPLIT_KEYBOARD)
 #	include "config/split_config.h"
 #endif

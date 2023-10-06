@@ -30,6 +30,7 @@ Explore These
 #undef RGB_MATRIX_TYPING_HEATMAP_AREA_LIMIT
 #undef RGB_MATRIX_TYPING_HEATMAP_INCREASE_STEP 
 #undef RGB_MATRIX_DEFAULT_MODE
+#undef WS2812_BYTE_ORDER
 
 // For full list of effects, see:
 // https://docs.qmk.fm/#/feature_rgb_matrix?id=rgb-matrix-effects
@@ -87,13 +88,12 @@ Explore These
 
 //Set common configuration for all keyboards
 #define RGB_DISABLE_WHEN_USB_SUSPENDED
+#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 
 #define RGB_MATRIX_DEFAULT_HUE 4
 #define RGB_MATRIX_DEFAULT_SAT 79
 #define RGB_MATRIX_DEFAULT_VAL 59
 #define RGB_MATRIX_DEFAULT_SPD 32
-
-#   define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 
 //Set per keyboard configuration
 #if defined(KEYBOARD_bastardkb_charybdis_3x5) || defined(KEYBOARD_dztech_dz60rgb_v2_1)
@@ -130,6 +130,13 @@ Explore These
 
 #   define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_TYPING_HEATMAP
 
+#elif defined(KEYBOARD_planck_rev6)
+#   define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150
+#   define ENABLE_RGB_MATRIX_BREATHING
+#   define ENABLE_RGB_MATRIX_CYCLE_OUT_IN
+#   define ENABLE_RGB_MATRIX_CYCLE_PINWHEEL
+#   define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_BREATHING
+
 //enable minimal effects to save memory
 #else
 #   define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150
@@ -137,7 +144,6 @@ Explore These
 #   define ENABLE_RGB_MATRIX_CYCLE_OUT_IN
 #   define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_BREATHING
 #endif //defined(KEYBOARD_bastardkb_charybdis_3x5) || defined(KEYBOARD_dztech_dz60rgb_v2_1)
-
 
 
 //post configuration

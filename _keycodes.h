@@ -175,3 +175,17 @@ enum keycodes {
 #   define TR_ASRP ___x___
 #   define TR_ASTG ___x___
 #endif //REPEAT_KEY_ENABLE
+
+#if defined(AUDIO_ENABLE)
+#   define TR_ATOG AU_TOGG
+#   define TR_MTOG MU_TOGG
+#   define TR_CTOG CK_TOGG
+#   define TR_CKUP CK_UP
+#   define TR_CKDN CK_DOWN
+#else
+#   define TR_ATOG ___x___
+#   define TR_MTOG ___x___
+#   define TR_CTOG ___x___
+#   define TR_CKUP ___x___
+#   define TR_CKDN ___x___
+#endif //AUDIO_ENABLE
