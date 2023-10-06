@@ -23,7 +23,7 @@ RGBLIGHT_ENABLE ?= no
 MOUSEKEY_ENABLE ?= no
 POINTING_DEVICE_ENABLE ?= no
 OLED_ENABLE ?= no
-AUDIO_ENABLE ?= no
+AUDIO_ENABLE = no
 
 # custom definitions
 ONESHOT_ENABLE ?= yes
@@ -68,6 +68,7 @@ ifeq ($(KEYBOARD), planck/rev6)
 	BACKLED_ENABLE = yes
 	ENCODER_ENABLE = no
 	DIP_SWITCH_ENABLE = no
+
 endif
 
 
@@ -89,11 +90,6 @@ endif
 
 ifeq ($(strip $(OLED_ENABLE)), yes)
 	SRC += features/oled.c
-endif
-
-ifeq ($(strip $(AUDIO_ENABLE)), yes)
-	SRC += features/audio.c
-	SRC += muse.c
 endif
 
 ifeq ($(strip $(COMBO_ENABLE)), yes)
