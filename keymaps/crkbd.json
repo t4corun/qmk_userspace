@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "notes": "",
+  "documentation": "Wrapper based keymap",
+  "keyboard": "crkbd/rev1",
+  "keymap": "t4corun",
+  "layout": "LAYOUT_crkbd_wrapper",
+  "layers": [
+    [ "CRKBD(LAYER_QWERTY)" ],
+	[ "CRKBD(LAYER_COLEMAK_DH)" ],
+	[ "CRKBD(LAYER_GAMING)" ],
+	[ "CRKBD(LAYER_NAVIGATION)" ],
+	[ "CRKBD(LAYER_SYMBOL)" ],
+	[ "CRKBD(LAYER_NUMBER)" ],
+	[ "CRKBD(LAYER_MOUSE)" ],
+	[ "CRKBD(LAYER_GAMENUMBER)" ],
+	[ "CRKBD(LAYER_CONFIG)" ]
+  ]
+}
