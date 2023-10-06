@@ -165,13 +165,7 @@ enum keycodes {
 #endif //REPEAT_KEY_ENABLE
 
 #if defined(AUTO_SHIFT_ENABLE)
-#   define TR_ASDN AS_DOWN
-#   define TR_ASUP AS_UP
-#   define TR_ASRP AS_RPT
 #   define TR_ASTG AS_TOGG
 #else
-#   define TR_ASDN ___x___
-#   define TR_ASUP ___x___
-#   define TR_ASRP ___x___
 #   define TR_ASTG ___x___
 #endif //REPEAT_KEY_ENABLE

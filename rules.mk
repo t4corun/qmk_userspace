@@ -13,6 +13,7 @@ UNICODE_ENABLE ?= no
 SPACE_CADET_ENABLE ?= no
 GRAVE_ESC_ENABLE ?= no
 
+AUDIO_ENABLE = no
 AUTO_SHIFT_ENABLE ?= yes
 CAPS_WORD_ENABLE ?= yes
 COMBO_ENABLE ?= yes
@@ -23,7 +24,7 @@ RGBLIGHT_ENABLE ?= no
 MOUSEKEY_ENABLE ?= no
 POINTING_DEVICE_ENABLE ?= no
 OLED_ENABLE ?= no
-AUDIO_ENABLE = no
+
 
 # custom definitions
 ONESHOT_ENABLE ?= yes
@@ -36,9 +37,7 @@ BACKLED_ENABLE ?= no
 #keyboard specific settings to override my defaults or keyboard specific rules.mk
 ifeq ($(KEYBOARD), bastardkb/charybdis/3x5/v2/splinky_3)
 #	qmk_firmware\keyboards\bastardkb\charybdis\3x5\v2\splinky_3\rules.mk
-
 	GAMELAYER_ENABLE = yes
-	PERKEYRGB_ENABLE = yes
 endif
 
 
@@ -48,27 +47,24 @@ ifeq ($(KEYBOARD), crkbd/rev1)
 # 	qmk_firmware\keyboards\crkbd\info.json
 	OLED_DRIVER = ssd1306
 
-	DYNAMIC_MACRO_ENABLE = no
-	COMBO_ENABLE = no
 	OLED_ENABLE = yes
 	MOUSEKEY_ENABLE = yes
+
+	DYNAMIC_MACRO_ENABLE = no
+	COMBO_ENABLE = no
 	RGB_MATRIX_ENABLE = no
 	RGBLIGHT_ENABLE = no
-	PERKEYRGB_ENABLE = yes
-	BACKLED_ENABLE = yes
 endif
 
 
 ifeq ($(KEYBOARD), planck/rev6)
 #	qmk_firmware\keyboards\planck\rev6\rules.mk
-
 	GAMELAYER_ENABLE = yes
+
 	RGBLIGHT_ENABLE = no
-	RGB_MATRIX_ENABLE = yes
-	BACKLED_ENABLE = yes
+	RGB_MATRIX_ENABLE = no
 	ENCODER_ENABLE = no
 	DIP_SWITCH_ENABLE = no
-
 endif
 
 
@@ -119,14 +115,4 @@ endif
 # GAMELAYER_ENABLE is custom
 ifeq ($(strip $(GAMELAYER_ENABLE)), yes)
 	OPT_DEFS += -DGAMELAYER_ENABLE
-endif
-
-# PERKEYRGB_ENABLE is custom
-ifeq ($(strip $(PERKEYRGB_ENABLE)), yes)
-	OPT_DEFS += -DPERKEYRGB_ENABLE
-endif
-
-# BACKLED_ENABLE is custom
-ifeq ($(strip $(BACKLED_ENABLE)), yes)
-	OPT_DEFS += -DBACKLED_ENABLE
 endif
