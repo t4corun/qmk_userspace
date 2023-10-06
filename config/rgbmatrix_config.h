@@ -30,6 +30,7 @@ Explore These
 #undef RGB_MATRIX_TYPING_HEATMAP_AREA_LIMIT
 #undef RGB_MATRIX_TYPING_HEATMAP_INCREASE_STEP 
 #undef RGB_MATRIX_DEFAULT_MODE
+#undef WS2812_BYTE_ORDER
 
 // For full list of effects, see:
 // https://docs.qmk.fm/#/feature_rgb_matrix?id=rgb-matrix-effects
@@ -145,7 +146,6 @@ Explore These
 #endif //defined(KEYBOARD_bastardkb_charybdis_3x5) || defined(KEYBOARD_dztech_dz60rgb_v2_1)
 
 
-
 //post configuration
 
 #if defined(ENABLE_RGB_MATRIX_TYPING_HEATMAP)
@@ -154,3 +154,6 @@ Explore These
 #   define RGB_MATRIX_TYPING_HEATMAP_AREA_LIMIT 16           //16
 #   define RGB_MATRIX_TYPING_HEATMAP_INCREASE_STEP 20        //32
 #endif //ENABLE_RGB_MATRIX_TYPING_HEATMAP
+
+
+#define WS2812_BYTE_ORDER WS2812_BYTE_ORDER_RGB
