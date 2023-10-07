@@ -102,7 +102,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_CAPSLOCK, CAPSLOCK_COLOR);
   }
 
-  if ( dhost_keyboard_led_state().scroll_lock) {
+  if ( host_keyboard_led_state().scroll_lock) {
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_SCRLOCK, SCROLLOCK_COLOR);
   }
 
