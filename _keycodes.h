@@ -20,18 +20,18 @@ enum keycodes {
 
 #define ___x___ KC_NO
 
-//momentary layer
+// momentary layer
 #define NAV        MO(_NAVIGATION)
 #define SYM        MO(_SYMBOL)
 #define CONFIG     MO(_CONFIG)
 
-//Windows Shortcuts
+// Windows Shortcuts
 #define SC_COPY    LCTL(KC_C)
 #define SC_CUT     LCTL(KC_X)
 #define SC_UNDO    LCTL(KC_Z)
 #define SC_PAST    LCTL(KC_V)
 #define SC_REDO    LCTL(KC_Y)
-
+#define SC_SNIP    LGUI(LCTL(KC_Y))
 
 /*
 - Any keycodes with prefix TR has behavior dependent on if the feature is enabled.
@@ -39,17 +39,29 @@ enum keycodes {
 - We will only define things that are used across different layers. Entire layers are turned off in the keymap
 */
 
-#if defined(ONESHOT_ENABLE)
-#   define TR_LSFT OSM(MOD_LSFT)
-#   define TR_LCTL OSM(MOD_LCTL)
-#   define TR_LALT OSM(MOD_LALT)
-#   define TR_LGUI OSM(MOD_LGUI)
-#else
-#   define TR_LSFT KC_LSFT
-#   define TR_LCTL KC_LCTL
-#   define TR_LALT KC_LALT
-#   define TR_LGUI KC_LGUI
-#endif //ONESHOT_ENABLE
+
+// one shot mods
+#define TR_LSFT OSM(MOD_LSFT)
+#define TR_LCTL OSM(MOD_LCTL)
+#define TR_LALT OSM(MOD_LALT)
+#define TR_LGUI OSM(MOD_LGUI)
+
+// auto shift
+#define TR_ASTG AS_TOGG
+
+//tap hoLd
+#   define TR_LBRC  LT(_DEFAULT_LAYER_1, TH_LBRC) // bracket behvavior
+#   define TR_LABK  LT(_DEFAULT_LAYER_1, TH_LABK)
+#   define TR_LPRN  LT(_DEFAULT_LAYER_1, TH_LPRN) // custom behavior
+#   define TR_PERC  LT(_DEFAULT_LAYER_1, TH_PERC)
+#   define TR_COMM  LT(_DEFAULT_LAYER_1, TH_COMM)
+#   define TR_DOT   LT(_DEFAULT_LAYER_1, TH_DOT)
+
+
+
+
+
+
 
 #if defined(MOUSELAYER_ENABLE)
 #   define MOUSE   MO(_MOUSE)
@@ -100,36 +112,6 @@ enum keycodes {
 #   define TR_PDPI ___x___
 #endif //POINTING_DEVICE_ENABLE
 
-#if defined(GAMELAYER_ENABLE) 
-#   define TR_GAME GAMING
-#   define GAMENUM MO(_GAMENUMBER)
-#else
-#   define TR_GAME ___x___
-#   define GAMENUM ___x___
-#endif //GAMELAYER_ENABLE
-
-// the behavior is handled in process_tap_hold_key. 
-// the important thing is that we define a layer taps
-#if defined(TAPHOLD_ENABLE)
-//Brackets
-#   define TR_LBRC  LT(_DEFAULT_LAYER_1, TH_LBRC)
-#   define TR_LABK  LT(_DEFAULT_LAYER_1, TH_LABK)
-//Custom
-#   define TR_LPRN  LT(_DEFAULT_LAYER_1, TH_LPRN)
-#   define TR_PERC  LT(_DEFAULT_LAYER_1, TH_PERC)
-#   define TR_COMM  LT(_DEFAULT_LAYER_1, TH_COMM)
-#   define TR_DOT   LT(_DEFAULT_LAYER_1, TH_DOT)
-#else
-//Brackets
-#   define TR_LBRC  KC_LBRC
-#   define TR_LABK  KC_LABK
-//Custom
-#   define TR_LPRN  KC_LPRN
-#   define TR_PERC  KC_PERC //TODO when tap hold is off typing ^ will not be possible
-#   define TR_COMM  KC_COMM
-#   define TR_DOT   KC_DOT
-#endif //TAPHOLD_ENABLE
-
 #if defined(DYNAMIC_MACRO_ENABLE)
 #   define TR_DMR1 DM_REC1
 #   define TR_DMP1 DM_PLY1
@@ -164,8 +146,3 @@ enum keycodes {
 #   define TR_REP TR_LSFT
 #endif //REPEAT_KEY_ENABLE
 
-#if defined(AUTO_SHIFT_ENABLE)
-#   define TR_ASTG AS_TOGG
-#else
-#   define TR_ASTG ___x___
-#endif //REPEAT_KEY_ENABLE

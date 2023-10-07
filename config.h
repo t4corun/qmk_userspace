@@ -17,15 +17,8 @@
 
 #include "_layouts.h"
 #include "config/tapping_config.h"
-
-
-#if defined(CAPS_WORD_ENABLE)
-#   include "config/capsword_config.h"
-#endif
-
-#if defined(AUTO_SHIFT_ENABLE)
-#   include "config/autoshift_config.h"
-#endif
+#include "config/autoshift_config.h"
+#include "config/capsword_config.h"
 
 #if defined(RGB_MATRIX_ENABLE)
 #   include "config/rgbmatrix_config.h"
@@ -37,10 +30,6 @@
 
 #if defined(COMBO_ENABLE)
 #   include "config/combo_config.h"
-#endif
-
-#if defined(AUDIO_ENABLE)
-#   include "config/audio_config.h"
 #endif
 
 #if defined(SPLIT_KEYBOARD)

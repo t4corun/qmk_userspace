@@ -54,13 +54,7 @@ void render_keylock_status(void) {
   oled_write_P(PSTR(OLED_RENDER_KEYLOCK_NAME), false);
   oled_write_P(PSTR(" "), false);
   oled_write_P(PSTR("N"), host_keyboard_led_state().num_lock);
-  
-#if defined(CAPS_WORD_ENABLE)
   oled_write_P(PSTR("C"), host_keyboard_led_state().caps_lock || is_caps_word_on() );
-#else
-  oled_write_P(PSTR("C"), host_keyboard_led_state().caps_lock );
-#endif //CAPS_WORD_ENABLE
-
   oled_write_ln_P(PSTR("S"), host_keyboard_led_state().scroll_lock );
 }
 
@@ -68,23 +62,15 @@ void render_keylock_status(void) {
 void render_mod_status(void) {
   
   uint8_t current_mod = get_mods();
+  uint8_t current_osm = get_oneshot_mods();
 
   oled_write_P(PSTR(OLED_RENDER_MODS_NAME), false);
   oled_write_P(PSTR(" "), false);
 
-#if defined(ONESHOT_ENABLE)
-  uint8_t current_osm = get_oneshot_mods();
-
-  bool isShift = ( (current_mod & MOD_BIT(KC_LSFT)) || (current_osm & MOD_BIT(KC_LSFT)) );
-  bool isCtrl  = ( (current_mod & MOD_BIT(KC_LCTL)) || (current_osm & MOD_BIT(KC_LCTL)) );
-  bool isAlt   = ( (current_mod & MOD_BIT(KC_LALT)) || (current_osm & MOD_BIT(KC_LALT)) );
-  bool isGUI   = ( (current_mod & MOD_BIT(KC_LGUI)) || (current_osm & MOD_BIT(KC_LGUI)) );
-#else
-  bool isShift = (current_osm & MOD_BIT(KC_LSFT));
-  bool isCtrl  = (current_osm & MOD_BIT(KC_LCTL));
-  bool isAlt   = (current_osm & MOD_BIT(KC_LALT));
-  bool isGUI   = (current_osm & MOD_BIT(KC_LGUI));
-#endif //ONESHOT_ENABLE
+  bool isShift = (current_mod | current_osm) & MOD_MASK_SHIFT;
+  bool isCtrl  = (current_mod | current_osm) & MOD_MASK_CTRL;
+  bool isAlt   = (current_mod | current_osm) & MOD_MASK_ALT;
+  bool isGUI   = (current_mod | current_osm) & MOD_MASK_GUI;
 
   oled_write_P(PSTR("S"), isShift );
   oled_write_P(PSTR("C"), isCtrl );

@@ -98,19 +98,13 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_GUI_R, MOD_GUI_COLOR);
   }
 
-  if (host_keyboard_led_state().caps_lock) {
+  if ( host_keyboard_led_state().caps_lock || is_caps_word_on() ) {
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_CAPSLOCK, CAPSLOCK_COLOR);
   }
 
-  if (host_keyboard_led_state().scroll_lock) {
+  if ( dhost_keyboard_led_state().scroll_lock) {
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_SCRLOCK, SCROLLOCK_COLOR);
   }
-
-#if defined(CAPS_WORD_ENABLE)  
-  if (is_caps_word_on()) {
-    RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_CAPSLOCK, CAPSLOCK_COLOR);
-  }
-#endif //CAPS_WORD_ENABLE
 
   return false;
 }

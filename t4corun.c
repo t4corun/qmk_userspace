@@ -26,18 +26,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) { default_layer_set(1UL<<_GAMING); }
     return false;
 
-#if defined(TAPHOLD_ENABLE)
-    //https://docs.qmk.fm/#/mod_tap?id=changing-both-tasp-and-hold
-    //https://getreuer.info/posts/keyboards/triggers/index.html#tap-vs.-long-press
-    //https://www.jonashietala.se/series/t-34/ he focuses on a keymap for programming/VIM
-    case TR_LBRC:
-    case TR_LABK:
-    case TR_LPRN:
-    case TR_PERC:
-    case TR_COMM:
-    case TR_DOT:
-      return process_tap_hold_key(record, keycode);
-#endif //TAPHOLD_ENABLE
+  //https://docs.qmk.fm/#/mod_tap?id=changing-both-tasp-and-hold
+  //https://getreuer.info/posts/keyboards/triggers/index.html#tap-vs.-long-press
+  //https://www.jonashietala.se/series/t-34/ he focuses on a keymap for programming/VIM
+  case TR_LBRC:
+  case TR_LABK:
+  case TR_LPRN:
+  case TR_PERC:
+  case TR_COMM:
+  case TR_DOT:
+    return process_tap_hold_key(record, keycode);
+
 
   }
   return true;
