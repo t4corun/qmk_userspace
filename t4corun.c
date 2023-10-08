@@ -1,13 +1,10 @@
 #include "t4corun.h"
 
-layer_state_t  layer_state_set_user(layer_state_t  state) {
- 
-#if defined(AUDIO_ENABLE)
-  state = layer_state_set_audio( update_tri_layer_state(state, _SYMBOL, _NAVIGATION, _NUMBER) );
-#else
+layer_state_t layer_state_set_user(layer_state_t  state) {
+
   state = update_tri_layer_state(state, _SYMBOL, _NAVIGATION, _NUMBER);
-#endif
   return state;
+
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -15,15 +12,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
 
   case QWERTY:
-    if (record->event.pressed) { default_layer_set(1UL<<_QWERTY); }
+    if (record->event.pressed) { set_single_persistent_default_layer(_QWERTY) } //default_layer_set(1UL<<_QWERTY); }
     return false;
 
   case CLMAKDH:
-    if (record->event.pressed) { default_layer_set(1UL<<_COLEMAK_DH); }
-    return false;
-
-  case GAMING:
-    if (record->event.pressed) { default_layer_set(1UL<<_GAMING); }
+    if (record->event.pressed) { set_single_persistent_default_layer(_COLEMAK_DH) } //default_layer_set(1UL<<_COLEMAK_DH); }
     return false;
 
   //https://docs.qmk.fm/#/mod_tap?id=changing-both-tasp-and-hold
@@ -40,12 +33,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   }
   return true;
-}
-
-void matrix_scan_user(void) {
-
-#if defined(AUDIO_ENABLE)
-  matrix_scan_muse();
-#endif
-
 }
