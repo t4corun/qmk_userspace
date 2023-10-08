@@ -16,9 +16,11 @@ UNICODE_ENABLE ?= no
 SPACE_CADET_ENABLE ?= no
 GRAVE_ESC_ENABLE ?= no
 
+# qmk features we will force
 AUDIO_ENABLE = no
 AUTO_SHIFT_ENABLE = yes
 CAPS_WORD_ENABLE = yes
+
 COMBO_ENABLE ?= yes
 REPEAT_KEY_ENABLE ?= yes
 DYNAMIC_MACRO_ENABLE ?= yes
@@ -27,8 +29,6 @@ RGBLIGHT_ENABLE ?= no
 MOUSEKEY_ENABLE ?= no
 POINTING_DEVICE_ENABLE ?= no
 OLED_ENABLE ?= no
-
-AUTOMOUSE_ENABLE ?= no
 
 #keyboard specific settings to override my defaults or keyboard specific rules.mk
 ifeq ($(KEYBOARD), bastardkb/charybdis/3x5/v2/splinky_3)
@@ -81,7 +81,4 @@ endif
 ifeq ($(strip $(POINTING_DEVICE_ENABLE)), yes)
 	SRC += features/mouse.c
 	OPT_DEFS += -DMOUSELAYER_ENABLE
-	ifeq ($(strip $(AUTOMOUSE_ENABLED)), yes)
-	  OPT_DEFS += -DAUTOMOUSE_ENABLE
-	endif
 endif

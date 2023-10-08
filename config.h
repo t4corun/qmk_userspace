@@ -39,7 +39,3 @@
 #if defined(KEYBOARD_bastardkb_charybdis_3x5)
 #   define CHARYBDIS_CONFIG_SYNC
 #endif
-
-#if defined(KEYBOARD_crkbd_rev1)
-#   define MASTER_RIGHT
-#endif
