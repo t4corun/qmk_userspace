@@ -12,11 +12,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
 
   case QWERTY:
-    if (record->event.pressed) { set_single_persistent_default_layer(_QWERTY) } //default_layer_set(1UL<<_QWERTY); }
+    if (record->event.pressed) { set_single_persistent_default_layer(_QWERTY); } //default_layer_set(1UL<<_QWERTY); }
     return false;
 
   case CLMAKDH:
-    if (record->event.pressed) { set_single_persistent_default_layer(_COLEMAK_DH) } //default_layer_set(1UL<<_COLEMAK_DH); }
+    if (record->event.pressed) { set_single_persistent_default_layer(_COLEMAK_DH); } //default_layer_set(1UL<<_COLEMAK_DH); }
     return false;
 
   //https://docs.qmk.fm/#/mod_tap?id=changing-both-tasp-and-hold
