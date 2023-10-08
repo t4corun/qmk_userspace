@@ -4,7 +4,6 @@
 Achieves the following
 - layer tap key indicator when we are in layer
 - Caps lock and scroll lock indicators when activated
-- dpad backlight while in game mode
 - mouse button backlight when in mouse layer
 - modifier indicators when activated
 - default layer indicator
@@ -58,22 +57,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
         case _DEFAULT_LAYER_2:
           RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_COLEMAKDH, KEY_DEFAULTLAYER_COLOR);
           break;
-        
-        case _DEFAULT_LAYER_3:
-          RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_GAME, KEY_DEFAULTLAYER_COLOR);
-          break;
-      }
-      break;
 
-    case _GAMENUMBER:
-      RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_GAMENUMBER, KEY_LAYER_COLOR);
-      break;
-
-    default:
-      switch (current_default_layer) {
-        case _DEFAULT_LAYER_3:
-          RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_GAME, KEY_DEFAULTLAYER_COLOR);
-          break;
       }
       break;
   }

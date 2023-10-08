@@ -4,12 +4,10 @@ enum layers {
   _QWERTY = 0,
   FIRST_DEFAULT_LAYER = 0,
   _COLEMAK_DH,
-  _GAMING,
   _NAVIGATION,
   _SYMBOL,
   _NUMBER,
   _MOUSE,
-  _GAMENUMBER,
   _CONFIG
 };
 
@@ -76,7 +74,7 @@ enum layers {
   AS_TOGG, ___x___, TR_DMR1, TR_DMP1, KC_PSCR, EE_CLR,  QK_RBT,  QK_BOOT, ___x___, _______, \
   TR_RTOG, TR_RMOD, TR_DMR2, TR_DMP2, KC_SCRL, KC_CAPS, _SCAG_MODS________________________, \
   TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, KC_PAUS, _NONE_5____________________________________, \
-                    TR_GAME, CLMAKDH, QWERTY,  _LAYER_TRANS_____________
+                    ___x___, CLMAKDH, QWERTY,  _LAYER_TRANS_____________
 
 
 #define LAYER_MOUSE \

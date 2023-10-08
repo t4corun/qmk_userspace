@@ -6,15 +6,9 @@
 #define OLED_RENDER_KEYLOCK_NAME      "Lock:"
 #define OLED_RENDER_MODS_NAME         "Mods:"
 
-
 #define OLED_RENDER_LAYOUT_NAME       "Lyout"
 #define OLED_RENDER_LAYOUT_QWERTY     " QRTY"
 #define OLED_RENDER_LAYOUT_COLEMAK_DH " cmDH"
-
-#if defined(GAMELAYER_ENABLE)
-# define OLED_RENDER_LAYOUT_GAMING    " Game"
-#endif //GAMELAYER_ENABLE
-
 
 #define OLED_RENDER_LAYER_NAME        "Layer"
 #define OLED_RENDER_LAYER_BASE        " Def "

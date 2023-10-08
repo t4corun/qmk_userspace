@@ -27,7 +27,6 @@ Color preview
 
 
 
-#define LAYER_GAMING_COLOR RGB_RED
 #define LAYER_NAVIGATION_COLOR RGB_AZURE
 #define LAYER_SYMBOL_COLOR RGB_CYAN
 #define LAYER_NUMBER_COLOR RGB_PURPLE
@@ -62,12 +61,10 @@ Color preview
 #   define LED_NUMBER_L 16
 #   define LED_NUMBER_R 34
 #   define LED_CONFIG 20
-#   define LED_GAMENUMBER 1
 
 //base layers
 #   define LED_QWERTY 17
 #   define LED_COLEMAKDH 16
-#   define LED_GAME 15
 
 //indicators
 #   define LED_CAPSLOCK 31
