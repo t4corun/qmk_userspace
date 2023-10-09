@@ -27,7 +27,7 @@ void render_default_layer_state(void) {
 
 void render_layer_state(void) {
   oled_write_P(PSTR(OLED_RENDER_LAYER_NAME), false);
-  oled_write_P(PSTR(OLED_RENDER_LAYER_BASE), layer_state_is(FIRST_DEFAULT_LAYER));
+  oled_write_P(PSTR(OLED_RENDER_LAYER_BASE), layer_state_is(FIRST_DEFAULT_LAYER));  
   oled_write_P(PSTR(OLED_RENDER_LAYER_SYMBOL), 
     (layer_state_is(_SYMBOL) &&  !layer_state_is(_NUMBER)));
 
