@@ -50,7 +50,7 @@ enum layers {
 
 
 #define LAYER_NAVIGATION \
-  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, KC_INS,  SC_SNIP, ___x___, CONFIG,  \
+  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_INS,  VS_FOLD, SC_SNIP, VS_UFLD, CONFIG,  \
   ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC, _SCAG_MODS________________________, \
   _UCCPR_L___________________________________, KC_DEL,  KC_APP,  KC_VOLD, KC_VOLU, KC_MUTE, \
                     KC_TAB,  _______, KC_ENT,  _LAYER_TRANS_____________

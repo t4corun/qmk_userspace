@@ -31,7 +31,12 @@ enum keycodes {
 #define SC_UNDO    LCTL(KC_Z)
 #define SC_PAST    LCTL(KC_V)
 #define SC_REDO    LCTL(KC_Y)
-#define SC_SNIP    LGUI(LCTL(KC_Y))
+#define SC_SNIP    LGUI(LSFT(KC_S))
+
+// Visual Studio Code
+
+#define VS_FOLD    LALT(LSFT(KC_7))
+#define VS_UFLD    LALT(LSFT(KC_9))
 
 /*
 - Any keycodes with prefix TR has behavior dependent on if the feature is enabled.
