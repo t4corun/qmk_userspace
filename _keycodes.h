@@ -35,8 +35,8 @@ enum keycodes {
 
 // Visual Studio Code
 
-#define VS_FOLD    LALT(LSFT(KC_7))
-#define VS_UFLD    LALT(LSFT(KC_9))
+#define VS_FOLD    LCTL(LSFT(KC_7))
+#define VS_UFLD    LCTL(LSFT(KC_9))
 
 /*
 - Any keycodes with prefix TR has behavior dependent on if the feature is enabled.
