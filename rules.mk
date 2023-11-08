@@ -1,6 +1,9 @@
 SRC += \
 	t4corun.c \
-	features/tapping.c
+	features/tapping.c \
+	features/autoshift.c \
+	features/capsword.c \
+	features/taphold.c 
 
 # default settings across all keyboards
 # ?= means set the value if its not defined elsewhere
@@ -13,32 +16,23 @@ UNICODE_ENABLE ?= no
 SPACE_CADET_ENABLE ?= no
 GRAVE_ESC_ENABLE ?= no
 
-AUTO_SHIFT_ENABLE ?= yes
-CAPS_WORD_ENABLE ?= yes
+# qmk features we will force
+AUDIO_ENABLE = no
+AUTO_SHIFT_ENABLE = yes
+CAPS_WORD_ENABLE = yes
+REPEAT_KEY_ENABLE = yes
+
 COMBO_ENABLE ?= yes
-REPEAT_KEY_ENABLE ?= yes
 DYNAMIC_MACRO_ENABLE ?= yes
 RGB_MATRIX_ENABLE ?= no
 RGBLIGHT_ENABLE ?= no
 MOUSEKEY_ENABLE ?= no
 POINTING_DEVICE_ENABLE ?= no
 OLED_ENABLE ?= no
-AUDIO_ENABLE ?= no
-
-# custom definitions
-ONESHOT_ENABLE ?= yes
-TAPHOLD_ENABLE ?= yes
-AUTOMOUSE_ENABLE ?= no
-GAMELAYER_ENABLE ?= no
-PERKEYRGB_ENABLE ?= no
-BACKLED_ENABLE ?= no
 
 #keyboard specific settings to override my defaults or keyboard specific rules.mk
 ifeq ($(KEYBOARD), bastardkb/charybdis/3x5/v2/splinky_3)
 #	qmk_firmware\keyboards\bastardkb\charybdis\3x5\v2\splinky_3\rules.mk
-
-	GAMELAYER_ENABLE = yes
-	PERKEYRGB_ENABLE = yes
 endif
 
 
@@ -48,36 +42,24 @@ ifeq ($(KEYBOARD), crkbd/rev1)
 # 	qmk_firmware\keyboards\crkbd\info.json
 	OLED_DRIVER = ssd1306
 
-	DYNAMIC_MACRO_ENABLE = no
-	COMBO_ENABLE = no
 	OLED_ENABLE = yes
 	MOUSEKEY_ENABLE = yes
+
+	DYNAMIC_MACRO_ENABLE = no
+	COMBO_ENABLE = no
 	RGB_MATRIX_ENABLE = no
 	RGBLIGHT_ENABLE = no
-	PERKEYRGB_ENABLE = yes
-	BACKLED_ENABLE = yes
 endif
 
 
 ifeq ($(KEYBOARD), planck/rev6)
 #	qmk_firmware\keyboards\planck\rev6\rules.mk
-
-	GAMELAYER_ENABLE = yes
 	RGBLIGHT_ENABLE = no
-	RGB_MATRIX_ENABLE = yes
-	BACKLED_ENABLE = yes
+	RGB_MATRIX_ENABLE = no
 	ENCODER_ENABLE = no
 	DIP_SWITCH_ENABLE = no
 endif
 
-
-ifeq ($(strip $(AUTO_SHIFT_ENABLE)), yes)
-	SRC += features/autoshift.c
-endif
-
-ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
-	SRC += features/capsword.c
-endif
 
 ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
 	SRC += features/rgbmatrix.c
@@ -91,46 +73,12 @@ ifeq ($(strip $(OLED_ENABLE)), yes)
 	SRC += features/oled.c
 endif
 
-ifeq ($(strip $(AUDIO_ENABLE)), yes)
-	SRC += features/audio.c
-	SRC += muse.c
-endif
-
 ifeq ($(strip $(COMBO_ENABLE)), yes)
 	INTROSPECTION_KEYMAP_C += features/combo.c
-endif
-
-# ONESHOT_ENABLE is custom
-ifeq ($(strip $(ONESHOT_ENABLE)), yes)
-	OPT_DEFS += -DONESHOT_ENABLE
-endif
-
-# TAPHOLD_ENABLE is custom
-ifeq ($(strip $(TAPHOLD_ENABLE)), yes)
-	SRC += features/taphold.c
-	OPT_DEFS += -DTAPHOLD_ENABLE
 endif
 
 # AUTOMOUSE_ENABLE is custom
 ifeq ($(strip $(POINTING_DEVICE_ENABLE)), yes)
 	SRC += features/mouse.c
 	OPT_DEFS += -DMOUSELAYER_ENABLE
-	ifeq ($(strip $(AUTOMOUSE_ENABLED)), yes)
-	  OPT_DEFS += -DAUTOMOUSE_ENABLE
-	endif
-endif
-
-# GAMELAYER_ENABLE is custom
-ifeq ($(strip $(GAMELAYER_ENABLE)), yes)
-	OPT_DEFS += -DGAMELAYER_ENABLE
-endif
-
-# PERKEYRGB_ENABLE is custom
-ifeq ($(strip $(PERKEYRGB_ENABLE)), yes)
-	OPT_DEFS += -DPERKEYRGB_ENABLE
-endif
-
-# BACKLED_ENABLE is custom
-ifeq ($(strip $(BACKLED_ENABLE)), yes)
-	OPT_DEFS += -DBACKLED_ENABLE
 endif
