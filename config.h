@@ -17,9 +17,7 @@
 
 #include "_layouts.h"
 #include "config/tapping_config.h"
-#include "config/autoshift_config.h"
 #include "config/capsword_config.h"
-#include "config/repeatkey_config.h"
 
 #if defined(RGB_MATRIX_ENABLE)
 #   include "config/rgbmatrix_config.h"

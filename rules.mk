@@ -18,9 +18,7 @@ GRAVE_ESC_ENABLE ?= no
 
 # qmk features we will force
 AUDIO_ENABLE = no
-AUTO_SHIFT_ENABLE = yes
 CAPS_WORD_ENABLE = yes
-REPEAT_KEY_ENABLE = yes
 
 COMBO_ENABLE ?= yes
 DYNAMIC_MACRO_ENABLE ?= yes

@@ -21,9 +21,10 @@ enum keycodes {
 #define ___x___ KC_NO
 
 // momentary layer
-#define NAV        MO(_NAVIGATION)
-#define SYM        MO(_SYMBOL)
+#define NAV        LT(_NAVIGATION, KC_0)
+#define NUM        MO(_NUMBER)
 #define CONFIG     MO(_CONFIG)
+#define FUNC       MO(_FUNCTION)
 
 // Windows Shortcuts
 #define SC_COPY    LCTL(KC_C)
@@ -50,9 +51,6 @@ enum keycodes {
 #define TR_LCTL OSM(MOD_LCTL)
 #define TR_LALT OSM(MOD_LALT)
 #define TR_LGUI OSM(MOD_LGUI)
-
-// auto shift
-#define TR_ASTG AS_TOGG
 
 //tap hoLd
 #   define TR_LBRC  LT(_DEFAULT_LAYER_1, TH_LBRC) // bracket behvavior
@@ -144,10 +142,4 @@ enum keycodes {
 #   define TR_RTOG ___x___
 #   define TR_RMOD ___x___
 #endif //RGB_MATRIX_ENABLE or RGBLIGHT_ENABLE
-
-#if defined(REPEAT_KEY_ENABLE)
-#   define TR_REP QK_REP
-#else
-#   define TR_REP TR_LSFT
-#endif //REPEAT_KEY_ENABLE
 

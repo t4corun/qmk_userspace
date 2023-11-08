@@ -7,6 +7,12 @@ void insert_brackets(uint16_t left, uint16_t right) {
 }
 
 
+void double_tap(uint16_t keycode) {
+  tap_code16(keycode);
+  tap_code16(keycode);
+}
+
+
 //here we can have the holds be more complex, like sending "" when you hold "
 bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
 

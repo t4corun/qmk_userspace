@@ -18,6 +18,9 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+    case NAV:
+      return TAPPING_TERM - 60;
+
     default:
       //uprintf("tapping term: %d \n", TAPPING_TERM);
       return TAPPING_TERM;
