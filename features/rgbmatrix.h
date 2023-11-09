@@ -62,7 +62,8 @@ Color preview
  * ╰────────────────────╯                 ╰────────────────────╯
  *                   15  16  17     33  34  XX
  *                 ╰────────────╯ ╰────────────╯
- */-
+ */
+
 #if defined(KEYBOARD_bastardkb_charybdis_3x5)
 //layers
 #   define LED_NUMBER 16
