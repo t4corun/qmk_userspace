@@ -1,7 +1,6 @@
 SRC += \
 	t4corun.c \
 	features/tapping.c \
-	features/autoshift.c \
 	features/capsword.c \
 	features/taphold.c 
 
