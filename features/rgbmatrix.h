@@ -52,15 +52,26 @@ Color preview
 //so we can send the predefined RGB colors without requiring separate RGB values
 #define RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(...) RGB_MATRIX_INDICATOR_SET_COLOR(__VA_ARGS__)
 
-//qmk_firmware\keyboards\bastardkb\charybdis\3x5\3x5.c
+/* qmk_firmware\keyboards\bastardkb\charybdis\3x5\3x5.c
+ * ╭────────────────────╮                 ╭────────────────────╮
+ *    2   3   8   9  12                     30  27  26  21  20
+ * ├────────────────────┤                 ├────────────────────┤
+ *    1   4   7  10  13                     31  28  25  22  19
+ * ├────────────────────┤                 ├────────────────────┤
+ *    0   5   6  11  14                     32  29  24  23  18
+ * ╰────────────────────╯                 ╰────────────────────╯
+ *                   15  16  17     33  34  XX
+ *                 ╰────────────╯ ╰────────────╯
+ */-
 #if defined(KEYBOARD_bastardkb_charybdis_3x5)
 //layers
-#   define LED_SYMBOL 16
+#   define LED_NUMBER 16
 #   define LED_NAVIGATION 34
-#   define LED_MOUSE 17
-#   define LED_NUMBER_L 16
-#   define LED_NUMBER_R 34
+#   define LED_MOUSE 6
+#   define LED_SYMBOL_L 16
+#   define LED_SYMBOL_R 34
 #   define LED_CONFIG 20
+#   define LED_FUNCTION 9
 
 //base layers
 #   define LED_QWERTY 17
@@ -71,12 +82,13 @@ Color preview
 #   define LED_SCRLOCK 13
 
 //dynamic macros
-#   define LED_DMACRO_R1 8
-#   define LED_DMACRO_P1 9
-#   define LED_DMACRO_R2 7
-#   define LED_DMACRO_P2 10
+#   define LED_DMACRO_R1 34
+#   define LED_DMACRO_P1 33
+#   define LED_DMACRO_R2 3
+#   define LED_DMACRO_P2 2
 
 //shift keys
+#   define LED_SHIFT_T 17
 #   define LED_SHIFT_L 10
 #   define LED_SHIFT_R 28
 

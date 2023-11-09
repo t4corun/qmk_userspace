@@ -8,14 +8,20 @@ enum keycodes {
   GAMING,
 
   //These are only here to make the case statements unique in taphold.c
-  TH_LBRC,
+  TH_LCBR,
   TH_LABK,
+  TH_LBRC,
   TH_SQUO,
   TH_DQUO,
   TH_LPRN,
-  TH_PERC,
   TH_COMM,
-  TH_DOT  
+  TH_DOT,
+  TH_PERC,
+  TH_EQL,
+  TH_MINS,
+  TH_GRV,
+  TH_SCLN,
+  TH_QUOT
 };
 
 #define ___x___ KC_NO
@@ -33,6 +39,7 @@ enum keycodes {
 #define SC_PAST    LCTL(KC_V)
 #define SC_REDO    LCTL(KC_Y)
 #define SC_SNIP    LGUI(LSFT(KC_S))
+#define SC_FILE    LGUI(KC_E)
 
 // Visual Studio Code
 
@@ -52,17 +59,25 @@ enum keycodes {
 #define TR_LALT OSM(MOD_LALT)
 #define TR_LGUI OSM(MOD_LGUI)
 
+
+
 //tap hoLd
-#   define TR_LBRC  LT(_DEFAULT_LAYER_1, TH_LBRC) // bracket behvavior
-#   define TR_LABK  LT(_DEFAULT_LAYER_1, TH_LABK)
-#   define TR_LPRN  LT(_DEFAULT_LAYER_1, TH_LPRN) // custom behavior
-#   define TR_PERC  LT(_DEFAULT_LAYER_1, TH_PERC)
-#   define TR_COMM  LT(_DEFAULT_LAYER_1, TH_COMM)
-#   define TR_DOT   LT(_DEFAULT_LAYER_1, TH_DOT)
+#define TR_LCBR  LT(_DEFAULT_LAYER_1, TH_LCBR) // bracket behvavior
+#define TR_LABK  LT(_DEFAULT_LAYER_1, TH_LABK)
+#define TR_LBRC  LT(_DEFAULT_LAYER_1, TH_LBRC) 
+#define TR_SQUO  LT(_DEFAULT_LAYER_1, TH_SQUO)
+#define TR_DQUO  LT(_DEFAULT_LAYER_1, TH_DQUO)
 
+#define TR_LPRN  LT(_DEFAULT_LAYER_1, TH_LPRN) // custom behavior
+#define TR_COMM  LT(_DEFAULT_LAYER_1, TH_COMM)
+#define TR_DOT   LT(_DEFAULT_LAYER_1, TH_DOT)
+#define TR_PERC  LT(_DEFAULT_LAYER_1, TH_PERC)
 
-
-
+#define TR_EQL   LT(_DEFAULT_LAYER_1, TH_EQL)  // auto shift
+#define TR_MINS  LT(_DEFAULT_LAYER_1, TH_MINS)
+#define TR_GRV   LT(_DEFAULT_LAYER_1, TH_GRV)
+#define TR_SCLN  LT(_DEFAULT_LAYER_1, TH_SCLN)
+#define TR_QUOT  LT(_DEFAULT_LAYER_1, TH_QUOT)
 
 
 
@@ -97,6 +112,20 @@ enum keycodes {
 #   define TR_MWHU ___x___
 #   define TR_MWHD ___x___
 #endif //MOUSEKEY_ENABLE
+
+//Layer tap key is dependent on if mouse pointer or mouse keys
+//c for pointer, z for keys
+#if defined(MOUSELAYER_ENABLE) && !defined(MOUSEKEY_ENABLE)
+#   define TR_MOUC LT(_MOUSE, KC_C)
+#   define TR_MOUZ KC_Z
+#elif defined(MOUSELAYER_ENABLE) && defined(MOUSEKEY_ENABLE)
+#   define TR_MOUC KC_C
+#   define TR_MOUZ LT(_MOUSE, KC_Z)
+#else
+#   define TR_MOUZ KC_Z
+#   define TR_MOUC KC_C
+#endif //defined(MOUSELAYER_ENABLE) && !defined(MOUSEKEY_ENABLE)
+
 
 //these keycodes come from the cnano
 #if defined(POINTING_DEVICE_ENABLE)

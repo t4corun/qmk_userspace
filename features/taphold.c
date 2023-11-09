@@ -7,47 +7,76 @@ void insert_brackets(uint16_t left, uint16_t right) {
 }
 
 
-void double_tap(uint16_t keycode) {
-  tap_code16(keycode);
-  tap_code16(keycode);
-}
-
-
 //here we can have the holds be more complex, like sending "" when you hold "
 bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
 
   //tap is record->tap.count && record->event.pressed
   //hold is record->event.pressed
 
-  bool isShift = ( (get_mods() & MOD_BIT(KC_LSFT)) || (get_oneshot_mods() & MOD_BIT(KC_LSFT)) );
+  //bool isShift = ( (get_mods() & MOD_BIT(KC_LSFT)) || (get_oneshot_mods() & MOD_BIT(KC_LSFT)) );
   uint16_t key = KC_NO;
   uint16_t altkey = KC_NO;
 
   switch(keycode) {
 
     //Brackets
-    case TR_LBRC:
-      key = KC_LBRC;
-      altkey = KC_RBRC;
+    //open and close brackets and put the cursor inside
+    case TR_LCBR:
+      key = KC_LCBR;
+      altkey = KC_RCBR;
       break;
     case TR_LABK:
       key = KC_LABK;
       altkey = KC_RABK;
       break;
+    case TR_LBRC:
+      key = KC_LBRC;
+      altkey = KC_RBRC;
+      break;
+    case TR_SQUO:
+      key = KC_QUOT;
+      altkey = KC_QUOT;
+      break;
+    case TR_DQUO:
+      key = KC_DQUO;
+      altkey = KC_DQUO; 
+      break;
 
     //Custom
-    case TR_LPRN: //this and the below both tap for comma, but this holds for closed parenthesis on the symbol layer
-    case TR_COMM: //this hold for a single ( on the base layer. for reducing excel errors
+    case TR_LPRN: //tap for comma, hold for bracket parenthesis
+    case TR_COMM: //tap for comma, hold for left parenthesis
       key = KC_COMM; 
       altkey = KC_LPRN;
       break;
-    case TR_PERC: //combining seldom used % and ^ to make room for momentary mouse on symbol layer
+    case TR_DOT:  //tap for dot, hold for right parenthesis
+      key = KC_DOT;
+      altkey = KC_RPRN;
+      break;
+    case TR_PERC: //tap for percent, hold for carat. for saving room on symbols layer
       key = KC_PERC; 
       altkey = KC_CIRC;
       break;
-    case TR_DOT: 
-      key = KC_DOT;
-      altkey = KC_RPRN;
+
+    //faux auto-shift
+    case TR_EQL:  //tap for equal, hold for plus
+      key = TR_EQL; 
+      altkey = KC_PLUS;
+      break;
+    case TR_MINS: //tap for minus, hold for underscore
+      key = KC_MINS;
+      altkey = KC_UNDS;
+      break;
+    case TR_GRV: //tap for grave, hold for tilde
+      key = KC_GRV; 
+      altkey = KC_TILDE;
+      break;
+    case TR_SCLN: //tap for semicolon, hold for colon
+      key = KC_SCLN;
+      altkey = KC_COLN;
+      break;
+    case TR_QUOT: //tap for single quote, hold for double quote
+      key = KC_QUOT; 
+      altkey = KC_DQUO;
       break;
   }
 
@@ -62,18 +91,27 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
     switch(keycode) {
 
       //Brackets
-      case TR_LBRC:
+      case TR_LCBR:
       case TR_LABK:
-        isShift ? insert_brackets(LSFT(key), LSFT(altkey)) : insert_brackets(key, altkey);
+      case TR_LBRC:
+      case TR_SQUO:
+      case TR_DQUO:
+        //isShift ? insert_brackets(LSFT(key), LSFT(altkey)) : insert_brackets(key, altkey);
+        insert_brackets(key, altkey);
         break;
       
-      //custom
+      //custom and faux auto-shift
       case TR_LPRN:
         insert_brackets(KC_LPRN, KC_RPRN);
         break;
-      case TR_PERC:  
       case TR_COMM:
       case TR_DOT:
+      case TR_PERC:  
+      case TR_EQL:
+      case TR_MINS:
+      case TR_GRV:
+      case TR_SCLN:
+      case TR_QUOT:
         tap_code16(altkey);
         break;
     }
