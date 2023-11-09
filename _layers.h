@@ -51,7 +51,7 @@ enum layers {
 
 
 #define LAYER_NAVIGATION \
-  ___x___, KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_INS,  VS_FOLD, ___x___, VS_UFLD, CONFIG,  \
+  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_INS,  VS_FOLD, ___x___, VS_UFLD, CONFIG,  \
   ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC, _SCAG_MODS________________________, \
   _UCCPR_L___________________________________, KC_DEL,  KC_APP,  KC_VOLD, KC_VOLU, KC_MUTE, \
                     KC_TAB,  _______, KC_ENT,  _LAYER_TRANS_____________
@@ -65,7 +65,7 @@ enum layers {
 
 
 #define LAYER_SYMBOL \
-  ___x___, ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
+  KC_ESC,  ___x___, KC_AT,   KC_DLR,  TR_GRV,  TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
   KC_AMPR, TR_LCBR, KC_RCBR, KC_PIPE, TR_SCLN, KC_BSPC, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
   TR_PERC, TR_LABK, KC_RABK, KC_BSLS, KC_EXLM, KC_DEL,  KC_SLSH, TR_LPRN, TR_DOT,  TR_MINS, \
                     _LAYER_TRANS_____________, _LAYER_TRANS_____________

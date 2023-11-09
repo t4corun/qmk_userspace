@@ -68,7 +68,7 @@ enum keycodes {
 #define TR_SQUO  LT(_DEFAULT_LAYER_1, TH_SQUO)
 #define TR_DQUO  LT(_DEFAULT_LAYER_1, TH_DQUO)
 
-#define TR_LPRN  LT(_DEFAULT_LAYER_1, TH_LPRN) // custom behavior
+#define TR_LPRN  LT(_DEFAULT_LAYER_1, TH_LPRN) // custom behavior0' 
 #define TR_COMM  LT(_DEFAULT_LAYER_1, TH_COMM)
 #define TR_DOT   LT(_DEFAULT_LAYER_1, TH_DOT)
 #define TR_PERC  LT(_DEFAULT_LAYER_1, TH_PERC)
