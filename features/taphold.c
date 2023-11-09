@@ -59,7 +59,7 @@ bool process_tap_hold_key(keyrecord_t* record, uint16_t keycode) {
 
     //faux auto-shift
     case TR_EQL:  //tap for equal, hold for plus
-      key = TR_EQL; 
+      key = KC_EQL; 
       altkey = KC_PLUS;
       break;
     case TR_MINS: //tap for minus, hold for underscore
