@@ -56,7 +56,7 @@ enum layers {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    _NONE_5____________________________________, \
   GAMENUM, KC_A,    KC_S,    KC_D,    KC_F,    _NONE_5____________________________________, \
   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    _NONE_5____________________________________, \
-                    KC_LCTL, KC_SPC,  KC_LSFT, ___x___, NAV,     ___x___
+                    KC_LCTL, KC_LSFT, KC_SPC,  ___x___, NAV,     ___x___
 
 
 #define LAYER_NAVIGATION \
