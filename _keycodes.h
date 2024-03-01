@@ -31,6 +31,7 @@ enum keycodes {
 #define NUM        MO(_NUMBER)
 #define CONFIG     MO(_CONFIG)
 #define FUNC       MO(_FUNCTION)
+#define GAMENUM    MO(_GAME_NUM)
 
 // Windows Shortcuts
 #define SC_COPY    LCTL(KC_C)

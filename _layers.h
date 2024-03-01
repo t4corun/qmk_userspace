@@ -4,11 +4,13 @@ enum layers {
   _QWERTY = 0,
   FIRST_DEFAULT_LAYER = 0,
   _COLEMAK_DH,
+  _GAME,
   _NAVIGATION,
   _NUMBER,
   _SYMBOL,
   _FUNCTION,
   _MOUSE,
+  _GAME_NUM,
   _CONFIG
 };
 
@@ -50,6 +52,13 @@ enum layers {
                     _BASE_L4_________________, _BASE_R4_________________
 
 
+#define LAYER_GAME \
+  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    _NONE_5____________________________________, \
+  GAMENUM, KC_A,    KC_S,    KC_D,    KC_F,    _NONE_5____________________________________, \
+  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    _NONE_5____________________________________, \
+                    KC_LCTL, KC_SPC,  KC_LSFT, ___x___, NAV,     ___x___
+
+
 #define LAYER_NAVIGATION \
   KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_INS,  VS_FOLD, ___x___, VS_UFLD, CONFIG,  \
   ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC, _SCAG_MODS________________________, \
@@ -85,8 +94,15 @@ enum layers {
                     TR_BTN1, TR_BTN2, TR_BTN3, TR_BTN5, TR_BTN4, ___x___
 
 
+#define LAYER_GAME_NUM \
+  ___x___, KC_ESC,  KC_TILD, KC_G,    KC_T,    _NONE_5____________________________________, \
+  _______, KC_1,    KC_2,    KC_3,    KC_4,    _NONE_5____________________________________, \
+  ___x___, KC_5,    KC_6,    KC_7,    KC_8,    _NONE_5____________________________________, \
+                    KC_LALT, ___x___, KC_ENT,  _LAYER_TRANS_____________
+
+
 #define LAYER_CONFIG \
   ___x___, ___x___, ___x___, ___x___, ___x___, EE_CLR,  QK_RBT,  QK_BOOT, ___x___, _______, \
   TR_RTOG, TR_RMOD, ___x___, ___x___, ___x___, ___x___, _SCAG_MODS________________________, \
   TR_RHUI, TR_RSAI, TR_RVAI, TR_RSPI, ___x___, _NONE_5____________________________________, \
-                    ___x___, CLMAKDH, QWERTY,  _LAYER_TRANS_____________
+                    GAME,    CLMAKDH, QWERTY,  _LAYER_TRANS_____________
