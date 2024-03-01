@@ -5,7 +5,7 @@
 enum keycodes {
   QWERTY = SAFE_RANGE,
   CLMAKDH,
-  GAMING,
+  GAME,
 
   //These are only here to make the case statements unique in taphold.c
   TH_LCBR,
