@@ -17,7 +17,7 @@
 #define OLED_RENDER_LAYER_NAVIGATION  " Nav "
 #define OLED_RENDER_LAYER_SYMBOL      " Sym "
 #define OLED_RENDER_LAYER_GAME_NUM    " gNum"
-#define OLED_RENDER_LAYER_CONFIG      " Con "
+#define OLED_RENDER_LAYER_CONFIG      " Cfg "
 
 #if defined(MOUSELAYER_ENABLE)
 # define OLED_RENDER_LAYER_MOUSE      " Mou "

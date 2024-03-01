@@ -31,10 +31,10 @@ void render_default_layer_state(void) {
 
 void render_layer_state(void) {
   oled_write_P(PSTR(OLED_RENDER_LAYER_NAME), false);
-  oled_write_P(PSTR(OLED_RENDER_LAYER_BASE), layer_state_is(FIRST_DEFAULT_LAYER));  
+  oled_write_P(PSTR(OLED_RENDER_LAYER_BASE), get_highest_layer(layer_state) == FIRST_DEFAULT_LAYER);  
   oled_write_P(PSTR(OLED_RENDER_LAYER_NAVIGATION), get_highest_layer(layer_state) == _NAVIGATION);
   oled_write_P(PSTR(OLED_RENDER_LAYER_NUMBER), get_highest_layer(layer_state) == _NUMBER);
-  oled_write_P(PSTR(OLED_RENDER_LAYER_SYMBOL), get_highest_layer(layer_state) == _GAME);
+  oled_write_P(PSTR(OLED_RENDER_LAYER_SYMBOL), get_highest_layer(layer_state) == _SYMBOL);
 
 #if defined(MOUSELAYER_ENABLE)
   oled_write_P(PSTR(OLED_RENDER_LAYER_MOUSE), get_highest_layer(layer_state) == _MOUSE);
