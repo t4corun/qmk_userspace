@@ -3,7 +3,7 @@
 	"notes": "",
 	"documentation": "Wrapper based keymap",
 	"keyboard": "ploopyco/trackball_nano",
-	"keymap": "t4corun",
+	"keymap": "lkbm",
 	"layout": "LAYOUT_ploopynano_wrapper",
 	"layers": []
-  }
+}
