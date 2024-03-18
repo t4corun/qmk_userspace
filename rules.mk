@@ -57,6 +57,9 @@ ifeq ($(KEYBOARD), planck/rev6)
 	DIP_SWITCH_ENABLE = no
 endif
 
+ifeq ($(KEYBOARD), ploopyco/trackball_nano)
+#	qmk_firmware\keyboards\ploopyco\trackball_nano\rules.mk
+endif
 
 ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
 	SRC += features/rgbmatrix.c
