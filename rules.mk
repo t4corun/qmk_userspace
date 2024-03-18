@@ -57,7 +57,7 @@ ifeq ($(KEYBOARD), planck/rev6)
 	DIP_SWITCH_ENABLE = no
 endif
 
-ifeq ($(KEYBOARD), ploopyco/trackball_nano)
+ifeq ($(KEYBOARD), ploopyco/trackball_nano/rev1_001)
 #	qmk_firmware\keyboards\ploopyco\trackball_nano\rules.mk
 	CAPS_WORD_ENABLE = no
 	DYNAMIC_MACRO_ENABLE = no
