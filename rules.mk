@@ -59,6 +59,9 @@ endif
 
 ifeq ($(KEYBOARD), ploopyco/trackball_nano)
 #	qmk_firmware\keyboards\ploopyco\trackball_nano\rules.mk
+	CAPS_WORD_ENABLE = no
+	DYNAMIC_MACRO_ENABLE = no
+	COMBO_ENABLE = no
 endif
 
 ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
