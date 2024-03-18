@@ -4,5 +4,6 @@
 	"documentation": "Wrapper based keymap",
 	"keyboard": "ploopyco/trackball_nano",
 	"keymap": "t4corun",
-	"layout": "LAYOUT_ploopynano_wrapper"
+	"layout": "LAYOUT_ploopynano_wrapper",
+	"layers": []
   }
