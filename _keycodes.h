@@ -5,7 +5,7 @@
 enum keycodes {
   QWERTY = SAFE_RANGE,
   CLMAKDH,
-  GAMING,
+  GAME,
 
   //These are only here to make the case statements unique in taphold.c
   TH_LCBR,
@@ -31,6 +31,7 @@ enum keycodes {
 #define NUM        MO(_NUMBER)
 #define CONFIG     MO(_CONFIG)
 #define FUNC       MO(_FUNCTION)
+#define GAMENUM    MO(_GAME_NUM)
 
 // Windows Shortcuts
 #define SC_COPY    LCTL(KC_C)

@@ -9,13 +9,15 @@
 #define OLED_RENDER_LAYOUT_NAME       "Lyout"
 #define OLED_RENDER_LAYOUT_QWERTY     " QRTY"
 #define OLED_RENDER_LAYOUT_COLEMAK_DH " cmDH"
+#define OLED_RENDER_LAYOUT_GAME       " Game"
 
 #define OLED_RENDER_LAYER_NAME        "Layer"
 #define OLED_RENDER_LAYER_BASE        " Def "
 #define OLED_RENDER_LAYER_NUMBER      " Num "
 #define OLED_RENDER_LAYER_NAVIGATION  " Nav "
 #define OLED_RENDER_LAYER_SYMBOL      " Sym "
-#define OLED_RENDER_LAYER_CONFIG      " Con "
+#define OLED_RENDER_LAYER_GAME_NUM    " gNum"
+#define OLED_RENDER_LAYER_CONFIG      " Cfg "
 
 #if defined(MOUSELAYER_ENABLE)
 # define OLED_RENDER_LAYER_MOUSE      " Mou "
