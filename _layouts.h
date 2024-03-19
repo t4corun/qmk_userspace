@@ -42,6 +42,7 @@
 	KC_NO, k20, k21, k22, k23, k24, k25, k26, k27, k28, k29, KC_NO, \
 	                 k32, k33, k34, k35, k36, k37                   \
 
+#define LAYOUT_ploopynano_wrapper(...) LAYOUT(KC_NO)
 
 
 

@@ -13,6 +13,7 @@ jobs:
           - charybdisnano
           - planck
           - crkbd
+          - ploopynano
           - test
 
     steps:

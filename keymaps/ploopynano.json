@@ -1,0 +1,9 @@
+{
+	"version": 1,
+	"notes": "",
+	"documentation": "Wrapper based keymap",
+	"keyboard": "ploopyco/trackball_nano",
+	"keymap": "lkbm",
+	"layout": "LAYOUT_ploopynano_wrapper",
+	"layers": []
+}
