@@ -14,6 +14,7 @@ RGB
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
 
+  /*
   uint8_t current_layer = get_highest_layer(layer_state);
   uint8_t current_default_layer = get_highest_layer(default_layer_state);
   uint8_t current_mod = get_mods();
@@ -94,5 +95,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
     RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(LED_SCRLOCK, SCROLLOCK_COLOR);
   }
 
+  */
   return false;
+
 }
