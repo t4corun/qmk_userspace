@@ -21,6 +21,7 @@ enum layers {
 #define _NONE_3__________________                   ___x___, ___x___, ___x___
 #define _NONE_5____________________________________ ___x___, ___x___, ___x___, ___x___, ___x___
 #define _GACS_MODS________________________          TR_LGUI, TR_LALT, TR_LCTL, TR_LSFT
+#define _GACS_MOUSE_MODS_________                   TR_LALT, TR_LCTL, TR_LSFT
 #define _SCAG_MODS________________________          TR_LSFT, TR_LCTL, TR_LALT, TR_LGUI
 #define _UCCPR_L___________________________________ SC_UNDO, SC_CUT,  SC_COPY, SC_PAST, SC_REDO
 
@@ -40,15 +41,15 @@ enum layers {
 
 #define LAYER_QWERTY \
   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    \
-  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    TR_QUOT, \
-  TR_MOUZ, KC_X,    TR_MOUC, KC_V,    KC_B,    KC_N,    KC_M,    TR_COMM, TR_DOT,  TR_MINS, \
+  TR_MOUA, KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    TR_QUOT, \
+  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    TR_COMM, TR_DOT,  TR_MINS, \
                     _BASE_L4_________________, _BASE_R4_________________
 
 
 #define LAYER_COLEMAK_DH \
   KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    TR_QUOT, \
-  KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    \
-  TR_MOUZ, KC_X,    TR_MOUC, KC_D,    KC_V,    KC_K,    KC_H,    TR_COMM, TR_DOT,  TR_MINS, \
+  TR_MOUA, KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    \
+  KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    TR_COMM, TR_DOT,  TR_MINS, \
                     _BASE_L4_________________, _BASE_R4_________________
 
 
@@ -87,11 +88,19 @@ enum layers {
                     _LAYER_TRANS_____________, TR_DMP1, TR_DMR1, ___x___
 
 
-#define LAYER_MOUSE \
+#define LAYER_MOUSE_OLD \
   ___x___, ___x___, TR_MOUU, ___x___, TR_MWHU, TR_SDPI, TR_PDPI, ___x___, ___x___, ___x___, \
-  ___x___, TR_MOUL, TR_MOUD, TR_MOUR, TR_MWHD, ___x___, _SCAG_MODS________________________, \
-  _______, ___x___, _______, TR_DRGS, TR_SNIP, ___x___, TR_BTN1, TR_BTN2, TR_BTN3, ___x___, \
+  _______, TR_MOUL, TR_MOUD, TR_MOUR, TR_MWHD, ___x___, _SCAG_MODS________________________, \
+  ___x___, ___x___, ___x___, TR_DRGS, TR_SNIP, ___x___, TR_BTN1, TR_BTN2, TR_BTN3, ___x___, \
                     TR_BTN1, TR_BTN2, TR_BTN3, TR_BTN5, TR_BTN4, ___x___
+
+
+#define LAYER_MOUSE \
+  ___x___, TR_BTN5, TR_BTN3, TR_BTN4, ___x___, TR_MWHU, ___x___, TR_MOUU, ___x___, ___x___, \
+  _______, _GACS_MOUSE_MODS_________, ___x___, TR_MWHD, TR_MOUL, TR_MOUD, TR_MOUR, ___x___, \
+  ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, \
+                    ___x___, TR_BTN1, TR_BTN2, ___x___, ___x___, ___x___
+
 
 
 #define LAYER_GAME_NUM \

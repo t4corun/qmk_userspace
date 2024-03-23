@@ -82,15 +82,34 @@ enum keycodes {
 
 
 
-#if defined(MOUSELAYER_ENABLE)
-#   define MOUSE   MO(_MOUSE)
+
+#if defined(MOUSEKEY_ENABLE)
+#   define TR_MOUA LT(_MOUSE, KC_A)
+
+#   define TR_MOUU KC_MS_U
+#   define TR_MOUD KC_MS_D
+#   define TR_MOUL KC_MS_L
+#   define TR_MOUR KC_MS_R
+
+#   define TR_MWHU KC_WH_U //Mouse wheel keys are not needed unless the board has no encoders
+#   define TR_MWHD KC_WH_D
+
 #   define TR_BTN1 KC_BTN1
 #   define TR_BTN2 KC_BTN2
 #   define TR_BTN3 KC_BTN3
 #   define TR_BTN4 KC_BTN4
 #   define TR_BTN5 KC_BTN5
 #else
-#   define MOUSE   ___x___
+#   define TR_MOUA KC_A
+
+#   define TR_MOUU ___x___
+#   define TR_MOUD ___x___
+#   define TR_MOUL ___x___
+#   define TR_MOUR ___x___
+
+#   define TR_MWHU ___x___
+#   define TR_MWHD ___x___
+
 #   define TR_BTN1 ___x___
 #   define TR_BTN2 ___x___
 #   define TR_BTN3 ___x___
@@ -98,34 +117,24 @@ enum keycodes {
 #   define TR_BTN5 ___x___
 #endif //MOUSELAYER_ENABLE
 
-#if defined(MOUSEKEY_ENABLE)
-#   define TR_MOUU KC_MS_U
-#   define TR_MOUD KC_MS_D
-#   define TR_MOUL KC_MS_L
-#   define TR_MOUR KC_MS_R
-#   define TR_MWHU KC_WH_U
-#   define TR_MWHD KC_WH_D
+
+
+
+
+#if defined(MOUSELAYER_ENABLE)
+#   define MOUSE   MO(_MOUSE)
 #else
-#   define TR_MOUU ___x___
-#   define TR_MOUD ___x___
-#   define TR_MOUL ___x___
-#   define TR_MOUR ___x___
-#   define TR_MWHU ___x___
-#   define TR_MWHD ___x___
+#   define MOUSE   ___x___
+#endif //MOUSELAYER_ENABLE
+
+#if defined(MOUSEKEY_ENABLE)
+
+#else
+
 #endif //MOUSEKEY_ENABLE
 
-//Layer tap key is dependent on if mouse pointer or mouse keys
-//c for pointer, z for keys
-#if defined(MOUSELAYER_ENABLE) && !defined(MOUSEKEY_ENABLE)
-#   define TR_MOUC LT(_MOUSE, KC_C)
-#   define TR_MOUZ KC_Z
-#elif defined(MOUSELAYER_ENABLE) && defined(MOUSEKEY_ENABLE)
-#   define TR_MOUC KC_C
-#   define TR_MOUZ LT(_MOUSE, KC_Z)
-#else
-#   define TR_MOUZ KC_Z
-#   define TR_MOUC KC_C
-#endif //defined(MOUSELAYER_ENABLE) && !defined(MOUSEKEY_ENABLE)
+
+
 
 
 //these keycodes come from the cnano
