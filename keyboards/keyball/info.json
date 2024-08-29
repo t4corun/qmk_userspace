@@ -1,0 +1,55 @@
+{
+	"manufacturer": "Yowkees",
+	"url": "https://github.com/Yowkees/keyball",
+	"usb": {
+		"vid": "0x5957"
+	},
+	"processor": "atmega32u4",
+	"bootloader": "caterina",
+	"matrix_pins": {
+		"cols": [ "D4", "C6", "D7", "E6", "B4", "B5" ],
+		"rows": [ "F4", "F5", "F6", "F7" ]
+	},
+	"diode_direction": "COL2ROW",
+	"debounce": 5,
+	"build": {
+		"lto": true
+	},
+	"features": {
+		"bootmagic": false,
+		"extrakey": false,
+		"console": false,
+		"command": false,
+		"nkro": false,
+		"backlight": false,
+		"audio": false,
+		"rgblight": false,
+		"rgb_matrix": false,
+		"oled": false,
+		"space_cadet": false,
+		"grave_esc": false,
+		"magic": false
+	},
+	"mouse_key": {
+		"enabled": false
+	},
+	"rgb_matrix": {
+		"driver": "ws2812",
+		"sleep": true
+	},
+	"ws2812": {
+		"pin": "D3"
+	},
+	"split": {
+		"enabled": true,
+		"serial": {
+			"pin": "D2"
+		},
+		"transport": {
+			"sync": {
+				"matrix_state": true,
+				"oled": true
+			}
+		}
+	}
+}

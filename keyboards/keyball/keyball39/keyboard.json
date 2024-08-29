@@ -1,0 +1,16 @@
+{
+    "keyboard_name": "Keyball39",
+    "usb": {
+        "vid": "0x5957",
+        "pid": "0x0200",
+        "device_version": "1.0.0"
+    },
+	"rgblight": {
+		"led_count": 48,
+		"split_count": [24, 24]
+	},
+	"rgb_matrix": {
+		"led_count": 42,
+		"split_count": [21, 21]
+	}
+}
