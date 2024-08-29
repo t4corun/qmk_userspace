@@ -22,7 +22,8 @@ enum layers {
   _NAVIGATION,
   _NUMBER,
   _SYMBOL,
-  _MOUSE_FUNC
+  _MOUSE,
+  _FUNCTION
 };
 
 // start at the second layer
@@ -71,9 +72,9 @@ enum keycodes {
 // layer changes
 #define NAV     MO(_NAVIGATION)
 #define NUM     MO(_NUMBER)
-#define MF_Z    LT(_MOUSE_FUNC, KC_Z)
-#define MOU_FUN TG(_MOUSE_FUNC)
-#define CONFIG  MO(_CONFIG)
+#define MOU_A   LT(_MOUSE, KC_A)
+#define MOU_TOG TG(_MOUSE)
+#define FUNC    MO(_FUNCTION)
 
 // Windows Shortcuts
 #define SC_COPY LCTL(KC_C)
@@ -131,7 +132,7 @@ enum keycodes {
 
 #if defined(KEYBOARD_bastardkb_charybdis_3x5)
 //these mouse codes are defined in charybdis.h
-#  define TR_SNIP SNIPING  
+#  define TR_SNIP SNIPING
 #  define TR_DRGS DRG_TOG
 #  define TR_SDPI S_D_MOD  //sniping dpi
 #  define TR_PDPI DPI_MOD  //pointer dpi
@@ -158,16 +159,16 @@ enum keycodes {
 
 #define LAYER_QWERTY                                                                        \
   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    \
-  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    TR_QUOT, \
-  MF_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    TR_COMM, TR_DOT,  TR_MINS, \
+  MOU_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    TR_QUOT, \
+  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    TR_COMM, TR_DOT,  TR_MINS, \
                     _BASE_L4_________________, _BASE_R4_________________,                   \
                                       SCR_TOP, KC_MUTE
 
 
 #define LAYER_COLEMAK_DH                                                                    \
   KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    TR_QUOT, \
-  KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    \
-  MF_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    TR_COMM, TR_DOT,  TR_MINS, \
+  MOU_A,   KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    \
+  KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    TR_COMM, TR_DOT,  TR_MINS, \
                     _BASE_L4_________________, _BASE_R4_________________,                   \
                                       SCR_TOP, KC_MUTE
 
@@ -181,11 +182,11 @@ enum keycodes {
 
 
 #define LAYER_NAVIGATION                                                                    \
-  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, KC_APP,  ___x___, KC_CAPS, MOU_FUN, \
+  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, KC_APP,  DM_PLY1, DM_REC1, ___x___, \
   ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC, _SCAG_MODS________________________, \
   _UCCPR_L___________________________________, KC_DEL,  KC_TAB,  KC_VOLD, KC_VOLU, KC_MUTE, \
                     ___x___, NUM,     KC_ENT,  _LAYER_TRANS_____________,                   \
-                                      SCR_TOP, TOG_CFG
+                                      SCR_TOP, ___x___
 
 
 #define LAYER_NUMBER                                                                        \
@@ -204,9 +205,18 @@ enum keycodes {
                                       ___x___, ___x___
 
 
-#define LAYER_MOUSE_FUNC                                                                    \
-  MOU_FUN, ___x___, ___x___, TR_PDPI, TR_SDPI, TOG_CFG, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
-  _GACS_MODS________________________, TR_DRGS, FWD_CFG, KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
-  _______, KC_BTN1, KC_BTN5, KC_BTN4, TR_SNIP, REV_CFG, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
-                    KC_BTN1, KC_BTN3, KC_BTN2, DM_PLY1, DM_REC1, ___x___,                   \
+#define LAYER_MOUSE                                                                         \
+  _NONE_5____________________________________, TR_PDPI, TR_SDPI, ___x___, ___x___, MOU_TOG, \
+  _______, TR_LALT, TR_LCTL, TR_LSFT, TR_DRGS, ___x___, ___x___, ___x___, ___x___, ___x___, \
+  ___x___, KC_BTN1, KC_BTN5, KC_BTN4, TR_SNIP, ___x___, ___x___, ___x___, ___x___, ___x___, \
+                    KC_BTN1, KC_BTN3, KC_BTN2, ___x___, ___x___, ___x___,                   \
                                       SCR_TOP, ZOOMRST
+
+
+#define LAYER_FUNCTION                                                                      \
+  QK_BOOT, KC_MPRV, KC_MNXT, KC_MPLY, DM_REC1, KC_PSCR, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
+  _GACS_MODS________________________, DM_PLY1, KC_BRK,  KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
+  ___x___, KC_NUM,  KC_CAPS, KC_SCRL, KC_INS,  TOG_CFG, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
+                    _NONE_3__________________, FWD_CFG, REV_CFG, ___x___,                   \
+                                      TOG_CFG, TOG_CFG
+
