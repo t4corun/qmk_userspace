@@ -6,50 +6,29 @@
         "vid": "0x5957"
     },
 
-    "processor": "atmega32u4",
-    "bootloader": "caterina",
+    "processor": "RP2040",
+    "bootloader": "rp2040",
 
     "matrix_pins": {
-        "rows": [ "F4", "F5", "F6", "F7" ],
-        "cols": [ "D4", "C6", "D7", "E6", "B4", "B5" ]
+        "cols": [ "GP4", "GP5", "GP6", "GP7", "GP8", "GP9" ],
+        "rows": [ "GP29", "GP28", "GP27", "GP26" ]
     },
+
     "diode_direction": "COL2ROW",
     "debounce": 5,
 
-    "build": {
-        "lto": true
-    },
-
-    "qmk": {
-        "locking": {
-            "enabled": false,
-            "resync": false
-        },
-        "tap_keycode_delay": 5
-    },
-
     "features": {
         "bootmagic": false,
-        "extrakey": false,
-        "console": false,
-        "command": false,
-        "nkro": false,
-        "backlight": false,
-        "audio": false,
-        "rgblight": false,
-        "rgb_matrix": false,
-        "oled": false,
-        "space_cadet": false,
-        "grave_esc": false,
-        "magic": false,
+        "extrakey": true,
+        "rgb_matrix": true,
+        "oled": true,
         "pointing_device": true
     },
 
     "split": {
         "enabled": true,
-        "usb_detect": true,
         "serial": {
-            "pin": "D2"
+            "pin": "GP1"
         },
         "transport": {
             "sync": {
@@ -59,33 +38,33 @@
         }
     },
 
-    "rgblight": {
-        "max_brightness": 150,
-        "brightness_steps": 15,
-        "hue_steps": 17,
-        "saturation_steps": 17,
+    "rgb_matrix": {
+        "driver": "ws2812",
         "sleep": true,
+        "max_brightness": 150,
+        "timeout": 60000,
         "animations": {
             "breathing": true,
-            "rainbow_mood": true,
-            "rainbow_swirl": true,
-            "snake": true,
-            "knight": true,
-            "christmas": true,
-            "static_gradient": true,
-            "rgb_test": true,
-            "alternating": true,
-            "twinkle": true
+            "cycle_left_right": true,
+            "cycle_up_down": true,
+            "cycle_pinwheel": true,
+            "hue_breathing": true,
+            "typing_heatmap": true,
+            "digital_rain": true,
+            "splash": true
+        },
+        "default": {
+            "animation": "typing_heatmap",
+            "hue": 4,
+            "sat": 79,
+            "val": 59,
+            "spd": 32
         }
     },
 
-    "rgb_matrix": {
-        "driver": "ws2812",
-        "sleep": true
-    },
-
     "ws2812": {
-        "pin": "D3"
+        "pin": "GP0",
+        "driver": "vendor"
     },
 
     "mouse_key": {

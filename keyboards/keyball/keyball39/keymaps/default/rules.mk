@@ -1,5 +1,1 @@
-RGBLIGHT_ENABLE = yes
-
-OLED_ENABLE = yes
-
-KEYBALL_CONFIG = no_ball
+KEYBALL_CONFIG = right_ball
