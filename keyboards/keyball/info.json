@@ -28,6 +28,7 @@
     "split": {
         "enabled": true,
         "serial": {
+            "driver": "vendor",
             "pin": "GP1"
         },
         "transport": {
@@ -58,7 +59,7 @@
             "hue": 4,
             "sat": 79,
             "val": 59,
-            "spd": 32
+            "speed": 32
         }
     },
 

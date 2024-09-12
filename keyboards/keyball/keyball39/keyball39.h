@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 
 #include "quantum.h"
-#include "lib/keyball/keyball.h"
+//#include "lib/keyball/keyball.h"
 
 // it does not like it when the macro starts with LAYOUT...
 #ifdef KEYBALL_RIGHT_BALL
