@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "keyball39.h"
 
+/*
 #ifdef KEYBALL_RIGHT_BALL
 #   define LAYOUT_right_ball(                                       \
         L00, L01, L02, L03, L04,           R04, R03, R02, R01, R00, \
@@ -91,3 +92,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         {   R30,   R31,   R32,   R33,   R34,   R35 },               \
     }
 #endif //KEYBALL_RIGHT_BALL
+*/

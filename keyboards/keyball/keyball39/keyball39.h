@@ -19,9 +19,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include "quantum.h"
+#include "keyball.h"
+
+//#include "quantum.h"
 //#include "lib/keyball/keyball.h"
 
+/*
 // it does not like it when the macro starts with LAYOUT...
 #ifdef KEYBALL_RIGHT_BALL
 #   define KEYBALL_LAYOUT(...) LAYOUT_right_ball(__VA_ARGS__)
@@ -32,3 +35,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #elif defined(KEYBALL_NO_BALL)
 #   define KEYBALL_LAYOUT(...) LAYOUT_no_ball(__VA_ARGS__)
 #endif //KEYBALL_RIGHT_BALL
+*/
