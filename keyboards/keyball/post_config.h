@@ -22,6 +22,6 @@
 #pragma once
 
 // Enable syncing of charybdis config
-#ifdef KEYBALL_CONFIG_SYNC
-#    define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
+#if defined(KEYBALL_CONFIG_SYNC)
+#   define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
 #endif
