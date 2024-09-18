@@ -1,0 +1,76 @@
+{
+    "manufacturer": "Yowkees",
+    "maintainer": "t4corun",
+    "url": "https://github.com/Yowkees/keyball",
+    "usb": {
+        "vid": "0x5957"
+    },
+
+    "processor": "RP2040",
+    "bootloader": "rp2040",
+
+    "matrix_pins": {
+        "cols": [ "GP4", "GP5", "GP6", "GP7", "GP8", "GP9" ],
+        "rows": [ "GP29", "GP28", "GP27", "GP26" ]
+    },
+
+    "diode_direction": "COL2ROW",
+    "debounce": 5,
+
+    "features": {
+        "bootmagic": false,
+        "extrakey": true,
+        "rgblight": false,
+        "rgb_matrix": true,
+        "oled": true,
+        "pointing_device": true
+    },
+
+    "split": {
+        "enabled": true,
+        "serial": {
+            "driver": "vendor",
+            "pin": "GP1"
+        },
+        "transport": {
+            "sync": {
+                "matrix_state": true,
+                "oled": true
+            }
+        }
+    },
+
+    "rgb_matrix": {
+        "driver": "ws2812",
+        "sleep": true,
+        "max_brightness": 150,
+        "timeout": 60000,
+        "animations": {
+            "breathing": true,
+            "cycle_left_right": true,
+            "cycle_up_down": true,
+            "cycle_pinwheel": true,
+            "hue_breathing": true,
+            "typing_heatmap": true,
+            "digital_rain": true,
+            "splash": true
+        },
+        "default": {
+            "animation": "typing_heatmap",
+            "hue": 4,
+            "sat": 79,
+            "val": 59,
+            "speed": 32
+        }
+    },
+
+    "ws2812": {
+        "pin": "GP0",
+        "driver": "vendor"
+    },
+
+    "mouse_key": {
+        "enabled": false
+    }
+
+}
