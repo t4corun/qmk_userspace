@@ -17,6 +17,7 @@
 
 #include "klor.h"
 
+/*
 #ifdef KLOR_POLYDACTYL
 #   define LAYOUT_polydactyl(                                                \
            L01, L02, L03, L04, L05,           R00, R01, R02, R03, R04,       \
@@ -90,7 +91,7 @@
       }
 #endif //KLOR_POLYDACTL
 
-
+*/
 oled_rotation_t oled_init_kb(oled_rotation_t rotation) {
     return OLED_ROTATION_180;
 }
@@ -107,7 +108,7 @@ __attribute__ ((weak))
 const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] =
 
 /*  ORIGINAL LAYOUT
-{  // LEFT 
+{  // LEFT
  { {0, 0}, {1, 0}, {2, 0}, {3, 0}, {4, 0}, {5, 0} }, \
  { {0, 1}, {1, 1}, {2, 1}, {3, 1}, {4, 1}, {5, 1} }, \
  { {0, 2}, {1, 2}, {2, 2}, {3, 2}, {4, 2}, {5, 2} }, \
@@ -121,7 +122,7 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] =
 */
 
 //  MIRRORED LAYOUT
-{  // LEFT 
+{  // LEFT
  { {0, 4}, {1, 4}, {2, 4}, {3, 4}, {4, 4}, {5, 4} }, \
  { {0, 5}, {1, 5}, {2, 5}, {3, 5}, {4, 5}, {5, 5} }, \
  { {0, 6}, {1, 6}, {2, 6}, {3, 6}, {4, 6}, {5, 6} }, \
@@ -138,7 +139,7 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] =
 
 
 
-
+/*
 #ifdef RGB_MATRIX_ENABLE
 
 // Physical layout ────────────────────────────────────────────────────
@@ -161,7 +162,7 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] =
 //    X │ 18  13  12  06  05 ││ 26  27  33  34  39 │ X   0
 //  ┌───┴────────────────────┤├────────────────────┴───┐ │
 //  │ 20  17  14  11  07  04 ││ 25  28  32  35  38  40 │ 1
-//  ├────────────────────────┤├────────────────────────┤ │ 
+//  ├────────────────────────┤├────────────────────────┤ │
 //  │ 19  16  15  10  08  03 ││ 24  29  31  36  37  41 │ 2
 //  └───┬────────────────┬───┘└───┬────────────────┬───┘ │
 //    X │ 09  02  01  00 │ X    X │ 21  22  23  30 │ X   3
@@ -170,10 +171,10 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] =
 
 
 #   if defined (KLOR_POLYDACTYL) || defined(KLOR_YUBITSUME)
-      // POLYDACTYL / YUBITSUME 
+      // POLYDACTYL / YUBITSUME
       // use this matrix if you use the polydactyl or yubitsume layout ────────────────────────────────────┐
       led_config_t g_led_config = { {
-      //COL   00     01   02   03   04   05       ROW 
+      //COL   00     01   02   03   04   05       ROW
           { NO_LED,  18,  13,  12,   6,   5    },//00
           {  19,     17,  14,  11,   7,   4    },//01
           {  20,     16,  15,  10,   8,   3    },//02
@@ -189,7 +190,7 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] =
          //C1 R2 ▼       C1 R3 ▼       thumb4 ▼      C2 R3 ▼       C2 R2 ▼       C2 R1 ▼       C3 R1 ▼
           {  60,  19 }, {  60,  32 }, {  58,  48 }, {  46,  25 }, {  46,  12 }, {  46,   0 }, {  29,   7 },
          //C3 R2 ▼       C3 R3 ▼       C4 R3 ▼       C4 R2 ▼       C4 R1 ▼       C5 R2 ▼       C5 R3 ▼
-          {  30,  20 }, {  31,  33 }, {  17,  42 }, {  15,  30 }, {  13,  17 }, {   0,  28 }, {   3,  41 }, 
+          {  30,  20 }, {  31,  33 }, {  17,  42 }, {  15,  30 }, {  13,  17 }, {   0,  28 }, {   3,  41 },
           //RIGHT
          //thumb1 ▼      thumb2 ▼     thumb3 ▼       C0 R3 ▼       C0 R2 ▼       C0 R1 ▼       C1 R1 ▼
           { 122,  63 }, { 135,  54 }, { 150,  49 }, { 149,  34 }, { 149,  21 }, { 149,   8 }, { 163,   6 },
@@ -197,8 +198,8 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] =
           { 163,  19 }, { 163,  32 }, { 166,  48 }, { 178,  25 }, { 178,  12 }, { 178,   0 }, { 195,   7 },
          //C3 R2 ▼       C3 R3 ▼       C4 R3 ▼       C4 R2 ▼       C4 R1 ▼       C5 R2 ▼       C5 R3 ▼
           { 194,  20 }, { 193,  33 }, { 206,  42 }, { 209,  30 }, { 211,  17 }, { 224,  28 }, { 221,  41 }
-      }, {       
-          //LEFT               
+      }, {
+          //LEFT
           1, 1, 1, 4, 4, 4, 4,
           4, 4, 1, 4, 4, 4, 4,
           4, 4, 4, 4, 4, 1, 1,
@@ -216,7 +217,7 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] =
       // KONRAD
       // use this matrix if you use the konrad layout ───────────────────────────────────────────────────────┐
       led_config_t g_led_config = { {
-      //COL   00     01   02   03   04       05          ROW 
+      //COL   00     01   02   03   04       05          ROW
           { NO_LED,  17,  12,  11,   5,      4       },//00
           {  18,     16,  13,  10,   6,      3       },//01
           {  19,     15,  14,   9,   7,      2       },//02
@@ -232,7 +233,7 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] =
          //C1 R2 ▼       C1 R3 ▼       thumb4 ▼      C2 R3 ▼       C2 R2 ▼       C2 R1 ▼       C3 R1 ▼
           {  60,  19 }, {  60,  32 }, {  58,  48 }, {  46,  25 }, {  46,  12 }, {  46,   0 }, {  29,   7 },
          //C3 R2 ▼       C3 R3 ▼       C4 R3 ▼       C4 R2 ▼       C4 R1 ▼       C5 R2 ▼       C5 R3 ▼
-          {  30,  20 }, {  31,  33 }, {  17,  42 }, {  15,  30 }, {  13,  17 }, {   0,  28 }, {   3,  41 }, 
+          {  30,  20 }, {  31,  33 }, {  17,  42 }, {  15,  30 }, {  13,  17 }, {   0,  28 }, {   3,  41 },
           //RIGHT
          //thumb1 ▼      thumb2 ▼     thumb3 ▼       C0 R3 ▼       C0 R2 ▼       C0 R1 ▼       C1 R1 ▼
                         { 135,  54 }, { 150,  49 }, { 149,  34 }, { 149,  21 }, { 149,   8 }, { 163,   6 },
@@ -240,8 +241,8 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] =
           { 163,  19 }, { 163,  32 }, { 166,  48 }, { 178,  25 }, { 178,  12 }, { 178,   0 }, { 195,   7 },
          //C3 R2 ▼       C3 R3 ▼       C4 R3 ▼       C4 R2 ▼       C4 R1 ▼       C5 R2 ▼       C5 R3 ▼
           { 194,  20 }, { 193,  33 }, { 206,  42 }, { 209,  30 }, { 211,  17 }, { 224,  28 }, { 221,  41 }
-      }, {       
-          //LEFT               
+      }, {
+          //LEFT
           1, 1, 4, 4, 4, 4,
           4, 4, 1, 4, 4, 4, 4,
           4, 4, 4, 4, 4, 1, 1,
@@ -258,7 +259,7 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] =
       // SAEGEWERK
       // use this matrix if you use the saegewerk layout ────────────────────────────────────────────────────┐
       led_config_t g_led_config = { {
-      //COL   00     01   02   03   04   05              ROW 
+      //COL   00     01   02   03   04   05              ROW
           { NO_LED,  17,  12,  11,   5,   4          },//00
           { NO_LED,  16,  13,  10,   6,   3          },//01
           { NO_LED,  15,  14,   9,   7,   2          },//02
@@ -282,7 +283,7 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] =
           { 163,  19 }, { 163,  32 }, { 166,  48 }, { 178,  25 }, { 178,  12 }, { 178,   0 }, { 195,   7 },
          //C3 R2 ▼       C3 R3 ▼       C4 R3 ▼       C4 R2 ▼       C4 R1 ▼       C5 R2 ▼       C5 R3 ▼
           { 194,  20 }, { 193,  33 }, { 206,  42 }, { 209,  30 }, { 211,  17 }
-      }, { 
+      }, {
           //LEFT
           1, 1, 4, 4, 4, 4,
           4, 4, 1, 4, 4, 4, 4,
@@ -296,7 +297,9 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] =
 // ────────────────────────────────────────────────────────────────────────────────────────────────────┘
 
 #   endif //KLOR_POLYDACTL || KLOR_YUBITSUME
+*/
 
+#if defined(RGB_MATRIX_ENABLE)
 
 void suspend_power_down_kb(void) {
     rgb_matrix_set_suspend_state(true);

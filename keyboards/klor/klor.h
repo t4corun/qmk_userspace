@@ -15,7 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-//#pragma once
+#pragma once
+
 #include "quantum.h"
 
 /* This a shortcut to help you visually see your layout.
@@ -30,7 +31,7 @@
 // readability
 #define ___ KC_NO
 
-
+/*
 // it does not like it when the macro starts with LAYOUT...
 #ifdef KLOR_POLYDACTYL
 #   define KLOR_LAYOUT(...) LAYOUT_polydactyl(__VA_ARGS__)
@@ -41,3 +42,4 @@
 #elif defined(KLOR_SAEGEWERK)
 #   define KLOR_LAYOUT(...) LAYOUT_saegewerk(__VA_ARGS__)
 #endif //KLOR_POLYDACTL
+*/

@@ -1,6 +1,6 @@
 #include "t4corun.h"
 
-#define LAYOUT_klor_wrapper(...) KLOR_LAYOUT(__VA_ARGS__)
+#define LAYOUT_klor_wrapper(...) LAYOUT(__VA_ARGS__)
 
 #define LAYOUT_3x5_3_keymap( \
 	k00, k01, k02, k03, k04, k05, k06, k07, k08, k09,           \
