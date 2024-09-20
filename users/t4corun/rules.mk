@@ -4,9 +4,9 @@
 # - a way to save memory on MCU
 
 # ---------------------------------------------------------
-# set defaults on these qmk features if not defined 
+# set defaults on these qmk features if not defined
 # in the individual keyboard rules.mk
-# 
+#
 # ?= means set the value if its not defined elsewhere
 
 
@@ -48,7 +48,7 @@ SRC +=                     \
 # include additional code for enabled features for each keyboard
 
 ifeq ($(strip $(COMBO_ENABLE)), yes)
-  INTROSPECTION_KEYMAP_C += features/combo.c
+  INTROSPECTION_KEYMAP_C += features/combo2.c
 endif
 
 ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)

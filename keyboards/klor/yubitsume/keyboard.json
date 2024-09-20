@@ -33,7 +33,7 @@
 
             {"matrix": [1, 2], "x": 17,  "y": 42, "flags": 4},
             {"matrix": [1, 1], "x": 15,  "y": 30, "flags": 4},
-            {"matrix": [1, 0], "x": 13,  "y": 17, "flags": 4}
+            {"matrix": [1, 0], "x": 13,  "y": 17, "flags": 4},
 
             {"matrix": [4, 3], "x": 122, "y": 63, "flags": 1},
             {"matrix": [3, 3], "x": 135, "y": 54, "flags": 1},
@@ -64,7 +64,7 @@
     },
 
     "layouts": {
-        "LAYOUT_yubitsume": {
+        "LAYOUT": {
             "layout": [
                 {"label": "L01", "matrix": [0, 1], "x": 1, "y": 0},
                 {"label": "L02", "matrix": [0, 2], "x": 0.5, "y": 2},
