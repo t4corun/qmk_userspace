@@ -176,13 +176,13 @@ enum keycodes {
 #define LAYER_GAME                                                                          \
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_7,    KC_8,    KC_9,    KC_ESC,  \
   KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_4,    KC_5,    KC_6,    KC_GRV,  \
-  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LALT, KC_1,    KC_2,    KC_3,    ___x___, \
+  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LALT, KC_1,    KC_2,    KC_3,    QK_RBT,  \
                     KC_ENT,  KC_SPC,  KC_LSFT, _BASE_R4_________________,                   \
                                       SCR_TOP, KC_MUTE
 
 
 #define LAYER_NAVIGATION                                                                    \
-  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, KC_APP,  DM_PLY1, DM_REC1, ___x___, \
+  KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, ___x___, KC_APP,  DM_PLY1, DM_REC1, TOG_CFG, \
   ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSPC, _SCAG_MODS________________________, \
   _UCCPR_L___________________________________, KC_DEL,  KC_TAB,  KC_VOLD, KC_VOLU, KC_MUTE, \
                     ___x___, NUM,     KC_ENT,  _LAYER_TRANS_____________,                   \
@@ -216,7 +216,7 @@ enum keycodes {
 #define LAYER_FUNCTION                                                                      \
   QK_BOOT, KC_MPRV, KC_MNXT, KC_MPLY, DM_REC1, KC_PSCR, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
   _GACS_MODS________________________, DM_PLY1, KC_BRK,  KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
-  ___x___, KC_NUM,  KC_CAPS, KC_SCRL, KC_INS,  TOG_CFG, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
+  QK_RBT,  KC_NUM,  KC_CAPS, KC_SCRL, KC_INS,  TOG_CFG, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
                     _NONE_3__________________, FWD_CFG, REV_CFG, ___x___,                   \
                                       TOG_CFG, TOG_CFG
 

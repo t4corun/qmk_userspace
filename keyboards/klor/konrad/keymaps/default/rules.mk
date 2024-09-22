@@ -9,6 +9,3 @@ AUDIO_ENABLE = yes
 MUSIC_ENABLE = yes
 HAPTIC_ENABLE = no
 RGB_MATRIX_ENABLE = no
-
-# Choose your layout
-KLOR_CONFIG = polydactyl

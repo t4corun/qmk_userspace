@@ -7,8 +7,5 @@ KEY_OVERRIDE_ENABLE = no
 # These features will be disabled in post_rules.mk if using an AVR MCU
 AUDIO_ENABLE = yes
 MUSIC_ENABLE = yes
-HAPTIC_ENABLE = yes
-RGB_MATRIX_ENABLE = yes
-
-# Choose your layout
-KLOR_CONFIG = saegewerk
+HAPTIC_ENABLE = no
+RGB_MATRIX_ENABLE = no

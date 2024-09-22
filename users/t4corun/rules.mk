@@ -4,9 +4,9 @@
 # - a way to save memory on MCU
 
 # ---------------------------------------------------------
-# set defaults on these qmk features if not defined 
+# set defaults on these qmk features if not defined
 # in the individual keyboard rules.mk
-# 
+#
 # ?= means set the value if its not defined elsewhere
 
 

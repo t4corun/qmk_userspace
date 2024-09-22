@@ -12,6 +12,3 @@ RGB_MATRIX_ENABLE = yes
 SWAP_HANDS_ENABLE = no
 MOUSEKEY_ENABLE = yes
 EXTRAKEY_ENABLE = yes
-
-# Choose your layout
-KLOR_CONFIG = saegewerk
