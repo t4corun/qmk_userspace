@@ -264,10 +264,10 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] =
           { NO_LED,  16,  13,  10,   6,   3          },//01
           { NO_LED,  15,  14,   9,   7,   2          },//02
           { NO_LED,   8,   1,   0, NO_LED, NO_LED    },//03
-          { NO_LED,  35,  30,  29,  23,  22          },//00
-          { NO_LED,  34,  31,  28,  24,  21          },//01
-          { NO_LED,  33,  32,  27,  25,  20          },//02
-          { NO_LED,  26,  19,  18, NO_LED,  NO_LED   } //03
+          { NO_LED,  35,  30,  29,  23,  22          },//00 04
+          { NO_LED,  34,  31,  28,  24,  21          },//01 05
+          { NO_LED,  33,  32,  27,  25,  20          },//02 06
+          { NO_LED,  26,  19,  18, NO_LED,  NO_LED   } //03 07
       }, {
          //LEFT
          //thumb1 ▼      thumb2 ▼     thumb3 ▼       C0 R3 ▼       C0 R2 ▼       C0 R1 ▼       C1 R1 ▼

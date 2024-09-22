@@ -48,7 +48,7 @@ SRC +=                     \
 # include additional code for enabled features for each keyboard
 
 ifeq ($(strip $(COMBO_ENABLE)), yes)
-  INTROSPECTION_KEYMAP_C += features/combo2.c
+  INTROSPECTION_KEYMAP_C += features/combo.c
 endif
 
 ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
