@@ -18,28 +18,3 @@
 #pragma once
 
 #include "quantum.h"
-
-/* This a shortcut to help you visually see your layout.
- *
- * The first section contains all of the arguments representing the physical
- * layout of the board and position of the keys.
- *
- * The second converts the arguments into a two-dimensional array which
- * represents the switch matrix.
- */
-
-// readability
-#define ___ KC_NO
-
-/*
-// it does not like it when the macro starts with LAYOUT...
-#ifdef KLOR_POLYDACTYL
-#   define KLOR_LAYOUT(...) LAYOUT_polydactyl(__VA_ARGS__)
-#elif defined(KLOR_KONRAD)
-#   define KLOR_LAYOUT(...) LAYOUT_konrad(__VA_ARGS__)
-#elif defined(KLOR_YUBITSUME)
-#   define KLOR_LAYOUT(...) LAYOUT_yubitsume(__VA_ARGS__)
-#elif defined(KLOR_SAEGEWERK)
-#   define KLOR_LAYOUT(...) LAYOUT_saegewerk(__VA_ARGS__)
-#endif //KLOR_POLYDACTL
-*/

@@ -21,13 +21,6 @@
 #include <string.h>
 #include "klor.h"
 
-// this should be handled by common_rules.mk but the code doesn't work without it
-#ifdef HAPTIC_ENABLE
-#include "drivers/haptic/drv2605l.h"
-#endif //HAPTIC ENABLE
-
-
-
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 // │ D E F I N I T I O N S                                                                                                                      │
 // └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
@@ -83,12 +76,12 @@ enum custom_keycodes {
 // │ d e f i n e   s o u n d s                                 │
 // └───────────────────────────────────────────────────────────┘
 
-#ifdef AUDIO_ENABLE
-  #define WINXP_SOUND W__NOTE(_DS6), Q__NOTE(_DS5), H__NOTE(_AS5), H__NOTE(_GS5), H__NOTE(_DS5), H__NOTE(_DS6), H__NOTE(_AS5)
-  #define MAC_SOUND S__NOTE(_CS5), B__NOTE(_C5)
+#if defined(AUDIO_ENABLE)
+#define WINXP_SOUND W__NOTE(_DS6), Q__NOTE(_DS5), H__NOTE(_AS5), H__NOTE(_GS5), H__NOTE(_DS5), H__NOTE(_DS6), H__NOTE(_AS5)
+#define MAC_SOUND S__NOTE(_CS5), B__NOTE(_C5)
 
-  float winxp_song[][2] = SONG(WINXP_SOUND);
-  float mac_song[][2] = SONG(MAC_SOUND);
+float winxp_song[][2] = SONG(WINXP_SOUND);
+float mac_song[][2] = SONG(MAC_SOUND);
 #endif // AUDIO_ENABLE
 
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
@@ -311,26 +304,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 };
 
-
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 // │ H A P T I C   F E E D B A C K                                                                                                              │
 // └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 // ▝▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▘
 
 void keyboard_post_init_user(void) {
-  // Call the post init code.
-  #if HAPTIC_ENABLE
+#if defined(HAPTIC_ENABLE)
+    // Call the post init code.
     haptic_disable(); // disables per key haptic feedback by default
-  #endif //HAPTIC ENABLE
+#endif //HAPTIC ENABLE
 }
-
 
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 // │ O L E D                                                                                                                                    │
 // └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 // ▝▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▘
 
-#ifdef OLED_ENABLE
+#if defined(OLED_ENABLE)
 
 // ┌───────────────────────────────────────────────────────────┐
 // │ d y n a m i c   m a c r o                                 │
@@ -340,56 +331,55 @@ char layer_state_str[24];
 char o_text[24] = "";
 int dmacro_num = 0;
 
-#ifdef DYNAMIC_MACRO_ENABLE
-    char dmacro_text[4][24] = { "", "RECORDING", "STOP RECORDING",  "PLAY RECORDING"};
-    static uint16_t dmacro_timer;
-    const char PROGMEM rec_ico[] = {0xD1, 0xE1, 0};
-    const char PROGMEM stop_ico[] = {0xD3, 0xE1, 0};
-    const char PROGMEM play_ico[] = {0xD2, 0xE1, 0};
+#if defined(DYNAMIC_MACRO_ENABLE)
+char dmacro_text[4][24] = { "", "RECORDING", "STOP RECORDING",  "PLAY RECORDING"};
+static uint16_t dmacro_timer;
+const char PROGMEM rec_ico[] = {0xD1, 0xE1, 0};
+const char PROGMEM stop_ico[] = {0xD3, 0xE1, 0};
+const char PROGMEM play_ico[] = {0xD2, 0xE1, 0};
 
 
-    // DYNMACRO RECORD ├─────────────────────────────────────────────────────────────┐
-    void dynamic_macro_record_start_user(void) {
-          dmacro_num = 1;
-        return;
-    }
+// DYNMACRO RECORD ├─────────────────────────────────────────────────────────────┐
+void dynamic_macro_record_start_user(void) {
+    dmacro_num = 1;
+    return;
+}
 
-    // DYNMACRO STOP RECORDING ├─────────────────────────────────────────────────────┐
-    void dynamic_macro_record_end_user(int8_t direction) {
-          dmacro_num = 2;
-          dmacro_timer = timer_read();
-        return;
-    }
+// DYNMACRO STOP RECORDING ├─────────────────────────────────────────────────────┐
+void dynamic_macro_record_end_user(int8_t direction) {
+    dmacro_num = 2;
+    dmacro_timer = timer_read();
+    return;
+}
 
-    // DYNMACRO PLAY RECORDING ├─────────────────────────────────────────────────────┐
-    void dynamic_macro_play_user(int8_t direction) {
-          dmacro_num = 3;
-          dmacro_timer = timer_read();
-        return;
-    }
-#endif //DYNAMIC_MACRO_ENABLE
+// DYNMACRO PLAY RECORDING ├─────────────────────────────────────────────────────┐
+void dynamic_macro_play_user(int8_t direction) {
+    dmacro_num = 3;
+    dmacro_timer = timer_read();
+    return;
+}
+#endif // DYNAMIC_MACRO_ENABLE
 
 
 void matrix_scan_user(void) {
-  #ifdef DYNAMIC_MACRO_ENABLE
+#if defined(DYNAMIC_MACRO_ENABLE)
     // DynMacroTimer
     if(dmacro_num > 0){
         if (timer_elapsed(dmacro_timer) < 3000) {
             strcpy ( o_text, dmacro_text[dmacro_num] );
-          }
+        }
         else {
             if (dmacro_num == 1) {
                 strcpy ( o_text, dmacro_text[1] );
-              }
+            }
             else {
                 strcpy ( o_text, layer_state_str );
                 dmacro_num = 0;
-              }
-          }
-      }
-   #endif //DYNAMIC_MACRO_ENABLE
+            }
+        }
+    }
+#endif //DYNAMIC_MACRO_ENABLE
 }
-
 
 // ┌───────────────────────────────────────────────────────────┐
 // │ o l e d   g r a p h i c s                                 │
@@ -409,13 +399,13 @@ void render_os_lock_status(void) {
     static const char PROGMEM n_lock[] = {0x91, 0x92, 0};
     static const char PROGMEM c_lock[] = {0x93, 0x94, 0};
     static const char PROGMEM b_lock[] = {0xE1, 0xE1, 0};
-    #ifdef AUDIO_ENABLE
-      static const char PROGMEM aud_en[] = {0xAF, 0xB0, 0};
-      static const char PROGMEM aud_di[] = {0xCF, 0xD0, 0};
-    #endif
-    #ifdef HAPTIC_ENABLE
-      static const char PROGMEM hap_en[] = {0xB1, 0xB2, 0};
-    #endif
+#if defined(AUDIO_ENABLE)
+    static const char PROGMEM aud_en[] = {0xAF, 0xB0, 0};
+    static const char PROGMEM aud_di[] = {0xCF, 0xD0, 0};
+#endif // AUDIO_ENABLE
+#if defined(HAPTIC_ENABLE)
+    static const char PROGMEM hap_en[] = {0xB1, 0xB2, 0};
+#endif
 
 // os mode status ────────────────────────────────────────┐
 
@@ -465,58 +455,57 @@ void render_os_lock_status(void) {
 
     oled_write_P(sep_h2, false);
 
-    #ifndef AUDIO_ENABLE
-        oled_write_P(b_lock, false);
-    #endif
-    #ifndef HAPTIC_ENABLE
-        oled_write_P(b_lock, false);
-    #endif
+#if !defined(AUDIO_ENABLE)
+    oled_write_P(b_lock, false);
+#endif // AUDIO_ENABLE
+#if !defined(HAPTIC_ENABLE)
+    oled_write_P(b_lock, false);
+#endif // HAPTIC_ENABLE
 
-    #ifdef AUDIO_ENABLE // ────────────────── AUDIO
-        if (is_audio_on()) {
-          oled_write_P(aud_en, false);
-        } else {
-          oled_write_P(aud_di, false);
-        }
-    #endif // AUDIO ENABLE
+#if defined(AUDIO_ENABLE) // ────────────────── AUDIO
+    if (is_audio_on()) {
+        oled_write_P(aud_en, false);
+    } else {
+        oled_write_P(aud_di, false);
+    }
+#endif // AUDIO ENABLE
 
-     #ifdef HAPTIC_ENABLE // ─────────────── HAPTIC
-        oled_write_P(hap_en, false);
-     #endif // HAPTIC ENABLE
+#if defined(HAPTIC_ENABLE) // ─────────────── HAPTIC
+    oled_write_P(hap_en, false);
+#endif // HAPTIC ENABLE
 }
-
 
 // layer status ──────────────────────────────────────────┐
 
 int layerstate = 0;
 
 layer_state_t layer_state_set_kb(layer_state_t state) {
-      switch (get_highest_layer(layer_state | default_layer_state)) {
-            case 0:
-                strcpy ( layer_state_str, "BASE COLEMAK");
-                break;
-            case 1:
-                strcpy ( layer_state_str, "BASE QWERTY");
-                break;
-            case 2:
-                strcpy ( layer_state_str, "LOWER");
-                break;
-            case 3:
-                strcpy ( layer_state_str, "RAISE");
-                break;
-            case 4:
-                strcpy ( layer_state_str, "ADJUST");
-                break;
-            default:
-                strcpy ( layer_state_str, "XXXXXX");
-        }
-      if (dmacro_num < 1) {
-          strcpy ( o_text, layer_state_str );
+    switch (get_highest_layer(layer_state | default_layer_state)) {
+        case 0:
+            strcpy ( layer_state_str, "BASE COLEMAK");
+            break;
+        case 1:
+            strcpy ( layer_state_str, "BASE QWERTY");
+            break;
+        case 2:
+            strcpy ( layer_state_str, "LOWER");
+            break;
+        case 3:
+            strcpy ( layer_state_str, "RAISE");
+            break;
+        case 4:
+            strcpy ( layer_state_str, "ADJUST");
+            break;
+        default:
+            strcpy ( layer_state_str, "XXXXXX");
     }
-  //return state;
+    if (dmacro_num < 1) {
+        strcpy ( o_text, layer_state_str );
+    }
+
+    //return state;
     return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
-
 
 // ┌───────────────────────────────────────────────────────────┐
 // │ w r i t e   t o   o l e d                                 │
@@ -529,11 +518,11 @@ bool oled_task_kb(void) {
     if (is_keyboard_master()) {  // ────────────────────────── PRIMARY SIDE
 
         // layer status ──────────────────────────────────────────────────┐
-        #ifdef DYNAMIC_MACRO_ENABLE
-            if(dmacro_num == 1){ oled_write_P(rec_ico, false); }
-            if(dmacro_num == 2){ oled_write_P(stop_ico, false); }
-            if(dmacro_num == 3){ oled_write_P(play_ico, false); }
-        #endif //DYNAMIC_MACRO_ENABLE
+#if defined(DYNAMIC_MACRO_ENABLE)
+        if(dmacro_num == 1){ oled_write_P(rec_ico, false); }
+        if(dmacro_num == 2){ oled_write_P(stop_ico, false); }
+        if(dmacro_num == 3){ oled_write_P(play_ico, false); }
+#endif //DYNAMIC_MACRO_ENABLE
 
         oled_write_ln(o_text, false);
         render_os_lock_status();
@@ -582,8 +571,6 @@ bool oled_task_kb(void) {
 }
 #endif // OLED_ENABLE
 
-
-
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case SHT_T:
@@ -594,7 +581,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM;
     }
 }
-
 
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 // │ M A C R O S                                                                                                                                │
@@ -607,25 +593,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case OS_SWAP:
             if (record->event.pressed) {
                 if (!keymap_config.swap_lctl_lgui) {
-                  keymap_config.swap_lctl_lgui = true;  // ─── MAC
-                  #ifdef AUDIO_ENABLE
-                    PLAY_SONG(mac_song);
-                  #endif // AUDIO_ENABLE
-                }
-                else {
-                  keymap_config.swap_lctl_lgui = false; // ─── WIN
-                  #ifdef AUDIO_ENABLE
+                    keymap_config.swap_lctl_lgui = true;  // ─── MAC
+#if defined(AUDIO_ENABLE)
+                      PLAY_SONG(mac_song);
+#endif // AUDIO_ENABLE
+                } else {
+                    keymap_config.swap_lctl_lgui = false; // ─── WIN
+#if defined(AUDIO_ENABLE)
                     PLAY_SONG(winxp_song);
-                  #endif // AUDIO_ENABLE
+#endif // AUDIO_ENABLE
                 }
-              #ifdef HAPTIC_ENABLE
+#if defined(HAPTIC_ENABLE)
                 drv2605l_pulse(DRV2605L_EFFECT_PULSING_STRONG_1_100);
-              #endif // HAPTIC_ENABLE
+#endif // HAPTIC_ENABLE
             eeconfig_update_keymap(keymap_config.raw);
             clear_keyboard();  // ──── clear to prevent stuck keys
             return false;
-          }
-
+        }
 
 // ┌───────────────────────────────────────────────────────────┐
 // │ l a y e r                                                 │
@@ -634,17 +618,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case COLEMAK:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_COLEMAK);
-                #ifdef HAPTIC_ENABLE
-                  drv2605l_pulse(DRV2605L_EFFECT_TRANSITION_HUM_1_100);
-                #endif // HAPTIC_ENABLE
+#if defined(HAPTIC_ENABLE)
+                drv2605l_pulse(DRV2605L_EFFECT_TRANSITION_HUM_1_100);
+#endif // HAPTIC_ENABLE
             }
             return false;
         case QWERTY:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_QWERTY);
-                #ifdef HAPTIC_ENABLE
-                  drv2605l_pulse(DRV2605L_EFFECT_TRANSITION_HUM_1_100);
-                #endif // HAPTIC_ENABLE
+#if defined(HAPTIC_ENABLE)
+                drv2605l_pulse(DRV2605L_EFFECT_TRANSITION_HUM_1_100);
+#endif // HAPTIC_ENABLE
             }
             return false;
         case LOWER:
@@ -678,38 +662,33 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // └───────────────────────────────────────────────────────────┘
 
         case MAKE_H:
-          if (record->event.pressed) {
-            #ifdef KEYBOARD_klor_kb2040
-              SEND_STRING ("qmk compile -kb klor/2040 -km default");
-            #else
-              SEND_STRING ("qmk compile -kb klor -km default");
-            #endif
-            tap_code(KC_ENTER);
-          }
-          break;
+            if (record->event.pressed) {
+                SEND_STRING ("qmk compile -kb klor/konrad -km default");
+                tap_code(KC_ENTER);
+            }
+            break;
 
 // ┌───────────────────────────────────────────────────────────┐
 // │ p r o d u c t i v i t y                                   │
 // └───────────────────────────────────────────────────────────┘
 
-      case KC_MPLY:
-        if (record->event.pressed) {
-          #ifdef HAPTIC_ENABLE
-                  drv2605l_pulse(DRV2605L_EFFECT_SHARP_CLICK_100);
-          #endif // HAPTIC_ENABL
-        }
-        break;
+        case KC_MPLY:
+            if (record->event.pressed) {
+#if defined(HAPTIC_ENABLE)
+                drv2605l_pulse(DRV2605L_EFFECT_SHARP_CLICK_100);
+#endif // HAPTIC_ENABL
+            }
+            break;
     }
     return true;
 }
-
 
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 // │ E N C O D E R                                                                                                                              │
 // └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 // ▝▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▘
 
-#ifdef ENCODER_ENABLE
+#if defined(ENCODER_ENABLE)
 
 // ┌───────────────────────────────────────────────────────────┐
 // │ e n c o d e r  L                                          │
@@ -728,27 +707,24 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 // └───────────────────────────────────────────────────────────┘
 
     } else if (index == 1) {
-      if(IS_LAYER_ON(_LOWER)){
-          if (clockwise) {
-              tap_code(KC_MNXT);
-          } else {
-              tap_code(KC_MPRV);
-          }
-      }else {
+        if(IS_LAYER_ON(_LOWER)){
             if (clockwise) {
-              tap_code(KC_VOLU);
-          } else {
-              tap_code(KC_VOLD);
-          }
-      }
+                tap_code(KC_MNXT);
+            } else {
+                tap_code(KC_MPRV);
+            }
+        } else {
+            if (clockwise) {
+                tap_code(KC_VOLU);
+            } else {
+                tap_code(KC_VOLD);
+            }
+        }
     }
     return true;
 }
 
 #endif // ENCODER_ENABLE
-
-
-
 
 /*
 
