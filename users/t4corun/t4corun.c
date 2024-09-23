@@ -1,7 +1,7 @@
 #include "t4corun.h"
 
 
-// Keeps track of base layer so only one key is needed 
+// Keeps track of base layer so only one key is needed
 // to cycle through them vs making three individual ones
 static uint8_t current_base_layer = FIRST_DEFAULT_LAYER;
 
@@ -28,14 +28,14 @@ void setLunaJumped(void) { showedJump = true; }
 
 
 // Hold Navigation and Number to get Symbol
-layer_state_t layer_state_set_user(layer_state_t state) { 
+layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _NAVIGATION, _NUMBER, _SYMBOL);
 }
 
 // helper function to adjust default layer
 void set_default_layer(bool forward) {
-  current_base_layer = forward ? 
-    (current_base_layer + 1) % NUM_DEFAULT_LAYERS : 
+  current_base_layer = forward ?
+    (current_base_layer + 1) % NUM_DEFAULT_LAYERS :
     (current_base_layer - 1) % NUM_DEFAULT_LAYERS;
   set_single_persistent_default_layer(current_base_layer);
 }
@@ -58,7 +58,7 @@ void reset_ploopynano(void) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   current_mods = get_mods() | get_oneshot_mods();
-  
+
   switch (keycode) {
 
     // makes scroll lock a hold instead of toggle
@@ -142,7 +142,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
           case MOD_BIT(KC_LALT):
             keycode == FWD_CFG ? rgb_matrix_increase_val() : rgb_matrix_decrease_val();
-            break;        
+            break;
           case MOD_BIT(KC_LGUI):
             keycode == FWD_CFG ? rgb_matrix_increase_speed() : rgb_matrix_decrease_speed();
             break;
@@ -196,7 +196,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           case MOD_BIT(KC_LCTL) | MOD_BIT(KC_LALT):
             is_audio_on() ? audio_off(): audio_on();
             break;
-          
+
           case MOD_BIT(KC_LALT) | MOD_BIT(KC_LGUI):
             clicky_toggle();
             break;

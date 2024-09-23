@@ -183,16 +183,17 @@
 #  define RGB_MATRIX_SLEEP
 #  define RGB_MATRIX_TIMEOUT 60000 //1 min
 
-#  define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150
+#  define RGB_MATRIX_MAXIMUM_BRIGHTNESS 175
 #  define RGB_MATRIX_DEFAULT_HUE 4
 #  define RGB_MATRIX_DEFAULT_SAT 79
 #  define RGB_MATRIX_DEFAULT_VAL 59
 #  define RGB_MATRIX_DEFAULT_SPD 32
 
 #  if defined(KEYBOARD_bastardkb_charybdis_3x5) \
-   || defined(KEYBOARD_dztech_dz60rgb_v2_1)    \
-   || defined(KEYBOARD_bluebell_swoop)         \
-   || defined(KEYBOARD_klor_2040)
+   || defined(KEYBOARD_dztech_dz60rgb_v2_1)     \
+   || defined(KEYBOARD_bluebell_swoop)          \
+   || defined(KEYBOARD_klor)                    \
+   || defined(KEYBOARD_keyball)
 
 #    define ENABLE_RGB_MATRIX_BREATHING
 #    define ENABLE_RGB_MATRIX_BAND_PINWHEEL_VAL
