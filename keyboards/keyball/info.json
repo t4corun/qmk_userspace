@@ -18,12 +18,18 @@
     "debounce": 5,
 
     "features": {
-        "bootmagic": false,
         "extrakey": true,
-        "rgblight": false,
         "rgb_matrix": true,
         "oled": true,
         "pointing_device": true
+    },
+
+    "bootmagic": {
+        "enabled": true
+    },
+
+    "mouse_key": {
+        "enabled": false
     },
 
     "split": {
@@ -69,8 +75,6 @@
         "driver": "vendor"
     },
 
-    "mouse_key": {
-        "enabled": false
-    }
+
 
 }

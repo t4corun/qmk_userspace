@@ -13,7 +13,7 @@
 # optional features
 # use these values if not defined at the keyboard level
 LTO_ENABLE ?= no
-MAGIC_ENABLE ?= no
+BOOTMAGIC_ENABLE ?= yes
 CONSOLE_ENABLE ?= no
 UNICODE_ENABLE ?= no
 SPACE_CADET_ENABLE ?= no
@@ -32,10 +32,12 @@ WPM_ENABLE ?= yes
 
 # qmk features we will force as these are critical for my workflow
 EXTRAKEY_ENABLE = yes
-MOUSEKEY_ENABLE = yes
+MOUSEKEY_ENABLE ?= yes
 CAPS_WORD_ENABLE ?= yes
 COMBO_ENABLE ?= yes
 
+# custom definitions
+PLOOPYNANO_ENABLE ?= no
 
 # ---------------------------------------------------------
 # include my code that will be common across all my keyboards
@@ -48,17 +50,27 @@ SRC +=                     \
 # include additional code for enabled features for each keyboard
 
 ifeq ($(strip $(COMBO_ENABLE)), yes)
-  INTROSPECTION_KEYMAP_C += features/combo.c
+    INTROSPECTION_KEYMAP_C += features/combo.c
 endif
 
 ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
-  SRC += features/capsword.c
+    SRC += features/capsword.c
 endif
 
 ifeq ($(strip $(OLED_ENABLE)), yes)
-  SRC += features/oled.c
+    SRC += features/oled.c
 endif
 
-ifeq ($(strip $(AUDIO_ENABLE)), yes)
-  MUSIC_MODE = no
+ifeq ($(strip $(ENCODER_ENABLE)), yes)
+    SRC += features/encoder.c
 endif
+
+ifeq ($(strip $(POINTING_DEVICE_ENABLE)), yes)
+    SRC += features/pointing.c
+endif
+
+ifeq ($(strip $(PLOOPYNANO_ENABLE)), yes)
+    OPT_DEFS += -DPLOOPYNANO_ENABLE
+    SRC += features/ploopynano.c
+endif
+

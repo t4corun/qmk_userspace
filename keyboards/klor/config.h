@@ -62,7 +62,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DRV2605L_V_RMS 2.0
 #define DRV2605L_F_LRA 150 // resonance freq
 #define DRV2605L_GREETING DRV2605L_EFFECT_750_MS_ALERT_100
-#define DRV2605L_DEFAULT_MODE DRV2605L_EFFECT_SOFT_BUMP_100
+#define DRV2605L_DEFAULT_MODE DRV2605L_EFFECT_STRONG_CLICK_30
 #endif // HAPTIC_ENABLE && HAPTIC_DRV2605L
 
 // ┌─────────────────────────────────────────────────┐
