@@ -44,3 +44,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_MOUSE]      = KEYBALL(LAYER_MOUSE),
   [_FUNCTION]   = KEYBALL(LAYER_FUNCTION)
 };
+
+layer_state_t layer_state_set_keymap(layer_state_t state) {
+    switch (get_highest_layer(state)) {
+        case _NUMBER:
+            keyball_set_pointer_dragscroll_enabled(true);
+            break;
+        default:
+            if (keyball_get_pointer_dragscroll_enabled()) {  // check if we were scrolling before and set disable if so
+                keyball_set_pointer_dragscroll_enabled(false);
+            }
+            break;
+    }
+    return state;
+}

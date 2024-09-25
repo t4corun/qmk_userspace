@@ -7,9 +7,19 @@ static uint8_t current_base_layer = FIRST_DEFAULT_LAYER;
 // keep track of current mods to override existing keys
 static uint8_t current_mods;
 
-// Hold Navigation and Number to get Symbol
+// on layer change, no matter where the change was initiated
+// Then runs keymap's layer change check
+__attribute__((weak)) layer_state_t layer_state_set_keymap(layer_state_t state) {
+    return state;
+}
+
 layer_state_t layer_state_set_user(layer_state_t state) {
-    return update_tri_layer_state(state, _NAVIGATION, _NUMBER, _SYMBOL);
+    // Hold Navigation and Number to get Symbol
+    state = update_tri_layer_state(state, _NAVIGATION, _NUMBER, _SYMBOL);
+
+    state = layer_state_set_keymap(state);
+
+    return state;
 }
 
 // helper function to adjust default layer
