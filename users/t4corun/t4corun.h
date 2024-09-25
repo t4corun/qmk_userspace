@@ -204,7 +204,7 @@ _LAYER_KEYBALL___________, KC_BTN1, NUM,     KC_ENT,        _LAYER_TRANS________
          KC_ESC,  SC_SNIP, SC_FILE, ___x___, ___x___,       KC_TAB,  KC_7,    KC_8,    KC_9,    KC_COMM, \
          _GACS_MODS________________________, ___x___,       KC_BSPC, KC_4,    KC_5,    KC_6,    KC_DOT,  \
          _UCCPR_L___________________________________,       KC_DEL,  KC_1,    KC_2,    KC_3,    KC_MINS, \
-_LAYER_KEYBALL__________________, _LAYER_TRANS_____________,       KC_0,    NAV,     KC_MUTE,                   \
+_LAYER_KEYBALL___________, _LAYER_TRANS_____________,       KC_0,    NAV,     KC_MUTE,                   \
                                              ___x___,       SC_WIN
 
 
