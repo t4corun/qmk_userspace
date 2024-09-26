@@ -7,6 +7,7 @@ static uint8_t current_base_layer = FIRST_DEFAULT_LAYER;
 // keep track of current mods to override existing keys
 static uint8_t current_mods;
 
+
 // on layer change, no matter where the change was initiated
 // Then runs keymap's layer change check
 __attribute__((weak)) layer_state_t layer_state_set_keymap(layer_state_t state) {
@@ -137,9 +138,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if(!process_record_user_encoder(keycode, record)) { return false; }
 #endif // PLOOPYNANO_ENABLE
 
+/*
 #if defined(OLED_ENABLE) && defined(WPM_ENABLE)
     if(!process_record_user_lunapet(keycode, record)) { return false; }
 #endif // OLED_ENABLE && WPM_ENABLE
+*/
 
 #if defined(PLOOPYNANO_ENABLE)
     if(!process_record_user_ploopynano(keycode, record)) { return false; }

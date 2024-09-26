@@ -24,16 +24,16 @@
 #   define SPI_SCK_PIN GP22
 #   define SPI_MISO_PIN GP20
 #   define SPI_MOSI_PIN GP23
-#   define PMW3360_CS_PIN GP21
+#   define PMW33XX_CS_PIN GP21
 // pointer settings
 #   define SPLIT_POINTING_ENABLE
 #   define POINTING_DEVICE_RIGHT
 // These two configuration changes allow intuitive
 // pointer movement given the sensor placement
-#   define ROTATIONAL_TRANSFORM_ANGLE -90
+//#   define ROTATIONAL_TRANSFORM_ANGLE -90
 // I wonder if this will work
-///#    define POINTING_DEVICE_ROTATION_270
-#   define POINTING_DEVICE_INVERT_X
+#   define POINTING_DEVICE_ROTATION_270
+#   define POINTING_DEVICE_INVERT_Y
 // allow intuitive drag scroll movement
 #   define KEYBALL_DRAGSCROLL_REVERSE_Y
 #endif //POINTING_DEVICE_ENABLE

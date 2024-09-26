@@ -28,7 +28,7 @@ ENCODER_ENABLE ?= no
 ENCODER_MAP_ENABLE ?= no
 HAPTIC_ENABLE ?= no
 AUDIO_ENABLE ?= no
-WPM_ENABLE ?= yes
+WPM_ENABLE = no
 MOUSEKEY_ENABLE ?= yes
 CAPS_WORD_ENABLE ?= yes
 COMBO_ENABLE ?= yes
@@ -38,6 +38,7 @@ EXTRAKEY_ENABLE = yes
 
 # custom definitions
 PLOOPYNANO_ENABLE ?= no
+OLED_SIZE ?= 128x32
 
 # ---------------------------------------------------------
 # include my code that will be common across all my keyboards
@@ -58,7 +59,11 @@ ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
 endif
 
 ifeq ($(strip $(OLED_ENABLE)), yes)
-    SRC += features/oled.c
+    ifeq ($(strip $(OLED_SIZE)), 128x64)
+		SRC += features/oled/oled_128x64.c
+	else
+		SRC += features/oled/oled.c
+	endif
 endif
 
 ifeq ($(strip $(ENCODER_ENABLE)), yes)

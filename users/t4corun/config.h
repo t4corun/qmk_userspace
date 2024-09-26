@@ -84,12 +84,12 @@
 #   undef  MASTER_RIGHT
 
 #   define SPLIT_TRANSPORT_MIRROR
-#   define SPLIT_LAYER_STATE_ENABLE
-#   define SPLIT_LED_STATE_ENABLE
+//#   define SPLIT_LAYER_STATE_ENABLE
+//#   define SPLIT_LED_STATE_ENABLE
 #   define SPLIT_MODS_ENABLE
 #   define SPLIT_OLED_ENABLE
 #   define SPLIT_ACTIVITY_ENABLE
-#   define SPLIT_WPM_ENABLE
+//#   define SPLIT_WPM_ENABLE
 #   define MASTER_RIGHT
 #endif //SPLIT_KEYBOARD
 
@@ -101,7 +101,11 @@
 #   undef  OLED_FONT_H
 
 #   define OLED_TIMEOUT 60000 //1 min
-#   define OLED_FONT_H "./lib/font.c"
+#   if defined(KEYBOARD_klor)
+#       define OLED_FONT_H "./lib/font_klor.c"
+#   else
+#       define OLED_FONT_H "./lib/font.c"
+#   endif // KEYBOARD_klor
 #endif //OLED_ENABLE
 
 /* Haptic Feedback
@@ -168,8 +172,8 @@
 #   define RGB_MATRIX_MAXIMUM_BRIGHTNESS 175
 #   define RGB_MATRIX_DEFAULT_HUE 4
 #   define RGB_MATRIX_DEFAULT_SAT 79
-#   define RGB_MATRIX_DEFAULT_VAL 59
-#   define RGB_MATRIX_DEFAULT_SPD 32
+#   define RGB_MATRIX_DEFAULT_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
+#   define RGB_MATRIX_DEFAULT_SPD 127
 
 #   if defined(KEYBOARD_bastardkb_charybdis_3x5) \
         || defined(KEYBOARD_dztech_dz60rgb_v2_1) \
