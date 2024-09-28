@@ -26,6 +26,7 @@
 #undef  TAPPING_TERM
 #undef  QUICK_TAP_TERM
 
+#undef  NO_ACTION_ONESHOT
 #undef  ONESHOT_TAP_TOGGLE
 #undef  ONESHOT_TIMEOUT
 

@@ -20,6 +20,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Most configuration will be found in info.json
 
 // ┌─────────────────────────────────────────────────┐
+// │ g e n e r a l                                   │
+// └─────────────────────────────────────────────────┘
+
+#define MASTER_LEFT
+#define NO_ACTION_ONESHOT
+
+// ┌─────────────────────────────────────────────────┐
 // │ o l e d s                                       │
 // └─────────────────────────────────────────────────┘
 

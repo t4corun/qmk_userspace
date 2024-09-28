@@ -1,5 +1,9 @@
 {
     "keyboard_name": "KLOR Polydactyl",
+    "rgblight": {
+        "led_count": 42,
+        "split_count": [21, 21]
+    },
     "rgb_matrix": {
         "layout": [
             {"matrix": [3, 4], "x": 102, "y": 63, "flags": 1},

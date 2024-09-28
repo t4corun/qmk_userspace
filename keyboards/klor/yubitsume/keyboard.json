@@ -1,5 +1,9 @@
 {
     "keyboard_name": "KLOR Yubitsume",
+    "rgblight": {
+        "led_count": 38,
+        "split_count": [19, 19]
+    },
     "rgb_matrix": {
         "layout": [
             {"matrix": [3, 4], "x": 102, "y": 63, "flags": 1},

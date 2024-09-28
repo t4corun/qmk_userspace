@@ -1,5 +1,9 @@
 {
     "keyboard_name": "KLOR Saegewerk",
+    "rgblight": {
+        "led_count": 36,
+        "split_count": [18, 18]
+    },
     "rgb_matrix": {
         "layout": [
             {"matrix": [3, 3], "x": 89, "y": 54, "flags": 1},
