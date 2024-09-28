@@ -18,18 +18,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define LAYOUT_swoop_wrapper(...) LAYOUT_split_3x5_3(__VA_ARGS__)
 
-#define LAYOUT_3x5_3_keymap( \
-	k00, k01, k02, k03, k04, k05, k06, k07, k08, k09, \
-	k10, k11, k12, k13, k14, k15, k16, k17, k18, k19, \
-	k20, k21, k22, k23, k24, k25, k26, k27, k28, k29, \
-	          k32, k33, k34, k35, k36, k37,           \
-                      e01, e02                      \
-)                                                   \
-LAYOUT_swoop_wrapper (                              \
-	k00, k01, k02, k03, k04, k05, k06, k07, k08, k09, \
-	k10, k11, k12, k13, k14, k15, k16, k17, k18, k19, \
-	k20, k21, k22, k23, k24, k25, k26, k27, k28, k29, \
-	          k32, k33, k34, k35, k36, e02            \
+#define LAYOUT_3x5_3_keymap(                                 \
+         k00, k01, k02, k03, k04,   k05, k06, k07, k08, k09, \
+         k10, k11, k12, k13, k14,   k15, k16, k17, k18, k19, \
+         k20, k21, k22, k23, k24,   k25, k26, k27, k28, k29, \
+    kb1, kb2, kb3, k32, k33, k34,   k35, k36, k37,           \
+                             e01,   e02                      \
+)                                                            \
+LAYOUT_swoop_wrapper (                                       \
+    k00, k01, k02, k03, k04,   k05, k06, k07, k08, k09,      \
+    k10, k11, k12, k13, k14,   k15, k16, k17, k18, k19,      \
+    k20, k21, k22, k23, k24,   k25, k26, k27, k28, k29,      \
+              k32, k33, k34,   k35, k36, e02                 \
 )
 
 #define SWOOP(...) LAYOUT_3x5_3_keymap(__VA_ARGS__)
@@ -45,9 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_FUNCTION]   = SWOOP(LAYER_FUNCTION)
 };
 
-
 #if defined(ENCODER_MAP_ENABLE)
-
 /* The encoder presses are handled in the keymap */
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
   [_QWERTY]     = { ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
@@ -59,12 +57,9 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
   [_MOUSE]      = { ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(ZOOMOUT, ZOOMIN)  },
   [_FUNCTION]   = { ENCODER_CCW_CW(REV_CFG, FWD_CFG), ENCODER_CCW_CW(REV_CFG, FWD_CFG) }
 };
-
 #endif //ENCODER_MAP_ENABLE
 
-
 #if defined(RGB_MATRIX_ENABLE)
-
 /*
  * Center: 112
  * 0   20  41  61  81  102 122 143 163 183 204 224
@@ -74,7 +69,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
  * 14  13  08  06  01          19  24  26  31  32    43
  *             17  07  00  18  25  35                64
  */
-
 led_config_t g_led_config = {
   {
     // Key matrix to LED index
@@ -129,5 +123,4 @@ led_config_t g_led_config = {
     LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
   }
 };
-
 #endif //RGB_MATRIX_ENABLE

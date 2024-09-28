@@ -81,17 +81,19 @@
 #   undef  SPLIT_OLED_ENABLE
 #   undef  SPLIT_ACTIVITY_ENABLE
 #   undef  SPLIT_WPM_ENABLE
+#   undef  MASTER_LEFT
 #   undef  MASTER_RIGHT
 
 #   define SPLIT_TRANSPORT_MIRROR
-//#   define SPLIT_LAYER_STATE_ENABLE
-//#   define SPLIT_LED_STATE_ENABLE
+#   define SPLIT_LED_STATE_ENABLE
 #   define SPLIT_MODS_ENABLE
 #   define SPLIT_OLED_ENABLE
 #   define SPLIT_ACTIVITY_ENABLE
-//#   define SPLIT_WPM_ENABLE
 #   define MASTER_RIGHT
-#endif //SPLIT_KEYBOARD
+#   if defined(OLED_DISPLAY_128X64)
+#       define SPLIT_LAYER_STATE_ENABLE
+#   endif // OLED_DISPLAY_128X64
+#endif // SPLIT_KEYBOARD
 
 /* OLED
  * https://docs.qmk.fm/features/oled_driver
@@ -101,11 +103,7 @@
 #   undef  OLED_FONT_H
 
 #   define OLED_TIMEOUT 60000 //1 min
-#   if defined(KEYBOARD_klor)
-#       define OLED_FONT_H "./lib/font_klor.c"
-#   else
-#       define OLED_FONT_H "./lib/font.c"
-#   endif // KEYBOARD_klor
+#   define OLED_FONT_H "./features/oled/font.c"
 #endif //OLED_ENABLE
 
 /* Haptic Feedback
@@ -136,16 +134,6 @@
         ,SONG(GUITAR_SOUND)     \
         }
 #endif // AUDIO_ENABLE
-
-/* Auto Mouse
- * https://docs.qmk.fm/features/pointing_device#how-to-enable
- */
-#if defined(POINTING_DEVICE_ENABLE)
-#   undef  POINTING_DEVICE_TASK_THROTTLE_MS
-
-#   define POINTING_DEVICE_TASK_THROTTLE_MS 1
-#endif
-
 
 /* RGB Matrix
 *  https://docs.qmk.fm/features/rgb_matrix

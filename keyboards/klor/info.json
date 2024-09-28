@@ -17,10 +17,9 @@
 
     "features": {
         "audio": false,
-        "command": false,
         "console": false,
         "encoder": true,
-        "extrakey": false,
+        "extrakey": true,
         "haptic": false,
         "oled": true,
         "rgb_matrix": false,

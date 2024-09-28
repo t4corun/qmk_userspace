@@ -1,8 +1,8 @@
 #include "encoder.h"
 
 // enables encoder to handle alt/ctrl tab and ctrl scroll wheel
-static bool hold_forward_active = false;
-static bool hold_reverse_active = false;
+static bool     hold_forward_active = false;
+static bool     hold_reverse_active = false;
 static uint16_t hold_mod_timer = 0;
 
 bool process_record_user_encoder(uint16_t keycode, keyrecord_t *record) {

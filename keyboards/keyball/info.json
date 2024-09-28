@@ -5,7 +5,6 @@
     "bootmagic": {
         "enabled": true
     },
-    "debounce": 5,
     "diode_direction": "COL2ROW",
     "features": {
         "extrakey": true,

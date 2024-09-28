@@ -17,4 +17,10 @@
 #pragma once
 
 // mimic mouse wheel direction
+#define KEYBALL_CONFIG_SYNC
 #define KEYBALL_DRAGSCROLL_REVERSE_Y
+
+// I am using the pointer only on the master side
+#undef SPLIT_POINTING_ENABLE
+#undef POINTING_DEVICE_RIGHT
+

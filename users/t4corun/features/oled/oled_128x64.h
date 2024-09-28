@@ -5,65 +5,52 @@
 #define OLED_RENDER_DEFAULT_LAYER1    "QWERTY    :"
 #define OLED_RENDER_DEFAULT_LAYER2    "COLEMAK DH:"
 #define OLED_RENDER_DEFAULT_LAYER3    "GAME      :"
-#define OLED_RENDER_LAYER_1           "Base      "
 #define OLED_RENDER_LAYER_2           "Navigation"
 #define OLED_RENDER_LAYER_3           "Number    "
 #define OLED_RENDER_LAYER_4           "Symbol    "
 #define OLED_RENDER_LAYER_5           "Mouse     "
 #define OLED_RENDER_LAYER_6           "Function  "
+#define OLED_RENDER_BLANK             "Base      "
+#if !defined(OLED_KEYBOARD_NAME)
+#   define OLED_KEYBOARD_NAME         "QMK Keyboard"
+#endif // OLED_KEYBOARD_NAME
 
-void render_mod_status (uint8_t col, uint8_t line);
-void render_feature_status (uint8_t col, uint8_t line);
-void render_klor_face_small (uint8_t col, uint8_t line);
+void render_feature_status (uint8_t row, uint8_t col);
+void render_rgb_status (uint8_t row, uint8_t col);
+void render_kb_logo (uint8_t row, uint8_t col);
 
-static const char PROGMEM scroll_off[]        = {0xC0, 0};
-static const char PROGMEM scroll_on[]         = {0xC1, 0};
+//elements correspond to the character position in the font array
+static const char PROGMEM scroll_off[]        = {0x8F, 0};
+static const char PROGMEM scroll_on[]         = {0xCF, 0};
+static const char PROGMEM num_off[]           = {0xC4, 0};
+static const char PROGMEM num_on[]            = {0x84, 0};
+static const char PROGMEM caps_off[]          = {0x87, 0};
+static const char PROGMEM caps_on[]           = {0x89, 0};
 
-static const char PROGMEM num_off[]           = {0xC2, 0};
-static const char PROGMEM num_on[]            = {0xC3, 0};
+static const char PROGMEM rgb_matrix_off[]    = {0xA5, 0xA6, 0};
+static const char PROGMEM rgb_matrix_on[]     = {0x85, 0x86, 0};
+static const char PROGMEM sound_off[]         = {0xD9, 0xDA, 0};
+static const char PROGMEM sound_on[]          = {0xD7, 0xD8, 0};
+static const char PROGMEM haptic_off[]        = {0xD5, 0xD6, 0};
+static const char PROGMEM haptic_on[]         = {0xD3, 0xD4, 0};
+static const char PROGMEM combo_off[]         = {0xDD, 0xDE, 0};
+static const char PROGMEM combo_on[]          = {0xDB, 0xDC, 0};
 
-static const char PROGMEM caps_off[]          = {0xC4, 0};
-static const char PROGMEM caps_on[]           = {0xC5, 0};
-
-static const char PROGMEM rgb_matrix_off[]    = {0xCA, 0xCB, 0};
-static const char PROGMEM rgb_matrix_on[]     = {0xC8, 0xC9, 0};
-
-static const char PROGMEM sound_off[]         = {0xCE, 0xCF, 0};
-static const char PROGMEM sound_on[]          = {0xCC, 0xCD, 0};
-
-static const char PROGMEM haptic_off[]        = {0xD2, 0xD3, 0};
-static const char PROGMEM haptic_on[]         = {0xD0, 0xD1, 0};
-
-static const char PROGMEM shift_off_upper[]   = {0x80, 0x81, 0x82, 0};
-static const char PROGMEM shift_off_lower[]   = {0xA0, 0xA1, 0xA2, 0};
-static const char PROGMEM shift_on_upper[]    = {0x83, 0x84, 0x85, 0};
-static const char PROGMEM shift_on_lower[]    = {0xA3, 0xA4, 0xA5, 0};
-
-static const char PROGMEM ctrl_off_upper[]    = {0x86, 0x87, 0x88, 0};
-static const char PROGMEM ctrl_off_lower[]    = {0xA6, 0xA7, 0xA8, 0};
-static const char PROGMEM ctrl_on_upper[]     = {0x89, 0x8A, 0x8B, 0};
-static const char PROGMEM ctrl_on_lower[]     = {0xA9, 0xAA, 0xAB, 0};
-
-static const char PROGMEM alt_off_upper[]     = {0x8C, 0x8D, 0x8E, 0};
-static const char PROGMEM alt_off_lower[]     = {0xAC, 0xAD, 0xAE, 0};
-static const char PROGMEM alt_on_upper[]      = {0x8F, 0x90, 0x91, 0};
-static const char PROGMEM alt_on_lower[]      = {0xAF, 0xB0, 0xB1, 0};
-
-static const char PROGMEM gui_off_upper[]     = {0x92, 0x93, 0x94, 0};
-static const char PROGMEM gui_off_lower[]     = {0xB2, 0xB3, 0xB4, 0};
-static const char PROGMEM gui_on_upper[]      = {0x95, 0x96, 0x97, 0};
-static const char PROGMEM gui_on_lower[]      = {0xB5, 0xB6, 0xB7, 0};
-
-static const char PROGMEM klor_small_face_1[] = {0x98, 0x99, 0x9A, 0x9B, 0x9C, 0};
-static const char PROGMEM klor_small_face_2[] = {0xB8, 0xB9, 0xBA, 0xBB, 0xBC, 0};
+static const char PROGMEM kb_logo_L1[]        = {0x94, 0x95, 0x96, 0x97, 0x98, 0};
+static const char PROGMEM kb_logo_L2[]        = {0xB4, 0xB5, 0xB6, 0xB7, 0xB8, 0};
 
 static const char PROGMEM mod_sep[]           = {0xC7, 0xC7, 0};
-static const char PROGMEM sep_v[] = {
-    0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0
+
+static const char PROGMEM line_off[] = {
+    0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0
 };
 
-static const char PROGMEM sep_short_v[] = {
-    0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0
+static const char PROGMEM line_sep[] = {
+    0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0
+};
+
+static const char PROGMEM line_sep_short[] = {
+    0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0
 };
 
 static const char PROGMEM klor_face[] = {

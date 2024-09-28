@@ -8,16 +8,12 @@
 #   include "features/encoder.h"
 #endif // ENCODER_ENABLE
 
-#if defined(OLED_ENABLE) && defined(WPM_ENABLE)
-#   include "features/luna.h"
-#endif // OLED_ENABLE && WPM_ENABLE
-
 #if defined(PLOOPYNANO_ENABLE)
 #   include "features/ploopynano.h"
 #endif // PLOOPYNANO_ENABLE
 
-layer_state_t   layer_state_set_keymap(layer_state_t state);
-void            set_default_layer(bool forward);
+layer_state_t layer_state_set_keymap(layer_state_t state);
+void          set_default_layer(bool forward);
 
 // put the default base layers first
 enum layers {

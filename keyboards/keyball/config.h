@@ -36,4 +36,6 @@
 #   define POINTING_DEVICE_INVERT_Y
 // allow intuitive drag scroll movement
 #   define KEYBALL_DRAGSCROLL_REVERSE_Y
+// Limits the frequency that the sensor is polled for motion.
+#   define POINTING_DEVICE_TASK_THROTTLE_MS 1
 #endif //POINTING_DEVICE_ENABLE

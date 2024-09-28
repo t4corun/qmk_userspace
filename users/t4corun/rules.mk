@@ -12,33 +12,29 @@
 
 # optional features
 # use these values if not defined at the keyboard level
-LTO_ENABLE ?= no
-BOOTMAGIC_ENABLE ?= yes
-CONSOLE_ENABLE ?= no
-UNICODE_ENABLE ?= no
-SPACE_CADET_ENABLE ?= no
-GRAVE_ESC_ENABLE ?= no
+BOOTMAGIC_ENABLE       ?= yes
+CAPS_WORD_ENABLE       ?= yes
+COMBO_ENABLE           ?= yes
+DYNAMIC_MACRO_ENABLE   ?= yes
+EXTRAKEY_ENABLE         = yes
 
-DYNAMIC_MACRO_ENABLE ?= yes
-RGB_MATRIX_ENABLE ?= no
-RGBLIGHT_ENABLE ?= no
+AUDIO_ENABLE           ?= no
+CONSOLE_ENABLE         ?= no
+ENCODER_ENABLE         ?= no
+ENCODER_MAP_ENABLE     ?= no
+GRAVE_ESC_ENABLE       ?= no
+HAPTIC_ENABLE          ?= no
+MOUSEKEY_ENABLE        ?= no
+OLED_ENABLE            ?= no
 POINTING_DEVICE_ENABLE ?= no
-OLED_ENABLE ?= no
-ENCODER_ENABLE ?= no
-ENCODER_MAP_ENABLE ?= no
-HAPTIC_ENABLE ?= no
-AUDIO_ENABLE ?= no
-WPM_ENABLE = no
-MOUSEKEY_ENABLE ?= yes
-CAPS_WORD_ENABLE ?= yes
-COMBO_ENABLE ?= yes
-
-# qmk features we will force as these are critical for my workflow
-EXTRAKEY_ENABLE = yes
+RGB_MATRIX_ENABLE      ?= no
+RGBLIGHT_ENABLE        ?= no
+SPACE_CADET_ENABLE     ?= no
+UNICODE_ENABLE         ?= no
 
 # custom definitions
-PLOOPYNANO_ENABLE ?= no
-OLED_SIZE ?= 128x32
+OLED_SIZE              ?= 128x32
+PLOOPYNANO_ENABLE      ?= no
 
 # ---------------------------------------------------------
 # include my code that will be common across all my keyboards
@@ -60,10 +56,10 @@ endif
 
 ifeq ($(strip $(OLED_ENABLE)), yes)
     ifeq ($(strip $(OLED_SIZE)), 128x64)
-		SRC += features/oled/oled_128x64.c
-	else
-		SRC += features/oled/oled.c
-	endif
+        SRC += features/oled/oled_128x64.c
+    else
+        SRC += features/oled/oled.c
+    endif
 endif
 
 ifeq ($(strip $(ENCODER_ENABLE)), yes)
@@ -71,7 +67,8 @@ ifeq ($(strip $(ENCODER_ENABLE)), yes)
 endif
 
 ifeq ($(strip $(PLOOPYNANO_ENABLE)), yes)
-    OPT_DEFS += -DPLOOPYNANO_ENABLE
-    SRC += features/ploopynano.c
+    OPT_DEFS        += -DPLOOPYNANO_ENABLE
+    SRC             += features/ploopynano.c
+    MOUSEKEY_ENABLE  = yes
 endif
 
