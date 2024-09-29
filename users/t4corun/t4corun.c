@@ -143,3 +143,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // let QMK process the normal behavior if not handled above
     return true;
 }
+
+bool shutdown_user(bool jump_to_bootloader) {
+#if defined(RGB_MATRIX_ENABLE)
+    void rgb_matrix_update_pwm_buffers(void);
+    rgb_matrix_set_color_all(RGB_RED);
+    rgb_matrix_update_pwm_buffers();
+#endif //RGB_MATRIX_ENABLE
+    return false;
+}
