@@ -43,3 +43,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_MOUSE]      = CNANO(LAYER_MOUSE),
   [_FUNCTION]   = CNANO(LAYER_FUNCTION)
 };
+
+layer_state_t layer_state_set_keymap(layer_state_t state) {
+    switch (get_highest_layer(state)) {
+        case _NUMBER:
+            charybdis_set_pointer_dragscroll_enabled(true);
+            break;
+        default:
+            if (charybdis_get_pointer_dragscroll_enabled()) {  // check if we were scrolling before and set disable if so
+                charybdis_set_pointer_dragscroll_enabled(false);
+            }
+            break;
+    }
+    return state;
+}

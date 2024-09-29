@@ -16,7 +16,7 @@ LAYOUT_planck_wrapper (                                                   \
 	kb1, kb2, kb3, k32, k33, k34,   k35,   k36, k37, KC_NO, KC_NO, KC_ESC \
 )
 
-#define PLANCK(...) LAYOUT_3x5_keymap(__VA_ARGS__)
+#define PLANCK(...) LAYOUT_3x5_3_keymap(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY]     = PLANCK(LAYER_QWERTY),
