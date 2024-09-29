@@ -1,5 +1,4 @@
-/*
- * Copyright 2024 t4corun
+/* Copyright 2024 t4corun (@t4corun)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

@@ -1,5 +1,4 @@
-/*
- * Copyright 2012 Jun Wako <wakojun@gmail.com>
+/* Copyright 2012 Jun Wako <wakojun@gmail.com>
  * Copyright 2015 Jack Humbert
  * Copyright 2021 Quentin LEBASTARD <qlebastard@gmail.com>
  * Copyright 2021 Charly Delay <charly@codesink.dev> (@0xcharly)
