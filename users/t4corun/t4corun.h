@@ -152,8 +152,8 @@ enum keycodes {
 
 #define     _BASE_L4_________________                   KC_BTN1, NUM,     TR_LSFT
 #define     _BASE_R4_________________                   KC_SPC,  NAV,     KC_MUTE
-#define     _BASE_KEYBALL____________                   FUNC,    TR_SNIP, KC_BTN2
-#define     _LAYER_KEYBALL___________                   KC_BTN5, KC_BTN3, KC_BTN2
+#define     _BASE_KEYBALL____________                   FUNC,    KC_BTN3, KC_BTN2
+#define     _LAYER_KEYBALL___________                   KC_BTN4, TR_SNIP, KC_BTN2
 #define     _LAYER_TRANS_____________                   ___x___, _______, ___x___
 
 
@@ -209,8 +209,8 @@ _NONE_3__________________, _LAYER_TRANS_____________,       _LAYER_TRANS________
 
 #define LAYER_MOUSE                                                                                      \
          MOU_TOG, ___x___, ___x___, ___x___, ___x___,       TR_PDPI, TR_SDPI, ___x___, ___x___, MOU_TOG, \
-         _GACS_MODS________________________, TR_SNIP,       TR_SNIP, _SCAG_MODS________________________, \
-         _______, ___x___, ___x___, KC_BTN3, TR_DRGS,       TR_DRGS, KC_BTN1, KC_BTN2, KC_BTN3, ___x___, \
+         _GACS_MODS________________________, TR_DRGS,       TR_DRGS, _SCAG_MODS________________________, \
+         _______, ___x___, ___x___, KC_BTN3, TR_SNIP,       TR_SNIP, KC_BTN1, KC_BTN2, KC_BTN3, ___x___, \
 ___x___, _______, KC_BTN2, KC_BTN1, KC_BTN4, KC_BTN5,       KC_BTN5, KC_BTN4, KC_MUTE,                   \
                                              SCR_TOP,       ZOOMRST
 
