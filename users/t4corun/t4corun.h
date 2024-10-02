@@ -75,13 +75,8 @@ enum keycodes {
 #define     NUM     MO(_NUMBER)
 #define     MOUSE   MO(_MOUSE)
 #define     MOU_TOG TG(_MOUSE)
+#define     MOU_Z   LT(_MOUSE, KC_Z)
 #define     FUNC    MO(_FUNCTION)
-
-#if defined(POINTING_DEVICE_ENABLE)
-#   define  MOU_A   KC_A
-#else
-#   define  MOU_A   LT(_MOUSE, KC_A)
-#endif // POINTING_DEVICE_ENABLE
 
 // Windows Shortcuts
 #define     SC_COPY LCTL(KC_C)
@@ -149,7 +144,6 @@ enum keycodes {
 #   define  TR_PDPI KC_NUM   //use host status for ploopy nano dpi switch
 #endif // KEYBOARD_bastardkb_charybdis_3x5 || KEYBOARD_keyball
 
-/*
 #define     _NONE_3__________________                   ___x___, ___x___, ___x___
 #define     _NONE_5____________________________________ ___x___, ___x___, ___x___, ___x___, ___x___
 #define     _GACS_MODS________________________          TR_LGUI, TR_LALT, TR_LCTL, TR_LSFT
@@ -159,7 +153,7 @@ enum keycodes {
 #define     _BASE_L4_________________                   KC_BTN1, NUM,     TR_LSFT
 #define     _BASE_R4_________________                   KC_SPC,  NAV,     KC_MUTE
 #define     _BASE_KEYBALL____________                   FUNC,    TR_SNIP, KC_BTN2
-#define     _LAYER_KEYBALL___________                   KC_BTN5, KC_BTN3, KC_BTN4
+#define     _LAYER_KEYBALL___________                   KC_BTN5, KC_BTN3, KC_BTN2
 #define     _LAYER_TRANS_____________                   ___x___, _______, ___x___
 
 
@@ -167,16 +161,16 @@ enum keycodes {
 
 #define LAYER_QWERTY                                                                                     \
          KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    \
-         MOU_A,   KC_S,    KC_D,    KC_F,    KC_G,          KC_H,    KC_J,    KC_K,    KC_L,    TR_QUOT, \
-         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,          KC_N,    KC_M,    TR_COMM, TR_DOT,  TR_MINS, \
+         KC_A,    KC_S,    KC_D,    KC_F,    KC_G,          KC_H,    KC_J,    KC_K,    KC_L,    TR_QUOT, \
+         MOU_Z,   KC_X,    KC_C,    KC_V,    KC_B,          KC_N,    KC_M,    TR_COMM, TR_DOT,  TR_MINS, \
 _BASE_KEYBALL____________, _BASE_L4_________________,       _BASE_R4_________________,                   \
                                              SCR_TOP,       KC_MUTE
 
 
 #define LAYER_COLEMAK_DH                                                                                 \
          KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,          KC_J,    KC_L,    KC_U,    KC_Y,    TR_QUOT, \
-         MOU_A,   KC_R,    KC_S,    KC_T,    KC_G,          KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    \
-         KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,          KC_K,    KC_H,    TR_COMM, TR_DOT,  TR_MINS, \
+         KC_A,    KC_R,    KC_S,    KC_T,    KC_G,          KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    \
+         MOU_Z,   KC_X,    KC_C,    KC_D,    KC_V,          KC_K,    KC_H,    TR_COMM, TR_DOT,  TR_MINS, \
 _BASE_KEYBALL____________, _BASE_L4_________________,       _BASE_R4_________________,                   \
                                              SCR_TOP,       KC_MUTE
 
@@ -185,94 +179,15 @@ _BASE_KEYBALL____________, _BASE_L4_________________,       _BASE_R4____________
          KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,          KC_T,    KC_7,    KC_8,    KC_9,    KC_ESC,  \
          KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,          KC_G,    KC_4,    KC_5,    KC_6,    KC_GRV,  \
          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,          KC_LALT, KC_1,    KC_2,    KC_3,    CM_TOGG, \
-_NONE_3__________________, KC_ENT,  KC_SPC,  KC_LSFT,       _BASE_R4_________________,                   \
-                                             SCR_TOP,       KC_MUTE
-
-
-#define LAYER_NAVIGATION                                                                                 \
-         KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP,       ___x___, KC_APP,  DM_PLY1, DM_REC1, MOU_TOG, \
-         ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,       KC_BSPC, _SCAG_MODS________________________, \
-         _UCCPR_L___________________________________,       KC_DEL,  KC_TAB,  KC_VOLD, KC_VOLU, MOUSE,   \
-_LAYER_KEYBALL___________, KC_BTN1, NUM,     KC_ENT,        _LAYER_TRANS_____________,                   \
-                                             SCR_TOP,       ___x___
-
-
-#define LAYER_NUMBER                                                                                     \
-         KC_ESC,  SC_SNIP, SC_FILE, ___x___, ___x___,       KC_TAB,  KC_7,    KC_8,    KC_9,    KC_COMM, \
-         _GACS_MODS________________________, ___x___,       KC_BSPC, KC_4,    KC_5,    KC_6,    KC_DOT,  \
-         _UCCPR_L___________________________________,       KC_DEL,  KC_1,    KC_2,    KC_3,    KC_MINS, \
-_LAYER_KEYBALL___________, _LAYER_TRANS_____________,       KC_0,    NAV,     KC_MUTE,                   \
-                                             ___x___,       SC_WIN
-
-
-#define LAYER_SYMBOL                                                                                     \
-         ___x___, ___x___, KC_AT,   KC_DLR,  TR_GRV,        TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
-         KC_AMPR, TR_LCBR, KC_RCBR, TR_PIPE, TR_SCLN,       KC_BSPC, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
-         TR_PERC, TR_LABK, KC_RABK, TR_BSLS, KC_EXLM,       KC_DEL,  TR_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
-_NONE_3__________________, _LAYER_TRANS_____________,       _LAYER_TRANS_____________,                   \
-                                             ___x___,       ___x___
-
-
-#define LAYER_MOUSE                                                                                      \
-         _NONE_5____________________________________,       TR_PDPI, TR_SDPI, ___x___, ___x___, MOU_TOG, \
-         _______, TR_LALT, TR_LCTL, TR_LSFT, ___x___,       ___x___, _SCAG_MODS________________________, \
-         ___x___, ___x___, ___x___, TR_DRGS, TR_SNIP,       ___x___, ___x___, ___x___, ___x___, _______, \
-_BASE_KEYBALL____________, KC_BTN1, KC_BTN3, KC_BTN5,       KC_BTN4, KC_BTN2, ___x___,                   \
-                                             SCR_TOP,       ZOOMRST
-
-
-#define LAYER_FUNCTION                                                                                   \
-         QK_BOOT, KC_MPRV, KC_MNXT, KC_MPLY, DM_REC1,       KC_PSCR, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
-         _GACS_MODS________________________, DM_PLY1,       KC_BRK,  KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
-         ___x___, KC_NUM,  KC_CAPS, KC_SCRL, KC_INS,        TOG_CFG, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
-_______, ___x___, ___x___, _NONE_3__________________,       FWD_CFG, REV_CFG, QK_BOOT,                   \
-                                             TOG_CFG,       TOG_CFG
-*/
-
-#define     _NONE_3__________________                   ___x___, ___x___, ___x___
-#define     _NONE_5____________________________________ ___x___, ___x___, ___x___, ___x___, ___x___
-#define     _GACS_MODS________________________          TR_LGUI, TR_LALT, TR_LCTL, TR_LSFT
-#define     _SCAG_MODS________________________          TR_LSFT, TR_LCTL, TR_LALT, TR_LGUI
-#define     _UCCPR_L___________________________________ SC_UNDO, SC_CUT,  SC_COPY, SC_PAST, SC_REDO
-
-#define     _BASE_L4_________________                   MOUSE,   NUM,     TR_LSFT
-#define     _BASE_R4_________________                   KC_SPC,  NAV,     KC_MUTE
-#define     _BASE_KEYBALL____________                   FUNC,    TR_SNIP, KC_BTN1
-//#define     _LAYER_KEYBALL___________                   KC_BTN5, KC_BTN3, KC_BTN4
-#define     _LAYER_TRANS_____________                   ___x___, _______, ___x___
-
-
-//___x___, ___x___, ___x___, ___x___, ___x___, ___x___,       ___x___, ___x___, ___x___, ___x___, ___x___,
-
-#define LAYER_QWERTY                                                                                     \
-         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    \
-         MOU_A,   KC_S,    KC_D,    KC_F,    KC_G,          KC_H,    KC_J,    KC_K,    KC_L,    TR_QUOT, \
-         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,          KC_N,    KC_M,    TR_COMM, TR_DOT,  TR_MINS, \
-_BASE_KEYBALL____________, _BASE_L4_________________,       _BASE_R4_________________,                   \
-                                             SCR_TOP,       KC_MUTE
-
-
-#define LAYER_COLEMAK_DH                                                                                 \
-         KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,          KC_J,    KC_L,    KC_U,    KC_Y,    TR_QUOT, \
-         MOU_A,   KC_R,    KC_S,    KC_T,    KC_G,          KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    \
-         KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,          KC_K,    KC_H,    TR_COMM, TR_DOT,  TR_MINS, \
-_BASE_KEYBALL____________, _BASE_L4_________________,       _BASE_R4_________________,                   \
-                                             SCR_TOP,       KC_MUTE
-
-
-#define LAYER_GAME                                                                                       \
-         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,          KC_T,    KC_7,    KC_8,    KC_9,    KC_ESC,  \
-         KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,          KC_G,    KC_4,    KC_5,    KC_6,    KC_GRV,  \
-         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,          KC_LALT, KC_1,    KC_2,    KC_3,    CM_TOGG, \
-_NONE_3__________________, KC_ENT,  KC_SPC,  KC_LSFT,       _BASE_R4_________________,                   \
+FUNC,    MOUSE,   KC_BTN1, KC_ENT,  KC_SPC,  KC_LSFT,       _BASE_R4_________________,                   \
                                              SCR_TOP,       KC_MUTE
 
 
 #define LAYER_NAVIGATION                                                                                 \
          KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP,       ___x___, KC_APP,  DM_PLY1, DM_REC1, ___x___, \
          ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,       KC_BSPC, _SCAG_MODS________________________, \
-         _UCCPR_L___________________________________,       KC_DEL,  KC_TAB,  KC_VOLD, KC_VOLU, ___x___, \
-_NONE_3__________________, KC_BTN1, NUM,     KC_ENT,        _LAYER_TRANS_____________,                   \
+         _UCCPR_L___________________________________,       KC_DEL,  ___x___, KC_VOLD, KC_VOLU, ___x___, \
+_LAYER_KEYBALL___________, KC_TAB,  NUM,     KC_ENT,        _LAYER_TRANS_____________,                   \
                                              SCR_TOP,       ___x___
 
 
@@ -293,10 +208,10 @@ _NONE_3__________________, _LAYER_TRANS_____________,       _LAYER_TRANS________
 
 
 #define LAYER_MOUSE                                                                                      \
-         _NONE_5____________________________________,       TR_PDPI, TR_SDPI, ___x___, ___x___, MOU_TOG, \
-         _GACS_MODS________________________, TR_DRGS,       ___x___, _SCAG_MODS________________________, \
-         ___x___, TR_SNIP, _NONE_3__________________,       KC_BTN3, KC_BTN1, KC_BTN2, ___x___, ___x___, \
-_BASE_KEYBALL____________, _______, ___x___, ___x___,       KC_BTN5, KC_BTN4, ___x___,                   \
+         MOU_TOG, ___x___, ___x___, ___x___, ___x___,       TR_PDPI, TR_SDPI, ___x___, ___x___, MOU_TOG, \
+         _GACS_MODS________________________, TR_SNIP,       TR_SNIP, _SCAG_MODS________________________, \
+         _______, ___x___, ___x___, KC_BTN3, TR_DRGS,       TR_DRGS, KC_BTN1, KC_BTN2, KC_BTN3, ___x___, \
+___x___, _______, KC_BTN2, KC_BTN1, KC_BTN4, KC_BTN5,       KC_BTN5, KC_BTN4, KC_MUTE,                   \
                                              SCR_TOP,       ZOOMRST
 
 
@@ -304,5 +219,5 @@ _BASE_KEYBALL____________, _______, ___x___, ___x___,       KC_BTN5, KC_BTN4, __
          QK_BOOT, KC_MPRV, KC_MNXT, KC_MPLY, DM_REC1,       KC_PSCR, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
          _GACS_MODS________________________, DM_PLY1,       KC_BRK,  KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
          ___x___, KC_NUM,  KC_CAPS, KC_SCRL, KC_INS,        TOG_CFG, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
-_______, ___x___, ___x___, _NONE_3__________________,       FWD_CFG, REV_CFG, QK_BOOT,                   \
+_______, ___x___, ___x___, _NONE_3__________________,       REV_CFG, FWD_CFG, QK_BOOT,                   \
                                              TOG_CFG,       TOG_CFG

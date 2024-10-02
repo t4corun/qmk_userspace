@@ -68,6 +68,11 @@ void render_feature_status (uint8_t row, uint8_t col) {
 #if defined(RGB_MATRIX_ENABLE)
 void render_rgb_status (uint8_t row, uint8_t col) {
     oled_set_cursor(col, row);
+    for ( int i = 0; i < 4; i++ ) {
+        oled_write_P(line_off, false);
+    }
+    oled_set_cursor(col, row);
+
     if (rgb_matrix_is_enabled()) {
         oled_write_P(PSTR("rgb matrix mode: "), false);
         oled_write(get_u8_str(rgb_matrix_get_mode(), ' '), false);
@@ -84,10 +89,7 @@ void render_rgb_status (uint8_t row, uint8_t col) {
         oled_write_P(PSTR("spd: "), false);
         oled_write(get_u8_str(rgb_matrix_get_speed(), ' '), false);
     } else {
-        oled_write_P(line_off, false);
-        oled_write_P(line_off, false);
-        oled_write_P(line_off, false);
-        oled_write_P(line_off, false);
+        oled_write_P(PSTR("rgb mammtrix:      off"), false);
     }
 }
 #endif // RGB_MATRIX_ENABLE
