@@ -14,17 +14,22 @@
 
 # KLOR Saegewerk split keyboard
 
-This code is a rewrite for @geigeigeist's KLOR Saegewerk for my userspace. The original is not currently compatible with modern QMK. You are welcome to copy this custom definition, then alter it for the other variants.
+KLOR is a 36-42 key column-staggered split keyboard. It supports a per key RGB matrix, encoders, OLED displays, haptic feedback, audio, a Pixart Paw3204 trackball and four different layouts, through brake off parts.
 
-- [@geigeigeist's repo](https://github.com/GEIGEIGEIST/qmk-config-klor)
-- My [other branch](https://github.com/t4corun/qmk_userspace/tree/mouse_usability/keyboards/klor) has the JSON Matrix Layout and RGB Matrix layout for the other variants.
+![layouts](https://raw.githubusercontent.com/GEIGEIGEIST/qmk-config-klor/refs/heads/main/docs/images/klor-layouts.svg)
 
-Updates
+* Keyboard Maintainer: [geigeigeist](https://github.com/GEIGEIGEIST)
+* Hardware Supported: ?
+* Hardware Availability: Beekeeb
+
+## t4corun's notes
+
+This code enables me to build @geigeigeist's KLOR Saegewerk for my userspace. The original is not currently compatible with modern QMK. You are welcome to copy this custom definition, then alter it for the other variants and your needs. My [other branch](https://github.com/t4corun/qmk_userspace/tree/mouse_usability/keyboards/klor) has the JSON Matrix Layout and RGB Matrix layout for the other variants. Updates:
 
 - Migrated relevant configuration to `.json` files
-- This file is Sea-Picro RP2040 native
+- This is Sea-Picro RP2040 native
 - Only has RGB Matrix
-- Removed unneeded code/default configuration to reduce code maintenance. For example there is minimal OLED rendering. These things are handed in the userspace level
+- Removed unnecessary kb code/configuration to reduce code maintenance. Notably, functionality which is handled in the userspace
 
 ## How to build
 
