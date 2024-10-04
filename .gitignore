@@ -13,3 +13,8 @@
 # temp folders
 temp
 tmp
+
+# clangd
+compile_commands.json
+.clangd/
+.cache/
