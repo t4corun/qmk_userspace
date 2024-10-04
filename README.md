@@ -18,7 +18,7 @@ The custom layout optimizes for programming (SQL, Powershell, C) and minimizes h
   - Custom behavior from holds
 - Advanced macros to minimize/simplify layers
 
-![image](my_keymap.png)
+![image](keymap-drawer.svg)
 
 ## Target Keyboards
 
@@ -139,7 +139,9 @@ Quick summary of features. Some of these can be enabled/disabled if they are not
 - One Shot Mods: Minimizes holding, simplify layers, and avoid misfires from having Home Row Mods. Implemented bi-lateral GACS mods.
 - Caps Word: enables temporary all-caps typing without holding shift. Useful to typing programming variables. Tap `shift` twice to enable this.
 - RGB Matrix: see RGB lighting effects for large MCU memory footprints. Configuration in `config.h` preprocessor definitions
-- Pointing Device: for trackball functionality on certain boards (e.g. Keyball39 and Bastardkb Charybdis Nano). Note `MOUSEKEY_ENABLE` do not need to be enabled get the mouse click buttons.
+- Pointing Device: for trackball functionality on certain boards (e.g. Keyball39 and Bastardkb Charybdis Nano). Note
+  - `MOUSEKEY_ENABLE` do not need to be enabled get the mouse click buttons.
+  - When `NUMBER` Layer is active, the pointer mode turns into drag scrolling
 - OLED Displays: Enables keyboard status visualization. Display active layers, modifiers, host state, and feature status. Shows Pointer CPI and RGB values. Support for 128x32 or 128x64 screens
 
 Additional features below
@@ -185,7 +187,7 @@ Certain keys have different behaviors when held vs tapped allowing commonly type
 
 ### Combos
 
-Enables additional keys to be mapped by pressing multiple keys simultaneously. Primarily used to enable mouse functionality on base layer
+Enables additional keys to be mapped by pressing multiple keys simultaneously. Primarily grants some mouse functionality and access to function layer on keyboards with less keys. These combos only work on the base layers
 
 | Combo           | Result                     | Comment |
 | --------------- | -------------------------- | ------- |
