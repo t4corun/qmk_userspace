@@ -64,6 +64,8 @@ void render_pointercpi_keymap(uint8_t row, uint8_t col) {
     oled_set_cursor(col, row);
     if (keyball_get_pointer_dragscroll_enabled()) {
         oled_write_P(PSTR("-drg-"), false);
+    } if (keyball_get_pointer_sniping_enabled()) {
+        oled_write_P(PSTR("-sni-"), false);
     } else {
         oled_write_P(PSTR("-cpi-"), false);
     }

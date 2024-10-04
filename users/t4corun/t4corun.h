@@ -131,7 +131,7 @@ enum keycodes {
 #define     TR_QUOT LT(FIRST_DEFAULT_LAYER, TH_QUOT)
 
 // pointer specific control
-#if defined(KEYBOARD_bastardkb_charybdis_3x5) || defined(KEYBOARD_keyball)
+#if defined(KEYBOARD_bastardkb_charybdis_3x5) || defined(KEYBOARD_non_tree_keyball39)
 //these mouse codes are defined in charybdis.h and keyball.h
 #   define  TR_SNIP SNIPING
 #   define  TR_DRGS DRGSCRL
@@ -142,7 +142,7 @@ enum keycodes {
 #   define  TR_DRGS KC_SCRL  //use host status for ploopy nano drag scroll
 #   define  TR_SDPI ___x___
 #   define  TR_PDPI KC_NUM   //use host status for ploopy nano dpi switch
-#endif // KEYBOARD_bastardkb_charybdis_3x5 || KEYBOARD_keyball
+#endif // KEYBOARD_bastardkb_charybdis_3x5 || KEYBOARD_keyball39
 
 #define     _NONE_3__________________                   ___x___, ___x___, ___x___
 #define     _NONE_5____________________________________ ___x___, ___x___, ___x___, ___x___, ___x___

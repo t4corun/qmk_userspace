@@ -167,8 +167,8 @@
 #   if defined(KEYBOARD_bastardkb_charybdis_3x5) \
         || defined(KEYBOARD_dztech_dz60rgb_v2_1) \
         || defined(KEYBOARD_bluebell_swoop)      \
-        || defined(KEYBOARD_klor)                \
-        || defined(KEYBOARD_keyball)
+        || defined(KEYBOARD_non_tree_klor_saegewerk)                \
+        || defined(KEYBOARD_non_tree_keyball39)
 
 #       define ENABLE_RGB_MATRIX_BREATHING
 #       define ENABLE_RGB_MATRIX_BAND_PINWHEEL_VAL
