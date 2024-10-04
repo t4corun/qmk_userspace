@@ -1,6 +1,4 @@
-/* Copyright 2022 @Yowkees
- * Copyright 2022 MURAOKA Taro (aka KoRoN, @kaoriya)
- * Copyright 2024 @t4corun
+/* Copyright 2024 @t4corun
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,6 +14,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
 #pragma once
 
-#include "keyball.h"
+// mimic mouse wheel direction
+#define KEYBALL_CONFIG_SYNC
+#define KEYBALL_DRAGSCROLL_REVERSE_Y
+
+// I am using the pointer only on the master side
+#undef SPLIT_POINTING_ENABLE
+#undef POINTING_DEVICE_RIGHT
+
