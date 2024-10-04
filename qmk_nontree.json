@@ -1,8 +1,6 @@
 {
 	"nontree_targets": [
-		"barbellboards",
-		"klor",
-		"ploopyco",
-        "keyball"
+        "non_tree",
+		"ploopyco"
 	]
 }
