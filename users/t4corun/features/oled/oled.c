@@ -51,30 +51,33 @@
 #if defined(RGB_MATRIX_ENABLE)
 void render_rgb_status (uint8_t row, uint8_t col) {
     oled_set_cursor(col, row);
+    oled_write_P(PSTR("-rgb-"), false);
+    for ( int i = 0; i < 5; i++ ) {
+        oled_write_P(line_off, false);
+    }
+
+    oled_set_cursor(col, row + 1);
     if (rgb_matrix_is_enabled()) {
-        oled_write_P(PSTR("-rgb-"), false);
-        oled_set_cursor(col, row + 1);
-        oled_write_P(PSTR("m "), false);
-        oled_write(get_u8_str(rgb_matrix_get_mode(), ' '), false);
-        oled_set_cursor(col, row + 2);
-        oled_write_P(PSTR("h "), false);
-        oled_write(get_u8_str(rgb_matrix_get_hue(), ' '), false);
-        oled_set_cursor(col, row + 3);
-        oled_write_P(PSTR("s "), false);
-        oled_write(get_u8_str(rgb_matrix_get_sat(), ' '), false);
-        oled_set_cursor(col, row + 4);
-        oled_write_P(PSTR("v "), false);
-        oled_write(get_u8_str(rgb_matrix_get_val(), ' '), false);
-        oled_set_cursor(col, row + 5);
-        oled_write_P(PSTR("s "), false);
-        oled_write(get_u8_str(rgb_matrix_get_speed(), ' '), false);
+        if (get_highest_layer(layer_state) == _FUNCTION) {
+            oled_write_P(PSTR("m "), false);
+            oled_write(get_u8_str(rgb_matrix_get_mode(), ' '), false);
+            oled_set_cursor(col, row + 2);
+            oled_write_P(PSTR("h "), false);
+            oled_write(get_u8_str(rgb_matrix_get_hue(), ' '), false);
+            oled_set_cursor(col, row + 3);
+            oled_write_P(PSTR("s "), false);
+            oled_write(get_u8_str(rgb_matrix_get_sat(), ' '), false);
+            oled_set_cursor(col, row + 4);
+            oled_write_P(PSTR("v "), false);
+            oled_write(get_u8_str(rgb_matrix_get_val(), ' '), false);
+            oled_set_cursor(col, row + 5);
+            oled_write_P(PSTR("s "), false);
+            oled_write(get_u8_str(rgb_matrix_get_speed(), ' '), false);
+        } else {
+            oled_write_P(PSTR("  on "), false);
+        }
     } else {
-        oled_write_P(PSTR("-rgb-"), false);
         oled_write_P(PSTR(" off "), false);
-        oled_write_P(line_off, false);
-        oled_write_P(line_off, false);
-        oled_write_P(line_off, false);
-        oled_write_P(line_off, false);
     }
 }
 #endif // RGB_MATRIX_ENABLE
