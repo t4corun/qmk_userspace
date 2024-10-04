@@ -82,7 +82,7 @@ layers:
   FUNC:
     # rows 1-3
     - [Boot, Prev Media, Next Media, Play Pause, null, Print Screen, F7, F8, F9, F10]
-    - [Gui, Alt, Ctrl, Shift, Macro Play, null, F4, F5, F6, F11]
+    - [Gui, Alt, Ctrl, Shift, null, Pause Break, F4, F5, F6, F11]
     - [null, Num Lock, Caps Lock, Scroll Lock, Insert, Toggle Config, F1, F2, F3, F12]
     # keyball row4, left three then right one
     - [type: held, type: trans, type: trans, {t: "Boot", type: trans}]
