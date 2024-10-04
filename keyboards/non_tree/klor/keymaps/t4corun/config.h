@@ -1,5 +1,4 @@
-/* Copyright 2022 GEIST @geigeigeist
- * Copyright 2024 t4corun (@t4corun)
+/* Copyright 2024 @t4corun
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +14,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #pragma once
 
-#include "klor.h"
+#if defined(OLED_ENABLE)
+#   define OLED_KEYBOARD_NAME "KLOR Saegewerk"
+#endif // OLED_ENABLE

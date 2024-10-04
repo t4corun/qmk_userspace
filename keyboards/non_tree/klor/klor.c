@@ -1,5 +1,5 @@
-/* Copyright 2022 GEIST @geigeigeist
- * Copyright 2024 t4corun (@t4corun)
+/* Copyright 2022 GEIST <@geigeigeist>
+ * Copyright 2024 @t4corun
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +15,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#pragma once
-
 #include "klor.h"
+
+#if defined(OLED_ENABLE)
+
+oled_rotation_t oled_init_kb(oled_rotation_t rotation) {
+    return OLED_ROTATION_180;
+}
+
+bool oled_task_kb(void) {
+    if (!oled_task_user()) {
+        return false;
+    }
+    if (is_keyboard_master()) {
+        oled_write_raw_P(klor_face, sizeof(klor_face));
+    } else {
+        oled_write_raw_P(klor_face, sizeof(klor_face));
+    }
+    return false;
+}
+
+#endif // OLED_ENABLE

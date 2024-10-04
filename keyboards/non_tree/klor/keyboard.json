@@ -1,10 +1,49 @@
 {
+    "manufacturer": "GEIST",
     "keyboard_name": "KLOR Saegewerk",
-    "rgblight": {
-        "led_count": 36,
-        "split_count": [18, 18]
+    "maintainer": "t4corun",
+    "audio": {
+        "driver": "pwm_hardware",
+        "voices": true
     },
+    "bootloader": "rp2040",
+    "bootmagic": {
+        "enabled": true
+    },
+    "diode_direction": "COL2ROW",
+    "encoder": {
+        "rotary": [
+            {"pin_a": "GP28", "pin_b": "GP29", "resolution": 4}
+        ]
+    },
+    "features": {
+        "audio": true,
+        "encoder": true,
+        "extrakey": true,
+        "haptic": true,
+        "oled": true,
+        "rgb_matrix": true
+    },
+    "haptic": {
+        "driver": "drv2605l"
+    },
+    "matrix_pins": {
+        "cols": ["GP27", "GP26", "GP22", "GP20", "GP23", "GP21"],
+        "rows": ["GP5", "GP6", "GP7", "GP8"]
+    },
+    "processor": "RP2040",
     "rgb_matrix": {
+        "animations": {
+            "breathing": true,
+            "cycle_left_right": true,
+            "cycle_pinwheel": true,
+            "cycle_up_down": true,
+            "digital_rain": true,
+            "hue_breathing": true,
+            "splash": true,
+            "typing_heatmap": true
+        },
+        "driver": "ws2812",
         "layout": [
             {"matrix": [3, 3], "x": 89, "y": 54, "flags": 1},
             {"matrix": [3, 2], "x": 74, "y": 49, "flags": 1},
@@ -43,12 +82,42 @@
             {"matrix": [5, 1], "x": 209, "y": 30, "flags": 4},
             {"matrix": [4, 1], "x": 211, "y": 17, "flags": 4}
         ],
-        "led_count": 36,
-        "split_count": [18, 18]
+        "max_brightness": 180,
+        "sleep": true,
+        "split_count": [18, 18],
+        "timeout": 60000
     },
+    "split": {
+        "enabled": true,
+        "encoder": {
+            "right": {
+                "rotary": [
+                    {"pin_a": "GP29", "pin_b": "GP28", "resolution": 4}
+                ]
+            }
+        },
+        "serial": {
+            "driver": "vendor",
+            "pin": "GP1"
+        },
+        "transport": {
+            "protocol": "serial",
+            "sync": {
+                "haptic": true,
+                "matrix_state": true,
+                "oled": true
+            }
+        }
+    },
+    "url": "https://github.com/GEIGEIGEIST/KLOR",
     "usb": {
         "device_version": "1.3.0",
-        "pid": "0x0001"
+        "pid": "0x0001",
+        "vid": "0x3A3C"
+    },
+    "ws2812": {
+        "driver": "vendor",
+        "pin": "GP0"
     },
     "layouts": {
         "LAYOUT": {

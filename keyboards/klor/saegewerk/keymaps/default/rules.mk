@@ -1,5 +1,0 @@
-AUDIO_ENABLE         = yes
-MUSIC_ENABLE         = yes
-HAPTIC_ENABLE        = no
-RGB_MATRIX_ENABLE    = no
-DYNAMIC_MACRO_ENABLE = no
