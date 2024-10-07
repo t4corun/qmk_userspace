@@ -1,6 +1,8 @@
 # T4CORUN Userspace
 
-My External Userspace to build QMK firmware through GitHub Actions
+My External Userspace to build QMK firmware through GitHub Actions. 
+
+*Note: Please feel free to leverage this at your own risk. I am not responsible for any damage or loss that may occur from using my userspace.*
 
 ## Layout
 
