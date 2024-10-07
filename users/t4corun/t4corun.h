@@ -195,7 +195,7 @@ DM_PLY1, DM_REC1, KC_BTN1, KC_TAB,  NUM,     KC_ENT,        _LYR_RTRANS__,      
          KC_ESC,  SC_SNIP, SC_FILE, ___x___, KC_TAB,        ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
          _GACS_MODS________________________, KC_ENT,        KC_BSPC, KC_4,    KC_5,    KC_6,    KC_DOT,  \
          _UCCPR_L___________________________________,       KC_DEL,  KC_1,    KC_2,    KC_3,    KC_MINS, \
-_NONE_3__________________, _LYR_LTRANS______________,       KC_0,    NAV,                       KC_MUTE, \
+_NONE_3__________________, _LYR_LTRANS______________,       KC_0,    NAV,                       ___x___, \
                                              ___x___,       SC_WIN
 
 
@@ -211,7 +211,7 @@ _NONE_3__________________, _LYR_LTRANS______________,       _LYR_RTRANS__,      
          MOU_TOG, ___x___, ___x___, ___x___, ___x___,       TR_PDPI, TR_SDPI, ___x___, ___x___, MOU_TOG, \
          _GACS_MODS________________________, TR_DRGS,       TR_DRGS, _SCAG_MODS________________________, \
          _______, ___x___, KC_BTN2, KC_BTN3, TR_SNIP,       TR_SNIP, KC_BTN1, KC_BTN2, KC_BTN3, ___x___, \
-___x___, _______, KC_BTN2, KC_BTN1, KC_BTN4, KC_BTN5,       KC_BTN5, KC_BTN4,                   KC_MUTE, \
+___x___, _______, KC_BTN2, KC_BTN1, KC_BTN4, KC_BTN5,       KC_BTN5, KC_BTN4,                   ___x___, \
                                              SCR_TOP,       ZOOMRST
 
 

@@ -116,6 +116,17 @@ path.combo {
 }
 /* End Tabler Icons Cleanup */
 
+@media (prefers-color-scheme: dark) {
+svg.keymap { fill: #d1d6db; }
+rect.key { fill: #3f4750; }
+rect.key, rect.combo { stroke: #60666c; }
+rect.combo, rect.combo-separate { fill: #1f3d7a; }
+rect.held, rect.combo.held { fill: #854747; }
+text.label, text.footer { stroke: black; }
+text.trans { fill: #7e8184; }
+path.combo { stroke: #7f7f7f; }
+
+}
 
 svg.keymap { background-color: #FFF; }</style>
 <g transform="translate(30, 0)" class="layer-base_QWERTY">
@@ -737,15 +748,9 @@ svg.keymap { background-color: #FFF; }</style>
 </g>
 <g transform="translate(644, 28)" class="key keypos-7">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">Macro</tspan><tspan x="0" dy="1.2em">Play</tspan>
-</text>
 </g>
 <g transform="translate(700, 56)" class="key keypos-8">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">Macro</tspan><tspan x="0" dy="1.2em">Rec</tspan>
-</text>
 </g>
 <g transform="translate(756, 84)" class="key keypos-9">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -837,12 +842,19 @@ svg.keymap { background-color: #FFF; }</style>
 </g>
 <g transform="translate(28, 252)" class="key trans keypos-30">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
+<text x="0" y="0" class="key trans tap">
+<tspan x="0" dy="-0.6em">Macro</tspan><tspan x="0" dy="1.2em">Play</tspan>
+</text>
 </g>
 <g transform="translate(84, 224)" class="key trans keypos-31">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
+<text x="0" y="0" class="key trans tap">
+<tspan x="0" dy="-0.6em">Macro</tspan><tspan x="0" dy="1.2em">Rec</tspan>
+</text>
 </g>
 <g transform="translate(140, 196)" class="key trans keypos-32">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
+<text x="0" y="0" class="key trans tap">MB1</text>
 </g>
 <g transform="translate(756, 252)" class="key trans keypos-33">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
@@ -910,10 +922,10 @@ svg.keymap { background-color: #FFF; }</style>
 </g>
 <g transform="translate(252, 56)" class="key keypos-4">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">Tab</text>
 </g>
 <g transform="translate(532, 56)" class="key keypos-5">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Tab</text>
 </g>
 <g transform="translate(588, 42)" class="key keypos-6">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -949,6 +961,7 @@ svg.keymap { background-color: #FFF; }</style>
 </g>
 <g transform="translate(252, 112)" class="key keypos-14">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">Enter</text>
 </g>
 <g transform="translate(532, 112)" class="key keypos-15">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1327,6 +1340,7 @@ svg.keymap { background-color: #FFF; }</style>
 </g>
 <g transform="translate(140, 140)" class="key keypos-22">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">MB2</text>
 </g>
 <g transform="translate(196, 154)" class="key keypos-23">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1367,7 +1381,6 @@ svg.keymap { background-color: #FFF; }</style>
 </g>
 <g transform="translate(756, 252)" class="key trans keypos-33">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
-<text x="0" y="0" class="key trans tap">Mute</text>
 </g>
 <g transform="translate(207, 252)" class="key keypos-34">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1442,6 +1455,9 @@ svg.keymap { background-color: #FFF; }</style>
 </g>
 <g transform="translate(252, 56)" class="key keypos-4">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em">Macro</tspan><tspan x="0" dy="1.2em">Rec</tspan>
+</text>
 </g>
 <g transform="translate(532, 56)" class="key keypos-5">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1483,6 +1499,9 @@ svg.keymap { background-color: #FFF; }</style>
 </g>
 <g transform="translate(252, 112)" class="key keypos-14">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em">Macro</tspan><tspan x="0" dy="1.2em">Play</tspan>
+</text>
 </g>
 <g transform="translate(532, 112)" class="key keypos-15">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
