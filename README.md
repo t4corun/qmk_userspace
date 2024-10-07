@@ -1,6 +1,8 @@
 # T4CORUN Userspace
 
-My External Userspace to build QMK firmware through GitHub Actions
+My External Userspace to build QMK firmware through GitHub Actions. 
+
+*Note: Please feel free to leverage this at your own risk. I am not responsible for any damage or loss that may occur from using my userspace.*
 
 ## Layout
 
@@ -17,6 +19,8 @@ The custom layout optimizes for programming (SQL, Powershell, C) and minimizes h
   - Common symbols are positioned under stronger fingers
   - Custom behavior from holds
 - Advanced macros to minimize/simplify layers
+
+Below is a visual representation of my wrapper. Not all keys/features will be used for every keyboard. There is some redundancy built in to account for these differences. For example, the left three keys on row 4 are only available on Keyball39. On my other keyboards, combos are enabled to cover these missing keys.
 
 ![image](keymap-drawer.svg)
 
