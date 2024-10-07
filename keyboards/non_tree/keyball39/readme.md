@@ -15,7 +15,8 @@ This code enables me to build Keyball39 firmware for my userspace. The original 
 * Migrated relevant configuration to `.json` files
 * Sea Picro RP2040 Promicro native
 * enabled RGB Matrix
-* Using QMK's pointer driver and including BastardKB's drag scroll and sniper code
+* Converted to QMK's standard pointer driver
+* Copied BastardKB's pointer customizations (drag scroll/sniper mode). Leveraging for personal use as it enable consistency with my Charybdis Nano, and his code is easy to understand
 * Only right ball layout is defined
 * Removed unnecessary kb code/configuration to reduce code maintenance. Notably, functionality which is handled in the userspace
 
