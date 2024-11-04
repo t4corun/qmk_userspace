@@ -22,6 +22,8 @@
  * https://docs.qmk.fm/tap_hold
  * https://docs.qmk.fm/one_shot_keys
  */
+#undef  PERMISSIVE_HOLD
+
 #undef  TAP_CODE_DELAY
 #undef  TAPPING_TERM
 #undef  QUICK_TAP_TERM
@@ -29,6 +31,8 @@
 #undef  NO_ACTION_ONESHOT
 #undef  ONESHOT_TAP_TOGGLE
 #undef  ONESHOT_TIMEOUT
+
+#define PERMISSIVE_HOLD // enabled per achordion
 
 #define TAP_CODE_DELAY 5
 #define TAPPING_TERM 175

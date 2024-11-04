@@ -39,9 +39,11 @@ PLOOPYNANO_ENABLE      ?= no
 # ---------------------------------------------------------
 # include my code that will be common across all my keyboards
 
-SRC +=                     \
-	t4corun.c              \
-	features/taphold.c     \
+SRC +=                   \
+    t4corun.c            \
+    features/achordion.c \
+    features/taphold.c   \
+
 
 # ---------------------------------------------------------
 # include additional code for enabled features for each keyboard

@@ -130,6 +130,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
     }
 
+    if(!process_achordion(keycode, record)) { return false; }
     if(!process_record_user_taphold(keycode, record)) { return false; }
 
 #if defined(ENCODER_ENABLE)
@@ -144,6 +145,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
+void matrix_scan_user(void) {
+    achordion_task();
+
+#if defined(ENCODER_ENABLE)
+    matrix_scan_encoder();
+#endif //ENCODER_ENABLE
+}
+
+
 bool shutdown_user(bool jump_to_bootloader) {
 #if defined(RGB_MATRIX_ENABLE)
     void rgb_matrix_update_pwm_buffers(void);
@@ -151,4 +161,34 @@ bool shutdown_user(bool jump_to_bootloader) {
     rgb_matrix_update_pwm_buffers();
 #endif //RGB_MATRIX_ENABLE
     return false;
+}
+
+/*
+ *  Achordion customizations
+ */
+
+uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+    switch (tap_hold_keycode) {
+        case TR_LCBR:
+        case TR_LABK:
+        case TR_LBRC:
+        case TR_LPRN:
+        case TR_DQUO:
+        case TR_SQUO:
+        case TR_BSLS:
+        case TR_SLSH:
+        case TR_PIPE:
+        case TR_COMM:
+        case TR_DOT:
+        case TR_PERC:
+        case TR_EQL:
+        case TR_MINS:
+        case TR_GRV:
+        case TR_SCLN:
+        case TR_QUOT:
+            return 0; // disable achordion for my other tap holds
+
+        default:
+            return 800; // 800 ms
+    }
 }

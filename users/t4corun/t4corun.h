@@ -2,6 +2,7 @@
 
 #include QMK_KEYBOARD_H
 
+#include "features/achordion.h"
 #include "features/taphold.h"
 
 #if defined(ENCODER_ENABLE)
@@ -51,11 +52,13 @@ enum keycodes {
     TH_SCLN,
     TH_QUOT,
 
+#if defined(ENCODER_ENABLE)
     FWD_TAB,  // turn encoder for tab and shift tab
     REV_TAB,  // hold alt or ctrl while turning for window / tab switching
 
     ZOOMIN,   // turn encoder for mouse wheel zoom
     ZOOMOUT,
+#endif // ENCODER_ENABLE
 
     FWD_CFG,  // turn encoder while holding mod combinations to adjust features
     REV_CFG,  // e.g. RGB settings, haptic frequency, click frequency, base layer
@@ -97,6 +100,25 @@ enum keycodes {
  * Any keycodes with prefix TR has behavior dependent on if the feature is enabled.
  * We will only define things that are used across different layers. Entire layers are turned off in the keymap
  */
+
+// home row mods QWERTY
+#define     HOME_A  MT(MOD_LGUI, KC_A)
+#define     HOME_S  MT(MOD_LALT, KC_S)
+#define     HOME_D  MT(MOD_LCTL, KC_D)
+#define     HOME_F  MT(MOD_LSFT, KC_F)
+#define     HOME_J  MT(MOD_LSFT, KC_J)
+#define     HOME_K  MT(MOD_LCTL, KC_K)
+#define     HOME_L  MT(MOD_LALT, KC_L)
+#define     HOME_QT MT(MOD_LGUI, KC_QUOT)
+
+// home row mods COLEMAK DH
+#define     HOME_R  MT(MOD_LALT, KC_R)
+#define     HOME_SC MT(MOD_LCTL, KC_S)
+#define     HOME_T  MT(MOD_LSFT, KC_T)
+#define     HOME_N  MT(MOD_LSFT, KC_N)
+#define     HOME_E  MT(MOD_LCTL, KC_E)
+#define     HOME_I  MT(MOD_LALT, KC_I)
+#define     HOME_O  MT(MOD_LGUI, KC_O)
 
 // one shot mods
 #define     TR_LSFT OSM(MOD_LSFT)
@@ -156,12 +178,11 @@ enum keycodes {
 #define     _LYR_LTRANS______________                   ___x___, _______, ___x___
 #define     _LYR_RTRANS__                               ___x___, _______
 
-
 //___x___, ___x___, ___x___, ___x___, ___x___, ___x___,       ___x___, ___x___, ___x___, ___x___, ___x___,
 
 #define LAYER_QWERTY                                                                                     \
          KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    \
-         KC_A,    KC_S,    KC_D,    KC_F,    KC_G,          KC_H,    KC_J,    KC_K,    KC_L,    TR_QUOT, \
+         HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,          KC_H,    HOME_J,  HOME_K,  HOME_L,  HOME_QT, \
          MOU_Z,   KC_X,    KC_C,    KC_V,    KC_B,          KC_N,    KC_M,    TR_COMM, TR_DOT,  TR_MINS, \
 _BASE_KEYBALL____________, _BASE_L4_________________,       _BASE_R4_____,                      KC_MUTE, \
                                              SCR_TOP,       KC_MUTE
@@ -169,7 +190,7 @@ _BASE_KEYBALL____________, _BASE_L4_________________,       _BASE_R4_____,      
 
 #define LAYER_COLEMAK_DH                                                                                 \
          KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,          KC_J,    KC_L,    KC_U,    KC_Y,    TR_QUOT, \
-         KC_A,    KC_R,    KC_S,    KC_T,    KC_G,          KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    \
+         HOME_A,  HOME_R,  HOME_SC, HOME_T,  KC_G,          KC_M,    HOME_N,  HOME_E,  HOME_I,  HOME_O,  \
          MOU_Z,   KC_X,    KC_C,    KC_D,    KC_V,          KC_K,    KC_H,    TR_COMM, TR_DOT,  TR_MINS, \
 _BASE_KEYBALL____________, _BASE_L4_________________,       _BASE_R4_____,                      KC_MUTE, \
                                              SCR_TOP,       KC_MUTE
