@@ -20,6 +20,7 @@ EXTRAKEY_ENABLE         = yes
 
 AUDIO_ENABLE           ?= no
 CONSOLE_ENABLE         ?= no
+COMMAND_ENABLE         ?= no
 ENCODER_ENABLE         ?= no
 ENCODER_MAP_ENABLE     ?= no
 GRAVE_ESC_ENABLE       ?= no

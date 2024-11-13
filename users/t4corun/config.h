@@ -32,6 +32,8 @@
 #undef  ONESHOT_TAP_TOGGLE
 #undef  ONESHOT_TIMEOUT
 
+#undef  ACHORDION_STREAK
+
 #define PERMISSIVE_HOLD // enabled per achordion
 
 #define TAP_CODE_DELAY 5
@@ -40,6 +42,8 @@
 
 #define ONESHOT_TAP_TOGGLE 3
 #define ONESHOT_TIMEOUT 2000
+
+#define ACHORDION_STREAK
 
 /* Caps Word
  * https://docs.qmk.fm/features/caps_word
@@ -50,6 +54,7 @@
  */
 #if defined(CAPS_WORD_ENABLE)
 #   undef  DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
+#   undef  BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 #   undef  CAPS_WORD_IDLE_TIMEOUT
 
 #   define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD

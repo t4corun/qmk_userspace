@@ -27,14 +27,8 @@ void render_layer_state (uint8_t row, uint8_t col) {
         case _NUMBER:
             oled_write_P(PSTR(OLED_RENDER_LAYER_3), false);
             break;
-        case _SYMBOL:
-            oled_write_P(PSTR(OLED_RENDER_LAYER_4), false);
-            break;
-        case _MOUSE:
-            oled_write_P(PSTR(OLED_RENDER_LAYER_5), false);
-            break;
         case _FUNCTION:
-            oled_write_P(PSTR(OLED_RENDER_LAYER_6), false);
+            oled_write_P(PSTR(OLED_RENDER_LAYER_4), false);
             break;
         default:
             oled_write_P(PSTR(OLED_RENDER_BLANK), false);
@@ -49,9 +43,7 @@ void render_layer_state_list (uint8_t row, uint8_t col) {
     uint8_t current_layer = get_highest_layer(layer_state);
     oled_write_P(PSTR(OLED_RENDER_LAYER_2), current_layer == _NAVIGATION);
     oled_write_P(PSTR(OLED_RENDER_LAYER_3), current_layer == _NUMBER);
-    oled_write_P(PSTR(OLED_RENDER_LAYER_4), current_layer == _SYMBOL);
-    oled_write_P(PSTR(OLED_RENDER_LAYER_5), current_layer == _MOUSE);
-    oled_write_P(PSTR(OLED_RENDER_LAYER_6), current_layer == _FUNCTION);
+    oled_write_P(PSTR(OLED_RENDER_LAYER_4), current_layer == _FUNCTION);
 }
 
 // Shows the Host LED State (Num lock, caps lock , scroll lock)

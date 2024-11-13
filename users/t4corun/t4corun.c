@@ -14,8 +14,8 @@ __attribute__((weak)) layer_state_t layer_state_set_keymap(layer_state_t state) 
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    // Hold Navigation and Number to get Symbol
-    state = update_tri_layer_state(state, _NAVIGATION, _NUMBER, _SYMBOL);
+    // Hold Navigation and Number to get Function
+    state = update_tri_layer_state(state, _NAVIGATION, _NUMBER, _FUNCTION);
 
     state = layer_state_set_keymap(state);
 
@@ -169,18 +169,18 @@ bool shutdown_user(bool jump_to_bootloader) {
 
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
     switch (tap_hold_keycode) {
-        case TR_LCBR:
-        case TR_LABK:
+        //case TR_LCBR:
+        //case TR_LABK:
         case TR_LBRC:
-        case TR_LPRN:
+        //case TR_LPRN:
         case TR_DQUO:
         case TR_SQUO:
         case TR_BSLS:
         case TR_SLSH:
-        case TR_PIPE:
+        //case TR_PIPE:
         case TR_COMM:
         case TR_DOT:
-        case TR_PERC:
+        //case TR_PERC:
         case TR_EQL:
         case TR_MINS:
         case TR_GRV:
