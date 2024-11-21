@@ -40,14 +40,14 @@ bool process_record_user_taphold(uint16_t keycode, keyrecord_t *record) {
         //https://getreuer.info/posts/keyboards/triggers/index.html#tap-vs.-long-press
         //https://www.jonashietala.se/series/t-34/ he focuses on a keymap for programming/VIM
         // Brackets: open and close brackets and put the cursor inside
-        //case TR_LCBR:
-        //    return process_tap_hold(record, KC_LCBR, KC_RCBR, HOLD_BRACKETS);
-        //case TR_LABK:
-        //    return process_tap_hold(record, KC_LABK, KC_RABK, HOLD_BRACKETS);
+        case TR_LCBR:
+            return process_tap_hold(record, KC_LCBR, KC_RCBR, HOLD_BRACKETS);
+        case TR_LABK:
+            return process_tap_hold(record, KC_LABK, KC_RABK, HOLD_BRACKETS);
         case TR_LBRC:
             return process_tap_hold(record, KC_LBRC, KC_RBRC, HOLD_BRACKETS);
-        //case TR_LPRN:
-        //    return process_tap_hold(record, KC_LPRN, KC_RPRN, HOLD_BRACKETS);
+        case TR_LPRN:
+            return process_tap_hold(record, KC_LPRN, KC_RPRN, HOLD_BRACKETS);
         case TR_DQUO:
             return process_tap_hold(record, KC_DQUO, KC_DQUO, HOLD_BRACKETS);
         case TR_SQUO:
@@ -57,15 +57,15 @@ bool process_record_user_taphold(uint16_t keycode, keyrecord_t *record) {
             return process_tap_hold(record, KC_BSLS, KC_BSLS, HOLD_DOUBLETP);
         case TR_SLSH:
             return process_tap_hold(record, KC_SLSH, KC_SLSH, HOLD_DOUBLETP);
-        //case TR_PIPE:
-        //    return process_tap_hold(record, KC_PIPE, KC_PIPE, HOLD_DOUBLETP);
+        case TR_PIPE:
+            return process_tap_hold(record, KC_PIPE, KC_PIPE, HOLD_DOUBLETP);
         // Custom override without holding shift
         case TR_COMM:
             return process_tap_hold(record, KC_COMM, KC_LPRN, HOLD_SINGLETP);
         case TR_DOT:
             return process_tap_hold(record, KC_DOT,  KC_RPRN, HOLD_SINGLETP);
-        //case TR_PERC:
-        //    return process_tap_hold(record, KC_PERC, KC_CIRC, HOLD_SINGLETP);
+        case TR_PERC:
+            return process_tap_hold(record, KC_PERC, KC_CIRC, HOLD_SINGLETP);
         // auto shift
         case TR_EQL:
             return process_tap_hold(record, KC_EQL,  KC_PLUS, HOLD_SINGLETP);

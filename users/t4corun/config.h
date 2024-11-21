@@ -23,26 +23,20 @@
  * https://docs.qmk.fm/one_shot_keys
  */
 #undef  PERMISSIVE_HOLD
-
 #undef  TAP_CODE_DELAY
 #undef  TAPPING_TERM
 #undef  QUICK_TAP_TERM
-
 #undef  NO_ACTION_ONESHOT
 #undef  ONESHOT_TAP_TOGGLE
 #undef  ONESHOT_TIMEOUT
-
 #undef  ACHORDION_STREAK
 
 #define PERMISSIVE_HOLD // enabled per achordion
-
-#define TAP_CODE_DELAY 5
-#define TAPPING_TERM 175
-#define QUICK_TAP_TERM 120
-
+#define TAP_CODE_DELAY     5
+#define TAPPING_TERM       175
+#define QUICK_TAP_TERM     120
 #define ONESHOT_TAP_TOGGLE 3
-#define ONESHOT_TIMEOUT 2000
-
+#define ONESHOT_TIMEOUT    2000
 #define ACHORDION_STREAK
 
 /* Caps Word
@@ -72,9 +66,9 @@
 #   undef  COMBO_MUST_HOLD_PER_COMBO
 #   undef  COMBO_SHOULD_TRIGGER
 
-#   define COMBO_ONLY_FROM_LAYER 0 //this will always setup combos based off of QWERTY layout
+#   define COMBO_ONLY_FROM_LAYER     0 //this will always setup combos based off of QWERTY layout
 #   define EXTRA_SHORT_COMBOS
-#   define COMBO_TERM 35
+#   define COMBO_TERM                35
 #   define COMBO_TERM_PER_COMBO
 #   define COMBO_MUST_HOLD_PER_COMBO
 #   define COMBO_SHOULD_TRIGGER
@@ -123,7 +117,7 @@
 #   undef  DRV2605L_GREETING
 #   undef  DRV2605L_DEFAULT_MODE
 
-#   define DRV2605L_GREETING DRV2605L_EFFECT_750_MS_ALERT_100
+#   define DRV2605L_GREETING     DRV2605L_EFFECT_750_MS_ALERT_100
 #   define DRV2605L_DEFAULT_MODE DRV2605L_EFFECT_STRONG_CLICK_1_100
 #endif // HAPTIC_ENABLE && HAPTIC_DRV2605L
 

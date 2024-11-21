@@ -7,7 +7,8 @@
 #define OLED_RENDER_DEFAULT_LAYER3    "Game "
 #define OLED_RENDER_LAYER_2           " Nav "
 #define OLED_RENDER_LAYER_3           " Num "
-#define OLED_RENDER_LAYER_4           " Fun "
+#define OLED_RENDER_LAYER_4           " Sym "
+#define OLED_RENDER_LAYER_5           " Fun "
 #define OLED_RENDER_BLANK             "     "
 
 void render_led_status (uint8_t row, uint8_t col);

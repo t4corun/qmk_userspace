@@ -7,7 +7,8 @@
 #define OLED_RENDER_DEFAULT_LAYER3    "GAME      :"
 #define OLED_RENDER_LAYER_2           "Navigation"
 #define OLED_RENDER_LAYER_3           "Number    "
-#define OLED_RENDER_LAYER_4           "Function  "
+#define OLED_RENDER_LAYER_4           "Symbol    "
+#define OLED_RENDER_LAYER_5           "Function  "
 #define OLED_RENDER_BLANK             "Base      "
 #if !defined(OLED_KEYBOARD_NAME)
 #   define OLED_KEYBOARD_NAME         "QMK Keyboard"

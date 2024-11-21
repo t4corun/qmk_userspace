@@ -51,6 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_GAME]       = KEYBOARD(LAYER_GAME),
     [_NAVIGATION] = KEYBOARD(LAYER_NAVIGATION),
     [_NUMBER]     = KEYBOARD(LAYER_NUMBER),
+    [_SYMBOL]     = KEYBOARD(LAYER_SYMBOL),
     [_FUNCTION]   = KEYBOARD(LAYER_FUNCTION)
 };
 
@@ -62,6 +63,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [_GAME]       = { ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
     [_NAVIGATION] = { ENCODER_CCW_CW(KC_LEFT, KC_RGHT), ENCODER_CCW_CW(___x___, ___x___) },
     [_NUMBER]     = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(REV_TAB, FWD_TAB) },
+    [_SYMBOL]     = { ENCODER_CCW_CW(___x___, ___x___), ENCODER_CCW_CW(___x___, ___x___) },
     [_FUNCTION]   = { ENCODER_CCW_CW(REV_CFG, FWD_CFG), ENCODER_CCW_CW(REV_CFG, FWD_CFG) }
 };
 #endif //ENCODER_MAP_ENABLE

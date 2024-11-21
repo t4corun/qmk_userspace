@@ -14,7 +14,7 @@
 # use these values if not defined at the keyboard level
 BOOTMAGIC_ENABLE       ?= yes
 CAPS_WORD_ENABLE       ?= yes
-COMBO_ENABLE           ?= no
+COMBO_ENABLE           ?= yes
 DYNAMIC_MACRO_ENABLE   ?= yes
 EXTRAKEY_ENABLE         = yes
 
