@@ -40,12 +40,13 @@ enum keycodes {
     TH_BSLS,
     TH_SLSH,
     TH_PIPE,
+    TH_EQL,
+    TH_PLUS,
 
     TH_COMM,
     TH_DOT,
     TH_PERC,
 
-    TH_EQL,
     TH_MINS,
     TH_GRV,
     TH_SCLN,
@@ -83,8 +84,6 @@ enum keycodes {
 #define     SC_UNDO LCTL(KC_Z)
 #define     SC_PAST LCTL(KC_V)
 #define     SC_REDO LCTL(KC_Y)
-#define     SC_SNIP LGUI(LSFT(KC_S))
-#define     SC_FILE LGUI(KC_E)
 #define     SC_WIN  LGUI(KC_TAB)
 
 // Encoders
@@ -117,61 +116,61 @@ enum keycodes {
 #define     HOME_O  MT(MOD_RGUI, KC_O)
 
 // one shot mods
-#define     TR_LSFT OSM(MOD_LSFT)
-#define     TR_LCTL OSM(MOD_LCTL)
-#define     TR_LALT OSM(MOD_LALT)
-#define     TR_LGUI OSM(MOD_LGUI)
+#define     OSM_SFT OSM(MOD_LSFT)
+#define     OSM_CTL OSM(MOD_LCTL)
+#define     OSM_ALT OSM(MOD_LALT)
+#define     OSM_GUI OSM(MOD_LGUI)
 
 // tap hoLd. These will be intercepted and overridden. The LT will be ignored
 // Brackets: open and close brackets and put the cursor inside
-#define     TR_LCBR LT(FIRST_DEFAULT_LAYER, TH_LCBR)
-#define     TR_LABK LT(FIRST_DEFAULT_LAYER, TH_LABK)
-#define     TR_LBRC LT(FIRST_DEFAULT_LAYER, TH_LBRC)
-#define     TR_LPRN LT(FIRST_DEFAULT_LAYER, TH_LPRN)
-#define     TR_DQUO LT(FIRST_DEFAULT_LAYER, TH_DQUO)
-#define     TR_SQUO LT(FIRST_DEFAULT_LAYER, TH_SQUO)
+#define     BK_LCBR LT(FIRST_DEFAULT_LAYER, TH_LCBR)
+#define     BK_LABK LT(FIRST_DEFAULT_LAYER, TH_LABK)
+#define     BK_LBRC LT(FIRST_DEFAULT_LAYER, TH_LBRC)
+#define     BK_LPRN LT(FIRST_DEFAULT_LAYER, TH_LPRN)
+#define     BK_DQUO LT(FIRST_DEFAULT_LAYER, TH_DQUO)
+#define     BK_SQUO LT(FIRST_DEFAULT_LAYER, TH_SQUO)
 
 // double tap
-#define     TR_BSLS LT(FIRST_DEFAULT_LAYER, TH_BSLS)
-#define     TR_SLSH LT(FIRST_DEFAULT_LAYER, TH_SLSH)
-#define     TR_PIPE LT(FIRST_DEFAULT_LAYER, TH_PIPE)
+#define     DT_BSLS LT(FIRST_DEFAULT_LAYER, TH_BSLS)
+#define     DT_SLSH LT(FIRST_DEFAULT_LAYER, TH_SLSH)
+#define     DT_PIPE LT(FIRST_DEFAULT_LAYER, TH_PIPE)
+#define     DT_EQL  LT(FIRST_DEFAULT_LAYER, TH_EQL)
+#define     DT_PLUS LT(FIRST_DEFAULT_LAYER, TH_PLUS)
 
 // Custom override without holding shift
-#define     TR_COMM LT(FIRST_DEFAULT_LAYER, TH_COMM)
-#define     TR_DOT  LT(FIRST_DEFAULT_LAYER, TH_DOT)
-#define     TR_PERC LT(FIRST_DEFAULT_LAYER, TH_PERC)
+#define     OR_COMM LT(FIRST_DEFAULT_LAYER, TH_COMM)
+#define     OR_DOT  LT(FIRST_DEFAULT_LAYER, TH_DOT)
+#define     OR_PERC LT(FIRST_DEFAULT_LAYER, TH_PERC)
 
 // auto shift
-#define     TR_EQL  LT(FIRST_DEFAULT_LAYER, TH_EQL)
-#define     TR_MINS LT(FIRST_DEFAULT_LAYER, TH_MINS)
-#define     TR_GRV  LT(FIRST_DEFAULT_LAYER, TH_GRV)
-#define     TR_SCLN LT(FIRST_DEFAULT_LAYER, TH_SCLN)
-#define     TR_QUOT LT(FIRST_DEFAULT_LAYER, TH_QUOT)
+#define     AS_MINS LT(FIRST_DEFAULT_LAYER, TH_MINS)
+#define     AS_GRV  LT(FIRST_DEFAULT_LAYER, TH_GRV)
+#define     AS_SCLN LT(FIRST_DEFAULT_LAYER, TH_SCLN)
+#define     AS_QUOT LT(FIRST_DEFAULT_LAYER, TH_QUOT)
 
 // pointer specific control
 #if defined(KEYBOARD_bastardkb_charybdis_3x5) || defined(KEYBOARD_non_tree_keyball39)
 //these mouse codes are defined in charybdis.h and keyball.h
-#   define  TR_SNIP SNIPING
-#   define  TR_DRGS DRGSCRL
-#   define  TR_DRGT DRG_TOG
-#   define  TR_SDPI S_D_MOD  //sniping dpi
-#   define  TR_PDPI DPI_MOD  //pointer dpi
+#   define  MS_SNIP SNIPING
+#   define  MS_DRGS DRGSCRL
+#   define  MS_SDPI S_D_MOD  //sniping dpi
+#   define  MS_PDPI DPI_MOD  //pointer dpi
 #else
-#   define  TR_SNIP ___x___
-#   define  TR_DRGS KC_SCRL  //use host status for ploopy nano drag scroll
-#   define  TR_SDPI ___x___
-#   define  TR_PDPI KC_NUM   //use host status for ploopy nano dpi switch
+#   define  MS_SNIP ___x___
+#   define  MS_DRGS KC_SCRL  //use host status for ploopy nano drag scroll
+#   define  MS_SDPI ___x___
+#   define  MS_PDPI KC_NUM   //use host status for ploopy nano dpi switch
 #endif // KEYBOARD_bastardkb_charybdis_3x5 || KEYBOARD_keyball39
 
 #define     _NONE_3__________________                   ___x___, ___x___, ___x___
 #define     _NONE_5____________________________________ ___x___, ___x___, ___x___, ___x___, ___x___
-#define     _GACS_MODS________________________          TR_LGUI, TR_LALT, TR_LCTL, TR_LSFT
-#define     _SCAG_MODS________________________          TR_LSFT, TR_LCTL, TR_LALT, TR_LGUI
+#define     _GACS_MODS________________________          OSM_GUI, OSM_ALT, OSM_CTL, OSM_SFT
+#define     _SCAG_MODS________________________          OSM_SFT, OSM_CTL, OSM_ALT, OSM_GUI
 #define     _UCCPR_L___________________________________ SC_UNDO, SC_CUT,  SC_COPY, SC_PAST, SC_REDO
 
-#define     _BASE_L4_________________                   KC_BTN1, NUM,     TR_LSFT
+#define     _BASE_L4_________________                   KC_BTN1, NUM,     OSM_SFT
 #define     _BASE_R4________                            KC_SPC,  NAV
-#define     _BASE_KEYBALL____________                   FUNC,    TR_SNIP, KC_BTN2
+#define     _BASE_KEYBALL____________                   FUNC,    MS_SNIP, KC_BTN2
 #define     _LYR_LTRANS______________                   ___x___, _______, ___x___
 #define     _LYR_RTRANS_____                            ___x___, _______
 
@@ -180,15 +179,15 @@ enum keycodes {
 #define LAYER_QWERTY                                                                                     \
          KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    \
          HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,          KC_H,    HOME_J,  HOME_K,  HOME_L,  HOME_QT, \
-         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,          KC_N,    KC_M,    TR_COMM, TR_DOT,  TR_MINS, \
+         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,          KC_N,    KC_M,    OR_COMM, OR_DOT,  AS_MINS, \
 _BASE_KEYBALL____________, _BASE_L4_________________,      _BASE_R4________,                    KC_MUTE, \
                                              SCR_TOP,       KC_MUTE
 
 
 #define LAYER_COLEMAK_DH                                                                                 \
-         KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,          KC_J,    KC_L,    KC_U,    KC_Y,    TR_QUOT, \
+         KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,          KC_J,    KC_L,    KC_U,    KC_Y,    AS_QUOT, \
          HOME_A,  HOME_R,  HOME_SC, HOME_T,  KC_G,          KC_M,    HOME_N,  HOME_E,  HOME_I,  HOME_O,  \
-         KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,          KC_K,    KC_H,    TR_COMM, TR_DOT,  TR_MINS, \
+         KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,          KC_K,    KC_H,    OR_COMM, OR_DOT,  AS_MINS, \
 _BASE_KEYBALL____________, _BASE_L4_________________,       _BASE_R4________,                   KC_MUTE, \
                                              SCR_TOP,       KC_MUTE
 
@@ -210,23 +209,23 @@ _NONE_3__________________, KC_TAB,  NUM,     KC_ENT,        _LYR_RTRANS_____,   
 
 
 #define LAYER_NUMBER                                                                                     \
-         KC_ESC,  TR_DRGS, KC_BTN3, KC_BTN4, KC_BTN5,       ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
+         KC_ESC,  MS_DRGS, KC_BTN3, KC_BTN4, KC_BTN5,       ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
          _GACS_MODS________________________, KC_BTN1,       ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
-         _NONE_3__________________, KC_BTN2, ___x___,       ___x___, KC_1,    KC_2,    KC_3,    KC_MINS, \
+         MS_PDPI, MS_SDPI, ___x___, KC_BTN2, ___x___,       ___x___, KC_1,    KC_2,    KC_3,    KC_MINS, \
 _NONE_3__________________, _LYR_LTRANS______________,       KC_0,    NAV,                       ___x___, \
                                              ___x___,       SC_WIN
 
 
 #define LAYER_SYMBOL                                                                                     \
-         ___x___, ___x___, KC_AT,   KC_DLR,  TR_GRV,        TR_EQL,  KC_HASH, KC_ASTR, ___x___, TR_DQUO, \
-         KC_AMPR, TR_LCBR, KC_RCBR, TR_PIPE, TR_SCLN,       KC_BSPC, KC_QUES, TR_LBRC, KC_RBRC, TR_SQUO, \
-         TR_PERC, TR_LABK, KC_RABK, TR_BSLS, KC_EXLM,       KC_DEL,  TR_SLSH, TR_LPRN, KC_RPRN, TR_MINS, \
+         ___x___, ___x___, KC_AT,   KC_DLR,  AS_GRV,        DT_EQL,  KC_HASH, KC_ASTR, DT_PLUS, BK_DQUO, \
+         KC_AMPR, BK_LCBR, KC_RCBR, DT_PIPE, AS_SCLN,       KC_BSPC, KC_QUES, BK_LBRC, KC_RBRC, BK_SQUO, \
+         OR_PERC, BK_LABK, KC_RABK, DT_BSLS, KC_EXLM,       KC_DEL,  DT_SLSH, BK_LPRN, KC_RPRN, AS_MINS, \
 _NONE_3__________________, _LYR_LTRANS______________,       _LYR_RTRANS_____,                   ___x___, \
                                              ___x___,       ___x___
 
 
 #define LAYER_FUNCTION                                                                                   \
-         QK_BOOT, TR_PDPI, TR_SDPI, ___x___, DM_REC1,       KC_PSCR, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
+         QK_BOOT, ___x___, ___x___, ___x___, DM_REC1,       KC_PSCR, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
          _GACS_MODS________________________, DM_PLY1,       KC_BRK,  KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
          ___x___, KC_NUM,  KC_CAPS, KC_SCRL, KC_INS,        TOG_CFG, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
 _______, ___x___, ___x___, _NONE_3__________________,       REV_CFG, FWD_CFG,                   QK_BOOT, \

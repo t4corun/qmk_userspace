@@ -50,6 +50,8 @@
 
 #if defined(RGB_MATRIX_ENABLE)
 void render_rgb_status (uint8_t row, uint8_t col) {
+    uint8_t current_mods = get_mods() | get_oneshot_mods();
+
     oled_set_cursor(col, row);
     oled_write_P(PSTR("-rgb-"), false);
     for ( int i = 0; i < 5; i++ ) {
@@ -59,25 +61,26 @@ void render_rgb_status (uint8_t row, uint8_t col) {
     oled_set_cursor(col, row + 1);
     if (rgb_matrix_is_enabled()) {
         if (get_highest_layer(layer_state) == _FUNCTION) {
-            oled_write_P(PSTR("m "), false);
-            oled_write(get_u8_str(rgb_matrix_get_mode(), ' '), false);
+            current_mods == ( MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL) ) ? oled_write_P(PSTR("m "), true)                           : oled_write_P(PSTR("m "), false);
+            current_mods == ( MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL) ) ? oled_write(get_u8_str(rgb_matrix_get_mode(), ' '), true) : oled_write(get_u8_str(rgb_matrix_get_mode(), ' '), false);
             oled_set_cursor(col, row + 2);
-            oled_write_P(PSTR("h "), false);
-            oled_write(get_u8_str(rgb_matrix_get_hue(), ' '), false);
+            current_mods == MOD_BIT(KC_LSFT) ? oled_write_P(PSTR("h "), true)                          : oled_write_P(PSTR("h "), false);
+            current_mods == MOD_BIT(KC_LSFT) ? oled_write(get_u8_str(rgb_matrix_get_hue(), ' '), true) : oled_write(get_u8_str(rgb_matrix_get_hue(), ' '), false);
             oled_set_cursor(col, row + 3);
-            oled_write_P(PSTR("s "), false);
-            oled_write(get_u8_str(rgb_matrix_get_sat(), ' '), false);
+            current_mods == MOD_BIT(KC_LCTL) ? oled_write_P(PSTR("s "), true)                          : oled_write_P(PSTR("s "), false);
+            current_mods == MOD_BIT(KC_LCTL) ? oled_write(get_u8_str(rgb_matrix_get_sat(), ' '), true) : oled_write(get_u8_str(rgb_matrix_get_sat(), ' '), false);
             oled_set_cursor(col, row + 4);
-            oled_write_P(PSTR("v "), false);
-            oled_write(get_u8_str(rgb_matrix_get_val(), ' '), false);
+            current_mods == MOD_BIT(KC_LALT) ? oled_write_P(PSTR("v "), true)                          : oled_write_P(PSTR("v "), false);
+            current_mods == MOD_BIT(KC_LALT) ? oled_write(get_u8_str(rgb_matrix_get_val(), ' '), true) : oled_write(get_u8_str(rgb_matrix_get_val(), ' '), false);
             oled_set_cursor(col, row + 5);
-            oled_write_P(PSTR("s "), false);
-            oled_write(get_u8_str(rgb_matrix_get_speed(), ' '), false);
+            current_mods == MOD_BIT(KC_LGUI) ? oled_write_P(PSTR("s "), true)                            : oled_write_P(PSTR("s "), false);
+            current_mods == MOD_BIT(KC_LGUI) ? oled_write(get_u8_str(rgb_matrix_get_speed(), ' '), true) : oled_write(get_u8_str(rgb_matrix_get_speed(), ' '), false);
         } else {
             oled_write_P(PSTR("  on "), false);
         }
     } else {
-        oled_write_P(PSTR(" off "), false);
+        bool toggle_ready = (get_highest_layer(layer_state) == _FUNCTION && current_mods == (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL)));
+        toggle_ready ? oled_write_P(PSTR(" off "), true) : oled_write_P(PSTR(" off "), false);
     }
 }
 #endif // RGB_MATRIX_ENABLE
@@ -99,10 +102,10 @@ bool oled_task_user (void) {
         render_default_layer_state(0,0);
         render_layer_state_list(1,0);
 #if defined(POINTING_DEVICE_ENABLE)
-        render_pointercpi_keymap(7,0);
+        render_pointercpi_keymap(6,0);
 #endif // POINTING_DEVICE_ENABLE
 #if defined(RGB_MATRIX_ENABLE)
-        render_rgb_status(10,0);
+        render_rgb_status(9,0);
 #endif // RGB_MATRIX_ENABLE
     } else {
         render_mod_shift(0,0, current_mods);

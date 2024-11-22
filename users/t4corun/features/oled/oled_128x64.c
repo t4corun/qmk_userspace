@@ -74,20 +74,22 @@ void render_rgb_status (uint8_t row, uint8_t col) {
     oled_set_cursor(col, row);
 
     if (rgb_matrix_is_enabled()) {
-        oled_write_P(PSTR("rgb matrix mode: "), false);
-        oled_write(get_u8_str(rgb_matrix_get_mode(), ' '), false);
+        uint8_t current_mods = get_mods() | get_oneshot_mods();
+
+        current_mods == ( MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL) ) ? oled_write_P(PSTR("rgb matrix mode: "), true)            : oled_write_P(PSTR("rgb matrix mode: "), false);
+        current_mods == ( MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL) ) ? oled_write(get_u8_str(rgb_matrix_get_mode(), ' '), true) : oled_write(get_u8_str(rgb_matrix_get_mode(), ' '), false);
         oled_set_cursor(col, row + 1);
-        oled_write_P(PSTR("hue: "), false);
-        oled_write(get_u8_str(rgb_matrix_get_hue(), ' '), false);
+        current_mods == MOD_BIT(KC_LSFT) ? oled_write_P(PSTR("hue: "), true)                       : oled_write_P(PSTR("hue: "), false);
+        current_mods == MOD_BIT(KC_LSFT) ? oled_write(get_u8_str(rgb_matrix_get_hue(), ' '), true) : oled_write(get_u8_str(rgb_matrix_get_hue(), ' '), false);
         oled_set_cursor(col + 12, row + 1);
-        oled_write_P(PSTR("sat: "), false);
-        oled_write(get_u8_str(rgb_matrix_get_sat(), ' '), false);
+        current_mods == MOD_BIT(KC_LCTL) ? oled_write_P(PSTR("sat: "), true)                       : oled_write_P(PSTR("sat: "), false);
+        current_mods == MOD_BIT(KC_LCTL) ? oled_write(get_u8_str(rgb_matrix_get_sat(), ' '), true) : oled_write(get_u8_str(rgb_matrix_get_sat(), ' '), false);
         oled_set_cursor(col, row + 2);
-        oled_write_P(PSTR("val: "), false);
-        oled_write(get_u8_str(rgb_matrix_get_val(), ' '), false);
+        current_mods == MOD_BIT(KC_LALT) ? oled_write_P(PSTR("val: "), true)                       : oled_write_P(PSTR("val: "), false);
+        current_mods == MOD_BIT(KC_LALT) ? oled_write(get_u8_str(rgb_matrix_get_val(), ' '), true) : oled_write(get_u8_str(rgb_matrix_get_val(), ' '), false);
         oled_set_cursor(col + 12, row + 2);
-        oled_write_P(PSTR("spd: "), false);
-        oled_write(get_u8_str(rgb_matrix_get_speed(), ' '), false);
+        current_mods == MOD_BIT(KC_LGUI) ? oled_write_P(PSTR("spd: "), true)                         : oled_write_P(PSTR("spd: "), false);
+        current_mods == MOD_BIT(KC_LGUI) ? oled_write(get_u8_str(rgb_matrix_get_speed(), ' '), true) : oled_write(get_u8_str(rgb_matrix_get_speed(), ' '), false);
     } else {
         oled_write_P(PSTR("rgb mammtrix:      off"), false);
     }

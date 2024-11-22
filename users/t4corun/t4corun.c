@@ -169,23 +169,24 @@ bool shutdown_user(bool jump_to_bootloader) {
 
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
     switch (tap_hold_keycode) {
-        case TR_LCBR:
-        case TR_LABK:
-        case TR_LBRC:
-        case TR_LPRN:
-        case TR_DQUO:
-        case TR_SQUO:
-        case TR_BSLS:
-        case TR_SLSH:
-        case TR_PIPE:
-        case TR_COMM:
-        case TR_DOT:
-        case TR_PERC:
-        case TR_EQL:
-        case TR_MINS:
-        case TR_GRV:
-        case TR_SCLN:
-        case TR_QUOT:
+        case BK_LCBR:
+        case BK_LABK:
+        case BK_LBRC:
+        case BK_LPRN:
+        case BK_DQUO:
+        case BK_SQUO:
+        case DT_BSLS:
+        case DT_SLSH:
+        case DT_PIPE:
+        case DT_EQL:
+        case DT_PLUS:
+        case OR_COMM:
+        case OR_DOT:
+        case OR_PERC:
+        case AS_MINS:
+        case AS_GRV:
+        case AS_SCLN:
+        case AS_QUOT:
             return 0; // disable achordion for my other tap holds
 
         default:
