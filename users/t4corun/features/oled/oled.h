@@ -22,3 +22,9 @@ extern const char PROGMEM caps_off[];
 extern const char PROGMEM line_off[];
 
 void render_led_status (uint8_t row, uint8_t col);
+#if defined(RGB_MATRIX_ENABLE)
+void render_rgb_status (uint8_t row, uint8_t col);
+#endif // RGB_MATRIX_ENABLE
+#if defined(POINTING_DEVICE_ENABLE)
+__attribute__((weak)) void render_pointercpi_keymap(uint8_t row, uint8_t col);
+#endif // POINTING_DEVICE_ENABLE

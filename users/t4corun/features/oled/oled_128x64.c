@@ -70,6 +70,42 @@ const char PROGMEM line_sep[] =
 const char PROGMEM line_sep_short[] =
     {0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0};
 
+
+// Coordinate the OLED rendering
+bool oled_task_user (void) {
+    uint8_t current_mods = get_mods() | get_oneshot_mods();
+    if (is_keyboard_master()) {
+        oled_write_P(PSTR(OLED_KEYBOARD_NAME), false);
+        oled_set_cursor(0,1);
+        oled_write_P(line_sep, false);
+        render_rgb_status(2,0);
+        oled_set_cursor(0,6);
+        oled_write_P(line_sep_short, false);
+        render_feature_status(7,1);
+        render_kb_logo(6,15);
+    } else {
+        render_default_layer_state(0,0);
+        render_layer_state(0,11);
+        render_mods(2, 0,  MOD_SHIFT, current_mods);
+        render_mods(2, 5,  MOD_CTRL,  current_mods);
+        render_mods(2, 10, MOD_ALT,   current_mods);
+        render_mods(2, 15, MOD_GUI,   current_mods);
+        oled_set_cursor(0,1);
+        oled_write_P(line_sep, false);
+        oled_set_cursor(0,6);
+        oled_write_P(line_sep_short, false);
+        render_led_status(7,1);
+        render_kb_logo(6,15);
+    }
+    return false;
+}
+
+// set orientation for each OLED format
+oled_rotation_t oled_init_user (oled_rotation_t rotation) {
+    //OLED_ROTATION_180 for KLOR
+    return OLED_ROTATION_180;
+}
+
 void render_feature_status (uint8_t row, uint8_t col) {
     oled_set_cursor(col, row);
 #if defined(RGB_MATRIX_ENABLE)
@@ -144,39 +180,4 @@ void render_kb_logo (uint8_t row, uint8_t col) {
         oled_set_cursor(col, row + i);
         oled_write_P(kb_logo[i], false);
     }
-}
-
-// Coordinate the OLED rendering
-bool oled_task_user (void) {
-    uint8_t current_mods = get_mods() | get_oneshot_mods();
-    if (is_keyboard_master()) {
-        oled_write_P(PSTR(OLED_KEYBOARD_NAME), false);
-        oled_set_cursor(0,1);
-        oled_write_P(line_sep, false);
-        render_rgb_status(2,0);
-        oled_set_cursor(0,6);
-        oled_write_P(line_sep_short, false);
-        render_feature_status(7,1);
-        render_kb_logo(6,15);
-    } else {
-        render_default_layer_state(0,0);
-        render_layer_state(0,11);
-        render_mods(2, 0,  MOD_SHIFT, current_mods);
-        render_mods(2, 5,  MOD_CTRL,  current_mods);
-        render_mods(2, 10, MOD_ALT,   current_mods);
-        render_mods(2, 15, MOD_GUI,   current_mods);
-        oled_set_cursor(0,1);
-        oled_write_P(line_sep, false);
-        oled_set_cursor(0,6);
-        oled_write_P(line_sep_short, false);
-        render_led_status(7,1);
-        render_kb_logo(6,15);
-    }
-    return false;
-}
-
-// set orientation for each OLED format
-oled_rotation_t oled_init_user (oled_rotation_t rotation) {
-    //OLED_ROTATION_180 for KLOR
-    return OLED_ROTATION_180;
 }

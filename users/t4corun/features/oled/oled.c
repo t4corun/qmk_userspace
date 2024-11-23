@@ -57,6 +57,36 @@ const char PROGMEM caps_off[]    = {0x80, 0};
 
 const char PROGMEM line_off[] = {0x80, 0x80, 0x80, 0x80, 0x80, 0};
 
+// Render each screen
+bool oled_task_user (void) {
+    uint8_t current_mods = get_mods() | get_oneshot_mods();
+    //process_record_user is only processed on master side
+    //split side OLED does not respond to key presses custom behaviors
+    if (is_keyboard_master()) {
+        render_default_layer_state(0,0);
+        render_layer_state_list(1,0);
+#if defined(POINTING_DEVICE_ENABLE)
+        render_pointercpi_keymap(6,0);
+#endif // POINTING_DEVICE_ENABLE
+#if defined(RGB_MATRIX_ENABLE)
+        render_rgb_status(9,0);
+#endif // RGB_MATRIX_ENABLE
+    } else {
+        render_mods(0, 0, MOD_SHIFT, current_mods);
+        render_mods(4, 0, MOD_CTRL,  current_mods);
+        render_mods(7, 0, MOD_ALT,   current_mods);
+        render_mods(11,0, MOD_GUI,   current_mods);
+        render_led_status(15,1);
+    }
+    return false;
+}
+
+// set orientation for each OLED format
+oled_rotation_t oled_init_user (oled_rotation_t rotation) {
+    //OLED_ROTATION_270 for Rollow/Corne/Swoop
+    return OLED_ROTATION_270;
+}
+
 #if defined(RGB_MATRIX_ENABLE)
 typedef struct {
     uint8_t mod;
@@ -108,33 +138,3 @@ void render_rgb_status (uint8_t row, uint8_t col) {
 __attribute__((weak)) void render_pointercpi_keymap(uint8_t row, uint8_t col) {
 }
 #endif // POINTING_DEVICE_ENABLE
-
-// Render each screen
-bool oled_task_user (void) {
-    uint8_t current_mods = get_mods() | get_oneshot_mods();
-    //process_record_user is only processed on master side
-    //split side OLED does not respond to key presses custom behaviors
-    if (is_keyboard_master()) {
-        render_default_layer_state(0,0);
-        render_layer_state_list(1,0);
-#if defined(POINTING_DEVICE_ENABLE)
-        render_pointercpi_keymap(6,0);
-#endif // POINTING_DEVICE_ENABLE
-#if defined(RGB_MATRIX_ENABLE)
-        render_rgb_status(9,0);
-#endif // RGB_MATRIX_ENABLE
-    } else {
-        render_mods(0, 0, MOD_SHIFT, current_mods);
-        render_mods(4, 0, MOD_CTRL,  current_mods);
-        render_mods(7, 0, MOD_ALT,   current_mods);
-        render_mods(11,0, MOD_GUI,   current_mods);
-        render_led_status(15,1);
-    }
-    return false;
-}
-
-// set orientation for each OLED format
-oled_rotation_t oled_init_user (oled_rotation_t rotation) {
-    //OLED_ROTATION_270 for Rollow/Corne/Swoop
-    return OLED_ROTATION_270;
-}
