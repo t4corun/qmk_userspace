@@ -115,10 +115,15 @@ bool oled_task_user (void) {
         render_rgb_status(9,0);
 #endif // RGB_MATRIX_ENABLE
     } else {
-        render_mod_shift(0,0, current_mods);
-        render_mod_ctrl(4,0, current_mods);
-        render_mod_alt(7,0, current_mods);
-        render_mod_gui(11,0, current_mods);
+        //render_mod_shift(0,0, current_mods);
+        //render_mod_ctrl(4,0, current_mods);
+        //render_mod_alt(7,0, current_mods);
+        //render_mod_gui(11,0, current_mods);
+
+        render_mods(0, 0, MOD_SHIFT, current_mods);
+        render_mods(4, 0, MOD_CTRL,  current_mods);
+        render_mods(7, 0, MOD_ALT,   current_mods);
+        render_mods(11,0, MOD_GUI,   current_mods);
         render_led_status(15,1);
     }
     return false;

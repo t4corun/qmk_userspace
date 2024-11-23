@@ -129,10 +129,10 @@ bool oled_task_user (void) {
     } else {
         render_default_layer_state(0,0);
         render_layer_state(0,11);
-        render_mod_shift(2,0, current_mods);
-        render_mod_ctrl(2,5, current_mods);
-        render_mod_alt(2,10, current_mods);
-        render_mod_gui(2,15, current_mods);
+        render_mods(2, 0,  MOD_SHIFT, current_mods);
+        render_mods(2, 5,  MOD_CTRL,  current_mods);
+        render_mods(2, 10, MOD_ALT,   current_mods);
+        render_mods(2, 15, MOD_GUI,   current_mods);
         oled_set_cursor(0,1);
         oled_write_P(line_sep, false);
         oled_set_cursor(0,6);
