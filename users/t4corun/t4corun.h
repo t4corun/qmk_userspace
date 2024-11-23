@@ -66,9 +66,16 @@ enum keycodes {
     TOG_CFG   // press key while holding mod combinations to toggle features or enter bootloader
 };
 
+// defining aliases for config key overloading
+#define     MOD_MASK_RGB_MODE  (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL))
+#define     MOD_MASK_RGB_HUE   MOD_BIT(KC_LSFT)
+#define     MOD_MASK_RGB_SAT   MOD_BIT(KC_LCTL)
+#define     MOD_MASK_RGB_VAL   MOD_BIT(KC_LALT)
+#define     MOD_MASK_RGB_SPD   MOD_BIT(KC_LGUI)
+
 // start at the second layer
-#define     _DEFAULT_LAYER_2 (FIRST_DEFAULT_LAYER + 1)
-#define     _DEFAULT_LAYER_3 (FIRST_DEFAULT_LAYER + 2)
+#define     DEFAULT_LAYER_2    FIRST_DEFAULT_LAYER + 1
+#define     DEFAULT_LAYER_3    FIRST_DEFAULT_LAYER + 2
 #define     NUM_DEFAULT_LAYERS 3
 
 #define     ___x___ KC_NO
@@ -210,8 +217,8 @@ _NONE_3__________________, KC_TAB,  NUM,     KC_ENT,        _LYR_RTRANS_____,   
 
 #define LAYER_NUMBER                                                                                     \
          KC_ESC,  MS_DRGS, KC_BTN3, KC_BTN4, KC_BTN5,       ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
-         _GACS_MODS________________________, KC_BTN1,       ___x___, KC_4,    KC_5,    KC_6,    KC_DOT,  \
-         MS_PDPI, MS_SDPI, ___x___, KC_BTN2, ___x___,       ___x___, KC_1,    KC_2,    KC_3,    KC_MINS, \
+         _GACS_MODS________________________, KC_BTN1,       KC_BSPC, KC_4,    KC_5,    KC_6,    KC_DOT,  \
+         MS_PDPI, MS_SDPI, ___x___, KC_BTN2, ___x___,       KC_DEL,  KC_1,    KC_2,    KC_3,    KC_MINS, \
 _NONE_3__________________, _LYR_LTRANS______________,       KC_0,    NAV,                       ___x___, \
                                              ___x___,       SC_WIN
 

@@ -43,19 +43,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 switch (current_mods) {
 #if defined(RGB_MATRIX_ENABLE)
-                    case MOD_BIT(KC_LSFT):
+                    case MOD_MASK_RGB_HUE:
                         keycode == FWD_CFG ? rgb_matrix_increase_hue() : rgb_matrix_decrease_hue();
                         break;
-                    case MOD_BIT(KC_LCTL):
+                    case MOD_MASK_RGB_SAT:
                         keycode == FWD_CFG ? rgb_matrix_increase_sat() : rgb_matrix_decrease_sat();
                         break;
-                    case MOD_BIT(KC_LALT):
+                    case MOD_MASK_RGB_VAL:
                         keycode == FWD_CFG ? rgb_matrix_increase_val() : rgb_matrix_decrease_val();
                         break;
-                    case MOD_BIT(KC_LGUI):
+                    case MOD_MASK_RGB_SPD:
                         keycode == FWD_CFG ? rgb_matrix_increase_speed() : rgb_matrix_decrease_speed();
                         break;
-                    case MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL):
+                    case MOD_MASK_RGB_MODE:
                         keycode == FWD_CFG ? rgb_matrix_step() : rgb_matrix_step_reverse();
                         break;
 #endif // RGB_MATRIX_ENABLE

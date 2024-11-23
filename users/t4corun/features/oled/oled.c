@@ -9,11 +9,11 @@
  * - this side won't show anything unless mods or host state are active
  *
  * 00  sssss
- * 01  shift
+ * 01  *sft*
  * 02  sssss
  * 03
  * 04  ccccc
- * 05  *ctrl
+ * 05  *ctl*
  * 06  ccccc
  * 07  aaaaa
  * 08  *alt*
@@ -33,24 +33,39 @@
  * 01   nav
  * 02   num
  * 03   sym
- * 04   mou
- * 05   fun
- * 06
- * 07  -cpi-
- * 08  xxxxx
- * 09
- * 10  -rgb-
- * 11  m 999
- * 12  h 999
- * 13  s 999
- * 14  v 999
- * 15  s 999
+ * 04   fun
+ * 05
+ * 06  -cpi-
+ * 07  xxxxx
+ * 08
+ * 09  -rgb-
+ * 10  m 999
+ * 11  h 999
+ * 12  s 999
+ * 13  v 999
+ * 14  s 999
+ * 15
  *
  */
 
 #if defined(RGB_MATRIX_ENABLE)
+typedef struct {
+    uint8_t mod;
+    const char *label;
+    uint8_t (*get_value)(void);
+} ModDisplay;
+
+ModDisplay mod_displays[] = {
+    {MOD_MASK_RGB_MODE, "m ", rgb_matrix_get_mode},
+    {MOD_MASK_RGB_HUE,  "h ", rgb_matrix_get_hue},
+    {MOD_MASK_RGB_SAT,  "s ", rgb_matrix_get_sat},
+    {MOD_MASK_RGB_VAL,  "v ", rgb_matrix_get_val},
+    {MOD_MASK_RGB_SPD,  "s ", rgb_matrix_get_speed},
+};
+
 void render_rgb_status (uint8_t row, uint8_t col) {
     uint8_t current_mods = get_mods() | get_oneshot_mods();
+    bool setting_enabled = false;
 
     oled_set_cursor(col, row);
     oled_write_P(PSTR("-rgb-"), false);
@@ -60,31 +75,23 @@ void render_rgb_status (uint8_t row, uint8_t col) {
 
     oled_set_cursor(col, row + 1);
     if (rgb_matrix_is_enabled()) {
+        // display the current RGB config only when in the funciton layerks
         if (get_highest_layer(layer_state) == _FUNCTION) {
-            current_mods == ( MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL) ) ? oled_write_P(PSTR("m "), true)                           : oled_write_P(PSTR("m "), false);
-            current_mods == ( MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL) ) ? oled_write(get_u8_str(rgb_matrix_get_mode(), ' '), true) : oled_write(get_u8_str(rgb_matrix_get_mode(), ' '), false);
-            oled_set_cursor(col, row + 2);
-            current_mods == MOD_BIT(KC_LSFT) ? oled_write_P(PSTR("h "), true)                          : oled_write_P(PSTR("h "), false);
-            current_mods == MOD_BIT(KC_LSFT) ? oled_write(get_u8_str(rgb_matrix_get_hue(), ' '), true) : oled_write(get_u8_str(rgb_matrix_get_hue(), ' '), false);
-            oled_set_cursor(col, row + 3);
-            current_mods == MOD_BIT(KC_LCTL) ? oled_write_P(PSTR("s "), true)                          : oled_write_P(PSTR("s "), false);
-            current_mods == MOD_BIT(KC_LCTL) ? oled_write(get_u8_str(rgb_matrix_get_sat(), ' '), true) : oled_write(get_u8_str(rgb_matrix_get_sat(), ' '), false);
-            oled_set_cursor(col, row + 4);
-            current_mods == MOD_BIT(KC_LALT) ? oled_write_P(PSTR("v "), true)                          : oled_write_P(PSTR("v "), false);
-            current_mods == MOD_BIT(KC_LALT) ? oled_write(get_u8_str(rgb_matrix_get_val(), ' '), true) : oled_write(get_u8_str(rgb_matrix_get_val(), ' '), false);
-            oled_set_cursor(col, row + 5);
-            current_mods == MOD_BIT(KC_LGUI) ? oled_write_P(PSTR("s "), true)                            : oled_write_P(PSTR("s "), false);
-            current_mods == MOD_BIT(KC_LGUI) ? oled_write(get_u8_str(rgb_matrix_get_speed(), ' '), true) : oled_write(get_u8_str(rgb_matrix_get_speed(), ' '), false);
+            for (uint8_t i = 0; i < sizeof(mod_displays) / sizeof(mod_displays[0]); i++) {
+                setting_enabled = (current_mods == mod_displays[i].mod);
+                oled_write_P(PSTR(mod_displays[i].label), false);
+                oled_write(get_u8_str(mod_displays[i].get_value(), ' '), setting_enabled);
+                oled_set_cursor(col, row + i + 2);
+            }
         } else {
             oled_write_P(PSTR("  on "), false);
         }
     } else {
-        bool toggle_ready = (get_highest_layer(layer_state) == _FUNCTION && current_mods == (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL)));
-        toggle_ready ? oled_write_P(PSTR(" off "), true) : oled_write_P(PSTR(" off "), false);
+        setting_enabled = (get_highest_layer(layer_state) == _FUNCTION && current_mods == MOD_MASK_RGB_MODE);
+        oled_write_P(PSTR(" off "), setting_enabled);
     }
 }
 #endif // RGB_MATRIX_ENABLE
-
 
 #if defined(POINTING_DEVICE_ENABLE)
 // on layer change, no matter where the change was initiated

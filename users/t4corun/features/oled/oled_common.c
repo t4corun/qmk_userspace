@@ -3,18 +3,20 @@
 // Shows the currently enabled Layer name
 void render_default_layer_state (uint8_t row, uint8_t col) {
     uint8_t current_mods = get_mods() | get_oneshot_mods();
-    bool toggle_ready = (get_highest_layer(layer_state) == _FUNCTION && current_mods != (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL)| MOD_BIT(KC_LALT) | MOD_BIT(KC_LGUI)));
+
+    //highlight the base layer when the funciton layer is enabled and no modifiers are held
+    bool setting_enabled = (get_highest_layer(layer_state) == _FUNCTION && current_mods == 0);
 
     oled_set_cursor(col, row);
     switch (get_highest_layer(default_layer_state)) {
-        case _DEFAULT_LAYER_2:
-            toggle_ready ? oled_write_P(PSTR(OLED_RENDER_DEFAULT_LAYER2), true) : oled_write_P(PSTR(OLED_RENDER_DEFAULT_LAYER2), false);
+        case DEFAULT_LAYER_2:
+            oled_write_P(PSTR(OLED_RENDER_DEFAULT_LAYER2), setting_enabled);
             break;
-        case _DEFAULT_LAYER_3:
-            toggle_ready ? oled_write_P(PSTR(OLED_RENDER_DEFAULT_LAYER3), true) : oled_write_P(PSTR(OLED_RENDER_DEFAULT_LAYER3), false);
+        case DEFAULT_LAYER_3:
+            oled_write_P(PSTR(OLED_RENDER_DEFAULT_LAYER3), setting_enabled);
             break;
         default:
-            toggle_ready ? oled_write_P(PSTR(OLED_RENDER_DEFAULT_LAYER1), true) : oled_write_P(PSTR(OLED_RENDER_DEFAULT_LAYER1), false);
+            oled_write_P(PSTR(OLED_RENDER_DEFAULT_LAYER1), setting_enabled);
             break;
     }
 }
