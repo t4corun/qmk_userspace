@@ -3,9 +3,11 @@
 #include "t4corun.h"
 
 // Tells the process_tap_hold what kind of hold action is wanted
-#define HOLD_SINGLETP 0
-#define HOLD_DOUBLETP 1
-#define HOLD_BRACKETS 2
+enum taphold_action {
+    HOLD_SINGLETP = 0,
+    HOLD_DOUBLETP,
+    HOLD_BRACKETS
+};
 
 void single_tap (uint16_t key);
 void double_tap (uint16_t key, uint32_t ms);

@@ -82,9 +82,9 @@ void render_layer_state_list(uint8_t row, uint8_t col) {
 // Shows the Host LED State (Num lock, caps lock , scroll lock)
 void render_led_status (uint8_t row, uint8_t col) {
     oled_set_cursor(col, row);
-    host_keyboard_led_state().num_lock                       ? oled_write_P(num_on, false )    : oled_write_P(num_off, false);
-    host_keyboard_led_state().caps_lock || is_caps_word_on() ? oled_write_P(caps_on, false )   : oled_write_P(caps_off, false);
-    host_keyboard_led_state().scroll_lock                    ? oled_write_P(scroll_on, false ) : oled_write_P(scroll_off, false);
+    oled_write_P(host_keyboard_led_state().num_lock                       ? num_on   : num_off, false);
+    oled_write_P(host_keyboard_led_state().caps_lock || is_caps_word_on() ? caps_on  : caps_off, false);
+    oled_write_P(host_keyboard_led_state().scroll_lock                    ? scroll_on: scroll_off, false);
 }
 
 // render the mod if it is held.

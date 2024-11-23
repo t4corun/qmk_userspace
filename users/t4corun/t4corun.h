@@ -15,6 +15,17 @@
 
 layer_state_t layer_state_set_keymap(layer_state_t state);
 void          set_default_layer(bool forward);
+void          toggle_features(uint16_t keycode, uint8_t current_mods);
+#if defined(RGB_MATRIX_ENABLE)
+void          handle_rgbmatrix(uint16_t keycode, uint8_t current_mods);
+#endif // RGB_MATRIX_ENABLE
+#if defined(AUDIO_ENABLE)
+void          handle_audio(uint16_t keycode);
+#endif //AUDIO_ENABLE
+#if defined(HAPTIC_ENABLE)
+void          handle_haptic(uint16_t keycode);
+#endif // HAPTIC_ENABLE
+
 
 // put the default base layers first
 enum layers {

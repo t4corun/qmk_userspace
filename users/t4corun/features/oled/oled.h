@@ -11,14 +11,14 @@
 #define OLED_RENDER_LAYER_5           " Fun "
 #define OLED_RENDER_BLANK             "     "
 
-void render_led_status (uint8_t row, uint8_t col);
-
 //elements correspond to the character position in the font array
-static const char PROGMEM scroll_on[]   = {0x8F, 0};
-static const char PROGMEM scroll_off[]  = {0x80, 0};
-static const char PROGMEM num_on[]      = {0xC4, 0};
-static const char PROGMEM num_off[]     = {0x80, 0};
-static const char PROGMEM caps_on[]     = {0x87, 0};
-static const char PROGMEM caps_off[]    = {0x80, 0};
+extern const char PROGMEM scroll_on[];
+extern const char PROGMEM scroll_off[];
+extern const char PROGMEM num_on[];
+extern const char PROGMEM num_off[];
+extern const char PROGMEM caps_on[];
+extern const char PROGMEM caps_off[];
 
-static const char PROGMEM line_off[] = {0x80, 0x80, 0x80, 0x80, 0x80, 0};
+extern const char PROGMEM line_off[];
+
+void render_led_status (uint8_t row, uint8_t col);

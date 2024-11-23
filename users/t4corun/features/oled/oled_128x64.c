@@ -38,28 +38,60 @@
  *
  */
 
+const char PROGMEM scroll_off[]     = {0x8F, 0};
+const char PROGMEM scroll_on[]      = {0xCF, 0};
+const char PROGMEM num_off[]        = {0xC4, 0};
+const char PROGMEM num_on[]         = {0x84, 0};
+const char PROGMEM caps_off[]       = {0x87, 0};
+const char PROGMEM caps_on[]        = {0x89, 0};
+
+const char PROGMEM rgb_matrix_off[] = {0xA5, 0xA6, 0};
+const char PROGMEM rgb_matrix_on[]  = {0x85, 0x86, 0};
+const char PROGMEM sound_off[]      = {0xD9, 0xDA, 0};
+const char PROGMEM sound_on[]       = {0xD7, 0xD8, 0};
+const char PROGMEM haptic_off[]     = {0xD5, 0xD6, 0};
+const char PROGMEM haptic_on[]      = {0xD3, 0xD4, 0};
+const char PROGMEM combo_off[]      = {0xDD, 0xDE, 0};
+const char PROGMEM combo_on[]       = {0xDB, 0xDC, 0};
+
+const char PROGMEM kb_logo_L1[]     = {0x94, 0x95, 0x96, 0x97, 0x98, 0};
+const char PROGMEM kb_logo_L2[]     = {0xB4, 0xB5, 0xB6, 0xB7, 0xB8, 0};
+
+const char *kb_logo[]               = {kb_logo_L1, kb_logo_L2};
+
+const char PROGMEM mod_sep[]        = {0xC7, 0xC7, 0};
+
+const char PROGMEM line_off[] =
+    {0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0};
+
+const char PROGMEM line_sep[] =
+    {0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0};
+
+const char PROGMEM line_sep_short[] =
+    {0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0};
+
 void render_feature_status (uint8_t row, uint8_t col) {
     oled_set_cursor(col, row);
 #if defined(RGB_MATRIX_ENABLE)
-    rgb_matrix_is_enabled() ? oled_write_P(rgb_matrix_on, false) : oled_write_P(rgb_matrix_off, false);
+    oled_write_P(rgb_matrix_is_enabled() ? rgb_matrix_on : rgb_matrix_off, false);
 #else
     oled_write_P(rgb_matrix_off, false);
 #endif //RGB_MATRIX_ENABLED
     oled_set_cursor(col + 3, row);
 #if defined(AUDIO_ENABLE)
-    is_audio_on() ? oled_write_P(sound_on, false) : oled_write_P(sound_off, false);
+    oled_write_P(is_audio_on() ? sound_on : sound_off, false);
 #else
     oled_write_P(sound_off, false);
 #endif //AUDIO_ENABLE
     oled_set_cursor(col + 6, row);
 #if defined(HAPTIC_ENABLE)
-    haptic_get_enable() ? oled_write_P(haptic_on, false) : oled_write_P(haptic_off, false);
+    oled_write_P(haptic_get_enable() ? haptic_on : haptic_off, false);
 #else
     oled_write_P(haptic_off, false);
 #endif //HAPTIC_ENABLE
     oled_set_cursor(col + 9, row);
 #if defined(COMBO_ENABLE)
-    is_combo_enabled() ? oled_write_P(combo_on, false) : oled_write_P(combo_off, false);
+    oled_write_P(is_combo_enabled() ? combo_on : combo_off, false);
 #else
     oled_write_P(combo_off, false);
 #endif //HAPTIC_ENABLE
@@ -108,10 +140,10 @@ void render_rgb_status (uint8_t row, uint8_t col) {
 #endif // RGB_MATRIX_ENABLE
 
 void render_kb_logo (uint8_t row, uint8_t col) {
-    oled_set_cursor(col, row);
-    oled_write_P(kb_logo_L1, false);
-    oled_set_cursor(col, row + 1);
-    oled_write_P(kb_logo_L2, false);
+    for (uint8_t i = 0; i < sizeof(kb_logo) / sizeof(kb_logo[0]); i++) {
+        oled_set_cursor(col, row + i);
+        oled_write_P(kb_logo[i], false);
+    }
 }
 
 // Coordinate the OLED rendering
