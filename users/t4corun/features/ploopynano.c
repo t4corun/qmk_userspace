@@ -18,6 +18,11 @@ bool process_record_user_ploopynano(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         // makes scroll lock a hold instead of toggle
         // enables momentary drag scroll on ploopy nano
+        case NUM:
+            record->event.pressed ? tap_code(KC_SCRL) : tap_code(KC_SCRL);
+            return true;
+        // makes scroll lock a hold instead of toggle
+        // enables momentary drag scroll on ploopy nano
         case KC_SCRL:
             record->event.pressed ? tap_code(KC_SCRL) : tap_code(KC_SCRL);
             return false;

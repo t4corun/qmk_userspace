@@ -48,6 +48,8 @@ typedef union {
 } keyball_config_t;
 
 static keyball_config_t g_keyball_config = {0};
+static float scroll_buffer_h = 0;
+static float scroll_buffer_v = 0;
 
 /**
  * \brief Set the value of `config` from EEPROM.
@@ -172,32 +174,35 @@ void keyball_set_pointer_dragscroll_enabled(bool enable) {
  * \brief Augment the pointing device behavior.
  *
  * Implement drag-scroll.
+ * Replaced Charybdis nano code with ploopy nano to get faster scrolling
  */
 static void pointing_device_task_keyball(report_mouse_t* mouse_report) {
-    static int16_t scroll_buffer_x = 0;
-    static int16_t scroll_buffer_y = 0;
 
     if (g_keyball_config.is_dragscroll_enabled) {
-#   if defined(KEYBALL_DRAGSCROLL_REVERSE_X)
-        scroll_buffer_x -= mouse_report->x;
-#   else
-        scroll_buffer_x += mouse_report->x;
-#   endif // KEYBALL_DRAGSCROLL_REVERSE_X
-#   if defined(KEYBALL_DRAGSCROLL_REVERSE_Y)
-        scroll_buffer_y -= mouse_report->y;
-#   else
-        scroll_buffer_y += mouse_report->y;
-#   endif // KEYBALL_DRAGSCROLL_REVERSE_Y
+
+        scroll_buffer_h += (float)mouse_report->x / KEYBALL_DRAGSCROLL_DIVISOR_H;
+        scroll_buffer_v += (float)mouse_report->y / KEYBALL_DRAGSCROLL_DIVISOR_V;
+
+#if defined(KEYBALL_DRAGSCROLL_REVERSE_X)
+        // Assign integer parts of accumulated scroll values to the mouse report
+        mouse_report->h = -(int8_t)scroll_buffer_h;
+#else
+        mouse_report->h = (int8_t)scroll_buffer_h;
+#endif // KEYBALL_DRAGSCROLL_REVERSE_X
+
+#if defined(KEYBALL_DRAGSCROLL_REVERSE_Y)
+        mouse_report->v = -(int8_t)scroll_buffer_v;
+#else
+        mouse_report->v = (int8_t)scroll_buffer_v;
+#endif // KEYBALL_DRAGSCROLL_REVERSE_Y
+
+        // Update accumulated scroll values by subtracting the integer parts
+        scroll_buffer_h -= (int8_t)scroll_buffer_h;
+        scroll_buffer_v -= (int8_t)scroll_buffer_v;
+
+        // Clear the X and Y values of the mouse report
         mouse_report->x = 0;
         mouse_report->y = 0;
-        if (abs(scroll_buffer_x) > KEYBALL_DRAGSCROLL_BUFFER_SIZE) {
-            mouse_report->h = scroll_buffer_x > 0 ? 1 : -1;
-            scroll_buffer_x = 0;
-        }
-        if (abs(scroll_buffer_y) > KEYBALL_DRAGSCROLL_BUFFER_SIZE) {
-            mouse_report->v = scroll_buffer_y > 0 ? 1 : -1;
-            scroll_buffer_y = 0;
-        }
     }
 }
 
