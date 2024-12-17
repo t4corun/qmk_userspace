@@ -68,8 +68,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
     }
 
-    if(!process_achordion(keycode, record)) { return false; }
     if(!process_record_user_taphold(keycode, record)) { return false; }
+
+    if(!process_achordion(keycode, record)) { return false; }
 
 #if defined(ENCODER_ENABLE)
     if(!process_record_user_encoder(keycode, record)) { return false; }
@@ -215,4 +216,30 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
         default:
             return 800; // 800 ms
     }
+}
+
+// By default, use the BILATERAL_COMBINATIONS rule to consider the tap-hold key
+// "held" only when it and the other key are on opposite hands.
+bool achordion_chord(uint16_t tap_hold_keycode,
+                        keyrecord_t* tap_hold_record,
+                        uint16_t other_keycode,
+                        keyrecord_t* other_record) {
+
+    switch (tap_hold_keycode) {
+        // Prevent Windows + L from firing when roll typing all
+        case HOME_A:
+            if (other_keycode == HOME_L) {
+                return false;
+            }
+            break;
+
+        // Exceptionally allow Win + L as a same-hand chord.
+        case HOME_QT:
+            if (other_keycode == HOME_L) {
+                return true;
+            }
+            break;
+    }
+
+    return achordion_opposite_hands(tap_hold_record, other_record);
 }
