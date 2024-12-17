@@ -219,9 +219,9 @@ FUNC,    KC_BTN2, KC_BTN1, KC_ENT,  KC_SPC,  KC_LSFT,       _BASE_R4________,   
 
 
 #define LAYER_NAVIGATION                                                                                 \
-         KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP,       ___x___, ___x___, KC_MPRV, KC_MNXT, KC_MPLY, \
+         KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP,       ___x___, KC_APP,  KC_MPRV, KC_MNXT, KC_MPLY, \
          ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,       KC_BSPC, _SCAG_MODS________________________, \
-         _UCCPR_L___________________________________,       KC_DEL,  KC_APP,  KC_VOLD, KC_VOLU, KC_MUTE, \
+         _UCCPR_L___________________________________,       KC_DEL,  KC_TAB,  KC_VOLD, KC_VOLU, KC_MUTE, \
 _NONE_3__________________, KC_TAB,  NUM,     KC_ENT,        _LYR_RTRANS_____,                   ___x___, \
                                              SCR_TOP,       ___x___
 
