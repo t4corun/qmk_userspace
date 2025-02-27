@@ -38,11 +38,11 @@ const char *layer_render_strings[] = {
 
 // Shows the currently enabled Layer name
 void render_default_layer_state (uint8_t row, uint8_t col) {
-    uint8_t current_mods = get_mods() | get_oneshot_mods();
+    //uint8_t current_mods = get_mods() | get_oneshot_mods();
     uint8_t highest_default_layer = get_highest_layer(default_layer_state);
 
     //highlight the base layer when the funciton layer is enabled and no modifiers are held
-    bool setting_enabled = (get_highest_layer(layer_state) == _FUNCTION && current_mods == 0);
+    //bool setting_enabled = (get_highest_layer(layer_state) == _FUNCTION && current_mods == 0);
 
     //it checks to make sure the array has enough elements defined or we may have unexpected behavior
     const char *layer_string = (highest_default_layer < sizeof(default_layer_render_strings) / sizeof(default_layer_render_strings[0]))
@@ -50,7 +50,7 @@ void render_default_layer_state (uint8_t row, uint8_t col) {
                                : OLED_RENDER_BLANK;
 
     oled_set_cursor(col, row);
-    oled_write_P(PSTR(layer_string), setting_enabled);
+    oled_write_P(PSTR(layer_string), false); //oled_write_P(PSTR(layer_string), setting_enabled);
 }
 
 // Shows the currently enabled Layer name
@@ -121,5 +121,22 @@ void render_mods (uint8_t row, uint8_t col, uint8_t target_mod, uint8_t current_
     for (uint8_t i = 0; i < num_lines; i++) {
         oled_set_cursor(col, row + i);
         oled_write_P(current_mods & mod_mask ? mod_graphic[i] : mod_line_off, false);
+    }
+}
+
+// visual indicator if the keyboard is set for windows or mac computers
+void render_mod_os (uint8_t row, uint8_t col) {
+    oled_set_cursor(col, row);
+    oled_write_P(PSTR("-mod-"), false);
+    
+    oled_set_cursor(col, row + 1);
+    keymap_config.swap_lctl_lgui ? oled_write_P(PSTR(" mac "), false) : oled_write_P(PSTR(" win "), false);
+
+}
+
+void clear_lines (uint8_t row, uint8_t col, uint8_t lines) {
+    oled_set_cursor(col, row);
+    for ( int i = 0; i < lines; i++ ) {
+        oled_write_P(line_off, false);
     }
 }

@@ -35,8 +35,25 @@
  * 03   sym
  * 04   fun
  * 05
- * 06  -cpi-
- * 07  xxxxx
+ * 06  -mod-
+ * 07   win 
+ * 08
+ * 09  -cpi-
+ * 10  xxxxx
+ * 11
+ * 12  -rgb-
+ * 13    on
+ * 14
+ * 15
+ *
+ * 00  bslyr
+ * 01   nav
+ * 02   num
+ * 03   sym
+ * 04   fun
+ * 05
+ * 06  -mod-
+ * 07   win 
  * 08
  * 09  -rgb-
  * 10  m 999
@@ -45,7 +62,6 @@
  * 13  v 999
  * 14  s 999
  * 15
- *
  */
 
 const char PROGMEM scroll_on[]   = {0x8F, 0};
@@ -57,26 +73,44 @@ const char PROGMEM caps_off[]    = {0x80, 0};
 
 const char PROGMEM line_off[] = {0x80, 0x80, 0x80, 0x80, 0x80, 0};
 
+const uint8_t line_count = 16;
+
+//allows RGB settings to overwrite the pointer CPI due to screen height restrictions, otherwise rgb will
+// immediately follow OS status to not leave a gap if pointer is not found
+#if defined(POINTING_DEVICE_ENABLE)
+const uint8_t shift_up = 3;
+#else
+const uint8_t shift_up = 0;
+#endif //POINTING_DEVICE_ENABLE
+
+
 // Render each screen
 bool oled_task_user (void) {
     uint8_t current_mods = get_mods() | get_oneshot_mods();
     //process_record_user is only processed on master side
     //split side OLED does not respond to key presses custom behaviors
     if (is_keyboard_master()) {
-        render_default_layer_state(0,0);
-        render_layer_state_list(1,0);
+        clear_lines(0, 0, line_count);
+        render_default_layer_state(0, 0);
+        render_layer_state_list(1, 0);
+        render_mod_os(6, 0);
 #if defined(POINTING_DEVICE_ENABLE)
-        render_pointercpi_keymap(6,0);
+        render_pointercpi_keymap(9, 0);
 #endif // POINTING_DEVICE_ENABLE
 #if defined(RGB_MATRIX_ENABLE)
-        render_rgb_status(9,0);
+#   if defined(POINTING_DEVICE_ENABLE)
+        render_rgb_status(12, 0);
+#   else
+        render_rgb_status(9, 0);
+#   endif //POINTING_DEVICE_ENABLE
 #endif // RGB_MATRIX_ENABLE
     } else {
-        render_mods(0, 0, MOD_SHIFT, current_mods);
-        render_mods(4, 0, MOD_CTRL,  current_mods);
-        render_mods(7, 0, MOD_ALT,   current_mods);
-        render_mods(11,0, MOD_GUI,   current_mods);
-        render_led_status(15,1);
+        clear_lines(0,  0, line_count);
+        render_mods(0,  0, MOD_SHIFT, current_mods);
+        keymap_config.swap_lctl_lgui ? render_mods(4,  0, MOD_GUI,   current_mods) : render_mods(4,  0, MOD_CTRL,  current_mods);
+        render_mods(7,  0, MOD_ALT,   current_mods);
+        keymap_config.swap_lctl_lgui ? render_mods(11, 0, MOD_CTRL,  current_mods) : render_mods(11, 0, MOD_GUI,   current_mods);
+        render_led_status(15, 1);
     }
     return false;
 }
@@ -106,28 +140,19 @@ void render_rgb_status (uint8_t row, uint8_t col) {
     uint8_t current_mods = get_mods() | get_oneshot_mods();
     bool setting_enabled = false;
 
-    oled_set_cursor(col, row);
-    oled_write_P(PSTR("-rgb-"), false);
-    for ( int i = 0; i < 5; i++ ) {
-        oled_write_P(line_off, false);
-    }
-
-    oled_set_cursor(col, row + 1);
-    if (rgb_matrix_is_enabled()) {
-        // display the current RGB config only when in the funciton layerks
-        if (get_highest_layer(layer_state) == _FUNCTION) {
-            for (uint8_t i = 0; i < sizeof(mod_displays) / sizeof(mod_displays[0]); i++) {
-                setting_enabled = (current_mods == mod_displays[i].mod);
-                oled_write_P(PSTR(mod_displays[i].label), false);
-                oled_write(get_u8_str(mod_displays[i].get_value(), ' '), setting_enabled);
-                oled_set_cursor(col, row + i + 2);
-            }
-        } else {
-            oled_write_P(PSTR("  on "), false);
+    if (get_highest_layer(layer_state) == _FUNCTION) {
+        oled_set_cursor(col, row - shift_up);
+        oled_write_P(PSTR("-rgb-"), false);
+        for (uint8_t i = 0; i < sizeof(mod_displays) / sizeof(mod_displays[0]); i++) {
+            oled_set_cursor(col, row - shift_up + 1 + i);
+            setting_enabled = (current_mods == mod_displays[i].mod);
+            oled_write_P(PSTR(mod_displays[i].label), false);
+            oled_write(get_u8_str(mod_displays[i].get_value(), ' '), setting_enabled);            
         }
     } else {
-        setting_enabled = (get_highest_layer(layer_state) == _FUNCTION && current_mods == MOD_MASK_RGB_MODE);
-        oled_write_P(PSTR(" off "), setting_enabled);
+        oled_set_cursor(col, row);
+        oled_write_P(PSTR("-rgb-"), false);
+        rgb_matrix_is_enabled() ? oled_write_P(PSTR("  on "), false) : oled_write_P(PSTR(" off "), false);
     }
 }
 #endif // RGB_MATRIX_ENABLE

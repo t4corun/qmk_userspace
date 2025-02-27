@@ -21,6 +21,9 @@ extern const char PROGMEM caps_off[];
 
 extern const char PROGMEM line_off[];
 
+extern const uint8_t line_count; //total line count
+extern const uint8_t shift_up;   //move RGB up how many lines
+
 void render_led_status (uint8_t row, uint8_t col);
 #if defined(RGB_MATRIX_ENABLE)
 void render_rgb_status (uint8_t row, uint8_t col);

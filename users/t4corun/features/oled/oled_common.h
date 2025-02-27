@@ -36,3 +36,5 @@ void render_layer_state (uint8_t row, uint8_t col);
 void render_layer_state_list (uint8_t row, uint8_t col);
 void render_led_status (uint8_t row, uint8_t col);
 void render_mods (uint8_t row, uint8_t col, uint8_t target_mod, uint8_t current_mods);
+void render_mod_os (uint8_t row, uint8_t col);
+void clear_lines (uint8_t row, uint8_t col, uint8_t lines);

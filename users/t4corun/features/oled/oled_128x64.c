@@ -71,6 +71,11 @@ const char PROGMEM line_sep_short[] =
     {0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0};
 
 
+//need to align this file to oled.c
+const uint8_t line_count = 8;
+const uint8_t shift_up = 0;
+
+
 // Coordinate the OLED rendering
 bool oled_task_user (void) {
     uint8_t current_mods = get_mods() | get_oneshot_mods();

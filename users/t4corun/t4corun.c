@@ -243,3 +243,12 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 
     return achordion_opposite_hands(tap_hold_record, other_record);
 }
+
+bool achordion_eager_mod(uint8_t mod) {
+    if (keymap_config.swap_lctl_lgui) {
+        // If in MAC mode, Shift and GUI mods are eager, and Alt and GUI are not.
+        return (mod & (MOD_LALT | MOD_LCTL)) == 0;
+    }
+    // Windows is the default, Shift and Ctrl mods are eager, and Alt and GUI are not.
+    return (mod & (MOD_LALT | MOD_LGUI)) == 0;
+}
