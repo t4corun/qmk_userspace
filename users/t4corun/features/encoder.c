@@ -46,7 +46,7 @@ bool process_record_user_encoder(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-void matrix_scan_user(void) {
+void matrix_scan_encoder(void) {
     // timer for the hold modds
     // will hold modifiers so things like alt-tab work properly using the encoder
     if (hold_forward_active || hold_reverse_active) {

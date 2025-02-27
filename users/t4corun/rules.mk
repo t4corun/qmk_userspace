@@ -20,6 +20,7 @@ EXTRAKEY_ENABLE         = yes
 
 AUDIO_ENABLE           ?= no
 CONSOLE_ENABLE         ?= no
+COMMAND_ENABLE         ?= no
 ENCODER_ENABLE         ?= no
 ENCODER_MAP_ENABLE     ?= no
 GRAVE_ESC_ENABLE       ?= no
@@ -39,9 +40,11 @@ PLOOPYNANO_ENABLE      ?= no
 # ---------------------------------------------------------
 # include my code that will be common across all my keyboards
 
-SRC +=                     \
-	t4corun.c              \
-	features/taphold.c     \
+SRC +=                   \
+    t4corun.c            \
+    features/achordion.c \
+    features/taphold.c   \
+
 
 # ---------------------------------------------------------
 # include additional code for enabled features for each keyboard

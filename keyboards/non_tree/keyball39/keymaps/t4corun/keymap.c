@@ -46,29 +46,30 @@ LAYOUT_keyball_wrapper (                                     \
 #define KEYBOARD(...) LAYOUT_t4corun_keymap(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_QWERTY]     = KEYBOARD(LAYER_QWERTY),
-  [_COLEMAK_DH] = KEYBOARD(LAYER_COLEMAK_DH),
-  [_GAME]       = KEYBOARD(LAYER_GAME),
-  [_NAVIGATION] = KEYBOARD(LAYER_NAVIGATION),
-  [_NUMBER]     = KEYBOARD(LAYER_NUMBER),
-  [_SYMBOL]     = KEYBOARD(LAYER_SYMBOL),
-  [_MOUSE]      = KEYBOARD(LAYER_MOUSE),
-  [_FUNCTION]   = KEYBOARD(LAYER_FUNCTION)
+    [_QWERTY]     = KEYBOARD(LAYER_QWERTY),
+    [_COLEMAK_DH] = KEYBOARD(LAYER_COLEMAK_DH),
+    [_GAME]       = KEYBOARD(LAYER_GAME),
+    [_NAVIGATION] = KEYBOARD(LAYER_NAVIGATION),
+    [_NUMBER]     = KEYBOARD(LAYER_NUMBER),
+    [_SYMBOL]     = KEYBOARD(LAYER_SYMBOL),
+    [_FUNCTION]   = KEYBOARD(LAYER_FUNCTION)
 };
 
 layer_state_t layer_state_set_keymap(layer_state_t state) {
+    uint8_t current_mods = get_mods() | get_oneshot_mods();
     switch (get_highest_layer(state)) {
         case _NUMBER:
-            if (keyball_get_pointer_sniping_enabled()) {
-                keyball_set_pointer_sniping_enabled(false);
+            if ( current_mods == MOD_BIT(KC_RSFT) ) {
+                if (keyball_get_pointer_dragscroll_enabled()) {  // check if we were scrolling before and set disable if so
+                    keyball_set_pointer_dragscroll_enabled(false);
+                }
+                keyball_set_pointer_sniping_enabled(true);
+            } else {
+                if (keyball_get_pointer_sniping_enabled()) {
+                    keyball_set_pointer_sniping_enabled(false);
+                }
+                keyball_set_pointer_dragscroll_enabled(true);
             }
-            keyball_set_pointer_dragscroll_enabled(true);
-            break;
-        case _NAVIGATION:
-            if (keyball_get_pointer_dragscroll_enabled()) {  // check if we were scrolling before and set disable if so
-                keyball_set_pointer_dragscroll_enabled(false);
-            }
-            keyball_set_pointer_sniping_enabled(true);
             break;
         default:
             if (keyball_get_pointer_dragscroll_enabled()) {  // check if we were scrolling before and set disable if so

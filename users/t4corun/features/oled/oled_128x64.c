@@ -38,68 +38,38 @@
  *
  */
 
-void render_feature_status (uint8_t row, uint8_t col) {
-    oled_set_cursor(col, row);
-#if defined(RGB_MATRIX_ENABLE)
-    rgb_matrix_is_enabled() ? oled_write_P(rgb_matrix_on, false) : oled_write_P(rgb_matrix_off, false);
-#else
-    oled_write_P(rgb_matrix_off, false);
-#endif //RGB_MATRIX_ENABLED
-    oled_set_cursor(col + 3, row);
-#if defined(AUDIO_ENABLE)
-    is_audio_on() ? oled_write_P(sound_on, false) : oled_write_P(sound_off, false);
-#else
-    oled_write_P(sound_off, false);
-#endif //AUDIO_ENABLE
-    oled_set_cursor(col + 6, row);
-#if defined(HAPTIC_ENABLE)
-    haptic_get_enable() ? oled_write_P(haptic_on, false) : oled_write_P(haptic_off, false);
-#else
-    oled_write_P(haptic_off, false);
-#endif //HAPTIC_ENABLE
-    oled_set_cursor(col + 9, row);
-#if defined(COMBO_ENABLE)
-    is_combo_enabled() ? oled_write_P(combo_on, false) : oled_write_P(combo_off, false);
-#else
-    oled_write_P(combo_off, false);
-#endif //HAPTIC_ENABLE
-}
+const char PROGMEM scroll_off[]     = {0x8F, 0};
+const char PROGMEM scroll_on[]      = {0xCF, 0};
+const char PROGMEM num_off[]        = {0xC4, 0};
+const char PROGMEM num_on[]         = {0x84, 0};
+const char PROGMEM caps_off[]       = {0x87, 0};
+const char PROGMEM caps_on[]        = {0x89, 0};
 
-#if defined(RGB_MATRIX_ENABLE)
-void render_rgb_status (uint8_t row, uint8_t col) {
-    oled_set_cursor(col, row);
-    for ( int i = 0; i < 4; i++ ) {
-        oled_write_P(line_off, false);
-    }
-    oled_set_cursor(col, row);
+const char PROGMEM rgb_matrix_off[] = {0xA5, 0xA6, 0};
+const char PROGMEM rgb_matrix_on[]  = {0x85, 0x86, 0};
+const char PROGMEM sound_off[]      = {0xD9, 0xDA, 0};
+const char PROGMEM sound_on[]       = {0xD7, 0xD8, 0};
+const char PROGMEM haptic_off[]     = {0xD5, 0xD6, 0};
+const char PROGMEM haptic_on[]      = {0xD3, 0xD4, 0};
+const char PROGMEM combo_off[]      = {0xDD, 0xDE, 0};
+const char PROGMEM combo_on[]       = {0xDB, 0xDC, 0};
 
-    if (rgb_matrix_is_enabled()) {
-        oled_write_P(PSTR("rgb matrix mode: "), false);
-        oled_write(get_u8_str(rgb_matrix_get_mode(), ' '), false);
-        oled_set_cursor(col, row + 1);
-        oled_write_P(PSTR("hue: "), false);
-        oled_write(get_u8_str(rgb_matrix_get_hue(), ' '), false);
-        oled_set_cursor(col + 12, row + 1);
-        oled_write_P(PSTR("sat: "), false);
-        oled_write(get_u8_str(rgb_matrix_get_sat(), ' '), false);
-        oled_set_cursor(col, row + 2);
-        oled_write_P(PSTR("val: "), false);
-        oled_write(get_u8_str(rgb_matrix_get_val(), ' '), false);
-        oled_set_cursor(col + 12, row + 2);
-        oled_write_P(PSTR("spd: "), false);
-        oled_write(get_u8_str(rgb_matrix_get_speed(), ' '), false);
-    } else {
-        oled_write_P(PSTR("rgb mammtrix:      off"), false);
-    }
-}
-#endif // RGB_MATRIX_ENABLE
+const char PROGMEM kb_logo_L1[]     = {0x94, 0x95, 0x96, 0x97, 0x98, 0};
+const char PROGMEM kb_logo_L2[]     = {0xB4, 0xB5, 0xB6, 0xB7, 0xB8, 0};
 
-void render_kb_logo (uint8_t row, uint8_t col) {
-    oled_set_cursor(col, row);
-    oled_write_P(kb_logo_L1, false);
-    oled_set_cursor(col, row + 1);
-    oled_write_P(kb_logo_L2, false);
-}
+const char *kb_logo[]               = {kb_logo_L1, kb_logo_L2};
+
+const char PROGMEM mod_sep[]        = {0xC7, 0xC7, 0};
+
+const char PROGMEM line_off[] =
+    {0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0};
+
+const char PROGMEM line_sep[] =
+    {0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0};
+
+const char PROGMEM line_sep_short[] =
+    {0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0};
+
 
 // Coordinate the OLED rendering
 bool oled_task_user (void) {
@@ -116,10 +86,10 @@ bool oled_task_user (void) {
     } else {
         render_default_layer_state(0,0);
         render_layer_state(0,11);
-        render_mod_shift(2,0, current_mods);
-        render_mod_ctrl(2,5, current_mods);
-        render_mod_alt(2,10, current_mods);
-        render_mod_gui(2,15, current_mods);
+        render_mods(2, 0,  MOD_SHIFT, current_mods);
+        render_mods(2, 5,  MOD_CTRL,  current_mods);
+        render_mods(2, 10, MOD_ALT,   current_mods);
+        render_mods(2, 15, MOD_GUI,   current_mods);
         oled_set_cursor(0,1);
         oled_write_P(line_sep, false);
         oled_set_cursor(0,6);
@@ -134,4 +104,80 @@ bool oled_task_user (void) {
 oled_rotation_t oled_init_user (oled_rotation_t rotation) {
     //OLED_ROTATION_180 for KLOR
     return OLED_ROTATION_180;
+}
+
+void render_feature_status (uint8_t row, uint8_t col) {
+    oled_set_cursor(col, row);
+#if defined(RGB_MATRIX_ENABLE)
+    oled_write_P(rgb_matrix_is_enabled() ? rgb_matrix_on : rgb_matrix_off, false);
+#else
+    oled_write_P(rgb_matrix_off, false);
+#endif //RGB_MATRIX_ENABLED
+    oled_set_cursor(col + 3, row);
+#if defined(AUDIO_ENABLE)
+    oled_write_P(is_audio_on() ? sound_on : sound_off, false);
+#else
+    oled_write_P(sound_off, false);
+#endif //AUDIO_ENABLE
+    oled_set_cursor(col + 6, row);
+#if defined(HAPTIC_ENABLE)
+    oled_write_P(haptic_get_enable() ? haptic_on : haptic_off, false);
+#else
+    oled_write_P(haptic_off, false);
+#endif //HAPTIC_ENABLE
+    oled_set_cursor(col + 9, row);
+#if defined(COMBO_ENABLE)
+    oled_write_P(is_combo_enabled() ? combo_on : combo_off, false);
+#else
+    oled_write_P(combo_off, false);
+#endif //HAPTIC_ENABLE
+}
+
+#if defined(RGB_MATRIX_ENABLE)
+typedef struct {
+    uint8_t mod;
+    const char *label;
+    uint8_t (*get_value)(void);
+    uint8_t col_offset;
+    uint8_t row_offset;
+} ModDisplay;
+
+ModDisplay mod_displays[] = {
+    {MOD_MASK_RGB_MODE, "rgb matrix mode: ", rgb_matrix_get_mode,  0,  0},
+    {MOD_MASK_RGB_HUE,  "hue: ",             rgb_matrix_get_hue,   0,  1},
+    {MOD_MASK_RGB_SAT,  "sat: ",             rgb_matrix_get_sat,   12, 1},
+    {MOD_MASK_RGB_VAL,  "val: ",             rgb_matrix_get_val,   0,  2},
+    {MOD_MASK_RGB_SPD,  "spd: ",             rgb_matrix_get_speed, 12, 2},
+};
+
+void render_rgb_status (uint8_t row, uint8_t col) {
+    uint8_t current_mods = get_mods() | get_oneshot_mods();
+    bool setting_enabled = false;
+
+    oled_set_cursor(col, row);
+    for ( int i = 0; i < 4; i++ ) {
+        oled_write_P(line_off, false);
+    }
+
+    oled_set_cursor(col, row);
+    if (rgb_matrix_is_enabled()) {
+        for (uint8_t i = 0; i < sizeof(mod_displays) / sizeof(mod_displays[0]); i++) {
+            setting_enabled = (get_highest_layer(layer_state) == _FUNCTION && current_mods == mod_displays[i].mod);
+            oled_set_cursor(col + mod_displays[i].col_offset, row + mod_displays[i].row_offset);
+            oled_write_P(PSTR(mod_displays[i].label), false);
+            oled_write(get_u8_str(mod_displays[i].get_value(), ' '), setting_enabled);
+        }
+    } else {
+        setting_enabled = (get_highest_layer(layer_state) == _FUNCTION && current_mods == MOD_MASK_RGB_MODE);
+        oled_write_P(PSTR("rgb matrix:      "), false);
+        oled_write_P(PSTR("off"), setting_enabled);
+    }
+}
+#endif // RGB_MATRIX_ENABLE
+
+void render_kb_logo (uint8_t row, uint8_t col) {
+    for (uint8_t i = 0; i < sizeof(kb_logo) / sizeof(kb_logo[0]); i++) {
+        oled_set_cursor(col, row + i);
+        oled_write_P(kb_logo[i], false);
+    }
 }
