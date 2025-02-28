@@ -245,7 +245,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 }
 
 bool achordion_eager_mod(uint8_t mod) {
-    if (keymap_config.swap_lctl_lgui) {
+    if ( keymap_config.swap_lctl_lgui ) {
         // If in MAC mode, Shift and GUI mods are eager, and Alt and GUI are not.
         return (mod & (MOD_LALT | MOD_LCTL)) == 0;
     }

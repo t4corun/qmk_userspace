@@ -87,6 +87,11 @@ void render_led_status (uint8_t row, uint8_t col) {
     oled_write_P(host_keyboard_led_state().scroll_lock                    ? scroll_on: scroll_off, false);
 }
 
+
+void render_mod_handler(uint8_t current_mods) {
+
+}
+
 // render the mod if it is held.
 void render_mods (uint8_t row, uint8_t col, uint8_t target_mod, uint8_t current_mods) {
     const char **mod_graphic;

@@ -38,6 +38,8 @@
  *
  */
 
+const uint8_t line_count = 8;
+
 const char PROGMEM scroll_off[]     = {0x8F, 0};
 const char PROGMEM scroll_on[]      = {0xCF, 0};
 const char PROGMEM num_off[]        = {0xC4, 0};
@@ -57,7 +59,15 @@ const char PROGMEM combo_on[]       = {0xDB, 0xDC, 0};
 const char PROGMEM kb_logo_L1[]     = {0x94, 0x95, 0x96, 0x97, 0x98, 0};
 const char PROGMEM kb_logo_L2[]     = {0xB4, 0xB5, 0xB6, 0xB7, 0xB8, 0};
 
-const char *kb_logo[]               = {kb_logo_L1, kb_logo_L2};
+const char PROGMEM win_logo_L1[]    = {0x80, 0x9C, 0x9D, 0x9E, 0x80, 0};
+const char PROGMEM win_logo_L2[]    = {0x80, 0xBC, 0xBD, 0xBE, 0x80, 0};
+
+const char PROGMEM mac_logo_L1[]    = {0x80, 0x99, 0x9A, 0x9B, 0x80, 0};
+const char PROGMEM mac_logo_L2[]    = {0x80, 0xB9, 0xBA, 0xBB, 0x80, 0};
+
+const char *kb_logo[]               = {kb_logo_L1,  kb_logo_L2};
+const char *win_logo[]              = {win_logo_L1, win_logo_L2};
+const char *mac_logo[]              = {mac_logo_L1, mac_logo_L2};
 
 const char PROGMEM mod_sep[]        = {0xC7, 0xC7, 0};
 
@@ -71,15 +81,11 @@ const char PROGMEM line_sep_short[] =
     {0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0};
 
 
-//need to align this file to oled.c
-const uint8_t line_count = 8;
-const uint8_t shift_up = 0;
-
-
 // Coordinate the OLED rendering
 bool oled_task_user (void) {
     uint8_t current_mods = get_mods() | get_oneshot_mods();
     if (is_keyboard_master()) {
+        clear_lines(0, 0, line_count);
         oled_write_P(PSTR(OLED_KEYBOARD_NAME), false);
         oled_set_cursor(0,1);
         oled_write_P(line_sep, false);
@@ -87,20 +93,25 @@ bool oled_task_user (void) {
         oled_set_cursor(0,6);
         oled_write_P(line_sep_short, false);
         render_feature_status(7,1);
-        render_kb_logo(6,15);
+        if ( keymap_config.swap_lctl_lgui ) {
+            render_logo(6,15, mac_logo, sizeof(mac_logo) / sizeof(mac_logo[0]));
+        } else {
+            render_logo(6,15, win_logo, sizeof(win_logo) / sizeof(win_logo[0]));
+        }
     } else {
+        clear_lines(0, 0, line_count);
         render_default_layer_state(0,0);
         render_layer_state(0,11);
-        render_mods(2, 0,  MOD_SHIFT, current_mods);
-        render_mods(2, 5,  MOD_CTRL,  current_mods);
-        render_mods(2, 10, MOD_ALT,   current_mods);
-        render_mods(2, 15, MOD_GUI,   current_mods);
+        render_mods(2, 0,  MOD_GUI,   current_mods);
+        render_mods(2, 5,  MOD_ALT,   current_mods);
+        render_mods(2, 10, MOD_CTRL,  current_mods);
+        render_mods(2, 15, MOD_SHIFT, current_mods);
         oled_set_cursor(0,1);
         oled_write_P(line_sep, false);
         oled_set_cursor(0,6);
         oled_write_P(line_sep_short, false);
         render_led_status(7,1);
-        render_kb_logo(6,15);
+        render_logo(6,15, kb_logo, sizeof(kb_logo) / sizeof(kb_logo[0]));
     }
     return false;
 }
@@ -160,29 +171,20 @@ void render_rgb_status (uint8_t row, uint8_t col) {
     bool setting_enabled = false;
 
     oled_set_cursor(col, row);
-    for ( int i = 0; i < 4; i++ ) {
-        oled_write_P(line_off, false);
-    }
-
-    oled_set_cursor(col, row);
-    if (rgb_matrix_is_enabled()) {
+    if (get_highest_layer(layer_state) == _FUNCTION) {
         for (uint8_t i = 0; i < sizeof(mod_displays) / sizeof(mod_displays[0]); i++) {
-            setting_enabled = (get_highest_layer(layer_state) == _FUNCTION && current_mods == mod_displays[i].mod);
+            setting_enabled = (current_mods == mod_displays[i].mod);
             oled_set_cursor(col + mod_displays[i].col_offset, row + mod_displays[i].row_offset);
             oled_write_P(PSTR(mod_displays[i].label), false);
-            oled_write(get_u8_str(mod_displays[i].get_value(), ' '), setting_enabled);
+            oled_write(get_u8_str(mod_displays[i].get_value(), ' '), setting_enabled);            
         }
-    } else {
-        setting_enabled = (get_highest_layer(layer_state) == _FUNCTION && current_mods == MOD_MASK_RGB_MODE);
-        oled_write_P(PSTR("rgb matrix:      "), false);
-        oled_write_P(PSTR("off"), setting_enabled);
-    }
+    } 
 }
 #endif // RGB_MATRIX_ENABLE
 
-void render_kb_logo (uint8_t row, uint8_t col) {
-    for (uint8_t i = 0; i < sizeof(kb_logo) / sizeof(kb_logo[0]); i++) {
+void render_logo (uint8_t row, uint8_t col, const char **logo, uint8_t logo_size) {
+    for (uint8_t i = 0; i < logo_size; i++) {
         oled_set_cursor(col, row + i);
-        oled_write_P(kb_logo[i], false);
+        oled_write_P(logo[i], false);
     }
 }

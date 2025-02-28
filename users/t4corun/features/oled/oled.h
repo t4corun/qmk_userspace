@@ -11,18 +11,7 @@
 #define OLED_RENDER_LAYER_5           " Fun "
 #define OLED_RENDER_BLANK             "     "
 
-//elements correspond to the character position in the font array
-extern const char PROGMEM scroll_on[];
-extern const char PROGMEM scroll_off[];
-extern const char PROGMEM num_on[];
-extern const char PROGMEM num_off[];
-extern const char PROGMEM caps_on[];
-extern const char PROGMEM caps_off[];
-
-extern const char PROGMEM line_off[];
-
-extern const uint8_t line_count; //total line count
-extern const uint8_t shift_up;   //move RGB up how many lines
+extern const uint8_t shift_up;   //move RGB parameter display up
 
 void render_led_status (uint8_t row, uint8_t col);
 #if defined(RGB_MATRIX_ENABLE)

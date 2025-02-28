@@ -64,15 +64,6 @@
  * 15
  */
 
-const char PROGMEM scroll_on[]   = {0x8F, 0};
-const char PROGMEM scroll_off[]  = {0x80, 0};
-const char PROGMEM num_on[]      = {0xC4, 0};
-const char PROGMEM num_off[]     = {0x80, 0};
-const char PROGMEM caps_on[]     = {0x87, 0};
-const char PROGMEM caps_off[]    = {0x80, 0};
-
-const char PROGMEM line_off[] = {0x80, 0x80, 0x80, 0x80, 0x80, 0};
-
 const uint8_t line_count = 16;
 
 //allows RGB settings to overwrite the pointer CPI due to screen height restrictions, otherwise rgb will
@@ -83,6 +74,14 @@ const uint8_t shift_up = 3;
 const uint8_t shift_up = 0;
 #endif //POINTING_DEVICE_ENABLE
 
+const char PROGMEM scroll_on[]   = {0x8F, 0};
+const char PROGMEM scroll_off[]  = {0x80, 0};
+const char PROGMEM num_on[]      = {0xC4, 0};
+const char PROGMEM num_off[]     = {0x80, 0};
+const char PROGMEM caps_on[]     = {0x87, 0};
+const char PROGMEM caps_off[]    = {0x80, 0};
+
+const char PROGMEM line_off[] = {0x80, 0x80, 0x80, 0x80, 0x80, 0};
 
 // Render each screen
 bool oled_task_user (void) {
@@ -105,11 +104,13 @@ bool oled_task_user (void) {
 #   endif //POINTING_DEVICE_ENABLE
 #endif // RGB_MATRIX_ENABLE
     } else {
+
+        //can't adjust the split side as keymap_config is sync to split side
         clear_lines(0,  0, line_count);
         render_mods(0,  0, MOD_SHIFT, current_mods);
-        keymap_config.swap_lctl_lgui ? render_mods(4,  0, MOD_GUI,   current_mods) : render_mods(4,  0, MOD_CTRL,  current_mods);
+        render_mods(4,  0, MOD_CTRL,  current_mods);
         render_mods(7,  0, MOD_ALT,   current_mods);
-        keymap_config.swap_lctl_lgui ? render_mods(11, 0, MOD_CTRL,  current_mods) : render_mods(11, 0, MOD_GUI,   current_mods);
+        render_mods(11, 0, MOD_GUI,   current_mods);
         render_led_status(15, 1);
     }
     return false;
