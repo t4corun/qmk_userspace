@@ -89,7 +89,9 @@ bool oled_task_user (void) {
         oled_write_P(PSTR(OLED_KEYBOARD_NAME), false);
         oled_set_cursor(0,1);
         oled_write_P(line_sep, false);
+#if defined(RGB_MATRIX_ENABLE)
         render_rgb_status(2,0);
+#endif // RGB_MATRIX_ENABLE
         oled_set_cursor(0,6);
         oled_write_P(line_sep_short, false);
         render_feature_status(7,1);
