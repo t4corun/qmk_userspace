@@ -20,6 +20,15 @@ const char *ctrl_on[]             = {ctrl_on_L1,  ctrl_on_L2,  ctrl_on_L3};
 const char *alt_on[]              = {alt_on_L1,   alt_on_L2,   alt_on_L3};
 const char *gui_on[]              = {gui_on_L1,   gui_on_L2, gui_on_L3};
 
+const char PROGMEM win_logo_L1[]    = {0x80, 0x9C, 0x9D, 0x9E, 0x80, 0};
+const char PROGMEM win_logo_L2[]    = {0x80, 0xBC, 0xBD, 0xBE, 0x80, 0};
+
+const char PROGMEM mac_logo_L1[]    = {0x80, 0x99, 0x9A, 0x9B, 0x80, 0};
+const char PROGMEM mac_logo_L2[]    = {0x80, 0xB9, 0xBA, 0xBB, 0x80, 0};
+
+const char *win_logo[]              = {win_logo_L1, win_logo_L2};
+const char *mac_logo[]              = {mac_logo_L1, mac_logo_L2};
+
 // Define the default layer render strings in an array for easier maintenance
 const char *default_layer_render_strings[] = {
     [0]                   = OLED_RENDER_DEFAULT_LAYER1,
@@ -88,10 +97,6 @@ void render_led_status (uint8_t row, uint8_t col) {
 }
 
 
-void render_mod_handler(uint8_t current_mods) {
-
-}
-
 // render the mod if it is held.
 void render_mods (uint8_t row, uint8_t col, uint8_t target_mod, uint8_t current_mods) {
     const char **mod_graphic;
@@ -129,14 +134,11 @@ void render_mods (uint8_t row, uint8_t col, uint8_t target_mod, uint8_t current_
     }
 }
 
-// visual indicator if the keyboard is set for windows or mac computers
-void render_mod_os (uint8_t row, uint8_t col) {
-    oled_set_cursor(col, row);
-    oled_write_P(PSTR("-mod-"), false);
-    
-    oled_set_cursor(col, row + 1);
-    keymap_config.swap_lctl_lgui ? oled_write_P(PSTR(" mac "), false) : oled_write_P(PSTR(" win "), false);
-
+void render_logo (uint8_t row, uint8_t col, const char **logo, uint8_t logo_size) {
+    for (uint8_t i = 0; i < logo_size; i++) {
+        oled_set_cursor(col, row + i);
+        oled_write_P(logo[i], false);
+    }
 }
 
 void clear_lines (uint8_t row, uint8_t col, uint8_t lines) {

@@ -26,15 +26,7 @@ extern const char PROGMEM combo_on[];
 extern const char PROGMEM kb_logo_L1[];
 extern const char PROGMEM kb_logo_L2[];
 
-extern const char PROGMEM win_logo_L1[];
-extern const char PROGMEM win_logo_L2[];
-
-extern const char PROGMEM mac_logo_L1[];
-extern const char PROGMEM mac_logo_L2[];
-
 extern const char *kb_logo[];
-extern const char *win_logo[];
-extern const char *mac_logo[];
 
 extern const char PROGMEM mod_sep[];
 
@@ -44,5 +36,4 @@ extern const char PROGMEM line_sep_short[];
 
 void render_feature_status (uint8_t row, uint8_t col);
 void render_rgb_status (uint8_t row, uint8_t col);
-void render_logo (uint8_t row, uint8_t col, const char **logo, uint8_t logo_size);
 

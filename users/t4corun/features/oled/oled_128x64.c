@@ -59,15 +59,7 @@ const char PROGMEM combo_on[]       = {0xDB, 0xDC, 0};
 const char PROGMEM kb_logo_L1[]     = {0x94, 0x95, 0x96, 0x97, 0x98, 0};
 const char PROGMEM kb_logo_L2[]     = {0xB4, 0xB5, 0xB6, 0xB7, 0xB8, 0};
 
-const char PROGMEM win_logo_L1[]    = {0x80, 0x9C, 0x9D, 0x9E, 0x80, 0};
-const char PROGMEM win_logo_L2[]    = {0x80, 0xBC, 0xBD, 0xBE, 0x80, 0};
-
-const char PROGMEM mac_logo_L1[]    = {0x80, 0x99, 0x9A, 0x9B, 0x80, 0};
-const char PROGMEM mac_logo_L2[]    = {0x80, 0xB9, 0xBA, 0xBB, 0x80, 0};
-
 const char *kb_logo[]               = {kb_logo_L1,  kb_logo_L2};
-const char *win_logo[]              = {win_logo_L1, win_logo_L2};
-const char *mac_logo[]              = {mac_logo_L1, mac_logo_L2};
 
 const char PROGMEM mod_sep[]        = {0xC7, 0xC7, 0};
 
@@ -183,10 +175,3 @@ void render_rgb_status (uint8_t row, uint8_t col) {
     } 
 }
 #endif // RGB_MATRIX_ENABLE
-
-void render_logo (uint8_t row, uint8_t col, const char **logo, uint8_t logo_size) {
-    for (uint8_t i = 0; i < logo_size; i++) {
-        oled_set_cursor(col, row + i);
-        oled_write_P(logo[i], false);
-    }
-}

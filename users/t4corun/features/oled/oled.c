@@ -35,15 +35,15 @@
  * 03   sym
  * 04   fun
  * 05
- * 06  -mod-
- * 07   win 
+ * 06  -cpi-
+ * 07  xxxxx
  * 08
- * 09  -cpi-
- * 10  xxxxx
+ * 09  -rgb-  
+ * 10    on 
  * 11
- * 12  -rgb-
- * 13    on
- * 14
+ * 12  
+ * 13   mod
+ * 14   mod
  * 15
  *
  * 00  bslyr
@@ -52,16 +52,17 @@
  * 03   sym
  * 04   fun
  * 05
- * 06  -mod-
- * 07   win 
- * 08
- * 09  -rgb-
- * 10  m 999
- * 11  h 999
- * 12  s 999
- * 13  v 999
- * 14  s 999
+ * 06  -rgb-
+ * 07  m 999
+ * 08  h 999
+ * 09  s 999
+ * 10  v 999
+ * 11  s 999
+ * 12  
+ * 13   mod
+ * 14   mod
  * 15
+ *
  */
 
 const uint8_t line_count = 16;
@@ -92,17 +93,21 @@ bool oled_task_user (void) {
         clear_lines(0, 0, line_count);
         render_default_layer_state(0, 0);
         render_layer_state_list(1, 0);
-        render_mod_os(6, 0);
 #if defined(POINTING_DEVICE_ENABLE)
-        render_pointercpi_keymap(9, 0);
+        render_pointercpi_keymap(6, 0);
 #endif // POINTING_DEVICE_ENABLE
 #if defined(RGB_MATRIX_ENABLE)
 #   if defined(POINTING_DEVICE_ENABLE)
-        render_rgb_status(12, 0);
-#   else
         render_rgb_status(9, 0);
+#   else
+        render_rgb_status(6, 0);
 #   endif //POINTING_DEVICE_ENABLE
 #endif // RGB_MATRIX_ENABLE
+        if ( keymap_config.swap_lctl_lgui ) {
+            render_logo(13, 0, mac_logo, sizeof(mac_logo) / sizeof(mac_logo[0]));
+        } else {
+            render_logo(13, 0, win_logo, sizeof(win_logo) / sizeof(win_logo[0]));
+        }
     } else {
 
         //can't adjust the split side as keymap_config is sync to split side
