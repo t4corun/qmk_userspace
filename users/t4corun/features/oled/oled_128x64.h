@@ -14,14 +14,6 @@
 #   define OLED_KEYBOARD_NAME         "QMK Keyboard"
 #endif // OLED_KEYBOARD_NAME
 
-//elements correspond to the character position in the font array
-extern const char PROGMEM scroll_off[];
-extern const char PROGMEM scroll_on[];
-extern const char PROGMEM num_off[];
-extern const char PROGMEM num_on[];
-extern const char PROGMEM caps_off[];
-extern const char PROGMEM caps_on[];
-
 extern const char PROGMEM rgb_matrix_off[];
 extern const char PROGMEM rgb_matrix_on[];
 extern const char PROGMEM sound_off[];
@@ -38,11 +30,10 @@ extern const char *kb_logo[];
 
 extern const char PROGMEM mod_sep[];
 
-extern const char PROGMEM line_off[];
+//extern const char PROGMEM line_off[];
 extern const char PROGMEM line_sep[];
 extern const char PROGMEM line_sep_short[];
 
 void render_feature_status (uint8_t row, uint8_t col);
 void render_rgb_status (uint8_t row, uint8_t col);
-void render_kb_logo (uint8_t row, uint8_t col);
 

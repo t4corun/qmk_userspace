@@ -20,6 +20,15 @@ const char *ctrl_on[]             = {ctrl_on_L1,  ctrl_on_L2,  ctrl_on_L3};
 const char *alt_on[]              = {alt_on_L1,   alt_on_L2,   alt_on_L3};
 const char *gui_on[]              = {gui_on_L1,   gui_on_L2, gui_on_L3};
 
+const char PROGMEM win_logo_L1[]    = {0x80, 0x9C, 0x9D, 0x9E, 0x80, 0};
+const char PROGMEM win_logo_L2[]    = {0x80, 0xBC, 0xBD, 0xBE, 0x80, 0};
+
+const char PROGMEM mac_logo_L1[]    = {0x80, 0x99, 0x9A, 0x9B, 0x80, 0};
+const char PROGMEM mac_logo_L2[]    = {0x80, 0xB9, 0xBA, 0xBB, 0x80, 0};
+
+const char *win_logo[]              = {win_logo_L1, win_logo_L2};
+const char *mac_logo[]              = {mac_logo_L1, mac_logo_L2};
+
 // Define the default layer render strings in an array for easier maintenance
 const char *default_layer_render_strings[] = {
     [0]                   = OLED_RENDER_DEFAULT_LAYER1,
@@ -38,11 +47,11 @@ const char *layer_render_strings[] = {
 
 // Shows the currently enabled Layer name
 void render_default_layer_state (uint8_t row, uint8_t col) {
-    uint8_t current_mods = get_mods() | get_oneshot_mods();
+    //uint8_t current_mods = get_mods() | get_oneshot_mods();
     uint8_t highest_default_layer = get_highest_layer(default_layer_state);
 
     //highlight the base layer when the funciton layer is enabled and no modifiers are held
-    bool setting_enabled = (get_highest_layer(layer_state) == _FUNCTION && current_mods == 0);
+    //bool setting_enabled = (get_highest_layer(layer_state) == _FUNCTION && current_mods == 0);
 
     //it checks to make sure the array has enough elements defined or we may have unexpected behavior
     const char *layer_string = (highest_default_layer < sizeof(default_layer_render_strings) / sizeof(default_layer_render_strings[0]))
@@ -50,7 +59,7 @@ void render_default_layer_state (uint8_t row, uint8_t col) {
                                : OLED_RENDER_BLANK;
 
     oled_set_cursor(col, row);
-    oled_write_P(PSTR(layer_string), setting_enabled);
+    oled_write_P(PSTR(layer_string), false); //oled_write_P(PSTR(layer_string), setting_enabled);
 }
 
 // Shows the currently enabled Layer name
@@ -87,6 +96,7 @@ void render_led_status (uint8_t row, uint8_t col) {
     oled_write_P(host_keyboard_led_state().scroll_lock                    ? scroll_on: scroll_off, false);
 }
 
+
 // render the mod if it is held.
 void render_mods (uint8_t row, uint8_t col, uint8_t target_mod, uint8_t current_mods) {
     const char **mod_graphic;
@@ -121,5 +131,19 @@ void render_mods (uint8_t row, uint8_t col, uint8_t target_mod, uint8_t current_
     for (uint8_t i = 0; i < num_lines; i++) {
         oled_set_cursor(col, row + i);
         oled_write_P(current_mods & mod_mask ? mod_graphic[i] : mod_line_off, false);
+    }
+}
+
+void render_logo (uint8_t row, uint8_t col, const char **logo, uint8_t logo_size) {
+    for (uint8_t i = 0; i < logo_size; i++) {
+        oled_set_cursor(col, row + i);
+        oled_write_P(logo[i], false);
+    }
+}
+
+void clear_lines (uint8_t row, uint8_t col, uint8_t lines) {
+    oled_set_cursor(col, row);
+    for ( int i = 0; i < lines; i++ ) {
+        oled_write_P(line_off, false);
     }
 }
