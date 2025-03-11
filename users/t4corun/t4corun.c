@@ -70,7 +70,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     if(!process_record_user_taphold(keycode, record)) { return false; }
 
-    if(!process_achordion(keycode, record)) { return false; }
+    //if(!process_achordion(keycode, record)) { return false; }
 
 #if defined(ENCODER_ENABLE)
     if(!process_record_user_encoder(keycode, record)) { return false; }
@@ -171,7 +171,7 @@ void handle_haptic(uint16_t keycode) {
 #endif // HAPTIC_ENABLE
 
 void matrix_scan_user(void) {
-    achordion_task();
+    //get_chordal_hold();
 
 #if defined(ENCODER_ENABLE)
     matrix_scan_encoder();
@@ -187,37 +187,42 @@ bool shutdown_user(bool jump_to_bootloader) {
     return false;
 }
 
+/* 
+ * Chordal customizations
+ */
+
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, uint16_t other_keycode, keyrecord_t* other_record) {
+
+    switch (tap_hold_keycode) {
+        // Prevent Windows + L from firing when roll typing all
+        case HOME_A:
+            if (other_keycode == HOME_L) {
+                return false;
+            }
+            break;
+
+        // Exceptionally allow Win + L as a same-hand chord.
+        case HOME_QT:
+            if (other_keycode == HOME_L) {
+                return true;
+            }
+            break;
+    }
+
+    return get_chordal_hold_default(tap_hold_record, other_record);
+}
+
+char chordal_hold_handedness(keypos_t key) {
+    // On split keyboards, typically, the first half of the rows are on the
+    // left, and the other half are on the right.
+    return key.row < MATRIX_ROWS / 2 ? 'L' : 'R';
+}
+
 /*
  *  Achordion customizations
  */
 
-uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-    switch (tap_hold_keycode) {
-        case BK_LCBR:
-        case BK_LABK:
-        case BK_LBRC:
-        case BK_LPRN:
-        case BK_DQUO:
-        case BK_SQUO:
-        case DT_BSLS:
-        case DT_SLSH:
-        case DT_PIPE:
-        case DT_EQL:
-        case DT_PLUS:
-        case OR_COMM:
-        case OR_DOT:
-        case OR_PERC:
-        case AS_MINS:
-        case AS_GRV:
-        case AS_SCLN:
-        case AS_QUOT:
-            return 0; // disable achordion for my other tap holds
-
-        default:
-            return 800; // 800 ms
-    }
-}
-
+/*
 // By default, use the BILATERAL_COMBINATIONS rule to consider the tap-hold key
 // "held" only when it and the other key are on opposite hands.
 bool achordion_chord(uint16_t tap_hold_keycode,
@@ -243,12 +248,4 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 
     return achordion_opposite_hands(tap_hold_record, other_record);
 }
-
-bool achordion_eager_mod(uint8_t mod) {
-    if ( keymap_config.swap_lctl_lgui ) {
-        // If in MAC mode, Shift and GUI mods are eager, and Alt and GUI are not.
-        return (mod & (MOD_LALT | MOD_LCTL)) == 0;
-    }
-    // Windows is the default, Shift and Ctrl mods are eager, and Alt and GUI are not.
-    return (mod & (MOD_LALT | MOD_LGUI)) == 0;
-}
+*/
