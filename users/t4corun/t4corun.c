@@ -27,8 +27,11 @@ void set_default_layer(bool forward) {
 
 // Customize behavior for existing keycodes or create new ones
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-
+#if defined(NO_ACTION_ONESHOT)
+    uint8_t current_mods = get_mods();
+#else
     uint8_t current_mods = get_mods() | get_oneshot_mods();
+#endif //NO_ACTION_ONESHOT
 
     if (record->event.pressed) {
 #if defined(CONSOLE_ENABLE)

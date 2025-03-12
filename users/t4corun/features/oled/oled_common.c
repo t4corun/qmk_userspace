@@ -47,7 +47,6 @@ const char *layer_render_strings[] = {
 
 // Shows the currently enabled Layer name
 void render_default_layer_state (uint8_t row, uint8_t col) {
-    //uint8_t current_mods = get_mods() | get_oneshot_mods();
     uint8_t highest_default_layer = get_highest_layer(default_layer_state);
 
     //highlight the base layer when the funciton layer is enabled and no modifiers are held
