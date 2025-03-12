@@ -31,6 +31,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     uint8_t current_mods = get_mods() | get_oneshot_mods();
 
     if (record->event.pressed) {
+#if defined(CONSOLE_ENABLE)
+        uprintf("Key pressed at row: %u, col: %u\n", record->event.key.row, record->event.key.col);
+        uprintf("Key pressed is: %c\n", chordal_hold_handedness(record->event.key));
+#endif //CONSOLE_ENABLE
+
         switch(keycode){
             // keypress/encoder turns while holding mod combinations adjust features
             // e.g. RGB settings, haptic frequency, click frequency, base layer
@@ -66,11 +71,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 toggle_features(keycode, current_mods);
                 return false;
         }
-    }
+    } 
 
     if(!process_record_user_taphold(keycode, record)) { return false; }
-
-    //if(!process_achordion(keycode, record)) { return false; }
 
 #if defined(ENCODER_ENABLE)
     if(!process_record_user_encoder(keycode, record)) { return false; }
@@ -171,8 +174,6 @@ void handle_haptic(uint16_t keycode) {
 #endif // HAPTIC_ENABLE
 
 void matrix_scan_user(void) {
-    //get_chordal_hold();
-
 #if defined(ENCODER_ENABLE)
     matrix_scan_encoder();
 #endif //ENCODER_ENABLE
@@ -187,65 +188,29 @@ bool shutdown_user(bool jump_to_bootloader) {
     return false;
 }
 
-/* 
- * Chordal customizations
- */
-
-bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, uint16_t other_keycode, keyrecord_t* other_record) {
+#if defined(CHORDAL_HOLD)
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
 
     switch (tap_hold_keycode) {
-        // Prevent Windows + L from firing when roll typing all
+        //prevent shortcuts from firing when roll typing quickly
         case HOME_A:
-            if (other_keycode == HOME_L) {
-                return false;
+            switch (other_keycode) {
+                case HOME_L:
+                case KC_P:
+                    return false;
             }
             break;
 
-        // Exceptionally allow Win + L as a same-hand chord.
         case HOME_QT:
-            if (other_keycode == HOME_L) {
-                return true;
+            switch (other_keycode) {
+                case HOME_L:      //allow GUI + L on same hand
+                    return true;
+                case HOME_D:
+                    return false;
             }
             break;
     }
 
     return get_chordal_hold_default(tap_hold_record, other_record);
 }
-
-char chordal_hold_handedness(keypos_t key) {
-    // On split keyboards, typically, the first half of the rows are on the
-    // left, and the other half are on the right.
-    return key.row < MATRIX_ROWS / 2 ? 'L' : 'R';
-}
-
-/*
- *  Achordion customizations
- */
-
-/*
-// By default, use the BILATERAL_COMBINATIONS rule to consider the tap-hold key
-// "held" only when it and the other key are on opposite hands.
-bool achordion_chord(uint16_t tap_hold_keycode,
-                        keyrecord_t* tap_hold_record,
-                        uint16_t other_keycode,
-                        keyrecord_t* other_record) {
-
-    switch (tap_hold_keycode) {
-        // Prevent Windows + L from firing when roll typing all
-        case HOME_A:
-            if (other_keycode == HOME_L) {
-                return false;
-            }
-            break;
-
-        // Exceptionally allow Win + L as a same-hand chord.
-        case HOME_QT:
-            if (other_keycode == HOME_L) {
-                return true;
-            }
-            break;
-    }
-
-    return achordion_opposite_hands(tap_hold_record, other_record);
-}
-*/
+#endif //CHORDAL_HOLD

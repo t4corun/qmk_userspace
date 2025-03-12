@@ -31,9 +31,9 @@
 #undef  ONESHOT_TIMEOUT
 #undef  CHORDAL_HOLD
 
-#define PERMISSIVE_HOLD // enabled per chordal
+#define PERMISSIVE_HOLD        // enabled for chordal
 #define TAP_CODE_DELAY     5
-#define TAPPING_TERM       250//175 for achordion
+#define TAPPING_TERM       225
 #define QUICK_TAP_TERM     120
 #define ONESHOT_TAP_TOGGLE 3
 #define ONESHOT_TIMEOUT    2000
