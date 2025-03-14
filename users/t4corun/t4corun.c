@@ -27,16 +27,13 @@ void set_default_layer(bool forward) {
 
 // Customize behavior for existing keycodes or create new ones
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-#if defined(NO_ACTION_ONESHOT)
-    uint8_t current_mods = get_mods();
-#else
     uint8_t current_mods = get_mods() | get_oneshot_mods();
-#endif //NO_ACTION_ONESHOT
 
     if (record->event.pressed) {
 #if defined(CONSOLE_ENABLE)
         uprintf("Key pressed at row: %u, col: %u\n", record->event.key.row, record->event.key.col);
         uprintf("Key pressed is: %c\n", chordal_hold_handedness(record->event.key));
+        uprintf("Tapping term: %u\n", get_tapping_term(keycode, record));
 #endif //CONSOLE_ENABLE
 
         switch(keycode){
@@ -47,21 +44,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 switch (current_mods) {
 #if defined(RGB_MATRIX_ENABLE)
                     case MOD_MASK_RGB_HUE:
+                        keycode == FWD_CFG ? rgb_matrix_increase_hue() : rgb_matrix_decrease_hue();
+                        break;
                     case MOD_MASK_RGB_SAT:
+                        keycode == FWD_CFG ? rgb_matrix_increase_sat() : rgb_matrix_decrease_sat();
+                        break;
                     case MOD_MASK_RGB_VAL:
+                        keycode == FWD_CFG ? rgb_matrix_increase_val() : rgb_matrix_decrease_val();
+                        break;
                     case MOD_MASK_RGB_SPD:
+                        keycode == FWD_CFG ? rgb_matrix_increase_speed() : rgb_matrix_decrease_speed();
+                        break;
                     case MOD_MASK_RGB_MODE:
-                        handle_rgbmatrix(keycode, current_mods);
+                        keycode == FWD_CFG ? rgb_matrix_step() : rgb_matrix_step_reverse();
                         break;
 #endif // RGB_MATRIX_ENABLE
 #if defined(AUDIO_ENABLE)
-                    case MOD_BIT(KC_LCTL) | MOD_BIT(KC_LALT):
-                        handle_audio(keycode);
+                    case MOD_MASK_CLICKY_ADJUST:
+                        keycode == FWD_CFG ? clicky_freq_up() : clicky_freq_down();
                         break;
 #endif // AUDIO_ENABLE
 #if defined(HAPTIC_ENABLE)
-                    case MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL) | MOD_BIT(KC_LALT):
-                        handle_haptic(keycode);
+                    case MOD_MASK_HAPTIC_MODE:
+                        keycode == FWD_CFG ? haptic_mode_increase() : haptic_mode_decrease();
                         break;
 #endif // HAPTIC_ENABLE
                     default:
@@ -71,11 +76,60 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
             // press key while holding mod combinations to toggle features or enter bootloader
             case TOG_CFG:
-                toggle_features(keycode, current_mods);
+                switch (current_mods) {
+                    //enter bootloader
+                    case MOD_MASK_RESET:
+                        reset_keyboard();
+                        break;
+                    case MOD_MAST_EECONFIG_INIT:
+                        eeconfig_init();
+                        break;
+#if defined(PLOOPYNANO_ENABLE)
+                    case MOD_MASK_PLOOPY_RESET:
+                        reset_ploopynano();
+                        break;
+#endif // PLOOPYNANO_ENABLE
+#if defined(RGB_MATRIX_ENABLE)
+                    case MOD_MASK_RGB_TOGGLE:
+                        rgb_matrix_toggle();
+                        break;
+#endif // RGB_MATRIX_ENABLE
+#if defined(COMBO_ENABLE)
+                    case MOD_MASK_COMBO_TOGGLE:
+                        combo_toggle();
+                        break;
+#endif // COMBO_ENABLE
+#if defined(AUDIO_ENABLE)
+                    case MOD_MASK_AUDIO_TOGGLE:
+                        is_audio_on() ? audio_off(): audio_on();
+                        break;
+                    case MOD_MASK_CLICKY_TOGGLE:
+                        clicky_toggle();
+                        break;
+#endif // AUDIO_ENABLE
+#if defined(HAPTIC_ENABLE)
+                    case MOD_MASK_HAPTIC_TOGGLE:
+                        haptic_toggle();
+                        break;
+                    case MOD_MASK_HAPTIC_RESET:
+                        haptic_reset();
+                        break;
+                    case MOD_MASK_FEEDBACK_TOGGLE:
+                        haptic_feedback_toggle();
+                        break;
+                    case MOD_MASK_CONTINUOUS_TOGGLE:
+                        haptic_toggle_continuous();
+                        break;
+#endif // HAPTIC_ENABLE
+                    default:
+                        set_default_layer(true);
+                        break;
+                }
                 return false;
-        }
-    } 
+        } 
 
+    }
+    
     if(!process_record_user_taphold(keycode, record)) { return false; }
 
 #if defined(ENCODER_ENABLE)
@@ -89,92 +143,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // let QMK process the normal behavior if not handled above
     return true;
 }
-
-void toggle_features(uint16_t keycode, uint8_t current_mods) {
-    switch (current_mods) {
-        //enter bootloader
-        case MOD_BIT(KC_LSFT):
-            reset_keyboard();
-            break;
-        case MOD_BIT(KC_LCTL):
-            eeconfig_init();
-            break;
-#if defined(PLOOPYNANO_ENABLE)
-        case MOD_BIT(KC_LALT):
-            reset_ploopynano();
-            break;
-#endif // PLOOPYNANO_ENABLE
-#if defined(RGB_MATRIX_ENABLE)
-        case MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL):
-            rgb_matrix_toggle();
-            break;
-#endif // RGB_MATRIX_ENABLE
-#if defined(COMBO_ENABLE)
-        case MOD_BIT(KC_LSFT) | MOD_BIT(KC_LALT):
-            combo_toggle();
-            break;
-#endif // COMBO_ENABLE
-#if defined(AUDIO_ENABLE)
-        case MOD_BIT(KC_LSFT) | MOD_BIT(KC_LGUI):
-            is_audio_on() ? audio_off(): audio_on();
-            break;
-        case MOD_BIT(KC_LCTL) | MOD_BIT(KC_LALT):
-            clicky_toggle();
-            break;
-#endif // AUDIO_ENABLE
-#if defined(HAPTIC_ENABLE)
-        case MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL) | MOD_BIT(KC_LALT):
-            haptic_toggle();
-            break;
-        case MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL) | MOD_BIT(KC_LGUI):
-            haptic_reset();
-            break;
-        case MOD_BIT(KC_LSFT) | MOD_BIT(KC_LALT) | MOD_BIT(KC_LGUI):
-            haptic_feedback_toggle();
-            break;
-        case MOD_BIT(KC_LCTL) | MOD_BIT(KC_LALT) | MOD_BIT(KC_LGUI):
-            haptic_toggle_continuous();
-            break;
-#endif // HAPTIC_ENABLE
-        default:
-            set_default_layer(true);
-            break;
-    }
-}
-
-#if defined(RGB_MATRIX_ENABLE)
-void handle_rgbmatrix(uint16_t keycode, uint8_t current_mods) {
-    switch (current_mods) {
-        case MOD_MASK_RGB_HUE:
-            keycode == FWD_CFG ? rgb_matrix_increase_hue() : rgb_matrix_decrease_hue();
-            break;
-        case MOD_MASK_RGB_SAT:
-            keycode == FWD_CFG ? rgb_matrix_increase_sat() : rgb_matrix_decrease_sat();
-            break;
-        case MOD_MASK_RGB_VAL:
-            keycode == FWD_CFG ? rgb_matrix_increase_val() : rgb_matrix_decrease_val();
-            break;
-        case MOD_MASK_RGB_SPD:
-            keycode == FWD_CFG ? rgb_matrix_increase_speed() : rgb_matrix_decrease_speed();
-            break;
-        case MOD_MASK_RGB_MODE:
-            keycode == FWD_CFG ? rgb_matrix_step() : rgb_matrix_step_reverse();
-            break;
-    }
-}
-#endif // RGB_MATRIX_ENABLE
-
-#if defined(AUDIO_ENABLE)
-void handle_audio(uint16_t keycode) {
-    keycode == FWD_CFG ? clicky_freq_up() : clicky_freq_down();
-}
-#endif // AUDIO_ENABLE
-
-#if defined(HAPTIC_ENABLE)
-void handle_haptic(uint16_t keycode) {
-    keycode == FWD_CFG ? haptic_mode_increase() : haptic_mode_decrease();
-}
-#endif // HAPTIC_ENABLE
 
 void matrix_scan_user(void) {
 #if defined(ENCODER_ENABLE)
@@ -197,20 +165,15 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
     switch (tap_hold_keycode) {
         //prevent shortcuts from firing when roll typing quickly
         case HOME_A:
-            switch (other_keycode) {
-                case HOME_L:
-                case KC_P:
-                    return false;
+            if (other_keycode == KC_SPC) {
+                return true;        
+            } else {
+                return false;
             }
-            break;
-
         case HOME_QT:
-            switch (other_keycode) {
-                case HOME_L:      //allow GUI + L on same hand
-                    return true;
-                case HOME_D:
-                    return false;
-            }
+        case HOME_O:
+            return false;
+        default:
             break;
     }
 

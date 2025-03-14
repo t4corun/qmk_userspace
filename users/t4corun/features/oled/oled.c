@@ -86,11 +86,7 @@ const char PROGMEM line_off[] = {0x80, 0x80, 0x80, 0x80, 0x80, 0};
 
 // Render each screen
 bool oled_task_user (void) {
-#if defined(NO_ACTION_ONESHOT)
-    uint8_t current_mods = get_mods();
-#else
     uint8_t current_mods = get_mods() | get_oneshot_mods();
-#endif //NO_ACTION_ONESHOT
 
     //process_record_user is only processed on master side
     //split side OLED does not respond to key presses custom behaviors
@@ -148,11 +144,8 @@ ModDisplay mod_displays[] = {
 };
 
 void render_rgb_status (uint8_t row, uint8_t col) {
-#if defined(NO_ACTION_ONESHOT)
-    uint8_t current_mods = get_mods();
-#else
     uint8_t current_mods = get_mods() | get_oneshot_mods();
-#endif //NO_ACTION_ONESHOT
+
     bool setting_enabled = false;
 
     if (get_highest_layer(layer_state) == _FUNCTION) {

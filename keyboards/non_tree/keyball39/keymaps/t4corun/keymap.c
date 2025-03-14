@@ -64,11 +64,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 layer_state_t layer_state_set_keymap(layer_state_t state) {
-#if defined(NO_ACTION_ONESHOT)
-    uint8_t current_mods = get_mods();
-#else
     uint8_t current_mods = get_mods() | get_oneshot_mods();
-#endif //NO_ACTION_ONESHOT
+
     switch (get_highest_layer(state)) {
         case _NUMBER:
             if ( current_mods == MOD_BIT(KC_RSFT) ) {

@@ -1,5 +1,27 @@
 #include "taphold.h"
 
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        //alt tap hold
+        case OSM_ALT:
+        case HOME_L:
+        case HOME_R:
+        case HOME_I:
+        case HOME_S:
+            return TAPPING_TERM + 100;
+        
+        //gui
+        case HOME_A:
+        case HOME_QT:
+        case HOME_O:
+        case OSM_GUI:
+            return TAPPING_TERM + 100;
+            
+        default:
+            return TAPPING_TERM;
+    }
+}
+
 void double_tap( uint16_t key, uint32_t ms) {
     tap_code16(key);
     wait_ms(ms);

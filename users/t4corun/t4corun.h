@@ -15,16 +15,6 @@
 
 layer_state_t layer_state_set_keymap(layer_state_t state);
 void          set_default_layer(bool forward);
-void          toggle_features(uint16_t keycode, uint8_t current_mods);
-#if defined(RGB_MATRIX_ENABLE)
-void          handle_rgbmatrix(uint16_t keycode, uint8_t current_mods);
-#endif // RGB_MATRIX_ENABLE
-#if defined(AUDIO_ENABLE)
-void          handle_audio(uint16_t keycode);
-#endif //AUDIO_ENABLE
-#if defined(HAPTIC_ENABLE)
-void          handle_haptic(uint16_t keycode);
-#endif // HAPTIC_ENABLE
 
 
 // put the default base layers first
@@ -78,11 +68,40 @@ enum keycodes {
 };
 
 // defining aliases for config key overloading
-#define     MOD_MASK_RGB_MODE  (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL))
-#define     MOD_MASK_RGB_HUE   MOD_BIT(KC_LSFT)
-#define     MOD_MASK_RGB_SAT   MOD_BIT(KC_LCTL)
-#define     MOD_MASK_RGB_VAL   MOD_BIT(KC_LALT)
-#define     MOD_MASK_RGB_SPD   MOD_BIT(KC_LGUI)
+
+#define     MOD_MASK_RESET         MOD_BIT(KC_LSFT)
+#define     MOD_MAST_EECONFIG_INIT MOD_BIT(KC_LCTL)
+
+#if defined(RGB_MATRIX_ENABLE)
+#   define  MOD_MASK_RGB_TOGGLE    (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL))
+#   define  MOD_MASK_RGB_MODE      MOD_MASK_RGB_TOGGLE
+#   define  MOD_MASK_RGB_HUE       MOD_BIT(KC_LSFT)
+#   define  MOD_MASK_RGB_SAT       MOD_BIT(KC_LCTL)
+#   define  MOD_MASK_RGB_VAL       MOD_BIT(KC_LALT)
+#   define  MOD_MASK_RGB_SPD       MOD_BIT(KC_LGUI)
+#endif
+
+#if defined(AUDIO_ENABLE)
+#   define  MOD_MASK_AUDIO_TOGGLE  (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LGUI))
+#   define  MOD_MASK_CLICKY_TOGGLE (MOD_BIT(KC_LCTL) | MOD_BIT(KC_LALT))
+#   define  MOD_MASK_CLICKY_ADJUST MOD_MASK_CLICKY_TOGGLE
+#endif // AUDIO_ENABLE
+
+#if defined(HAPTIC_ENABLE)
+#   define  MOD_MASK_HAPTIC_TOGGLE     (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL) | MOD_BIT(KC_LALT))
+#   define  MOD_MASK_HAPTIC_MODE       MOD_MASK_HAPTIC_TOGGLE
+#   define  MOD_MASK_HAPTIC_RESET      (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL) | MOD_BIT(KC_LGUI))
+#   define  MOD_MASK_FEEDBACK_TOGGLE   (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LALT) | MOD_BIT(KC_LGUI))
+#   define  MOD_MASK_CONTINUOUS_TOGGLE (MOD_BIT(KC_LCTL) | MOD_BIT(KC_LALT) | MOD_BIT(KC_LGUI))
+#endif // HAPTIC_ENABLE
+
+#if defined(PLOOPYNANO_ENABLE)
+#   define  MOD_MASK_PLOOPY_RESET  MOD_BIT(KC_LALT)
+#endif // PLOOPYNANO_ENABLE
+
+#if defined(COMBO_ENABLE)
+#   define  MOD_MASK_COMBO_TOGGLE  (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LALT))
+#endif // COMBO_ENABLE
 
 // start at the second layer
 #define     DEFAULT_LAYER_2    FIRST_DEFAULT_LAYER + 1
@@ -119,19 +138,19 @@ enum keycodes {
 #define     HOME_S  MT(MOD_LALT, KC_S)
 #define     HOME_D  MT(MOD_LCTL, KC_D)
 #define     HOME_F  MT(MOD_LSFT, KC_F)
-#define     HOME_J  MT(MOD_RSFT, KC_J)
-#define     HOME_K  MT(MOD_RCTL, KC_K)
-#define     HOME_L  MT(MOD_RALT, KC_L)
-#define     HOME_QT MT(MOD_RGUI, KC_QUOT)
+#define     HOME_J  MT(MOD_LSFT, KC_J)
+#define     HOME_K  MT(MOD_LCTL, KC_K)
+#define     HOME_L  MT(MOD_LALT, KC_L)
+#define     HOME_QT MT(MOD_LGUI, KC_QUOT)
 
 // home row mods COLEMAK DH
 #define     HOME_R  MT(MOD_LALT, KC_R)
 #define     HOME_SC MT(MOD_LCTL, KC_S)
 #define     HOME_T  MT(MOD_LSFT, KC_T)
-#define     HOME_N  MT(MOD_RSFT, KC_N)
-#define     HOME_E  MT(MOD_RCTL, KC_E)
-#define     HOME_I  MT(MOD_RALT, KC_I)
-#define     HOME_O  MT(MOD_RGUI, KC_O)
+#define     HOME_N  MT(MOD_LSFT, KC_N)
+#define     HOME_E  MT(MOD_LCTL, KC_E)
+#define     HOME_I  MT(MOD_LALT, KC_I)
+#define     HOME_O  MT(MOD_LGUI, KC_O)
 
 // one shot mods
 #define     OSM_SFT OSM(MOD_LSFT)

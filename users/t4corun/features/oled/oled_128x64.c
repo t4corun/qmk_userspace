@@ -75,11 +75,8 @@ const char PROGMEM line_sep_short[] =
 
 // Coordinate the OLED rendering
 bool oled_task_user (void) {
-#if defined(NO_ACTION_ONESHOT)
-    uint8_t current_mods = get_mods();
-#else
     uint8_t current_mods = get_mods() | get_oneshot_mods();
-#endif //NO_ACTION_ONESHOT
+
     if (is_keyboard_master()) {
         clear_lines(0, 0, line_count);
         oled_write_P(PSTR(OLED_KEYBOARD_NAME), false);
@@ -165,11 +162,7 @@ ModDisplay mod_displays[] = {
 };
 
 void render_rgb_status (uint8_t row, uint8_t col) {
-#if defined(NO_ACTION_ONESHOT)
-    uint8_t current_mods = get_mods();
-#else
     uint8_t current_mods = get_mods() | get_oneshot_mods();
-#endif //NO_ACTION_ONESHOT
     bool setting_enabled = false;
 
     oled_set_cursor(col, row);

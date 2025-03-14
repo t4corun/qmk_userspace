@@ -25,6 +25,7 @@
 #undef  PERMISSIVE_HOLD
 #undef  TAP_CODE_DELAY
 #undef  TAPPING_TERM
+#undef  TAPPING_TERM_PER_KEY
 #undef  QUICK_TAP_TERM
 #undef  NO_ACTION_ONESHOT
 #undef  ONESHOT_TAP_TOGGLE
@@ -33,7 +34,8 @@
 
 #define PERMISSIVE_HOLD        // enabled for chordal
 #define TAP_CODE_DELAY     5
-#define TAPPING_TERM       225
+#define TAPPING_TERM       175
+#define TAPPING_TERM_PER_KEY
 #define QUICK_TAP_TERM     120
 #define ONESHOT_TAP_TOGGLE 3
 #define ONESHOT_TIMEOUT    2000
