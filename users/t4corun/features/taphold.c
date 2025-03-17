@@ -1,5 +1,6 @@
 #include "taphold.h"
 
+/*
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         //alt tap hold
@@ -21,6 +22,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM;
     }
 }
+*/
 
 void double_tap( uint16_t key, uint32_t ms) {
     tap_code16(key);

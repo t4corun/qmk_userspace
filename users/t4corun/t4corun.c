@@ -33,7 +33,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #if defined(CONSOLE_ENABLE)
         uprintf("Key pressed at row: %u, col: %u\n", record->event.key.row, record->event.key.col);
         uprintf("Key pressed is: %c\n", chordal_hold_handedness(record->event.key));
-        uprintf("Tapping term: %u\n", get_tapping_term(keycode, record));
+        //uprintf("Tapping term: %u\n", get_tapping_term(keycode, record));
 #endif //CONSOLE_ENABLE
 
         switch(keycode){
@@ -163,15 +163,22 @@ bool shutdown_user(bool jump_to_bootloader) {
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
 
     switch (tap_hold_keycode) {
-        //prevent shortcuts from firing when roll typing quickly
+        //Stop chordal from working for GUI and ALT
         case HOME_A:
             if (other_keycode == KC_SPC) {
                 return true;        
             } else {
                 return false;
             }
+            break;
+        case HOME_S:
+        case HOME_L:
         case HOME_QT:
-        case HOME_O:
+        
+        //COLEMAK_DH
+        case HOME_R:
+        case HOME_I:
+        case HOME_O:       
             return false;
         default:
             break;
