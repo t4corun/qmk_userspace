@@ -44,6 +44,13 @@ LAYOUT_cnano_wrapper (                                       \
 
 #define KEYBOARD(...) LAYOUT_t4corun_keymap(__VA_ARGS__)
 
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT_cnano_wrapper(
+    'L', 'L', 'L', 'L', 'L',   'R', 'R', 'R', 'R', 'R', 
+    'L', 'L', 'L', 'L', 'L',   'R', 'R', 'R', 'R', 'R', 
+    'L', 'L', 'L', 'L', 'L',   'R', 'R', 'R', 'R', 'R', 
+              'L', 'L', 'L',   'R', 'R'
+);
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY]     = KEYBOARD(LAYER_QWERTY),
     [_COLEMAK_DH] = KEYBOARD(LAYER_COLEMAK_DH),
