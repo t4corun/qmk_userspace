@@ -45,6 +45,13 @@ LAYOUT_keyball_wrapper (                                     \
 
 #define KEYBOARD(...) LAYOUT_t4corun_keymap(__VA_ARGS__)
 
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT_keyball_wrapper(
+         'L', 'L', 'L', 'L', 'L',   'R', 'R', 'R', 'R', 'R', 
+         'L', 'L', 'L', 'L', 'L',   'R', 'R', 'R', 'R', 'R', 
+         'L', 'L', 'L', 'L', 'L',   'R', 'R', 'R', 'R', 'R', 
+    'L', 'L', 'L', 'L', 'L', 'L',   'R', 'R',           'R'
+);
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY]     = KEYBOARD(LAYER_QWERTY),
     [_COLEMAK_DH] = KEYBOARD(LAYER_COLEMAK_DH),
@@ -57,6 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 layer_state_t layer_state_set_keymap(layer_state_t state) {
     uint8_t current_mods = get_mods() | get_oneshot_mods();
+
     switch (get_highest_layer(state)) {
         case _NUMBER:
             if ( current_mods == MOD_BIT(KC_RSFT) ) {

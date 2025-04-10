@@ -76,6 +76,7 @@ const char PROGMEM line_sep_short[] =
 // Coordinate the OLED rendering
 bool oled_task_user (void) {
     uint8_t current_mods = get_mods() | get_oneshot_mods();
+
     if (is_keyboard_master()) {
         clear_lines(0, 0, line_count);
         oled_write_P(PSTR(OLED_KEYBOARD_NAME), false);
