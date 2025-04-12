@@ -2,9 +2,6 @@
 
 #include "t4corun.h"
 
-const key_override_t comma_override     = ko_make_basic(MOD_MASK_SHIFT, BRM_COM, KC_EXLM);
-const key_override_t dot_override       = ko_make_basic(MOD_MASK_SHIFT, BRM_DOT, KC_QUES);
-
 const key_override_t num1_override      = ko_make_with_layers(MOD_MASK_CSAG, KC_1,    KC_F1,  ~_NUMBER);
 const key_override_t num2_override      = ko_make_with_layers(MOD_MASK_CSAG, KC_2,    KC_F2,  ~_NUMBER);
 const key_override_t num3_override      = ko_make_with_layers(MOD_MASK_CSAG, KC_3,    KC_F3,  ~_NUMBER);
@@ -19,8 +16,6 @@ const key_override_t num_dot_override   = ko_make_with_layers(MOD_MASK_CSAG, KC_
 const key_override_t num_mins_override  = ko_make_with_layers(MOD_MASK_CSAG, KC_MINS, KC_F12, ~_NUMBER);
 
 const key_override_t *key_overrides[] = {
-	&comma_override,
-    &dot_override,
     &num1_override,
     &num2_override,
     &num3_override,

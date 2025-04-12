@@ -40,16 +40,11 @@ enum keycodes {
     TH_BSLS,
     TH_SLSH,
     TH_PIPE,
-    TH_EQL,
-    TH_PLUS,
 
     TH_COMM,
     TH_DOT,
-    TH_PERC,
 
     TH_MINS,
-    TH_GRV,
-    TH_SCLN,
     TH_QUOT,
 
 #if defined(ENCODER_ENABLE)
@@ -110,21 +105,10 @@ enum keycodes {
 #define     ___x___ KC_NO
 
 // layer changes
-//#define     NAV     MO(_NAVIGATION)
-//#define     NUM     MO(_NUMBER)
-#define     FUNC    MO(_FUNCTION)
-
 #define     BSP_NUM LT(_NUMBER,     KC_BSPC)
 #define     RPT_NAV LT(_NAVIGATION, QK_REP)
 #define     O_FUN   LT(_FUNCTION,   KC_O)
-
-// Windows Shortcuts
-#define     SC_COPY LCTL(KC_C)
-#define     SC_CUT  LCTL(KC_X)
-#define     SC_UNDO LCTL(KC_Z)
-#define     SC_PAST LCTL(KC_V)
-#define     SC_REDO LCTL(KC_Y)
-#define     SC_WIN  LGUI(KC_TAB)
+#define     NIN_FUN LT(_FUNCTION,   KC_9)
 
 // Encoders
 #define     ZOOMRST LCTL(KC_0)
@@ -155,16 +139,6 @@ enum keycodes {
 #define     HOME_I  MT(MOD_LALT, KC_I)
 #define     HOME_O  MT(MOD_LGUI, KC_O)
 
-// bottom row mods - QWERTY
-#define     BRM_Z   MT(MOD_LGUI, KC_Z)
-#define     BRM_X   MT(MOD_LALT, KC_X)
-#define     BRM_C   MT(MOD_LCTL, KC_C)
-#define     BRM_V   MT(MOD_LSFT, KC_V)
-#define     BRM_M   MT(MOD_LSFT, KC_M)
-#define     BRM_COM MT(MOD_LCTL, KC_COMM)
-#define     BRM_DOT MT(MOD_LALT, KC_DOT)
-#define     BRM_MIN MT(MOD_LGUI, KC_MINS)
-
 // one shot mods
 #define     OSM_SFT OSM(MOD_LSFT)
 #define     OSM_CTL OSM(MOD_LCTL)
@@ -184,18 +158,13 @@ enum keycodes {
 #define     DT_BSLS LT(FIRST_DEFAULT_LAYER, TH_BSLS)
 #define     DT_SLSH LT(FIRST_DEFAULT_LAYER, TH_SLSH)
 #define     DT_PIPE LT(FIRST_DEFAULT_LAYER, TH_PIPE)
-#define     DT_EQL  LT(FIRST_DEFAULT_LAYER, TH_EQL)
-#define     DT_PLUS LT(FIRST_DEFAULT_LAYER, TH_PLUS)
 
 // Custom override without holding shift
 #define     OR_COMM LT(FIRST_DEFAULT_LAYER, TH_COMM)
 #define     OR_DOT  LT(FIRST_DEFAULT_LAYER, TH_DOT)
-#define     OR_PERC LT(FIRST_DEFAULT_LAYER, TH_PERC)
 
 // auto shift
 #define     AS_MINS LT(FIRST_DEFAULT_LAYER, TH_MINS)
-#define     AS_GRV  LT(FIRST_DEFAULT_LAYER, TH_GRV)
-#define     AS_SCLN LT(FIRST_DEFAULT_LAYER, TH_SCLN)
 #define     AS_QUOT LT(FIRST_DEFAULT_LAYER, TH_QUOT)
 
 // pointer specific control
@@ -216,11 +185,10 @@ enum keycodes {
 #define     _NONE_5____________________________________ ___x___, ___x___, ___x___, ___x___, ___x___
 #define     _GACS_MODS________________________          OSM_GUI, OSM_ALT, OSM_CTL, OSM_SFT
 #define     _SCAG_MODS________________________          OSM_SFT, OSM_CTL, OSM_ALT, OSM_GUI
-#define     _UCCPR_L___________________________________ SC_UNDO, SC_CUT,  SC_COPY, SC_PAST, SC_REDO
 
 #define     _BASE_L4_________________                   KC_BTN1, BSP_NUM, OSM_SFT
 #define     _BASE_R4________                            KC_SPC,  RPT_NAV
-#define     _BASE_KEYBALL____________                   FUNC,    MS_SNIP, KC_BTN2
+#define     _BASE_KEYBALL____________                   ___x___, MS_SNIP, KC_BTN2
 #define     _LYR_LTRANS______________                   ___x___, _______, ___x___
 #define     _LYR_RTRANS_____                            ___x___, _______
 
@@ -228,8 +196,8 @@ enum keycodes {
 
 #define LAYER_QWERTY                                                                                     \
          KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,          KC_Y,    KC_U,    KC_I,    O_FUN,   KC_P,    \
-         KC_A,    KC_S,    KC_D,    KC_F,    KC_G,          KC_H,    KC_J,    KC_K,    KC_L,    AS_QUOT, \
-         BRM_Z,   BRM_X,   BRM_C,   BRM_V,   KC_B,          KC_N,    BRM_M,   BRM_COM, BRM_DOT, BRM_MIN, \
+         HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,          KC_H,    HOME_J,  HOME_K,  HOME_L,  HOME_QT, \
+         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,          KC_N,    KC_M,    OR_COMM, OR_DOT,  AS_MINS, \
 _BASE_KEYBALL____________, _BASE_L4_________________,      _BASE_R4________,                    KC_MUTE, \
                                              SCR_TOP,       KC_MUTE
 
@@ -243,48 +211,33 @@ _BASE_KEYBALL____________, _BASE_L4_________________,       _BASE_R4________,   
 
 
 #define LAYER_GAME                                                                                       \
-         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,          KC_T,    KC_7,    KC_8,    KC_9,    KC_ESC,  \
+         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,          KC_T,    KC_7,    KC_8,    NIN_FUN, KC_ESC,  \
          KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,          KC_G,    KC_4,    KC_5,    KC_6,    KC_GRV,  \
          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,          KC_LALT, KC_1,    KC_2,    KC_3,    TOG_CFG, \
-FUNC,    KC_BTN2, KC_BTN1, KC_ENT,  KC_SPC,  KC_LSFT,       _BASE_R4________,                   KC_MUTE, \
+___x___, KC_BTN2, KC_BTN1, KC_ENT,  KC_SPC,  KC_LSFT,       _BASE_R4________,                   KC_MUTE, \
                                              SCR_TOP,       KC_MUTE
 
 
 #define LAYER_NAVIGATION                                                                                 \
          ___x___, KC_HOME, KC_UP,   KC_END,  KC_PGUP,       ___x___, KC_APP,  KC_INS,  ___x___, ___x___, \
          ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,       ___x___, _SCAG_MODS________________________, \
-         KC_ESC,  ___x___, ___x___, KC_TAB,  KC_ENT,        ___x___, KC_DEL,  KC_VOLD, KC_VOLU, KC_MUTE, \
+         ___x___, KC_ESC,  KC_ENT,  KC_TAB,  ___x___,       ___x___, KC_DEL,  KC_VOLD, KC_VOLU, KC_MUTE, \
 _NONE_3__________________, KC_BTN1, _______, ___x___,       _LYR_RTRANS_____,                   ___x___, \
                                              SCR_TOP,       ___x___
 
-/*
-#define LAYER_NUMBER                                                                                     \
-         KC_ESC,  MS_DRGS, KC_BTN3, KC_BTN4, KC_BTN5,       ___x___, KC_7,    KC_8,    KC_9,    KC_COMM, \
-         KC_HYPR, OSM_ALT, OSM_CTL, OSM_SFT, KC_BTN1,       KC_BSPC, KC_4,    KC_5,    KC_6,    KC_DOT,  \
-         MS_PDPI, MS_SDPI, ___x___, KC_BTN2, ___x___,       KC_DEL,  KC_1,    KC_2,    KC_3,    KC_MINS, \
-_NONE_3__________________, _LYR_LTRANS______________,       KC_0,    _______,                   ___x___, \
-                                             ___x___,       SC_WIN
-*/
 
 #define LAYER_NUMBER                                                                                     \
-         ___x___, KC_BTN4, KC_BTN3, KC_BTN5, ___x___,       KC_COMM, KC_7,    KC_8,    KC_9,    ___x___, \
-         KC_HYPR, OSM_ALT, OSM_CTL, OSM_SFT, ___x___,       KC_DOT,  KC_4,    KC_5,    KC_6,    ___x___, \
-         KC_ESC,  ___x___, KC_BTN2, KC_TAB,  KC_ENT,        KC_MINS, KC_1,    KC_2,    KC_3,    ___x___, \
+         ___x___, KC_BTN5, KC_BTN3, KC_BTN4, ___x___,       KC_COMM, KC_7,    KC_8,    KC_9,    ___x___, \
+         KC_HYPR, OSM_ALT, OSM_CTL, OSM_SFT, KC_BTN2,       KC_DOT,  KC_4,    KC_5,    KC_6,    ___x___, \
+         ___x___, KC_ESC,  KC_ENT,  KC_TAB,  ___x___,       KC_MINS, KC_1,    KC_2,    KC_3,    ___x___, \
 _NONE_3__________________, _LYR_LTRANS______________,       KC_0,    _______,                   ___x___, \
                                              ___x___,       SC_WIN
-/*
-#define LAYER_SYMBOL                                                                                     \
-         ___x___, ___x___, KC_AT,   KC_DLR,  AS_GRV,        DT_EQL,  KC_HASH, KC_ASTR, DT_PLUS, BK_DQUO, \
-         KC_AMPR, BK_LCBR, KC_RCBR, DT_PIPE, AS_SCLN,       KC_BSPC, KC_QUES, BK_LBRC, KC_RBRC, BK_SQUO, \
-         OR_PERC, BK_LABK, KC_RABK, DT_BSLS, KC_EXLM,       KC_DEL,  DT_SLSH, BK_LPRN, KC_RPRN, AS_MINS, \
-_NONE_3__________________, _LYR_LTRANS______________,       _LYR_RTRANS_____,                   ___x___, \
-                                             ___x___,       ___x___
-*/
+
 
 #define LAYER_SYMBOL                                                                                     \
          ___x___, KC_AMPR, KC_AT,   KC_DLR,  ___x___,       ___x___, KC_HASH, KC_ASTR, KC_PLUS, ___x___, \
-         KC_PERC, BK_LCBR, KC_RCBR, KC_PIPE, KC_SCLN,       KC_COLN, KC_EQL,  BK_LBRC, KC_RBRC, BK_SQUO, \
-         KC_CIRC, BK_LABK, KC_RABK, KC_BSLS, KC_GRV,        KC_TILD, KC_SLSH, BK_LPRN, KC_RPRN, BK_DQUO, \
+         KC_PERC, BK_LCBR, KC_RCBR, DT_PIPE, KC_SCLN,       KC_COLN, KC_EQL,  BK_LBRC, KC_RBRC, BK_SQUO, \
+         KC_CIRC, BK_LABK, KC_RABK, DT_BSLS, KC_GRV,        KC_TILD, DT_SLSH, BK_LPRN, KC_RPRN, BK_DQUO, \
 _NONE_3__________________, _LYR_LTRANS______________,       _LYR_RTRANS_____,                   ___x___, \
                                              ___x___,       ___x___
 
