@@ -1,5 +1,5 @@
 # override userspace defaults
-#COMBO_ENABLE = no
+COMBO_ENABLE = no
 #PLOOPYNANO_ENABLE = yes
 CONSOLE_ENABLE = yes
 
