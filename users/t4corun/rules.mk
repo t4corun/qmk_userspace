@@ -18,6 +18,7 @@ COMBO_ENABLE           ?= yes
 DYNAMIC_MACRO_ENABLE   ?= yes
 EXTRAKEY_ENABLE         = yes
 REPEAT_KEY_ENABLE       = yes
+KEY_OVERRIDE_ENABLE     = yes
 
 AUDIO_ENABLE           ?= no
 CONSOLE_ENABLE         ?= no
@@ -41,17 +42,15 @@ PLOOPYNANO_ENABLE      ?= no
 # ---------------------------------------------------------
 # include my code that will be common across all my keyboards
 
-SRC +=                   \
-    t4corun.c            \
-    features/taphold.c
+INTROSPECTION_KEYMAP_C +=           \
+	features/introspection_keymap.c
 
+SRC +=                              \
+    t4corun.c                       \
+    features/taphold.c 
 
 # ---------------------------------------------------------
 # include additional code for enabled features for each keyboard
-
-ifeq ($(strip $(COMBO_ENABLE)), yes)
-    INTROSPECTION_KEYMAP_C += features/combo.c
-endif
 
 ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
     SRC += features/capsword.c

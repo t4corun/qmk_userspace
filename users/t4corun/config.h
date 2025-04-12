@@ -45,9 +45,9 @@
 /* Repeat Key
  * https://docs.qmk.fm/features/repeat_key#repeat-key
  */
- #undef  NO_ALT_REPEAT_KEY
+#undef  NO_ALT_REPEAT_KEY
  
- #define NO_ALT_REPEAT_KEY
+#define NO_ALT_REPEAT_KEY
 
 
  /* Caps Word
