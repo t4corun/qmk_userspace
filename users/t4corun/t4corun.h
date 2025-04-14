@@ -228,10 +228,10 @@ _NONE_3__________________, KC_BTN1, _______, ___x___,       _LYR_RTRANS_____,   
 
 #define LAYER_NUMBER                                                                                     \
          ___x___, KC_BTN5, KC_BTN3, KC_BTN4, ___x___,       KC_COMM, KC_7,    KC_8,    KC_9,    ___x___, \
-         KC_HYPR, OSM_ALT, OSM_CTL, OSM_SFT, KC_BTN2,       KC_DOT,  KC_4,    KC_5,    KC_6,    ___x___, \
+         KC_MEH,  OSM_ALT, OSM_CTL, OSM_SFT, KC_BTN2,       KC_DOT,  KC_4,    KC_5,    KC_6,    ___x___, \
          ___x___, KC_ESC,  KC_ENT,  KC_TAB,  ___x___,       KC_MINS, KC_1,    KC_2,    KC_3,    ___x___, \
 _NONE_3__________________, _LYR_LTRANS______________,       KC_0,    _______,                   ___x___, \
-                                             ___x___,       SC_WIN
+                                             ___x___,       ___x___
 
 
 #define LAYER_SYMBOL                                                                                     \
