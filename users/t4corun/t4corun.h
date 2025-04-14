@@ -105,14 +105,19 @@ enum keycodes {
 #define     ___x___ KC_NO
 
 // layer changes
-#define     BSP_NUM LT(_NUMBER,     KC_BSPC)
-#define     RPT_NAV LT(_NAVIGATION, QK_REP)
+#define     NUM     MO(_NUMBER)
+#define     NAV     MO(_NAVIGATION)
 #define     O_FUN   LT(_FUNCTION,   KC_O)
+#define     Y_FUN   LT(_FUNCTION,   KC_Y)
 #define     NIN_FUN LT(_FUNCTION,   KC_9)
 
 // Encoders
 #define     ZOOMRST LCTL(KC_0)
 #define     SCR_TOP LCTL(KC_HOME)
+
+// overloaded thumb key
+#define     SFT_BSP MT(MOD_LSFT,    KC_BSPC)
+
 
 /*
  * If the feature is disabled then the key is just the normal key
@@ -125,19 +130,19 @@ enum keycodes {
 #define     HOME_S  MT(MOD_LALT, KC_S)
 #define     HOME_D  MT(MOD_LCTL, KC_D)
 #define     HOME_F  MT(MOD_LSFT, KC_F)
-#define     HOME_J  MT(MOD_LSFT, KC_J)
-#define     HOME_K  MT(MOD_LCTL, KC_K)
-#define     HOME_L  MT(MOD_LALT, KC_L)
-#define     HOME_QT MT(MOD_LGUI, KC_QUOT)
+#define     HOME_J  MT(MOD_RSFT, KC_J)
+#define     HOME_K  MT(MOD_RCTL, KC_K)
+#define     HOME_L  MT(MOD_RALT, KC_L)
+#define     HOME_QT MT(MOD_RGUI, KC_QUOT)
 
 // home row mods COLEMAK DH
 #define     HOME_R  MT(MOD_LALT, KC_R)
 #define     HOME_SC MT(MOD_LCTL, KC_S)
 #define     HOME_T  MT(MOD_LSFT, KC_T)
-#define     HOME_N  MT(MOD_LSFT, KC_N)
-#define     HOME_E  MT(MOD_LCTL, KC_E)
-#define     HOME_I  MT(MOD_LALT, KC_I)
-#define     HOME_O  MT(MOD_LGUI, KC_O)
+#define     HOME_N  MT(MOD_RSFT, KC_N)
+#define     HOME_E  MT(MOD_RCTL, KC_E)
+#define     HOME_I  MT(MOD_RALT, KC_I)
+#define     HOME_O  MT(MOD_RGUI, KC_O)
 
 // one shot mods
 #define     OSM_SFT OSM(MOD_LSFT)
@@ -186,8 +191,8 @@ enum keycodes {
 #define     _GACS_MODS________________________          OSM_GUI, OSM_ALT, OSM_CTL, OSM_SFT
 #define     _SCAG_MODS________________________          OSM_SFT, OSM_CTL, OSM_ALT, OSM_GUI
 
-#define     _BASE_L4_________________                   KC_BTN1, BSP_NUM, OSM_SFT
-#define     _BASE_R4________                            KC_SPC,  RPT_NAV
+#define     _BASE_L4_________________                   KC_BTN1, NUM,     SFT_BSP
+#define     _BASE_R4________                            KC_SPC,  NAV
 #define     _BASE_KEYBALL____________                   ___x___, MS_SNIP, KC_BTN2
 #define     _LYR_LTRANS______________                   ___x___, _______, ___x___
 #define     _LYR_RTRANS_____                            ___x___, _______
@@ -203,7 +208,7 @@ _BASE_KEYBALL____________, _BASE_L4_________________,      _BASE_R4________,    
 
 
 #define LAYER_COLEMAK_DH                                                                                 \
-         KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,          KC_J,    KC_L,    KC_U,    KC_Y,    AS_QUOT, \
+         KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,          KC_J,    KC_L,    KC_U,    Y_FUN,   AS_QUOT, \
          HOME_A,  HOME_R,  HOME_SC, HOME_T,  KC_G,          KC_M,    HOME_N,  HOME_E,  HOME_I,  HOME_O,  \
          KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,          KC_K,    KC_H,    OR_COMM, OR_DOT,  AS_MINS, \
 _BASE_KEYBALL____________, _BASE_L4_________________,       _BASE_R4________,                   KC_MUTE, \
@@ -222,7 +227,7 @@ ___x___, KC_BTN2, KC_BTN1, KC_ENT,  KC_SPC,  KC_LSFT,       _BASE_R4________,   
          ___x___, KC_HOME, KC_UP,   KC_END,  KC_PGUP,       ___x___, KC_APP,  KC_INS,  ___x___, ___x___, \
          ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,       ___x___, _SCAG_MODS________________________, \
          ___x___, KC_ESC,  KC_ENT,  KC_TAB,  ___x___,       ___x___, KC_DEL,  KC_VOLD, KC_VOLU, KC_MUTE, \
-_NONE_3__________________, KC_BTN1, _______, ___x___,       _LYR_RTRANS_____,                   ___x___, \
+_NONE_3__________________, KC_BTN1, _______, KC_BSPC,       _LYR_RTRANS_____,                   ___x___, \
                                              SCR_TOP,       ___x___
 
 
