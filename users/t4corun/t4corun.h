@@ -115,9 +115,6 @@ enum keycodes {
 #define     ZOOMRST LCTL(KC_0)
 #define     SCR_TOP LCTL(KC_HOME)
 
-// overloaded thumb key
-#define     SFT_BSP MT(MOD_LSFT,    KC_BSPC)
-
 
 /*
  * If the feature is disabled then the key is just the normal key
@@ -191,7 +188,7 @@ enum keycodes {
 #define     _GACS_MODS________________________          OSM_GUI, OSM_ALT, OSM_CTL, OSM_SFT
 #define     _SCAG_MODS________________________          OSM_SFT, OSM_CTL, OSM_ALT, OSM_GUI
 
-#define     _BASE_L4_________________                   KC_BTN1, NUM,     SFT_BSP
+#define     _BASE_L4_________________                   KC_BTN1, NUM,     OSM_SFT
 #define     _BASE_R4________                            KC_SPC,  NAV
 #define     _BASE_KEYBALL____________                   ___x___, MS_SNIP, KC_BTN2
 #define     _LYR_LTRANS______________                   ___x___, _______, ___x___
@@ -224,10 +221,10 @@ ___x___, KC_BTN2, KC_BTN1, KC_ENT,  KC_SPC,  KC_LSFT,       _BASE_R4________,   
 
 
 #define LAYER_NAVIGATION                                                                                 \
-         ___x___, KC_HOME, KC_UP,   KC_END,  KC_PGUP,       ___x___, KC_APP,  KC_INS,  ___x___, ___x___, \
-         ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,       ___x___, _SCAG_MODS________________________, \
-         ___x___, KC_ESC,  KC_ENT,  KC_TAB,  ___x___,       ___x___, KC_DEL,  KC_VOLD, KC_VOLU, KC_MUTE, \
-_NONE_3__________________, KC_BTN1, _______, KC_BSPC,       _LYR_RTRANS_____,                   ___x___, \
+         ___x___, KC_HOME, KC_UP,   KC_END,  ___x___,       ___x___, KC_APP,  KC_INS,  ___x___, ___x___, \
+         KC_PGUP, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSPC,       KC_BSPC, _SCAG_MODS________________________, \
+         KC_PGDN, KC_ESC,  KC_ENT,  KC_TAB,  KC_DEL,        KC_DEL,  ___x___, KC_VOLD, KC_VOLU, KC_MUTE, \
+_NONE_3__________________, KC_BTN1, _______, ___x___,       _LYR_RTRANS_____,                   ___x___, \
                                              SCR_TOP,       ___x___
 
 
