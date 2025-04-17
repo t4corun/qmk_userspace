@@ -1,6 +1,31 @@
 #include "combo.h"
 
 bool get_combo_must_tap(uint16_t combo_index, combo_t *combo) {
-    // all combos must be tapped
-    return true;
+    switch (combo_index) {
+        case C_FUNC:
+            return false;
+        default:
+            return true;
+    }
+}
+
+bool get_combo_must_hold(uint16_t combo_index, combo_t *combo) {
+    switch (combo_index) {
+        case C_FUNC:
+            return true;
+        default:
+            return false;
+    }
+}
+
+bool combo_should_trigger (uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
+    switch (combo_index) {
+        // These combos only work on base layers
+        default:
+            if ( get_highest_layer(layer_state | default_layer_state) > NUM_DEFAULT_LAYERS - 1 ) {
+                return false;
+            } else {
+                return true;
+            }
+    }
 }

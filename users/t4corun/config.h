@@ -71,6 +71,8 @@
 #   define EXTRA_SHORT_COMBOS
 #   define COMBO_TERM                35
 #   define COMBO_MUST_TAP_PER_COMBO
+#   define COMBO_MUST_HOLD_PER_COMBO
+#   define COMBO_SHOULD_TRIGGER
 #endif //COMBO_ENABLE
 
 /* Split keyboard
