@@ -33,7 +33,7 @@
 
 #define PERMISSIVE_HOLD         // enabled for chordal
 #define TAP_CODE_DELAY     5
-#define TAPPING_TERM       165
+#define TAPPING_TERM       225  //165
 #define QUICK_TAP_TERM     115
 #define ONESHOT_TAP_TOGGLE 3
 #define ONESHOT_TIMEOUT    2000
