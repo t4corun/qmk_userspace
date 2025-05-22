@@ -1,29 +1,5 @@
 #include "taphold.h"
 
-/*
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        //alt tap hold
-        case OSM_ALT:
-        case HOME_L:
-        case HOME_R:
-        case HOME_I:
-        case HOME_S:
-            return TAPPING_TERM + 100;
-        
-        //gui
-        case HOME_A:
-        case HOME_QT:
-        case HOME_O:
-        case OSM_GUI:
-            return TAPPING_TERM + 100;
-            
-        default:
-            return TAPPING_TERM;
-    }
-}
-*/
-
 void double_tap( uint16_t key, uint32_t ms) {
     tap_code16(key);
     wait_ms(ms);
@@ -83,24 +59,14 @@ bool process_record_user_taphold(uint16_t keycode, keyrecord_t *record) {
             return process_tap_hold(record, KC_SLSH, KC_SLSH, HOLD_DOUBLETP);
         case DT_PIPE:
             return process_tap_hold(record, KC_PIPE, KC_PIPE, HOLD_DOUBLETP);
-        case DT_EQL:
-            return process_tap_hold(record, KC_EQL,  KC_EQL,  HOLD_DOUBLETP);
-        case DT_PLUS:
-            return process_tap_hold(record, KC_PLUS, KC_PLUS, HOLD_DOUBLETP);
         // Custom override without holding shift
         case OR_COMM:
-            return process_tap_hold(record, KC_COMM, KC_LPRN, HOLD_SINGLETP);
+            return process_tap_hold(record, KC_COMM, KC_EXLM, HOLD_SINGLETP);
         case OR_DOT:
-            return process_tap_hold(record, KC_DOT,  KC_RPRN, HOLD_SINGLETP);
-        case OR_PERC:
-            return process_tap_hold(record, KC_PERC, KC_CIRC, HOLD_SINGLETP);
+            return process_tap_hold(record, KC_DOT,  KC_QUES, HOLD_SINGLETP);
         // auto shift
         case AS_MINS:
             return process_tap_hold(record, KC_MINS, KC_UNDS, HOLD_SINGLETP);
-        case AS_GRV:
-            return process_tap_hold(record, KC_GRV,  KC_TILD, HOLD_SINGLETP);
-        case AS_SCLN:
-            return process_tap_hold(record, KC_SCLN, KC_COLN, HOLD_SINGLETP);
         case AS_QUOT:
             return process_tap_hold(record, KC_QUOT, KC_DQUO, HOLD_SINGLETP);
     }
