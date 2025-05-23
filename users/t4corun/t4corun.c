@@ -162,6 +162,8 @@ bool shutdown_user(bool jump_to_bootloader) {
 #if defined(CHORDAL_HOLD)
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
 
+    return false;
+    /*
     switch (tap_hold_keycode) {
         //Stop chordal from working for GUI and ALT
         case HOME_A:
@@ -183,7 +185,8 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
         default:
             break;
     }
+    */
 
-    return get_chordal_hold_default(tap_hold_record, other_record);
+    //return get_chordal_hold_default(tap_hold_record, other_record);
 }
 #endif //CHORDAL_HOLD

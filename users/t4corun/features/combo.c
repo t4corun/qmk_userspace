@@ -12,7 +12,6 @@ bool get_combo_must_tap(uint16_t combo_index, combo_t *combo) {
 
 bool get_combo_must_hold(uint16_t combo_index, combo_t *combo) {
     switch (combo_index) {
-        case C_FUNC:
         case C_SNIPING:
             return true;
         default:
