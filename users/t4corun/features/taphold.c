@@ -60,15 +60,15 @@ bool process_record_user_taphold(uint16_t keycode, keyrecord_t *record) {
         case DT_PIPE:
             return process_tap_hold(record, KC_PIPE, KC_PIPE, HOLD_DOUBLETP);
         // Custom override without holding shift
-        case OR_COMM:
-            return process_tap_hold(record, KC_COMM, KC_EXLM, HOLD_SINGLETP);
-        case OR_DOT:
-            return process_tap_hold(record, KC_DOT,  KC_QUES, HOLD_SINGLETP);
+        //case OR_COMM:
+        //    return process_tap_hold(record, KC_COMM, KC_EXLM, HOLD_SINGLETP);
+        //case OR_DOT:
+        //    return process_tap_hold(record, KC_DOT,  KC_QUES, HOLD_SINGLETP);
         // auto shift
-        case AS_MINS:
-            return process_tap_hold(record, KC_MINS, KC_UNDS, HOLD_SINGLETP);
-        case AS_QUOT:
-            return process_tap_hold(record, KC_QUOT, KC_DQUO, HOLD_SINGLETP);
+        //case AS_MINS:
+        //    return process_tap_hold(record, KC_MINS, KC_UNDS, HOLD_SINGLETP);
+        //case AS_QUOT:
+        //    return process_tap_hold(record, KC_QUOT, KC_DQUO, HOLD_SINGLETP);
     }
     return true;
 }
