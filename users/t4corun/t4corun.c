@@ -172,7 +172,10 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                     return false;
             }
             break;
-        //only want the UCCP shortcuts to work
+        //only want these shortcuts to work
+        // UCCP
+        // Ctrl E in Obsidian
+        // Ctrl A for select all
         case HOME_E:
         case HOME_K:
             switch (other_keycode) {
@@ -180,6 +183,8 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case KC_X:
                 case KC_C:
                 case KC_V:
+                case KC_A:
+                case KC_E:
                     return true;
                 default:
                     return false;
