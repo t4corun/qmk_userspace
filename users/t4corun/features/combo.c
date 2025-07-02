@@ -2,16 +2,17 @@
 
 bool get_combo_must_tap(uint16_t combo_index, combo_t *combo) {
     switch (combo_index) {
-        case C_FUNC:
-            return false;
-        default:
+        case C_TAB:
+        case C_ENTER:
             return true;
+        default:
+            return false;
     }
 }
 
 bool get_combo_must_hold(uint16_t combo_index, combo_t *combo) {
     switch (combo_index) {
-        case C_FUNC:
+        case C_SNIPING:
             return true;
         default:
             return false;
