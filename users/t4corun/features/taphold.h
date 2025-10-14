@@ -6,7 +6,8 @@
 enum taphold_action {
     HOLD_SINGLETP = 0,
     HOLD_DOUBLETP,
-    HOLD_BRACKETS
+    HOLD_BRACKETS,
+    HOLD
 };
 
 void single_tap (uint16_t key);

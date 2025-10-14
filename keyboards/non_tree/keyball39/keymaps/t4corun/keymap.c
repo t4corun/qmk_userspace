@@ -63,21 +63,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 layer_state_t layer_state_set_keymap(layer_state_t state) {
-    uint8_t current_mods = get_mods() | get_oneshot_mods();
 
     switch (get_highest_layer(state)) {
         case _NUMBER:
-            if ( current_mods == MOD_BIT(KC_RSFT) ) {
-                if (keyball_get_pointer_dragscroll_enabled()) {  // check if we were scrolling before and set disable if so
-                    keyball_set_pointer_dragscroll_enabled(false);
-                }
-                keyball_set_pointer_sniping_enabled(true);
-            } else {
-                if (keyball_get_pointer_sniping_enabled()) {
-                    keyball_set_pointer_sniping_enabled(false);
-                }
-                keyball_set_pointer_dragscroll_enabled(true);
+            if (keyball_get_pointer_sniping_enabled()) {
+                keyball_set_pointer_sniping_enabled(false);
             }
+            keyball_set_pointer_dragscroll_enabled(true);
+            break;
+        case _NAVIGATION:
+            if (keyball_get_pointer_dragscroll_enabled()) {
+                keyball_set_pointer_dragscroll_enabled(false);
+            }
+            keyball_set_pointer_sniping_enabled(true);
             break;
         default:
             if (keyball_get_pointer_dragscroll_enabled()) {  // check if we were scrolling before and set disable if so
@@ -96,7 +94,7 @@ void render_pointercpi_keymap(uint8_t row, uint8_t col) {
     oled_set_cursor(col, row);
     if (keyball_get_pointer_dragscroll_enabled()) {
         oled_write_P(PSTR("-drg-"), false);
-    } if (keyball_get_pointer_sniping_enabled()) {
+    } else if (keyball_get_pointer_sniping_enabled()) {
         oled_write_P(PSTR("-sni-"), false);
     } else {
         oled_write_P(PSTR("-cpi-"), false);
@@ -105,7 +103,8 @@ void render_pointercpi_keymap(uint8_t row, uint8_t col) {
     if (keyball_get_pointer_sniping_enabled()) {
         oled_write(get_u16_str(keyball_get_pointer_sniping_dpi(), ' '), false);
     } else {
-        oled_write(get_u16_str(keyball_get_pointer_default_dpi(), ' '), false);
+        //oled_write(get_u16_str(keyball_get_pointer_default_dpi(), ' '), false);
+        oled_write(get_u16_str(pointing_device_get_cpi(), ' '), false);
     }
 }
 #endif // OLED_ENABLE
