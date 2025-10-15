@@ -115,7 +115,7 @@ enum keycodes {
 #define     SC_UNDO LCTL(KC_Z)
 #define     SC_PAST LCTL(KC_V)
 #define     SC_REDO LCTL(KC_Y)
-#define     SC_SNIP LCG(KC_S)
+#define     SC_SNIP LSG(KC_S)
 
 /*
  * If the feature is disabled then the key is just the normal key
