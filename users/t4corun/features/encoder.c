@@ -37,9 +37,9 @@ bool process_record_user_encoder(uint16_t keycode, keyrecord_t *record) {
                     register_mods(MOD_MASK_CTRL);
                 }
                 hold_mod_timer = timer_read();
-                keycode == ZOOMIN ? register_code(KC_WH_U) : register_code(KC_WH_D);
+                keycode == ZOOMIN ? register_code(MS_WHLU) : register_code(MS_WHLD);
             } else {
-                keycode == ZOOMIN ? unregister_code(KC_WH_U) : unregister_code(KC_WH_D);
+                keycode == ZOOMIN ? unregister_code(MS_WHLU) : unregister_code(MS_WHLD);
             }
             return false;
     }

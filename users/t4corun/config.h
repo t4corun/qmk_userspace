@@ -29,7 +29,6 @@
 #undef  NO_ACTION_ONESHOT
 #undef  ONESHOT_TAP_TOGGLE
 #undef  ONESHOT_TIMEOUT
-#undef  CHORDAL_HOLD
 
 #define PERMISSIVE_HOLD         // enabled for chordal
 #define TAP_CODE_DELAY     5
@@ -37,7 +36,6 @@
 #define QUICK_TAP_TERM     115
 #define ONESHOT_TAP_TOGGLE 3
 #define ONESHOT_TIMEOUT    2000
-#define CHORDAL_HOLD
 
 /* Caps Word
  * https://docs.qmk.fm/features/caps_word
@@ -51,29 +49,9 @@
 #   undef  BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 #   undef  CAPS_WORD_IDLE_TIMEOUT
 
-#   define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+#   define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
 #   define CAPS_WORD_IDLE_TIMEOUT 2000
 #endif //CAPS_WORD_ENABLE
-
-/* Combos
- * https://docs.qmk.fm/features/combo
- */
-#if defined(COMBO_ENABLE)
-#   undef  COMBO_ONLY_FROM_LAYER
-#   undef  EXTRA_SHORT_COMBOS
-#   undef  COMBO_TERM
-#   undef  COMBO_TERM_PER_COMBO
-#   undef  COMBO_MUST_HOLD_PER_COMBO
-#   undef  COMBO_MUST_TAP_PER_COMBO
-#   undef  COMBO_SHOULD_TRIGGER
-
-#   define COMBO_ONLY_FROM_LAYER     0 //this will always setup combos based off of QWERTY layout
-#   define EXTRA_SHORT_COMBOS
-#   define COMBO_TERM                35
-#   define COMBO_MUST_TAP_PER_COMBO
-#   define COMBO_MUST_HOLD_PER_COMBO
-#   define COMBO_SHOULD_TRIGGER
-#endif //COMBO_ENABLE
 
 /* Split keyboard
  * https://docs.qmk.fm/features/split_keyboard

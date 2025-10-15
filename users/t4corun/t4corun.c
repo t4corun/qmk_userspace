@@ -32,7 +32,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
 #if defined(CONSOLE_ENABLE)
         uprintf("Key pressed at row: %u, col: %u\n", record->event.key.row, record->event.key.col);
-        uprintf("Key pressed is: %c\n", chordal_hold_handedness(record->event.key));
+        //uprintf("Key pressed is: %c\n", chordal_hold_handedness(record->event.key));
         //uprintf("Tapping term: %u\n", get_tapping_term(keycode, record));
 #endif //CONSOLE_ENABLE
 
@@ -94,11 +94,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                         rgb_matrix_toggle();
                         break;
 #endif // RGB_MATRIX_ENABLE
-#if defined(COMBO_ENABLE)
-                    case MOD_MASK_COMBO_TOGGLE:
-                        combo_toggle();
-                        break;
-#endif // COMBO_ENABLE
 #if defined(AUDIO_ENABLE)
                     case MOD_MASK_AUDIO_TOGGLE:
                         is_audio_on() ? audio_off(): audio_on();
@@ -158,56 +153,3 @@ bool shutdown_user(bool jump_to_bootloader) {
 #endif //RGB_MATRIX_ENABLE
     return false;
 }
-
-#if defined(CHORDAL_HOLD)
-bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
-    switch (tap_hold_keycode) {
-
-        //I want the left hand not to work, except maybe for win+space
-        case HOME_A:
-            switch (other_keycode) {
-                case KC_SPC:
-                    return true;
-                default:
-                    return false;
-            }
-            break;
-        //only want these shortcuts to work
-        // UCCP
-        // Ctrl E in Obsidian
-        // Ctrl A for select all
-        case HOME_E:
-        case HOME_K:
-            switch (other_keycode) {
-                case KC_Z:
-                case KC_X:
-                case KC_C:
-                case KC_V:
-                case KC_A:
-                case KC_E:
-                    return true;
-                default:
-                    return false;
-            }
-            break;
-        //QWERTY
-        case HOME_S:
-        case HOME_D:
-        case HOME_F:
-        case HOME_L:
-        case HOME_QT:
-
-        //COLEMAK DH
-        case HOME_R:
-        case HOME_SC:
-        case HOME_T:
-        case HOME_I:
-        case HOME_O:
-            return false;
-        default:
-            break;
-    }
-
-    return get_chordal_hold_default(tap_hold_record, other_record);
-}
-#endif //CHORDAL_HOLD
