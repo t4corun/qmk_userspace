@@ -65,18 +65,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 layer_state_t layer_state_set_keymap(layer_state_t state) {
 
     switch (get_highest_layer(state)) {
+
         case _NUMBER:
             if (keyball_get_pointer_sniping_enabled()) {
                 keyball_set_pointer_sniping_enabled(false);
             }
             keyball_set_pointer_dragscroll_enabled(true);
             break;
+
         case _NAVIGATION:
             if (keyball_get_pointer_dragscroll_enabled()) {
                 keyball_set_pointer_dragscroll_enabled(false);
             }
             keyball_set_pointer_sniping_enabled(true);
             break;
+
         default:
             if (keyball_get_pointer_dragscroll_enabled()) {  // check if we were scrolling before and set disable if so
                 keyball_set_pointer_dragscroll_enabled(false);
@@ -85,13 +88,17 @@ layer_state_t layer_state_set_keymap(layer_state_t state) {
                 keyball_set_pointer_sniping_enabled(false);
             }
             break;
+    
     }
     return state;
 }
 
 #if defined(OLED_ENABLE)
+
 void render_pointercpi_keymap(uint8_t row, uint8_t col) {
+
     oled_set_cursor(col, row);
+
     if (keyball_get_pointer_dragscroll_enabled()) {
         oled_write_P(PSTR("-drg-"), false);
     } else if (keyball_get_pointer_sniping_enabled()) {
@@ -99,12 +106,15 @@ void render_pointercpi_keymap(uint8_t row, uint8_t col) {
     } else {
         oled_write_P(PSTR("-cpi-"), false);
     }
+
     oled_set_cursor(col, row + 1);
+    
     if (keyball_get_pointer_sniping_enabled()) {
         oled_write(get_u16_str(keyball_get_pointer_sniping_dpi(), ' '), false);
     } else {
-        //oled_write(get_u16_str(keyball_get_pointer_default_dpi(), ' '), false);
+        // use the qmk_firmware call so we can get the dragscroll dpi
         oled_write(get_u16_str(pointing_device_get_cpi(), ' '), false);
     }
 }
+
 #endif // OLED_ENABLE
