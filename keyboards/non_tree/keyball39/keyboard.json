@@ -3,11 +3,10 @@
     "keyboard_name": "Keyball39",
     "maintainer": "t4corun",
     "bootloader": "rp2040",
-    "bootmagic": {
-        "enabled": true
-    },
+    "processor": "RP2040",
     "diode_direction": "COL2ROW",
     "features": {
+        "bootmagic": true,
         "extrakey": true,
         "oled": true,
         "pointing_device": true,
@@ -17,7 +16,6 @@
         "cols": ["GP4", "GP5", "GP6", "GP7", "GP8", "GP9"],
         "rows": ["GP29", "GP28", "GP27", "GP26"]
     },
-    "processor": "RP2040",
     "rgb_matrix": {
         "animations": {
             "breathing": true,
@@ -26,8 +24,16 @@
             "typing_heatmap": true
         },
         "default": {
-            "animation": "cycle_pinwheel"
+            "animation": "splash",
+            "hue": 4,
+            "sat": 79,
+            "val": 200,
+            "speed": 127
         },
+        "max_brightness": 150,
+        "sleep": true,
+        "split_count": [24, 24],
+        "timeout": 60000,
         "driver": "ws2812",
         "layout": [
             {"matrix": [0, 4], "x": 81, "y": 0, "flags": 4},
@@ -78,11 +84,7 @@
             {"matrix": [4, 4], "x": 143, "y": 0, "flags": 4},
             {"matrix": [5, 4], "x": 143, "y": 21, "flags": 4},
             {"matrix": [6, 4], "x": 143, "y": 43, "flags": 4}
-        ],
-        "max_brightness": 150,
-        "sleep": true,
-        "split_count": [24, 24],
-        "timeout": 60000
+        ]
     },
     "split": {
         "enabled": true,
