@@ -43,6 +43,24 @@
 #      define KEYBALL_DRAGSCROLL_DPI 100
 #   endif // KEYBALL_DRAGSCROLL_DPI
 
+#   if defined(KEYBALL_DRAGSCROLL_VERTICAL_ONLY)
+#      define H_SCROLL(x) 0
+#   elif defined(KEYBALL_DRAGSCROLL_REVERSE_X)
+#      define H_SCROLL(x) (-(x))
+#   else
+#      define H_SCROLL(x) (x)
+#   endif // KEYBALL_DRAGSCROLL_VERTICAL_ONLY
+
+#   if defined(KEYBALL_DRAGSCROLL_HORIZONTAL_ONLY)
+#      define V_SCROLL(y) 0
+#   elif defined(KEYBALL_DRAGSCROLL_REVERSE_Y)
+#      define V_SCROLL(y) (-(y))
+#   else
+#      define V_SCROLL(y) (y)
+#   endif // KEYBALL_DRAGSCROLL_VERTICAL_ONLY
+
+
+
 #   if !defined(NO_KEYBALL_KEYCODES)
 enum keyball_keycodes {
     POINTER_DEFAULT_DPI_FORWARD = QK_KB_0,
