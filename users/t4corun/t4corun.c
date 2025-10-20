@@ -37,12 +37,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif //CONSOLE_ENABLE
 
         switch(keycode){
-            case MS_DRGS:
+            case Q_DRGS:
                 if (record->tap.count > 0) {
                     tap_code16(KC_Q);
                     return false;
                 } else {
-                    return true;
+                    process_record_user(MS_DRGS, record);
                 }
 
             // keypress/encoder turns while holding mod combinations adjust features

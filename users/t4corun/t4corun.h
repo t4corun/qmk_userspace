@@ -47,6 +47,8 @@ enum keycodes {
     TH_MINS,
     TH_QUOT,
 
+    Q_DRGS,
+
 #if defined(ENCODER_ENABLE)
     FWD_TAB,  // turn encoder for tab and shift tab
     REV_TAB,  // hold alt or ctrl while turning for window / tab switching
@@ -189,7 +191,7 @@ _NONE_3__________________, _BASE_L4_________________,      _BASE_R4________,    
 
 
 #define LAYER_COLEMAK_DH                                                                                 \
-         MS_DRGS,    KC_W,    KC_F,    KC_P,    KC_B,          KC_J,    KC_L,    KC_U,    KC_Y,    AS_QUOT, \
+         Q_DRGS,  KC_W,    KC_F,    KC_P,    KC_B,          KC_J,    KC_L,    KC_U,    KC_Y,    AS_QUOT, \
          KC_A,    KC_R,    KC_S,    KC_T,    KC_G,          KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    \
          KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,          KC_K,    KC_H,    OR_COMM, OR_DOT,  AS_MINS, \
 _NONE_3__________________, _BASE_L4_________________,       _BASE_R4________,                   KC_MUTE, \
