@@ -37,6 +37,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif //CONSOLE_ENABLE
 
         switch(keycode){
+            case MS_DRGS:
+                if (record->tap.count) {
+                    tap_code16(KC_Q);
+                    return false;
+                }
+
             // keypress/encoder turns while holding mod combinations adjust features
             // e.g. RGB settings, haptic frequency, click frequency, base layer
             case FWD_CFG:
@@ -132,7 +138,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif // PLOOPYNANO_ENABLE
 
 #if defined(PLOOPYNANO_ENABLE)
-    if(!process_record_user_ploopynano(keycode, record)) { return false; }
+    if(!process_record_ul.ser_ploopynano(keycode, record)) { return false; }
 #endif // PLOOPYNANO_ENABLE
 
     // let QMK process the normal behavior if not handled above
