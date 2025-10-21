@@ -125,6 +125,26 @@ enum keycodes {
  * We will only define things that are used across different layers. Entire layers are turned off in the keymap
  */
 
+// home row mods QWERTY
+#define     HOME_A  MT(MOD_LGUI, KC_A)
+#define     HOME_S  MT(MOD_LALT, KC_S)
+#define     HOME_D  MT(MOD_LCTL, KC_D)
+#define     HOME_F  MT(MOD_LSFT, KC_F)
+#define     HOME_J  MT(MOD_RSFT, KC_J)
+#define     HOME_K  MT(MOD_RCTL, KC_K)
+#define     HOME_L  MT(MOD_RALT, KC_L)
+#define     HOME_QT MT(MOD_RGUI, KC_QUOT)
+
+
+// home row mods COLEMAK DH
+#define     HOME_R  MT(MOD_LALT, KC_R)
+#define     HOME_SC MT(MOD_LCTL, KC_S)
+#define     HOME_T  MT(MOD_LSFT, KC_T)
+#define     HOME_N  MT(MOD_RSFT, KC_N)
+#define     HOME_E  MT(MOD_RCTL, KC_E)
+#define     HOME_I  MT(MOD_RALT, KC_I)
+#define     HOME_O  MT(MOD_RGUI, KC_O)
+
 // one shot mods
 #define     OSM_SFT OSM(MOD_LSFT)
 #define     OSM_CTL OSM(MOD_LCTL)
@@ -184,7 +204,7 @@ enum keycodes {
 
 #define LAYER_QWERTY                                                                                     \
          KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    \
-         KC_A,    KC_S,    KC_D,    KC_F,    KC_G,          KC_H,    KC_J,    KC_K,    KC_L,    AS_QUOT, \
+         KC_A,    KC_S,    KC_D,    KC_F,    KC_G,          KC_H,    HOME_J,  HOME_K,  HOME_L,  AS_QUOT, \
          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,          KC_N,    KC_M,    OR_COMM, OR_DOT,  AS_MINS, \
 _NONE_3__________________, _BASE_L4_________________,      _BASE_R4________,                    KC_MUTE, \
                                              SCR_TOP,       KC_MUTE
@@ -192,7 +212,7 @@ _NONE_3__________________, _BASE_L4_________________,      _BASE_R4________,    
 
 #define LAYER_COLEMAK_DH                                                                                 \
          Q_DRGS,  KC_W,    KC_F,    KC_P,    KC_B,          KC_J,    KC_L,    KC_U,    KC_Y,    AS_QUOT, \
-         KC_A,    KC_R,    KC_S,    KC_T,    KC_G,          KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    \
+         KC_A,    KC_R,    KC_S,    KC_T,    KC_G,          KC_M,    HOME_N,  HOME_E,  HOME_I,  KC_O,    \
          KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,          KC_K,    KC_H,    OR_COMM, OR_DOT,  AS_MINS, \
 _NONE_3__________________, _BASE_L4_________________,       _BASE_R4________,                   KC_MUTE, \
                                              SCR_TOP,       KC_MUTE

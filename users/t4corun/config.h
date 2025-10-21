@@ -22,20 +22,20 @@
  * https://docs.qmk.fm/tap_hold
  * https://docs.qmk.fm/one_shot_keys
  */
-#undef  PERMISSIVE_HOLD
-#undef  TAP_CODE_DELAY
 #undef  TAPPING_TERM
 #undef  QUICK_TAP_TERM
-#undef  NO_ACTION_ONESHOT
 #undef  ONESHOT_TAP_TOGGLE
 #undef  ONESHOT_TIMEOUT
+#undef  TAP_CODE_DELAY
 
-#define PERMISSIVE_HOLD         // enabled for chordal
-#define TAP_CODE_DELAY     5
-#define TAPPING_TERM       165  //165
+#define TAPPING_TERM       165
 #define QUICK_TAP_TERM     115
+#define TAPPING_TERM_PER_KEY
+
 #define ONESHOT_TAP_TOGGLE 3
 #define ONESHOT_TIMEOUT    2000
+#define TAP_CODE_DELAY     5
+
 
 /* Caps Word
  * https://docs.qmk.fm/features/caps_word
