@@ -11,7 +11,6 @@ The custom layout optimizes for programming (SQL, Powershell, C) and minimizes h
 - Keymap targets split 3x5 boards with five thumb keys (three left and two right) and integrated pointing device.
 - Optional support for
   - Dual encoders. Favor the right side encoder when there is only one
-  - Keyball39's four extra keys
   - tight integration with a Ploopy Nano Trackball
 - Releasing all keys always brings you back to base layer
 - Layers are designed orthogonally with a single purpose per hand and are accessed by holding a thumb key on the opposite hand
@@ -20,9 +19,7 @@ The custom layout optimizes for programming (SQL, Powershell, C) and minimizes h
   - Custom behavior from holds
 - Advanced macros to minimize/simplify layers
 
-Below is a visual representation of my wrapper. Not all keys/features will be used for every keyboard. There is some redundancy built in to account for these differences. For example, the left three keys on row 4 are only available on Keyball39. On my other keyboards, combos are enabled to cover these missing keys.
-
-![image](keymap-drawer.png)
+![image](keymap-drawer.svg)
 
 ## Target Keyboards
 

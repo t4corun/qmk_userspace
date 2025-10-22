@@ -83,6 +83,17 @@
         }
 #endif // AUDIO_ENABLE
 
+/* Haptic Feedback
+ * https://docs.qmk.fm/features/haptic_feedback
+ */
+#if defined(HAPTIC_ENABLE) && defined(HAPTIC_DRV2605L)
+#   undef DRV2605L_GREETING
+#   undef DRV2605L_DEFAULT_MODE
+
+#   define DRV2605L_GREETING     DRV2605L_EFFECT_750_MS_ALERT_100
+#   define DRV2605L_DEFAULT_MODE DRV2605L_EFFECT_STRONG_CLICK_1_100
+#endif // HAPTIC_ENABLE && HAPTIC_DRV2605L
+
 /* RGB Matrix
 *  https://docs.qmk.fm/features/rgb_matrix
 */
