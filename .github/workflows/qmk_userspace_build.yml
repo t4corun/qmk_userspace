@@ -98,7 +98,7 @@ jobs:
 
       - name: Copy Non-Tree Keyboard Definitions from Userspace to QMK Firmware
         run: |
-          echo "Copying userspace keyboards/non-tree folder from userspace to qmk_firmware/keyboards"
+          echo "Copying userspace keyboards/non_tree folder from userspace to qmk_firmware/keyboards"
           cp $GITHUB_WORKSPACE/keyboards/non_tree $GITHUB_WORKSPACE/qmk_firmware/keyboards -R
 
       - name: Replace BastardKB Keyboard Definitions from his repo to QMK Firmware

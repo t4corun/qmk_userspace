@@ -8,13 +8,13 @@ permissions:
 jobs:
   build:
     name: 'QMK Userspace Build'
-    uses: t4corun/qmk_userspace/.github/workflows/qmk_userspace_build.yml@fall2025
+    uses: t4corun/qmk_userspace/.github/workflows/qmk_userspace_build.yml@keyballtuning
     with:
       qmk_repo: qmk/qmk_firmware
       qmk_ref: master
 
   publish:
     name: 'QMK Userspace Publish'
-    uses: t4corun/qmk_userspace/.github/workflows/qmk_userspace_publish.yml@fall2025
+    uses: t4corun/qmk_userspace/.github/workflows/qmk_userspace_publish.yml@keyballtuning
     if: always() && !cancelled()
     needs: build
