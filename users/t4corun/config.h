@@ -72,6 +72,8 @@
  * https://docs.qmk.fm/squeezing_avr#audio-settings
  */
 #if defined(AUDIO_ENABLE)
+#   undef DEFAULT_LAYER_SONGS
+
 #   define NO_MUSIC_MODE
 #   define AUDIO_CLICKY
 #   define DEFAULT_LAYER_SONGS { \
@@ -85,6 +87,14 @@
 *  https://docs.qmk.fm/features/rgb_matrix
 */
 #if defined(RGB_MATRIX_ENABLE)
+#   undef RGB_MATRIX_TIMEOUT
+#   undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
+#   undef RGB_MATRIX_DEFAULT_HUE
+#   undef RGB_MATRIX_DEFAULT_SAT
+#   undef RGB_MATRIX_DEFAULT_VAL
+#   undef RGB_MATRIX_DEFAULT_SPD
+#   undef RGB_MATRIX_DEFAULT_MODE
+
 #   define RGB_MATRIX_SLEEP
 #   define RGB_MATRIX_TIMEOUT 60000 //1 min
 
