@@ -47,8 +47,6 @@ enum keycodes {
     TH_MINS,
     TH_QUOT,
 
-    Q_DRGS,
-
 #if defined(ENCODER_ENABLE)
     FWD_TAB,  // turn encoder for tab and shift tab
     REV_TAB,  // hold alt or ctrl while turning for window / tab switching
@@ -126,24 +124,14 @@ enum keycodes {
  */
 
 // home row mods QWERTY
-#define     HOME_A  MT(MOD_LGUI, KC_A)
-#define     HOME_S  MT(MOD_LALT, KC_S)
-#define     HOME_D  MT(MOD_LCTL, KC_D)
-#define     HOME_F  MT(MOD_LSFT, KC_F)
 #define     HOME_J  MT(MOD_RSFT, KC_J)
 #define     HOME_K  MT(MOD_RCTL, KC_K)
 #define     HOME_L  MT(MOD_RALT, KC_L)
-#define     HOME_QT MT(MOD_RGUI, KC_QUOT)
-
 
 // home row mods COLEMAK DH
-#define     HOME_R  MT(MOD_LALT, KC_R)
-#define     HOME_SC MT(MOD_LCTL, KC_S)
-#define     HOME_T  MT(MOD_LSFT, KC_T)
 #define     HOME_N  MT(MOD_RSFT, KC_N)
 #define     HOME_E  MT(MOD_RCTL, KC_E)
 #define     HOME_I  MT(MOD_RALT, KC_I)
-#define     HOME_O  MT(MOD_RGUI, KC_O)
 
 // one shot mods
 #define     OSM_SFT OSM(MOD_LSFT)
@@ -175,8 +163,7 @@ enum keycodes {
 
 // pointer specific control
 #if defined(KEYBOARD_bastardkb_charybdis_3x5) || defined(KEYBOARD_non_tree_keyball39)
-//these mouse codes are defined in charybdis.h and keyball.h
-#   define  MS_SNIP SNIPING
+#   define  MS_SNIP SNIPING  //these mouse codes are defined in charybdis.h and keyball.h
 #   define  MS_STOG SNP_TOG
 #   define  MS_DRGS DRGSCRL
 #   define  MS_SDPI S_D_MOD  //sniping dpi
@@ -211,7 +198,7 @@ _NONE_3__________________, _BASE_L4_________________,      _BASE_R4________,    
 
 
 #define LAYER_COLEMAK_DH                                                                                 \
-         Q_DRGS,  KC_W,    KC_F,    KC_P,    KC_B,          KC_J,    KC_L,    KC_U,    KC_Y,    AS_QUOT, \
+         KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,          KC_J,    KC_L,    KC_U,    KC_Y,    AS_QUOT, \
          KC_A,    KC_R,    KC_S,    KC_T,    KC_G,          KC_M,    HOME_N,  HOME_E,  HOME_I,  KC_O,    \
          KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,          KC_K,    KC_H,    OR_COMM, OR_DOT,  AS_MINS, \
 _NONE_3__________________, _BASE_L4_________________,       _BASE_R4________,                   KC_MUTE, \
@@ -245,7 +232,7 @@ _NONE_3__________________, FUNC,    _______, ___x___,       KC_0,    _______,   
 #define LAYER_SYMBOL                                                                                     \
          KC_CIRC, KC_AMPR, KC_AT,   KC_DLR,  KC_GRV,        KC_TILD, KC_HASH, KC_ASTR, KC_PLUS, BK_DQUO, \
          KC_PERC, BK_LCBR, KC_RCBR, DT_PIPE, KC_SCLN,       KC_COLN, KC_EQL,  BK_LBRC, KC_RBRC, BK_SQUO, \
-         FUNC,    BK_LABK, KC_RABK, DT_BSLS, KC_EXLM,       KC_QUES, DT_SLSH, BK_LPRN, KC_RPRN, ___x___, \
+         ___x___, BK_LABK, KC_RABK, DT_BSLS, KC_EXLM,       KC_QUES, DT_SLSH, BK_LPRN, KC_RPRN, ___x___, \
 _NONE_3__________________, _LYR_LTRANS______________,       _LYR_RTRANS_____,                   ___x___, \
                                              ___x___,       ___x___
 
