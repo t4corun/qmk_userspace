@@ -39,8 +39,9 @@ PLOOPYNANO_ENABLE      ?= no
 # ---------------------------------------------------------
 # include my code that will be common across all my keyboards
 
-SRC +=                    \
-    t4corun.c             \
+SRC +=                 \
+    t4corun.c          \
+	features/tapping.c \
     features/taphold.c
 
 # ---------------------------------------------------------

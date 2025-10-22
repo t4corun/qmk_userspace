@@ -2,8 +2,10 @@
     "userspace_version": "1.0",
     "build_targets": [
 		["bastardkb/charybdis/3x5/", "t4corun"],
-		["bluebell/swoop", "t4corun"],
-		["non_tree/rollow", "t4corun"],
-        ["non_tree/keyball39", "t4corun"]
+		["non_tree/keyball39", "t4corun"],
+        ["non_tree/rollow", "t4corun"],
+        ["bluebell/swoop", "t4corun"],
+        ["non_tree/klor_saegewerk", "t4corun"],
+        ["ploopyco/trackball_nano", "t4corun"]
 	]
 }

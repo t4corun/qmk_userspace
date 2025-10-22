@@ -96,34 +96,14 @@ jobs:
         run: |
           qmk userspace-doctor
 
-      - name: Check if non-tree keyboard json file exists
-        id: check_json_files
-        uses: andstor/file-existence-action@v3
-        with:
-          files: ${{ inputs.qmk_nontree_json }}
-
-      - name: Read Non-Tree Targets from JSON file
-        if: steps.check_json_files.outputs.files_exists == 'true'
-        run: |
-          {
-            echo 'COPY_TARGETS<<EOF'
-            cat $GITHUB_WORKSPACE/${{ inputs.qmk_nontree_json }}
-            echo
-            echo 'EOF'
-          } >> "$GITHUB_ENV"
-
       - name: Copy Non-Tree Keyboard Definitions from Userspace to QMK Firmware
-        if: steps.check_json_files.outputs.files_exists == 'true'
         run: |
-          for target in ${{ join(fromJson(env.COPY_TARGETS).nontree_targets, ' ') }};
-          do
-            echo "Copying keyboard: $target"
-            cp $GITHUB_WORKSPACE/keyboards/$target $GITHUB_WORKSPACE/qmk_firmware/keyboards -R
-          done
+          echo "Copying userspace keyboards/non_tree folder from userspace to qmk_firmware/keyboards"
+          cp $GITHUB_WORKSPACE/keyboards/non_tree $GITHUB_WORKSPACE/qmk_firmware/keyboards -R
 
       - name: Replace BastardKB Keyboard Definitions from his repo to QMK Firmware
         run: |
-          echo "Deleting keyboard: bastardkb"
+          echo "Deleting qmk_firmware keyboard: bastardkb"
           rm -rf $GITHUB_WORKSPACE/qmk_firmware/keyboards/bastardkb
           echo "Copying keyboard: bastardkb"
           cp $GITHUB_WORKSPACE/bastardkb-qmk/keyboards/bastardkb $GITHUB_WORKSPACE/qmk_firmware/keyboards -R

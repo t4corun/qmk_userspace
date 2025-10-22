@@ -173,24 +173,12 @@ void keyball_set_pointer_dragscroll_enabled(bool enable) {
  * \brief Augment the pointing device behavior.
  *
  * Implement drag-scroll.
- * Replaced Charybdis nano code with ploopy nano to get faster scrolling
+ * Updated code to adapt to high resolution scrolling
  */
 static void pointing_device_task_keyball(report_mouse_t* mouse_report) {
-
-    if (g_keyball_config.is_dragscroll_enabled) {
-
-#if defined(KEYBALL_DRAGSCROLL_REVERSE_X)
-        mouse_report->h = -1 * mouse_report->x;
-#else
-        mouse_report->h = mouse_report->x;
-#endif // KEYBALL_DRAGSCROLL_REVERSE_X
-
-#if defined(KEYBALL_DRAGSCROLL_REVERSE_Y)
-        mouse_report->v = -1 * mouse_report->y;
-#else
-        mouse_report->v = mouse_report->y;
-#endif // KEYBALL_DRAGSCROLL_REVERSE_Y
-
+    if (g_keyball_config.is_dragscroll_enabled) {     
+        mouse_report->h = H_SCROLL(mouse_report->x);
+        mouse_report->v = V_SCROLL(mouse_report->y);
         mouse_report->x = 0;
         mouse_report->y = 0;
     }

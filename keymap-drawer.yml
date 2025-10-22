@@ -5,21 +5,17 @@ layers:
   base_QWERTY:
     # rows 1-3
     - [Q, W, E, R, T, Y, U, I, O, P]
-    - [A, S, D, F, G, H, J, K ,L, {h: "\"", t: "'"}]
-    - [{h: "MOUSE", t: "Z"}, X, C, V, B, N, M, {h: "(", t: ","} , {h: ")", t: "."}, {h: "_", t: "-"}]
-    # keyball row4, left three then right one
-    - [{t: "FUNC", type: trans}, {t: "Sniper", type: trans}, {t: "MB2", type: trans}, {t: "Mute", type: trans}]
+    - [A, S, D, F, G, H, {t: "J", h: "Shift"}, {t: "K", h: "Ctrl"}, {t: "L", h: "Alt"}, {t: "'", h: "\""}]
+    - [Z, X, C, V, B, N, M, {t: ",", h: "("} , {t: ".", h: ")"}, {t: "-", h: "_"}]
     # common thumbs
     - [MB1, NUM, Shift, Space, NAV]
     # endcoders
     - [{t: "Ctrl Home", type: trans}, {t: "Mute", type: trans}]
   base_COLEMAK_DH:
     # rows 1-3
-    - [Q, W, F, P, B, J, L, U ,Y, {h: "\"", t: "'"}]
-    - [A, R, S, T, G, M, N, E ,I, O]
-    - [{h: "MOUSE", t: "Z"}, X, C, D, V, K, H, {h: "(", t: ","} , {h: ")", t: "."}, {h: "_", t: "-"}]
-    # keyball row4, left three then right one
-    - [{t: "FUNC", type: trans}, {t: "Sniper", type: trans}, {t: "MB2", type: trans}, {t: "Mute", type: trans}]
+    - [Q, W, F, P, B, J, L, U ,Y, {t: "'", h: "\""}]
+    - [A, R, S, T, G, M, {t: "N", h: "Shift"}, {t: "E", h: "Ctrl"}, {t: "I", h: "Alt"}, O]
+    - [Z, X, C, D, V, K, H, {t: ",", h: "("} , {t: ".", h: ")"}, {t: "-", h: "_"}]
     # common thumbs
     - [MB1, NUM, Shift, Space, NAV]
     # encoders
@@ -27,81 +23,56 @@ layers:
   base_GAME:
     # rows 1-3
     - [Tab, Q, W, E, R, T, "7", "8" ,"9", Esc]
-    - [Ctrl, A, S, D, F, G, "4", "5" ,"6", {s: "~", t: "`"}]
-    - [Z, X, C, V, B, Alt, "1", "2" ,"3", null]
-    # keyball row4, left three then right one
-    - [{t: "FUNC", type: trans}, {t: "MOUSE", type: trans}, {t: "MB1", type: trans}, {t: "Mute", type: trans}]
+    - [Ctrl, A, S, D, F, G, "4", "5" ,"6", {t: "`", s: "~"}]
+    - [Z, X, C, V, B, Alt, "1", "2" ,"3", Config Toggle]
     # common thumbs
     - [Enter, Space, Shift, Space, NAV]
     # encoders
     - [{t: "Ctrl Home", type: trans}, {t: "Mute", type: trans}]
   NAV:
     # rows 1-3
-    - [Esc, Home, ▲, End, Page Up, null, App, null, null, null ]
+    - [null, Home, ▲, End, Page Up, Insert, App, MB2, Pointer DPI, Sniper DPI ]
     - [null, ◄, ▼, ►, Page Down, Back Space, Shift, Ctrl, Alt, Gui ]
-    - [Undo, Cut, Copy, Paste, Redo, Delete, null, Vol -, Vol +, null ]
-    # keyball row4, left three then right one
-    - [{t: "Macro Play", type: trans}, {t: "Macro Rec", type: trans}, {t: "MB1", type: trans}, type: trans]
+    - [Undo, Cut, Copy, Paste, Redo, Delete, MB1, Vol -, Vol +, Mute ]
     # common thumbs
     - [Tab, NUM, Enter, null, type: held]
     # encoders
-    - [{t: "Ctrl Home", type: trans}, {t: "Config Toggle", type: trans}]
+    - [{t: "Ctrl Home", type: trans}, {type: trans}]
   NUM:
     # rows 1-3
-    - [Esc, Snip Tool, File Browser, null, Tab, null, "7", "8" ,"9", "," ]
-    - [Gui, Alt, Ctrl, Shift, Enter, Back Space, "4", "5" ,"6", "."]
-    - [Undo, Cut, Copy, Paste, Redo, Delete, "1", "2" ,"3", "-"]
-    # keyball row4, left three then right one
-    - [type: trans, type: trans, type: trans, type: trans]
+    - [Esc, MB5, MB3, MB4, Snip Tool, {t: ",", s: "<"}, "7", "8" ,"9", F5 ]
+    - [Gui, Alt, Ctrl, Shift, MB2, {t: ".", s: ">"}, "4", "5" ,"6", F2]
+    - [Undo, Cut, Copy, Paste, Redo, Delete, "1", "2" ,"3", F3]
     # common thumbs
-    - [null, type: held, null, 0, NAV]
+    - [FUNC, type: held, null, 0, NAV]
     # encoders
-    - [type: trans, {t: "Win Tab", type: trans}]
+    - [type: trans, type: trans]
   SYM:
     # rows 1-3
-    - [null, null, "@", "$", {h: "~", t: "`"}, {h: "+", t: "="}, "#", "*", null, {h: "\"\"", t: "\""}]
-    - ["&", {h: "{}", t: "{"}, "}", {h: "||", t: "|"}, {h: ":", t: ";"}, Back Space, "?", {h: "[]", t: "]"}, "]", {h: "''", t: "'"}]
-    - [{h: "%", t: "^"}, {h: "<>", t: "<"}, ">", {h: "\\\\", t: "\\"}, "!", Delete, {h: "//", t: "/"}, {h: "()", t: "("}, ")", {h: "_", t: "-"}]
-    # keyball row4, left three then right one
-    - [type: trans, type: trans, type: trans, type: trans]
+    - ["^", "&", "@", "$", "`", "~", "#", "*", "+", {t: "\"", h: "\"\""}]
+    - ["%", {t: "{", h: "{}"}, "}", {t: "|", h: "||"}, ";", ":", "=", {t: "]", h: "[]"}, "]", {t: "'", h: "''"}]
+    - [null, {t: "<", h: "<>"}, ">", {t: "\\", h: "\\\\"}, "!", "?", {t: "/", h: "//"}, {t: "(", h: "()"}, ")", null]
     # common thumbs
     - [null, type: held, null, null, type: held]
     # encoders
     - [type: trans, type: trans]
-  MOUSE:
-    # rows 1-3
-    - [MOUSE Toggle, null, null, null, null, Pointer DPI, Sniper DPI, null, null, MOUSE Toggle]
-    - [Gui, Alt, Ctrl, Shift, Drag Scroll, Drag Scroll, Shift, Ctrl, Alt, Gui]
-    - [{type: held}, null, MB2, MB3, Sniper, Sniper, MB1, MB2, MB3, null]
-    # keyball row4, left three then right one
-    - [type: trans, {type: held}, {t: MB2, type: trans}, type: trans]
-    # common thumbs
-    - [MB1, MB4, MB5, MB5, MB4]
-    # encoders
-    - [{t: "Ctrl Home", type: trans}, {t: "Zoom Reset", type: trans}]
   FUNC:
     # rows 1-3
-    - [Boot, Prev Media, Next Media, Play Pause, Macro Rec, Print Screen, F7, F8, F9, F10]
-    - [Gui, Alt, Ctrl, Shift, Macro Play, Pause Break, F4, F5, F6, F11]
-    - [null, Num Lock, Caps Lock, Scroll Lock, Insert, Toggle Config, F1, F2, F3, F12]
-    # keyball row4, left three then right one
-    - [type: held, type: trans, type: trans, {t: "Boot", type: trans}]
+    - [Boot, Toggle GUI, Swap GUI Ctrl, Pause Break, Print Screen, Config Toggle, F7, F8, F9, F10]
+    - [Gui, Alt, Ctrl, Shift, Macro Play 1, Config Forward, F4, F5, F6, F11]
+    - [null, Num Lock, Caps Lock, Scroll Lock, Macro Rec 1, Config Reverse, F1, F2, F3, F12]
     # common thumbs
-    - [null, null, null, Rev Config, Fwd Config]
+    - [{type: held}, null, null, Macro Play 2, Macro Rec 2]
     # encoders
-    - [{t: "Toggle Config", type: trans}, {t: "Toggle Config", type: trans}]
+    - [{t: "Config Toggle", type: trans}, {t: "Config Toggle", type: trans}]
 combos:
-  - { p: [21, 23], k: Drag Scroll, l: [base_QWERTY], w: 50}
-  - { p: [35, 36], k: FUNC, l: [base_QWERTY], a: bottom, w: 50}
-  - { p: [39, 39], k: "Enc: MWheel", l: [base_QWERTY], a: bottom, d: false, w: 50}
-  - { p: [40, 40], k: "Enc: Volume", l: [base_QWERTY], a: bottom, d: false, w: 50 }
-  - { p: [39, 39], k: "Enc: MWheel", l: [base_COLEMAK_DH], a: bottom, d: false, w: 50}
-  - { p: [40, 40], k: "Enc: Volume", l: [base_COLEMAK_DH], a: bottom, d: false, w: 50}
-  - { p: [39, 39], k: "Enc: MWheel", l: [base_GAME], a: bottom, d: false, w: 50}
-  - { p: [40, 40], k: "Enc: Volume", l: [base_GAME], a: bottom, d: false, w: 50}
-  - { p: [39, 39], k: "Enc: ◄,►", l: [NAV], a: bottom, d: false, w: 50}
-  - { p: [40, 40], k: "Enc: SuperTab", l: [NUM], a: bottom, d: false, w: 50}
-  - { p: [39, 39], k: "Enc: MWheel", l: [MOUSE], a: bottom, d: false, w: 50}
-  - { p: [40, 40], k: "Enc: Zoom", l: [MOUSE], a: bottom, d: false, w: 50}
-  - { p: [39, 39], k: "Enc: Config", l: [FUNC], a: bottom, d: false, w: 50}
-  - { p: [40, 40], k: "Enc: config", l: [FUNC], a: bottom, d: false, w: 50}
+  - { p: [35, 35], k: "Enc: MWheel", l: [base_QWERTY], a: bottom, d: false, w: 50}
+  - { p: [36, 36], k: "Enc: Volume", l: [base_QWERTY], a: bottom, d: false, w: 50 }
+  - { p: [35, 35], k: "Enc: MWheel", l: [base_COLEMAK_DH], a: bottom, d: false, w: 50}
+  - { p: [36, 36], k: "Enc: Volume", l: [base_COLEMAK_DH], a: bottom, d: false, w: 50}
+  - { p: [35, 35], k: "Enc: MWheel", l: [base_GAME], a: bottom, d: false, w: 50}
+  - { p: [36, 36], k: "Enc: Volume", l: [base_GAME], a: bottom, d: false, w: 50}
+  - { p: [35, 35], k: "Enc: ◄,►", l: [NAV], a: bottom, d: false, w: 50}
+  - { p: [36, 36], k: "Enc: SuperTab", l: [NUM], a: bottom, d: false, w: 50}
+  - { p: [35, 35], k: "Enc: Config", l: [FUNC], a: bottom, d: false, w: 50}
+  - { p: [36, 36], k: "Enc: config", l: [FUNC], a: bottom, d: false, w: 50}
