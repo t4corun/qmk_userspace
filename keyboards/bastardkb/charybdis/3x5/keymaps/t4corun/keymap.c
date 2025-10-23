@@ -42,7 +42,7 @@ LAYOUT_cnano_wrapper (                                  \
               k32, k33, k34,   k35, k36                 \
 )
 
-#define KEYBOARD(...) LAYOUT_t4corun_keymap(__VA_ARGS__)
+#define KB(...) LAYOUT_t4corun_keymap(__VA_ARGS__)
 
 const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT_cnano_wrapper(
     'L', 'L', 'L', 'L', 'L',   'R', 'R', 'R', 'R', 'R', 
@@ -52,13 +52,13 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT_cnano_
 );
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_QWERTY]     = KEYBOARD(LAYER_QWERTY),
-    [_COLEMAK_DH] = KEYBOARD(LAYER_COLEMAK_DH),
-    [_GAME]       = KEYBOARD(LAYER_GAME),
-    [_NAVIGATION] = KEYBOARD(LAYER_NAVIGATION),
-    [_NUMBER]     = KEYBOARD(LAYER_NUMBER),
-    [_SYMBOL]     = KEYBOARD(LAYER_SYMBOL),
-    [_FUNCTION]   = KEYBOARD(LAYER_FUNCTION)
+    [_QWERTY]     = KB(HRM(LAYER_QWERTY)),
+    [_COLEMAK_DH] = KB(HRM(LAYER_COLEMAK_DH)),
+    [_GAME]       = KB(LAYER_GAME),
+    [_NAVIGATION] = KB(LAYER_NAVIGATION),
+    [_NUMBER]     = KB(LAYER_NUMBER),
+    [_SYMBOL]     = KB(LAYER_SYMBOL),
+    [_FUNCTION]   = KB(LAYER_FUNCTION)
 };
 
 layer_state_t layer_state_set_keymap(layer_state_t state) {

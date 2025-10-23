@@ -27,23 +27,26 @@
  * - Create the keymaps array. Feed in my t4corun.h layers wrappers into the translation alias
  */
 
+
+#define KB39_L FUNC, MS_BTN2, MS_BTN1
+
 #define LAYOUT_keyball_wrapper(...) LAYOUT_right_ball(__VA_ARGS__)
 
-#define LAYOUT_t4corun_keymap(                                        \
-         k00, k01, k02, k03, k04,   k05, k06, k07, k08, k09,          \
-         k10, k11, k12, k13, k14,   k15, k16, k17, k18, k19,          \
-         k20, k21, k22, k23, k24,   k25, k26, k27, k28, k29,          \
-                   k32, k33, k34,   k35, k36,                         \
-                             e01,   e02                               \
-)                                                                     \
-LAYOUT_keyball_wrapper (                                              \
-          k00,     k01,     k02, k03, k04,   k05, k06, k07, k08, k09, \
-          k10,     k11,     k12, k13, k14,   k15, k16, k17, k18, k19, \
-          k20,     k21,     k22, k23, k24,   k25, k26, k27, k28, k29, \
-    FUNC, MS_BTN2, MS_BTN1, k32, k33, k34,   k35, k36,       KC_MUTE  \
+#define LAYOUT_t4corun_keymap(                             \
+       k00, k01, k02, k03, k04,   k05, k06, k07, k08, k09, \
+       k10, k11, k12, k13, k14,   k15, k16, k17, k18, k19, \
+       k20, k21, k22, k23, k24,   k25, k26, k27, k28, k29, \
+                 k32, k33, k34,   k35, k36,                \
+                           e01,   e02                      \
+)                                                          \
+LAYOUT_keyball_wrapper (                                   \
+       k00, k01, k02, k03, k04,   k05, k06, k07, k08, k09, \
+       k10, k11, k12, k13, k14,   k15, k16, k17, k18, k19, \
+       k20, k21, k22, k23, k24,   k25, k26, k27, k28, k29, \
+    KB39_L, k32, k33, k34, k35,   k36,            KC_MUTE  \
 )
 
-#define KEYBOARD(...) LAYOUT_t4corun_keymap(__VA_ARGS__)
+#define KB(...) LAYOUT_t4corun_keymap(__VA_ARGS__)
 
 const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT_keyball_wrapper(
          'L', 'L', 'L', 'L', 'L',   'R', 'R', 'R', 'R', 'R', 
@@ -53,13 +56,13 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT_keybal
 );
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_QWERTY]     = KEYBOARD(LAYER_QWERTY),
-    [_COLEMAK_DH] = KEYBOARD(LAYER_COLEMAK_DH),
-    [_GAME]       = KEYBOARD(LAYER_GAME),
-    [_NAVIGATION] = KEYBOARD(LAYER_NAVIGATION),
-    [_NUMBER]     = KEYBOARD(LAYER_NUMBER),
-    [_SYMBOL]     = KEYBOARD(LAYER_SYMBOL),
-    [_FUNCTION]   = KEYBOARD(LAYER_FUNCTION)
+    [_QWERTY]     = KB(HRM(LAYER_QWERTY)),
+    [_COLEMAK_DH] = KB(HRM(LAYER_COLEMAK_DH)),
+    [_GAME]       = KB(LAYER_GAME),
+    [_NAVIGATION] = KB(LAYER_NAVIGATION),
+    [_NUMBER]     = KB(LAYER_NUMBER),
+    [_SYMBOL]     = KB(LAYER_SYMBOL),
+    [_FUNCTION]   = KB(LAYER_FUNCTION)
 };
 
 layer_state_t layer_state_set_keymap(layer_state_t state) {

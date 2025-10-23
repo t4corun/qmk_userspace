@@ -19,7 +19,7 @@ void          set_default_layer(bool forward);
 // put the default base layers first
 enum layers {
     _QWERTY = 0,
-    FIRST_DEFAULT_LAYER = 0,
+    DEFAULT_LAYER = 0,
     _COLEMAK_DH,
     _GAME,
     _NAVIGATION,
@@ -94,8 +94,8 @@ enum keycodes {
 #endif // PLOOPYNANO_ENABLE
 
 // start at the second layer
-#define     DEFAULT_LAYER_2    FIRST_DEFAULT_LAYER + 1
-#define     DEFAULT_LAYER_3    FIRST_DEFAULT_LAYER + 2
+#define     DEFAULT_LAYER_2    DEFAULT_LAYER + 1
+#define     DEFAULT_LAYER_3    DEFAULT_LAYER + 2
 #define     NUM_DEFAULT_LAYERS 3
 
 #define     ___x___ KC_NO
@@ -109,57 +109,49 @@ enum keycodes {
 #define     ZOOMRST LCTL(KC_0)
 #define     SCR_TOP LCTL(KC_HOME)
 
-// Windows Shortcuts
-#define     SC_COPY LCTL(KC_C)
-#define     SC_CUT  LCTL(KC_X)
-#define     SC_UNDO LCTL(KC_Z)
-#define     SC_PAST LCTL(KC_V)
-#define     SC_REDO LCTL(KC_Y)
-#define     SC_SNIP LSG(KC_S)
-
-/*
- * If the feature is disabled then the key is just the normal key
- * Any keycodes with prefix TR has behavior dependent on if the feature is enabled.
- * We will only define things that are used across different layers. Entire layers are turned off in the keymap
- */
-
 // home row mods QWERTY
-#define     HOME_J  MT(MOD_RSFT, KC_J)
-#define     HOME_K  MT(MOD_RCTL, KC_K)
-#define     HOME_L  MT(MOD_RALT, KC_L)
+#define     HRM_A   LGUI_T(KC_A)
+#define     HRM_S   LALT_T(KC_S)
+#define     HRM_D   LCTL_T(KC_D)
+#define     HRM_F   LSFT_T(KC_F)
+#define     HRM_J   RSFT_T(KC_J)
+#define     HRM_K   RCTL_T(KC_K)
+#define     HRM_L   RALT_T(KC_L)
+#define     HRM_QT  RGUI_T(KC_QUOT)
 
 // home row mods COLEMAK DH
-#define     HOME_N  MT(MOD_RSFT, KC_N)
-#define     HOME_E  MT(MOD_RCTL, KC_E)
-#define     HOME_I  MT(MOD_RALT, KC_I)
+#define     HRM_R   LALT_T(KC_R)
+#define     HRM_SC  LCTL_T(KC_S)
+#define     HRM_T   LSFT_T(KC_T)
+#define     HRM_N   RSFT_T(KC_N)
+#define     HRM_E   RCTL_T(KC_E)
+#define     HRM_I   RALT_T(KC_I)
+#define     HRM_O   RGUI_T(KC_O)
 
-// one shot mods
-#define     OSM_SFT OSM(MOD_LSFT)
-#define     OSM_CTL OSM(MOD_LCTL)
-#define     OSM_ALT OSM(MOD_LALT)
-#define     OSM_GUI OSM(MOD_LGUI)
+#define     HRML(k1, k2, k3, k4) LGUI_T(k1), LALT_T(k2), LCTL_T(k3), LSFT_T(k4)
+#define     HRMR(k1, k2, k3, k4) RSFT_T(k1), RCTL_T(k2), RALT_T(k3), RGUI_T(k4)
 
 // tap hoLd. These will be intercepted and overridden. The LT will be ignored
 // Brackets: open and close brackets and put the cursor inside
-#define     BK_LCBR LT(FIRST_DEFAULT_LAYER, TH_LCBR)
-#define     BK_LABK LT(FIRST_DEFAULT_LAYER, TH_LABK)
-#define     BK_LBRC LT(FIRST_DEFAULT_LAYER, TH_LBRC)
-#define     BK_LPRN LT(FIRST_DEFAULT_LAYER, TH_LPRN)
-#define     BK_DQUO LT(FIRST_DEFAULT_LAYER, TH_DQUO)
-#define     BK_SQUO LT(FIRST_DEFAULT_LAYER, TH_SQUO)
+#define     BK_LCBR LT(DEFAULT_LAYER, TH_LCBR)
+#define     BK_LABK LT(DEFAULT_LAYER, TH_LABK)
+#define     BK_LBRC LT(DEFAULT_LAYER, TH_LBRC)
+#define     BK_LPRN LT(DEFAULT_LAYER, TH_LPRN)
+#define     BK_DQUO LT(DEFAULT_LAYER, TH_DQUO)
+#define     BK_SQUO LT(DEFAULT_LAYER, TH_SQUO)
 
 // double tap
-#define     DT_BSLS LT(FIRST_DEFAULT_LAYER, TH_BSLS)
-#define     DT_SLSH LT(FIRST_DEFAULT_LAYER, TH_SLSH)
-#define     DT_PIPE LT(FIRST_DEFAULT_LAYER, TH_PIPE)
+#define     DT_BSLS LT(DEFAULT_LAYER, TH_BSLS)
+#define     DT_SLSH LT(DEFAULT_LAYER, TH_SLSH)
+#define     DT_PIPE LT(DEFAULT_LAYER, TH_PIPE)
 
 // Custom override without holding shift
-#define     OR_COMM LT(FIRST_DEFAULT_LAYER, TH_COMM)
-#define     OR_DOT  LT(FIRST_DEFAULT_LAYER, TH_DOT)
+#define     OR_COMM LT(DEFAULT_LAYER, TH_COMM)
+#define     OR_DOT  LT(DEFAULT_LAYER, TH_DOT)
 
 // auto shift
-#define     AS_MINS LT(FIRST_DEFAULT_LAYER, TH_MINS)
-#define     AS_QUOT LT(FIRST_DEFAULT_LAYER, TH_QUOT)
+#define     AS_MINS LT(DEFAULT_LAYER, TH_MINS)
+#define     AS_QUOT LT(DEFAULT_LAYER, TH_QUOT)
 
 // pointer specific control
 #if defined(KEYBOARD_bastardkb_charybdis_3x5) || defined(KEYBOARD_non_tree_keyball39)
@@ -178,11 +170,10 @@ enum keycodes {
 
 #define     _NONE_3__________________                   ___x___, ___x___, ___x___
 #define     _NONE_5____________________________________ ___x___, ___x___, ___x___, ___x___, ___x___
-#define     _GACS_MODS________________________          OSM_GUI, OSM_ALT, OSM_CTL, OSM_SFT
-#define     _SCAG_MODS________________________          OSM_SFT, OSM_CTL, OSM_ALT, OSM_GUI
-#define     _UCCPR_L___________________________________ SC_UNDO, SC_CUT,  SC_COPY, SC_PAST, SC_REDO
+#define     _GACS_MODS________________________          KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT
+#define     _SCAG_MODS________________________          KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI
 
-#define     _BASE_L4_________________                   MS_BTN1, NUM,     OSM_SFT
+#define     _BASE_L4_________________                   MS_BTN1, NUM,     KC_LSFT
 #define     _BASE_R4________                            KC_SPC,  NAV
 #define     _LYR_LTRANS______________                   ___x___, _______, ___x___
 #define     _LYR_RTRANS_____                            ___x___, _______
@@ -191,7 +182,7 @@ enum keycodes {
 
 #define LAYER_QWERTY                                                                                \
     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    \
-    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,          KC_H,    HOME_J,  HOME_K,  HOME_L,  AS_QUOT, \
+    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,          KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT, \
     KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,          KC_N,    KC_M,    OR_COMM, OR_DOT,  AS_MINS, \
                       _BASE_L4_________________,      _BASE_R4________,                             \
                                         SCR_TOP,       KC_MUTE
@@ -199,7 +190,7 @@ enum keycodes {
 
 #define LAYER_COLEMAK_DH                                                                            \
     KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,          KC_J,    KC_L,    KC_U,    KC_Y,    AS_QUOT, \
-    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,          KC_M,    HOME_N,  HOME_E,  HOME_I,  KC_O,    \
+    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,          KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    \
     KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,          KC_K,    KC_H,    OR_COMM, OR_DOT,  AS_MINS, \
                       _BASE_L4_________________,      _BASE_R4________,                             \
                                         SCR_TOP,       KC_MUTE
@@ -216,15 +207,15 @@ enum keycodes {
 #define LAYER_NAVIGATION                                                                            \
     ___x___, KC_HOME, KC_UP,   KC_END,  KC_PGUP,       KC_INS,  KC_APP,  MS_BTN2, MS_PDPI, MS_SDPI, \
     ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,       KC_BSPC, _SCAG_MODS________________________, \
-    _UCCPR_L___________________________________,       KC_DEL,  MS_BTN1, KC_VOLD, KC_VOLU, KC_MUTE, \
+    _NONE_5____________________________________,       KC_DEL,  MS_BTN1, KC_VOLD, KC_VOLU, KC_MUTE, \
                       KC_TAB,  _______, KC_ENT,        _LYR_RTRANS_____,                            \
                                         SCR_TOP,       ___x___
 
 
 #define LAYER_NUMBER                                                                                \
-    KC_ESC,  MS_BTN5, MS_BTN3, MS_BTN4, SC_SNIP,       KC_COMM, KC_7,    KC_8,    KC_9,    KC_F5,   \
+    KC_ESC,  MS_BTN5, MS_BTN3, MS_BTN4, ___x___,       KC_COMM, KC_7,    KC_8,    KC_9,    KC_F5,   \
     _GACS_MODS________________________, MS_BTN2,       KC_DOT,  KC_4,    KC_5,    KC_6,    KC_F2,   \
-    _UCCPR_L___________________________________,       KC_MINS, KC_1,    KC_2,    KC_3,    KC_F3,   \
+    _NONE_5____________________________________,       KC_MINS, KC_1,    KC_2,    KC_3,    KC_F3,   \
                       FUNC,    _______, ___x___,       KC_0,    _______,                            \
                                         ___x___,       ___x___
 
@@ -243,3 +234,18 @@ enum keycodes {
     ___x___, KC_NUM,  KC_CAPS, KC_SCRL, DM_REC1,       REV_CFG, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
                       _______, ___x___, ___x___,       DM_PLY2, DM_REC2,                            \
                                         TOG_CFG,       TOG_CFG
+
+
+#define HRM(k) HRM_LAYOUT(k)
+#define HRM_LAYOUT(                                                  \
+         k00, k01, k02, k03,  k04,    k05, k06, k07, k08, k09,       \
+         k10, k11, k12, k13,  k14,    k15, k16, k17, k18, k19,       \
+         k20, k21, k22, k23,  k24,    k25, k26, k27, k28, k29,       \
+                   k32, k33,  k34,    k35, k36,                      \
+                              e01,    e02                            \
+)                                                                    \
+         k00, k01, k02, k03,  k04,    k05, k06, k07, k08, k09,       \
+    HRML(k10, k11, k12, k13), k14,    k15, HRMR(k16, k17, k18, k19), \
+         k20, k21, k22, k23,  k24,    k25, k26, k27, k28, k29,       \
+              k32, k33, k34,  k35,    k36,                           \
+                              e01,    e02
