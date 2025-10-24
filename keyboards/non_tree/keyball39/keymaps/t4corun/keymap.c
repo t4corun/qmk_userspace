@@ -84,14 +84,14 @@ layer_state_t layer_state_set_keymap(layer_state_t state) {
             keyball_set_pointer_sniping_enabled(true);
             break;
         */
-        
+
         default:
             if (keyball_get_pointer_dragscroll_enabled()) {  // check if we were scrolling before and set disable if so
                 keyball_set_pointer_dragscroll_enabled(false);
             }
-            if (keyball_get_pointer_sniping_enabled()) {
+            /*if (keyball_get_pointer_sniping_enabled()) {
                 keyball_set_pointer_sniping_enabled(false);
-            }
+            }*/
             break;
     
     }
