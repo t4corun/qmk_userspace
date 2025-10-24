@@ -41,6 +41,7 @@ PLOOPYNANO_ENABLE      ?= no
 
 SRC +=                 \
     t4corun.c          \
+    features/tapping.c \
     features/taphold.c
 
 # ---------------------------------------------------------
