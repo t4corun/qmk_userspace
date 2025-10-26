@@ -68,32 +68,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 layer_state_t layer_state_set_keymap(layer_state_t state) {
 
     switch (get_highest_layer(state)) {
-
         case _NUMBER:
             if (keyball_get_pointer_sniping_enabled()) {
                 keyball_set_pointer_sniping_enabled(false);
             }
             keyball_set_pointer_dragscroll_enabled(true);
             break;
-
-        /*
-        case _NAVIGATION:
-            if (keyball_get_pointer_dragscroll_enabled()) {
-                keyball_set_pointer_dragscroll_enabled(false);
-            }
-            keyball_set_pointer_sniping_enabled(true);
-            break;
-        */
-
         default:
             if (keyball_get_pointer_dragscroll_enabled()) {  // check if we were scrolling before and set disable if so
                 keyball_set_pointer_dragscroll_enabled(false);
             }
-            /*if (keyball_get_pointer_sniping_enabled()) {
-                keyball_set_pointer_sniping_enabled(false);
-            }*/
-            break;
-    
+            break;  
     }
     return state;
 }

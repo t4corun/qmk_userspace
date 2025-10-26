@@ -705,15 +705,9 @@ path.combo { stroke: #7f7f7f; }
 </g>
 <g transform="translate(700, 56)" class="key keypos-8">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">Pointer</tspan><tspan x="0" dy="1.2em">DPI</tspan>
-</text>
 </g>
 <g transform="translate(756, 84)" class="key keypos-9">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">Sniper</tspan><tspan x="0" dy="1.2em">DPI</tspan>
-</text>
 </g>
 <g transform="translate(28, 140)" class="key keypos-10">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -760,23 +754,27 @@ path.combo { stroke: #7f7f7f; }
 </g>
 <g transform="translate(28, 196)" class="key keypos-20">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Undo</text>
 </g>
 <g transform="translate(84, 168)" class="key keypos-21">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Cut</text>
 </g>
 <g transform="translate(140, 140)" class="key keypos-22">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Copy</text>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em">Point</tspan><tspan x="0" dy="1.2em">DPI</tspan>
+</text>
 </g>
 <g transform="translate(196, 154)" class="key keypos-23">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Paste</text>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em">Sniper</tspan><tspan x="0" dy="1.2em">DPI</tspan>
+</text>
 </g>
 <g transform="translate(252, 168)" class="key keypos-24">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Redo</text>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em">Sniper</tspan><tspan x="0" dy="1.2em">Mode</tspan>
+</text>
 </g>
 <g transform="translate(532, 168)" class="key keypos-25">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>

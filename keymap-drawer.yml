@@ -39,9 +39,9 @@ layers:
     - [{t: "Ctrl Home", type: trans}, {t: "Mute", type: trans}]
   NAV:
     # rows 1-3
-    - [null, Home, ▲, End, Page Up, Insert, App, MB2, Pointer DPI, Sniper DPI ]
+    - [null, Home, ▲, End, Page Up, Insert, App, MB2, null, null ]
     - [null, ◄, ▼, ►, Page Down, Back Space, Shift, Ctrl, Alt, Gui ]
-    - [Undo, Cut, Copy, Paste, Redo, Delete, MB1, Vol -, Vol +, Mute ]
+    - [null, null, Point DPI, Sniper DPI, Sniper Mode, Delete, MB1, Vol -, Vol +, Mute ]
     # common thumbs
     - [Tab, NUM, Enter, null, type: held]
     # encoders

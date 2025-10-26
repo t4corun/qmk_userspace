@@ -92,8 +92,6 @@ This is for my boards with integrated trackball (e.g., `Keyball39`). My goal is 
 
 - `MOUSEKEY_ENABLE` do not need to be enabled get the mouse click buttons
 - Drag Scrolling is enabled whenver `NUMBER` layer is active
-- Sniper mode is enabled whenever `NAVIGATION` layer is active
-- QWERTY `H,K,L` and COLEMAK DH `N,E,I` keys are Shift, Ctrl, and Alt when held for longer to be used with left click
 - Can use the mouse one handed
 
 ### Ploopy Nano Integration

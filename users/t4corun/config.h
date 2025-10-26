@@ -29,7 +29,7 @@
 
 #define PERMISSIVE_HOLD
 #define CHORDAL_HOLD
-#define TAPPING_TERM       180
+#define TAPPING_TERM       200
 #define FLOW_TAP_TERM      150
 #define QUICK_TAP_TERM     120
 #define TAP_CODE_DELAY     5
