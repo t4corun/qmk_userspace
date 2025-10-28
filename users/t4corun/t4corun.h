@@ -215,7 +215,7 @@ enum keycodes {
 #define LAYER_NAVIGATION                                                                            \
     ___x___, KC_HOME, KC_UP,   KC_END,  KC_PGUP,       KC_INS,  KC_APP,  MS_BTN2, ___x___, ___x___, \
     ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,       KC_BSPC, _SCAG_MODS________________________, \
-    ___x___, ___x___, MS_PDPI, MS_SDPI, MS_SNIP,       KC_DEL,  MS_BTN1, KC_VOLD, KC_VOLU, KC_MUTE, \
+    _NONE_5____________________________________,       KC_DEL,  MS_BTN1, KC_VOLD, KC_VOLU, KC_MUTE, \
                       KC_TAB,  _______, KC_ENT,        _LYR_RTRANS_____,                            \
                                         SCR_TOP,       ___x___
 
@@ -223,7 +223,7 @@ enum keycodes {
 #define LAYER_NUMBER                                                                                \
     KC_ESC,  MS_BTN5, MS_BTN3, MS_BTN4, ___x___,       KC_COMM, KC_7,    KC_8,    KC_9,    KC_F5,   \
     _GACS_MODS________________________, MS_BTN2,       KC_DOT,  KC_4,    KC_5,    KC_6,    KC_F2,   \
-    _UCCPR_L___________________________________,       KC_MINS, KC_1,    KC_2,    KC_3,    KC_F3,   \
+    ___x___, ___x___, MS_PDPI, MS_SDPI, MS_SNIP,       KC_MINS, KC_1,    KC_2,    KC_3,    KC_F3,   \
                       FUNC,    _______, ___x___,       KC_0,    _______,                            \
                                         ___x___,       ___x___
 
