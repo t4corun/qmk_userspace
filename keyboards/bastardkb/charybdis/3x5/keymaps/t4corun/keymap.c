@@ -69,18 +69,9 @@ layer_state_t layer_state_set_keymap(layer_state_t state) {
             }
             charybdis_set_pointer_dragscroll_enabled(true);
             break;
-        case _NAVIGATION:
-            if (charybdis_get_pointer_dragscroll_enabled()) {  // check if we were scrolling before and set disable if so
-                charybdis_set_pointer_dragscroll_enabled(false);
-            }
-            charybdis_set_pointer_sniping_enabled(true);
-            break;
         default:
             if (charybdis_get_pointer_dragscroll_enabled()) {  // check if we were scrolling before and set disable if so
                 charybdis_set_pointer_dragscroll_enabled(false);
-            }
-            if (charybdis_get_pointer_sniping_enabled()) {
-                charybdis_set_pointer_sniping_enabled(false);
             }
             break;
     }
