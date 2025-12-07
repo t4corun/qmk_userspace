@@ -41,7 +41,7 @@ jobs:
   build:
     name: Build Userspace Firmware
     runs-on: ubuntu-latest
-    container: qmkfm/base_container
+    container: ghcr.io/qmk/qmk_cli:latest
 
     steps:
       - name: Checkout Userspace
@@ -81,10 +81,11 @@ jobs:
           repository: ${{ inputs.bastardkb_repo || 'Bastardkb/bastardkb-qmk' }}
           ref: ${{ inputs.bastardkb_ref || 'bkb-master' }}
 
-      - name: Install QMK CLI
+      - name: Install QMK CLI dependencies
         run: |
-          python3 -m pip install --upgrade qmk
-          python3 -m pip install -r qmk_firmware/requirements.txt
+          echo '$PATH'
+          echo $PATH | tr ':' '\n' | sed -e 's/^/ - /g'
+          pip install -r qmk_firmware/requirements.txt
 
       - name: Configure QMK CLI
         run: |
