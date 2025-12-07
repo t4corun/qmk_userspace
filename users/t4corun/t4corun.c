@@ -2,7 +2,7 @@
 
 // Keeps track of base layer so only one key is needed
 // to cycle through them vs making three individual ones
-static uint8_t current_base_layer = FIRST_DEFAULT_LAYER;
+static uint8_t current_base_layer = DEFAULT_LAYER;
 
 // on layer change, no matter where the change was initiated
 // Then runs keymap's layer change check

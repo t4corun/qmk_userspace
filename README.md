@@ -73,8 +73,8 @@ qmk compile -kb bastardkb/charybdis/3x5 -km t4corun
 Quick summary of features. Some of these can be enabled/disabled if they are not needed and/or fit on smaller MCUs
 
 - Tri-Layer: Hold both thumb momentary layer keys `NAVIGATION` and `NUMBER` to access the `SYMBOL` layer
-- One Shot Mods: Minimizes holding, simplify layers, and avoid misfires from having Home Row Mods. Implemented bi-lateral GACS mods.
-- Caps Word: enables temporary all-caps typing without holding shift. Useful to typing programming variables. Tap `shift` twice to enable this.
+- Implemented bi-lateral GACS Homerow mods.
+- Caps Word: enables temporary all-caps typing without holding shift. Useful to typing programming variables
 - Pointing Device: enable trackball on certain boards (e.g. Keyball39 and Bastardkb Charybdis Nano). Note
 - OLED Displays: Displays active layers, modifiers, host state, and feature status. Shows Pointer CPI and RGB values. Support for 128x32 or 128x64 screens
 
@@ -92,8 +92,6 @@ This is for my boards with integrated trackball (e.g., `Keyball39`). My goal is 
 
 - `MOUSEKEY_ENABLE` do not need to be enabled get the mouse click buttons
 - Drag Scrolling is enabled whenver `NUMBER` layer is active
-- Sniper mode is enabled whenever `NAVIGATION` layer is active
-- QWERTY `H,K,L` and COLEMAK DH `N,E,I` keys are Shift, Ctrl, and Alt when held for longer to be used with left click
 - Can use the mouse one handed
 
 ### Ploopy Nano Integration

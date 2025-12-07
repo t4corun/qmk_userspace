@@ -176,11 +176,25 @@ void keyball_set_pointer_dragscroll_enabled(bool enable) {
  * Updated code to adapt to high resolution scrolling
  */
 static void pointing_device_task_keyball(report_mouse_t* mouse_report) {
-    if (g_keyball_config.is_dragscroll_enabled) {     
-        mouse_report->h = H_SCROLL(mouse_report->x);
-        mouse_report->v = V_SCROLL(mouse_report->y);
+    static int16_t scroll_buffer_x = 0;
+    static int16_t scroll_buffer_y = 0;
+
+    if (g_keyball_config.is_dragscroll_enabled) {
+        scroll_buffer_x += H_SCROLL(mouse_report->x);
+        scroll_buffer_y += V_SCROLL(mouse_report->y);
+
         mouse_report->x = 0;
         mouse_report->y = 0;
+
+        if (abs(scroll_buffer_x) > KEYBALL_DRAGSCROLL_BUFFER_SIZE) {
+            mouse_report->h = scroll_buffer_x > 0 ? 1 : -1;
+            scroll_buffer_x = 0;
+        }
+
+        if (abs(scroll_buffer_y) > KEYBALL_DRAGSCROLL_BUFFER_SIZE) {
+            mouse_report->v = scroll_buffer_y > 0 ? 1 : -1;
+            scroll_buffer_y = 0;
+        }
     }
 }
 
