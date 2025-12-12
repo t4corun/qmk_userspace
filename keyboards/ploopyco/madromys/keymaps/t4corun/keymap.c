@@ -20,17 +20,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define UPPER MO(_UPPER)
 
+#define SNIPER ___x___
+#define BOOTL  ___x___
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 //      ___x___, ___x___, ___x___, ___x___
 
     [_BASE] = LAYOUT( 
-        MS_BTN4, MS_BTN4, MS_BTN1, MS_BTN2, 
-        UPPER,                     MS_BTN3 ),
+        MS_BTN5, MS_BTN4, UPPER,   MS_BTN2, 
+        MS_BTN1,                   SNIPER ),
 
     [_UPPER] = LAYOUT( 
-        MS_BTN4, MS_BTN5, MS_BTN3, MS_BTN4, 
-        _______,                   DPI_CONFIG )
+        BOOTL,   ___x___, _______, MS_BTN4, 
+        MS_BTN3,                   DPI_CONFIG )
 };
 
 
