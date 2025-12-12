@@ -44,13 +44,13 @@ layer_state_t layer_state_set_keymap(layer_state_t state) {
         case _UPPER:
             if ( drag_scroll_state == false ) {
                 toggle_drag_scroll();
-                drag_scroll_state == true;
+                drag_scroll_state = !drag_scroll_state;
             }
             break;
         default:
             if ( drag_scroll_state == true ) {
                 toggle_drag_scroll();
-                drag_scroll_state == false;
+                drag_scroll_state = !drag_scroll_state;
             }
             break;  
     }
