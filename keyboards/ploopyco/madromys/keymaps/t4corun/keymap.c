@@ -24,11 +24,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 //      ___x___, ___x___, ___x___, ___x___
 
-    [BASE] = LAYOUT( 
+    [_BASE] = LAYOUT( 
         MS_BTN4, MS_BTN4, MS_BTN1, MS_BTN2, 
         UPPER,                     MS_BTN3 ),
 
-    [RAISED] = LAYOUT( 
+    [_UPPER] = LAYOUT( 
         MS_BTN4, MS_BTN5, MS_BTN3, MS_BTN4, 
         _______,                   DPI_CONFIG )
 };
