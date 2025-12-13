@@ -22,8 +22,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DRAGSCR MO(_DRAG_SCROLL)
 #define SNIPER  MO(_SNIPER)
 
-#define NEXTTAB LCTL(KC_W)
-#define PREVTAB LCS(KC_W)
+#define NEXTTAB LCTL(KC_TAB)
+#define PREVTAB LCS(KC_TAB)
 
 #define ___x___ KC_NO
 
