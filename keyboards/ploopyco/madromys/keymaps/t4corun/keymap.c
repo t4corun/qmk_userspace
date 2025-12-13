@@ -13,6 +13,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include QMK_KEYBOARD_H
+
 #define _BASE        0
 #define _SNIPER      1
 #define _DRAG_SCROLL 2
@@ -28,15 +30,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //      ___x___, ___x___, ___x___, ___x___
 
     [_BASE] = LAYOUT( 
-        PREVTAB, NEXTTAB, DRAGSCR, MS_BTN2, 
+        PREVTAB, NEXTTAB, DRAGSCR, MS_BTN2,
         MS_BTN1,                   SNIPER ),
 
     [_SNIPER] = LAYOUT(
-        ___x___, ___x___, ___x___, MS_BTN2, 
+        ___x___, ___x___, ___x___, MS_BTN2,
         MS_BTN1,                   _______ ),
 
     [_DRAG_SCROLL] = LAYOUT( 
-        QK_BOOT, DPI_CONFIG, _______, MS_BTN4, 
+        QK_BOOT, DPI_CONFIG, _______, MS_BTN4,
         MS_BTN3,                      MS_BTN5 )
 
 };
