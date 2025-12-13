@@ -25,7 +25,9 @@ jobs:
 
       - name: Set artifact name
         id: artifact
-        run: echo "name=${{ steps.date.outputs.today }}-${{ github.sha.substr(0,7) }}-qmkfirmware" >> $GITHUB_OUTPUT
+        run: |
+          SHORT_SHA="${GITHUB_SHA::7}"
+          echo "name=${{ steps.date.outputs.today }}-${SHORT_SHA}-qmkfirmware" >> $GITHUB_OUTPUT
 
       - name: Download binaries
         if: always() && !cancelled()
