@@ -13,8 +13,6 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "t4corun.h"
-
 #define _BASE        0
 #define _SNIPER      1
 #define _DRAG_SCROLL 2
