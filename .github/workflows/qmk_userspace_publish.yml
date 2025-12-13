@@ -19,11 +19,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Get current date
+        id: date
+        run: echo "today=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Set artifact name
+        id: artifact
+        run: |
+          SHORT_SHA="${GITHUB_SHA::7}"
+          echo "name=${{ steps.date.outputs.today }}-${SHORT_SHA}-qmkfirmware" >> $GITHUB_OUTPUT
+
       - name: Download binaries
         if: always() && !cancelled()
         uses: actions/download-artifact@v4
         with:
-          name: Firmware
+          name: ${{ steps.artifact.outputs.name }}
 
       - name: Delete release
         run: gh release delete ${{ inputs.release_name || 'latest' }} --cleanup-tag || true
@@ -35,7 +45,7 @@ jobs:
         if: always() && !cancelled()
         with:
           token: ${{ github.token }}
-          name: Latest QMK Firmware
+          name: ${{ steps.artifact.outputs.name }}
           tag_name: ${{ inputs.release_name || 'latest' }}
           fail_on_unmatched_files: false
           draft: false

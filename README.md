@@ -28,6 +28,7 @@ QMK Tree
 - Bastardkb Charybdis Nano 3x5
 - Ferris Swoop
 - Ploopy Nano
+- Ploopy Adept (Madromys)
 
 Non Tree
 
@@ -94,9 +95,9 @@ This is for my boards with integrated trackball (e.g., `Keyball39`). My goal is 
 - Drag Scrolling is enabled whenver `NUMBER` layer is active
 - Can use the mouse one handed
 
-### Ploopy Nano Integration
+### Ploopy Nano V1 Integration
 
-When enabled, use host state LED macros to allow the keyboard to control Ploopy Nano function.
+When enabled, use host state LED macros to allow the keyboard to control Ploopy Nano V1 function.
 
 | Press on Keyboard        | Result on Ploopy Nano            | Comment                                                    |
 | ------------------------ | -------------------------------- | ---------------------------------------------------------- |
