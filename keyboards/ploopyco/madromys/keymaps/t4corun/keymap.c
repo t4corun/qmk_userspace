@@ -20,21 +20,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DRAGSCR MO(_DRAG_SCROLL)
 #define SNIPER  MO(_SNIPER)
 
+#define NEXTTAB LCTL(KC_W)
+#define PREVTAB LCS(KC_W)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 //      ___x___, ___x___, ___x___, ___x___
 
     [_BASE] = LAYOUT( 
-        MS_BTN5, MS_BTN4, DRAGSCR, MS_BTN2, 
+        PREVTAB, NEXTTAB, DRAGSCR, MS_BTN2, 
         MS_BTN1,                   SNIPER ),
 
     [_SNIPER] = LAYOUT(
-        MS_BTN5, MS_BTN4, ___x___, MS_BTN2, 
+        ___x___, ___x___, ___x___, MS_BTN2, 
         MS_BTN1,                   _______ ),
 
     [_DRAG_SCROLL] = LAYOUT( 
-        QK_BOOT, ___x___, _______, MS_BTN4, 
-        MS_BTN3,                   DPI_CONFIG )
+        QK_BOOT, DPI_CONFIG, _______, MS_BTN4, 
+        MS_BTN3,                      MS_BTN5 )
 
 };
 
