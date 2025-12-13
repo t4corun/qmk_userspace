@@ -131,7 +131,7 @@ jobs:
       - name: Set artifact name
         id: artifact
         run: |
-          SHORT_SHA="${GITHUB_SHA::7}"
+          SHORT_SHA=$(echo "$GITHUB_SHA" | cut -c1-7)
           echo "name=${{ steps.date.outputs.today }}-${SHORT_SHA}-qmkfirmware" >> $GITHUB_OUTPUT
 
       - name: Upload binaries
