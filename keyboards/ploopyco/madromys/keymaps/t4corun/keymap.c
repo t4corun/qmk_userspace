@@ -43,35 +43,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // ================================================
 
-static bool drag_scroll_state = false;
-static bool sniper_state      = false;
+static bool is_drag_scroll_enabled = false;
+static bool is_sniper_enabled      = false;
+
+void set_mode_enabled(bool *mode_flag, bool enable, uint8_t dpi_index) {
+    if (*mode_flag != enable) {
+        pointing_device_set_cpi(enable ? dpi_array[dpi_index] : dpi_array[keyboard_config.dpi_config]);
+        *mode_flag = enable;
+    }
+}
+
+void set_sniper_enabled(bool enable) {
+    set_mode_enabled(&is_sniper_enabled, enable, PLOOPY_SPECIAL_DPI);
+}
+
+void set_dragscroll_enabled(bool enable) {
+    if ( is_drag_scroll_enabled != enable ) {
+        toggle_drag_scroll();
+    }
+    set_mode_enabled(&is_drag_scroll_enabled, enable, PLOOPY_SPECIAL_DPI);
+}
 
 layer_state_t layer_state_set_keymap(layer_state_t state) {
+    set_dragscroll_enabled(false);
+    set_sniper_enabled(false);
+
     switch (get_highest_layer(state)) {
         case _DRAG_SCROLL:
-            if ( sniper_state == true ) {
-                sniper_state = !sniper_state;
-            }
-            pointing_device_set_cpi(dpi_array[PLOOPY_DRAGSCROLL_DPI]);
-            toggle_drag_scroll();
-            drag_scroll_state = !drag_scroll_state;
+            set_dragscroll_enabled( true );
             break;
         case _SNIPER:
-            if ( drag_scroll_state == true ) {
-                toggle_drag_scroll();
-                drag_scroll_state = !drag_scroll_state;
-            }
-            pointing_device_set_cpi(dpi_array[PLOOPY_DRAGSCROLL_DPI]);
-            sniper_state = !sniper_state;
+            set_sniper_enabled( true);
             break;
         default:
-            if ( sniper_state == true ) {
-                sniper_state = !sniper_state;
-            }
-            if ( drag_scroll_state == true ) {
-                toggle_drag_scroll();
-                drag_scroll_state = !drag_scroll_state;
-            }
             pointing_device_set_cpi(dpi_array[keyboard_config.dpi_config]);
             break;
     }
