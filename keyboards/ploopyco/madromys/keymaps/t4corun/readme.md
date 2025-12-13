@@ -1,6 +1,6 @@
 # Ploopy Adept
 
-I'm using this more as a standalone input device with my wireless Totem therefore it doesn't leverage my user files.
+Coded this as a standalone mouse as it mainly uses out of the box QMK functionality to achieve the desired features. I use this with my ZMK Totem
 
 Features:
 - Momentary Drag scroll for mouse wheel emulation
