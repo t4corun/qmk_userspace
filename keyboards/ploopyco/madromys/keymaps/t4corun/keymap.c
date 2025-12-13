@@ -25,6 +25,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define NEXTTAB LCTL(KC_W)
 #define PREVTAB LCS(KC_W)
 
+#define ___x___ KC_NO
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 //      ___x___, ___x___, ___x___, ___x___
