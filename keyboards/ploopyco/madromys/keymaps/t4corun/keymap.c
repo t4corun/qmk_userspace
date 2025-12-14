@@ -40,8 +40,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         MS_BTN1,                   _______ ),
 
     [_DRAG_SCROLL] = LAYOUT( 
-        QK_BOOT, DPI_CONFIG, _______, MS_BTN4,
-        MS_BTN3,                      MS_BTN5 )
+        QK_BOOT, DPI_CONFIG, _______, MS_BTN3,
+        MS_BTN4,                      MS_BTN5 )
 
 };
 
