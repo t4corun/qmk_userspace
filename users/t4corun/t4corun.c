@@ -135,10 +135,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if(!process_record_user_ploopynano(keycode, record)) { return false; }
 #endif // PLOOPYNANO_ENABLE
 
-#if defined(KEYBOARD_ploopyco_madromys)
-    if(!process_record_user_ploopyadept(keycode, record)) { return false; }
-#endif // KEYBOARD_ploopyco_madromys
-
     // let QMK process the normal behavior if not handled above
     return true;
 }
