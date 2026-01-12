@@ -27,12 +27,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define ___x___ KC_NO
 
+enum keycodes {
+    SNIPTOG = QK_USER
+};
+
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 //      ___x___, ___x___, ___x___, ___x___
 
     [_BASE] = LAYOUT( 
-        PREVTAB, NEXTTAB, DRAGSCR, MS_BTN2,
+        MS_BTN4, SNIPTOG, DRAGSCR, MS_BTN2,
         MS_BTN1,                   SNIPER ),
 
     [_SNIPER] = LAYOUT(
@@ -85,4 +91,24 @@ layer_state_t layer_state_set_keymap(layer_state_t state) {
             break;
     }
     return state;
+}
+
+
+static bool sniper_state = false;
+
+void keyboard_post_init_user(void) {
+    sniper_state  = false;
+}
+
+bool process_record_user_ploopyadept(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        // makes scroll lock a hold instead of toggle
+        // enables momentary drag scroll on ploopy nano
+        case SNIPTOG:
+            if ( record->event.pressed ) {
+                set_dragscroll_enabled(!set_sniper_enabled);
+            }
+            return true;
+    }
+    return true;
 }
