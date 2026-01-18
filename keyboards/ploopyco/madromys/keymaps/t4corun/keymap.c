@@ -32,12 +32,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //      ___x___, ___x___, ___x___, ___x___
 
     [_BASE] = LAYOUT( 
-        MS_BTN4, SNIPER,  DRAGSCR, MS_BTN2,
-        MS_BTN1,                   MS_BTN3 ),
+        MS_BTN4, MS_BTN3, DRAGSCR, MS_BTN2,
+        MS_BTN1,                   SNIPER ),
 
     [_SNIPER] = LAYOUT(
-        MS_BTN4, _______, ___x___, MS_BTN2,
-        MS_BTN1,                   MS_BTN3 ),
+        MS_BTN4, MS_BTN3, ___x___, MS_BTN2,
+        MS_BTN1,                   _______ ),
 
     [_DRAG_SCROLL] = LAYOUT( 
         ___x___, DPI_CONFIG, _______, ___x___,
