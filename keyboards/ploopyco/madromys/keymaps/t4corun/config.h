@@ -15,8 +15,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#define PLOOPY_DPI_OPTIONS { 300, 600, 900, 1200, 1600, 2400 }
+#define PLOOPY_DPI_OPTIONS { 300, 600, 900, 1200, 1500 }
 #define PLOOPY_DPI_DEFAULT 2
 #define PLOOPY_SPECIAL_DPI 0
 
 #define PLOOPY_DRAGSCROLL_INVERT
+
+#define TAPPING_TOGGLE 2
