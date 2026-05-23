@@ -20,8 +20,7 @@ void          set_default_layer(bool forward);
 enum layers {
     _QWERTY = 0,
     DEFAULT_LAYER = 0,
-    _COLEMAK_DH,
-    _GAME,
+    _GRAPHITE,
     _NAVIGATION,
     _NUMBER,
     _SYMBOL,
@@ -37,15 +36,8 @@ enum keycodes {
     TH_DQUO,
     TH_SQUO,
 
-    TH_BSLS,
-    TH_SLSH,
-    TH_PIPE,
-
     TH_COMM,
     TH_DOT,
-
-    TH_MINS,
-    TH_QUOT,
 
 #if defined(ENCODER_ENABLE)
     FWD_TAB,  // turn encoder for tab and shift tab
@@ -95,8 +87,7 @@ enum keycodes {
 
 // start at the second layer
 #define     DEFAULT_LAYER_2    DEFAULT_LAYER + 1
-#define     DEFAULT_LAYER_3    DEFAULT_LAYER + 2
-#define     NUM_DEFAULT_LAYERS 3
+#define     NUM_DEFAULT_LAYERS 2
 
 #define     ___x___ KC_NO
 
@@ -110,11 +101,12 @@ enum keycodes {
 #define     SCR_TOP LCTL(KC_HOME)
 
 // Windows Shortcuts
-#define     SC_COPY LCTL(KC_C)
-#define     SC_CUT  LCTL(KC_X)
 #define     SC_UNDO LCTL(KC_Z)
+#define     SC_CUT  LCTL(KC_X)
+#define     SC_COPY LCTL(KC_C)
 #define     SC_PAST LCTL(KC_V)
 #define     SC_REDO LCTL(KC_Y)
+#define     W_SNIP  LSG(KC_S)
 
 // home row mods QWERTY
 #define     HRM_A   LGUI_T(KC_A)
@@ -126,14 +118,15 @@ enum keycodes {
 #define     HRM_L   RALT_T(KC_L)
 #define     HRM_QT  RGUI_T(KC_QUOT)
 
-// home row mods COLEMAK DH
+// home row mods GRAPHITE
+#define     HRM_N   LGUI_T(KC_N)
 #define     HRM_R   LALT_T(KC_R)
-#define     HRM_SC  LCTL_T(KC_S)
-#define     HRM_T   LSFT_T(KC_T)
-#define     HRM_N   RSFT_T(KC_N)
-#define     HRM_E   RCTL_T(KC_E)
-#define     HRM_I   RALT_T(KC_I)
-#define     HRM_O   RGUI_T(KC_O)
+#define     HRM_T   LCTL_T(KC_T)
+#define     HRM_SG  LSFT_T(KC_S)
+#define     HRM_H   RSFT_T(KC_H)
+#define     HRM_AG  RCTL_T(KC_A)
+#define     HRM_E   RALT_T(KC_E)
+#define     HRM_I   RGUI_T(KC_I)
 
 #define     HRML(k1, k2, k3, k4) LGUI_T(k1), LALT_T(k2), LCTL_T(k3), LSFT_T(k4)
 #define     HRMR(k1, k2, k3, k4) RSFT_T(k1), RCTL_T(k2), RALT_T(k3), RGUI_T(k4)
@@ -147,25 +140,16 @@ enum keycodes {
 #define     BK_DQUO LT(DEFAULT_LAYER, TH_DQUO)
 #define     BK_SQUO LT(DEFAULT_LAYER, TH_SQUO)
 
-// double tap
-#define     DT_BSLS LT(DEFAULT_LAYER, TH_BSLS)
-#define     DT_SLSH LT(DEFAULT_LAYER, TH_SLSH)
-#define     DT_PIPE LT(DEFAULT_LAYER, TH_PIPE)
-
 // Custom override without holding shift
 #define     OR_COMM LT(DEFAULT_LAYER, TH_COMM)
 #define     OR_DOT  LT(DEFAULT_LAYER, TH_DOT)
-
-// auto shift
-#define     AS_MINS LT(DEFAULT_LAYER, TH_MINS)
-#define     AS_QUOT LT(DEFAULT_LAYER, TH_QUOT)
 
 // pointer specific control
 #if defined(KEYBOARD_bastardkb_charybdis_3x5) || defined(KEYBOARD_non_tree_keyball39)
 #   define  MS_SNIP SNIPING  //these mouse codes are defined in charybdis.h and keyball.h
 #   define  MS_STOG SNP_TOG
 #   define  MS_DRGS DRGSCRL
-#   define  MS_SDPI S_D_MOD  //sniping dpi
+#   define  MS_SDPI S_D_MOD  //sniping dlpi
 #   define  MS_PDPI DPI_MOD  //pointer dpi
 #else
 #   define  MS_SNIP ___x___
@@ -177,70 +161,60 @@ enum keycodes {
 
 #define     _NONE_3__________________                   ___x___, ___x___, ___x___
 #define     _NONE_5____________________________________ ___x___, ___x___, ___x___, ___x___, ___x___
-#define     _GACS_MODS________________________          KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT
-#define     _SCAG_MODS________________________          KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI
-#define     _UCCPR_L___________________________________ SC_UNDO, SC_CUT,  SC_COPY, SC_PAST, SC_REDO
+#define     _MODS_GACS________________________          KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT
+#define     _MODS_SCAG________________________          KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI
+#define     _SHORTCUTS_UCCPR___________________________ SC_UNDO, SC_CUT,  SC_COPY, SC_PAST, SC_REDO
 
 #define     _BASE_L4_________________                   MS_BTN1, NUM,     KC_LSFT
-#define     _BASE_R4________                            KC_SPC,  NAV
-#define     _LYR_LTRANS______________                   ___x___, _______, ___x___
-#define     _LYR_RTRANS_____                            ___x___, _______
+#define     _BASE_R4_________________                   KC_SPC,  NAV,     KC_BSPC
+#define     _LYR_TRANS_______________                   ___x___, _______, ___x___
 
 //___x___, ___x___, ___x___, ___x___, ___x___, ___x___,       ___x___, ___x___, ___x___, ___x___, ___x___,
 
 #define LAYER_QWERTY                                                                                \
     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    \
     KC_A,    KC_S,    KC_D,    KC_F,    KC_G,          KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT, \
-    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,          KC_N,    KC_M,    OR_COMM, OR_DOT,  AS_MINS, \
-                      _BASE_L4_________________,      _BASE_R4________,                             \
+    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,          KC_N,    KC_M,    OR_COMM, OR_DOT,  KC_MINS, \
+                      _BASE_L4_________________,      _BASE_R4_________________,                    \
                                         SCR_TOP,       KC_MUTE
 
 
-#define LAYER_COLEMAK_DH                                                                            \
-    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,          KC_J,    KC_L,    KC_U,    KC_Y,    AS_QUOT, \
-    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,          KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    \
-    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,          KC_K,    KC_H,    OR_COMM, OR_DOT,  AS_MINS, \
-                      _BASE_L4_________________,      _BASE_R4________,                             \
-                                        SCR_TOP,       KC_MUTE
-
-
-#define LAYER_GAME                                                                                  \
-    KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,          KC_T,    KC_7,    KC_8,    KC_9,    KC_ESC,  \
-    KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,          KC_G,    KC_4,    KC_5,    KC_6,    KC_GRV,  \
-    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,          KC_LALT, KC_1,    KC_2,    KC_3,    TOG_CFG, \
-                      KC_ENT,  KC_SPC,  KC_LSFT,       _BASE_R4________,                            \
+#define LAYER_GRAPHITE                                                                              \
+    KC_B,    KC_L,    KC_D,    KC_W,    KC_Z,          KC_QUOT, KC_F,    KC_O,    KC_U,    KC_J,    \
+    KC_N,    KC_R,    KC_T,    KC_S,    KC_G,          KC_Y,    KC_H,    KC_A,    KC_E,    KC_I,    \
+    KC_Q,    KC_X,    KC_M,    KC_C,    KC_V,          KC_K,    KC_P,    OR_DOT,  KC_MINS, OR_COMM, \
+                      _BASE_L4_________________,      _BASE_R4_________________,                    \
                                         SCR_TOP,       KC_MUTE
 
 
 #define LAYER_NAVIGATION                                                                            \
-    ___x___, KC_HOME, KC_UP,   KC_END,  KC_PGUP,       KC_INS,  KC_APP,  MS_BTN2, ___x___, ___x___, \
-    ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,       KC_BSPC, _SCAG_MODS________________________, \
-    _NONE_5____________________________________,       KC_DEL,  MS_BTN1, KC_VOLD, KC_VOLU, KC_MUTE, \
-                      KC_TAB,  _______, KC_ENT,        _LYR_RTRANS_____,                            \
+    KC_ESC,  KC_HOME, KC_UP,   KC_END,  KC_PGUP,       KC_INS,  KC_APP,  ___x___, ___x___, ___x___, \
+    ___x___, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,       KC_BSPC, _MODS_SCAG________________________, \
+    _SHORTCUTS_UCCPR___________________________,       KC_DEL,  ___x___, KC_VOLD, KC_VOLU, ___x___, \
+                      KC_TAB,  _______, ___x___,       _LYR_TRANS_______________,                   \
                                         SCR_TOP,       ___x___
 
 
 #define LAYER_NUMBER                                                                                \
-    KC_ESC,  MS_BTN5, MS_BTN3, MS_BTN4, ___x___,       KC_COMM, KC_7,    KC_8,    KC_9,    KC_F5,   \
-    _GACS_MODS________________________, MS_BTN2,       KC_DOT,  KC_4,    KC_5,    KC_6,    KC_F2,   \
-    ___x___, ___x___, MS_PDPI, MS_SDPI, MS_SNIP,       KC_MINS, KC_1,    KC_2,    KC_3,    KC_F3,   \
-                      FUNC,    _______, ___x___,       KC_0,    _______,                            \
+    KC_ESC,  MS_BTN5, MS_BTN3, MS_BTN4, W_SNIP,        KC_COMM, KC_7,    KC_8,    KC_9,    KC_SLSH, \
+    _MODS_GACS________________________, MS_BTN2,       KC_DOT,  KC_4,    KC_5,    KC_6,    KC_ASTR, \
+    _SHORTCUTS_UCCPR___________________________,       KC_MINS, KC_1,    KC_2,    KC_3,    KC_PLUS, \
+                      FUNC,    _______, KC_SPC,        KC_0,    _______, KC_EQL,                    \
                                         ___x___,       ___x___
 
 
 #define LAYER_SYMBOL                                                                                \
-    KC_CIRC, KC_AMPR, KC_AT,   KC_DLR,  KC_GRV,        KC_TILD, KC_HASH, KC_ASTR, KC_PLUS, BK_DQUO, \
-    KC_PERC, BK_LCBR, KC_RCBR, DT_PIPE, KC_SCLN,       KC_COLN, KC_EQL,  BK_LBRC, KC_RBRC, BK_SQUO, \
-    ___x___, BK_LABK, KC_RABK, DT_BSLS, KC_EXLM,       KC_QUES, DT_SLSH, BK_LPRN, KC_RPRN, ___x___, \
-                      _LYR_LTRANS______________,       _LYR_RTRANS_____,                            \
+    KC_CIRC, KC_AT,   BK_LABK, KC_RABK, KC_GRV,        KC_PIPE, BK_LCBR, KC_RCBR, KC_DLR,  BK_DQUO, \
+    ___x___, KC_ASTR, KC_SLSH, KC_EQL,  KC_AMPR,       KC_HASH, BK_LPRN, KC_RPRN, KC_SCLN, BK_SQUO, \
+    KC_TILD, KC_PLUS, BK_LBRC, KC_RBRC, KC_PERC,       KC_BSLS, KC_COLN, KC_QUES, KC_EXLM, KC_MINS, \
+                      _LYR_TRANS_______________,       _LYR_TRANS_______________,                   \
                                         ___x___,       ___x___
-
 
 #define LAYER_FUNCTION                                                                              \
     QK_BOOT, GU_TOGG, CG_TOGG, KC_BRK,  KC_PSCR,       TOG_CFG, KC_F7,   KC_F8,   KC_F9,   KC_F10,  \
-    _GACS_MODS________________________, DM_PLY1,       FWD_CFG, KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
+    _MODS_GACS________________________, DM_PLY1,       FWD_CFG, KC_F4,   KC_F5,   KC_F6,   KC_F11,  \
     ___x___, KC_NUM,  KC_CAPS, KC_SCRL, DM_REC1,       REV_CFG, KC_F1,   KC_F2,   KC_F3,   KC_F12,  \
-                      _______, ___x___, ___x___,       DM_PLY2, DM_REC2,                            \
+                      _______, ___x___, ___x___,       DM_PLY2, DM_REC2, ___x___,                   \
                                         TOG_CFG,       TOG_CFG
 
 
@@ -249,11 +223,11 @@ enum keycodes {
          k00, k01, k02, k03,  k04,    k05, k06, k07, k08, k09,       \
          k10, k11, k12, k13,  k14,    k15, k16, k17, k18, k19,       \
          k20, k21, k22, k23,  k24,    k25, k26, k27, k28, k29,       \
-                   k32, k33,  k34,    k35, k36,                      \
+                   k32, k33,  k34,    k35, k36, k37,                 \
                               e01,    e02                            \
 )                                                                    \
          k00, k01, k02, k03,  k04,    k05, k06, k07, k08, k09,       \
     HRML(k10, k11, k12, k13), k14,    k15, HRMR(k16, k17, k18, k19), \
          k20, k21, k22, k23,  k24,    k25, k26, k27, k28, k29,       \
-              k32, k33, k34,  k35,    k36,                           \
+              k32, k33, k34,  k35,    k36, k37,                      \
                               e01,    e02

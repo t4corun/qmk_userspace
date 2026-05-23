@@ -3,8 +3,7 @@
 #include "t4corun.h"
 
 #define OLED_RENDER_DEFAULT_LAYER1    "QWERTY    :"
-#define OLED_RENDER_DEFAULT_LAYER2    "COLEMAK DH:"
-#define OLED_RENDER_DEFAULT_LAYER3    "GAME      :"
+#define OLED_RENDER_DEFAULT_LAYER2    "GRAPHITE  :"
 #define OLED_RENDER_LAYER_2           "Navigation"
 #define OLED_RENDER_LAYER_3           "Number    "
 #define OLED_RENDER_LAYER_4           "Symbol    "

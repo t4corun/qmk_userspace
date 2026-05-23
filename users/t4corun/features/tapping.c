@@ -15,9 +15,10 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
         case HRM_S:  // Qwerty Alt
         case HRM_L:  // Qwerty Alt
         case HRM_QT: // Qwerty GUI
-        case HRM_R:  // ColemakDH Alt
-        case HRM_I:  // ColemakDH Alt
-        case HRM_O:  // ColemakDH GUI
+        case HRM_N:  // Graphite GUI
+        case HRM_R:  // Graphite Alt
+        case HRM_E:  // Graphite Alt
+        case HRM_I:  // Graphite GUI
             return false;
         default:
             break;
@@ -35,9 +36,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case HRM_S:  // Qwerty Alt
         case HRM_L:  // Qwerty Alt
         case HRM_QT: // Qwerty GUI
-        case HRM_R:  // ColemakDH Alt
-        case HRM_I:  // ColemakDH Alt
-        case HRM_O:  // ColemakDH GUI
+        case HRM_N:  // Graphite GUI
+        case HRM_R:  // Graphite Alt
+        case HRM_E:  // Graphite Alt
+        case HRM_I:  // Graphite GUI
             return TAPPING_TERM + 100;
         default:
             return TAPPING_TERM;

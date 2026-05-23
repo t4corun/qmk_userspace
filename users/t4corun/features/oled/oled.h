@@ -3,8 +3,7 @@
 #include "t4corun.h"
 
 #define OLED_RENDER_DEFAULT_LAYER1    "Qwrty"
-#define OLED_RENDER_DEFAULT_LAYER2    "Clmak"
-#define OLED_RENDER_DEFAULT_LAYER3    "Game "
+#define OLED_RENDER_DEFAULT_LAYER2    "Graph"
 #define OLED_RENDER_LAYER_2           " Nav "
 #define OLED_RENDER_LAYER_3           " Num "
 #define OLED_RENDER_LAYER_4           " Sym "
