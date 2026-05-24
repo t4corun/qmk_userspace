@@ -12,10 +12,12 @@
 
 # optional features
 # use these values if not defined at the keyboard level
-BOOTMAGIC_ENABLE       ?= yes
-CAPS_WORD_ENABLE       ?= yes
-DYNAMIC_MACRO_ENABLE   ?= yes
+CAPS_WORD_ENABLE        = yes
+KEY_OVERRIDE_ENABLE     = yes
 EXTRAKEY_ENABLE         = yes
+COMBO_ENABLE            = yes
+BOOTMAGIC_ENABLE       ?= yes
+DYNAMIC_MACRO_ENABLE   ?= yes
 
 AUDIO_ENABLE           ?= no
 CONSOLE_ENABLE         ?= no
@@ -39,17 +41,17 @@ PLOOPYNANO_ENABLE      ?= no
 # ---------------------------------------------------------
 # include my code that will be common across all my keyboards
 
-SRC +=                 \
-    t4corun.c          \
-    features/tapping.c \
-    features/taphold.c
+SRC +=                     \
+    t4corun.c              \
+    features/tapping.c     \
+    features/taphold.c     \
+    features/capsword.c    
+
+INTROSPECTION_KEYMAP_C += introspection.c
+                          
 
 # ---------------------------------------------------------
 # include additional code for enabled features for each keyboard
-
-ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
-    SRC += features/capsword.c
-endif
 
 ifeq ($(strip $(OLED_ENABLE)), yes)
     ifeq ($(strip $(OLED_SIZE)), 128x64)
@@ -68,4 +70,3 @@ ifeq ($(strip $(PLOOPYNANO_ENABLE)), yes)
     SRC             += features/ploopynano.c
     MOUSEKEY_ENABLE  = yes
 endif
-

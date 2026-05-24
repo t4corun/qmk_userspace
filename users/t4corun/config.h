@@ -26,6 +26,7 @@
 #undef  QUICK_TAP_TERM
 #undef  FLOW_TAP_TERM 
 #undef  TAP_CODE_DELAY
+#undef  ONESHOT_TIMEOUT
 
 #define PERMISSIVE_HOLD
 #define CHORDAL_HOLD
@@ -34,6 +35,25 @@
 #define FLOW_TAP_TERM      150
 #define QUICK_TAP_TERM     120
 #define TAP_CODE_DELAY     5
+#define ONESHOT_TIMEOUT    5000
+
+/* Combos
+ * https://docs.qmk.fm/features/combo
+ */
+#if defined(COMBO_ENABLE)
+#   undef  COMBO_ONLY_FROM_LAYER
+#   undef  EXTRA_SHORT_COMBOS
+#   undef  COMBO_TERM
+#   undef  COMBO_TERM_PER_COMBO
+#   undef  COMBO_MUST_HOLD_PER_COMBO
+#   undef  COMBO_MUST_TAP_PER_COMBO
+#   undef  COMBO_SHOULD_TRIGGER
+
+#   define COMBO_ONLY_FROM_LAYER     0 //this will always setup combos based off of QWERTY layout
+#   define EXTRA_SHORT_COMBOS
+#   define COMBO_TERM                35
+#   define COMBO_MUST_TAP_PER_COMBO
+#endif //COMBO_ENABLE
 
 
 /* Caps Word
@@ -67,7 +87,7 @@
  */
 #if defined(OLED_ENABLE)
 #   define OLED_TIMEOUT 60000                    //1 min
-#   define OLED_FONT_H "./features/oled/font.c"
+#   define OLED_FONT_H "features/oled/font.c"
 #endif //OLED_ENABLE
 
 /* Audio

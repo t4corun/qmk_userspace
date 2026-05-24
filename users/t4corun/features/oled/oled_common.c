@@ -32,8 +32,7 @@ const char *mac_logo[]              = {mac_logo_L1, mac_logo_L2};
 // Define the default layer render strings in an array for easier maintenance
 const char *default_layer_render_strings[] = {
     [0]                   = OLED_RENDER_DEFAULT_LAYER1,
-    [DEFAULT_LAYER_2]     = OLED_RENDER_DEFAULT_LAYER2,
-    [DEFAULT_LAYER_3]     = OLED_RENDER_DEFAULT_LAYER3,
+    [DEFAULT_LAYER_2]     = OLED_RENDER_DEFAULT_LAYER2
 };
 
 // Define the layer render strings in an array for easier maintenance

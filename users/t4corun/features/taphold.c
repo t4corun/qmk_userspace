@@ -52,11 +52,6 @@ bool process_record_user_taphold(uint16_t keycode, keyrecord_t *record) {
             return process_tap_hold(record, KC_DQUO, KC_DQUO, HOLD_BRACKETS);
         case BK_SQUO:
             return process_tap_hold(record, KC_QUOT, KC_QUOT, HOLD_BRACKETS);
-        // Custom override without holding shift
-        case OR_COMM:
-            return process_tap_hold(record, KC_COMM, KC_LPRN, HOLD_SINGLETP);
-        case OR_DOT:
-            return process_tap_hold(record, KC_DOT,  KC_RPRN, HOLD_SINGLETP);
     }
     return true;
 }

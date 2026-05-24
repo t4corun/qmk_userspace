@@ -65,7 +65,7 @@ rm -rf qmk_firmware/keyboards/bastardkb
 cp bastardkb-qmk/keyboards/bastardkb qmk_firmware/keyboards -R
 
 # build firmware
-qmk compile -kb non-tree/keyball39 -km t4corun
+qmk compile -kb non_tree/keyball39 -km t4corun
 qmk compile -kb bastardkb/charybdis/3x5 -km t4corun
 ```
 
