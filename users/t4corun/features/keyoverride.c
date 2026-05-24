@@ -11,10 +11,10 @@ Intentionally did not convert all the override/autoshit tap holds to this format
 - I didn't feel the need to be able to repeat those symbols
 */
 
-const key_override_t comma_override         = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_QUES, _QWERTY);
-const key_override_t dot_override           = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT,  KC_EXLM, _QWERTY);
-const key_override_t graphitecomma_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_EXLM, _GRAPHITE);
-const key_override_t graphitedot_override   = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT,  KC_QUES, _GRAPHITE);
+const key_override_t comma_override         = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_QUES, ~(1 << _QWERTY));
+const key_override_t dot_override           = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT,  KC_EXLM, ~(1 << _QWERTY));
+const key_override_t graphitecomma_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_EXLM, ~(1 << _GRAPHITE));
+const key_override_t graphitedot_override   = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT,  KC_QUES, ~(1 << _GRAPHITE));
 
 
 const key_override_t *key_overrides[] = {
